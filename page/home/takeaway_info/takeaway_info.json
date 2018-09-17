@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "auth_button": "/components/auth_button/auth_button"
+  },
+  "navigationBarTitleText": "商品详情",
+  "enablePullDownRefresh": true
+}

@@ -1,0 +1,5 @@
+<view class="star-num-wrap">
+  <block wx:for="{{imgList}}" wx:key="{{index}}">
+    <image class='star-icon' src='{{item}}'></image>
+  </block>
+</view>

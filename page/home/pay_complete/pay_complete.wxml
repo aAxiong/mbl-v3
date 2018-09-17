@@ -1,0 +1,34 @@
+
+<view class="pay-complete-wrapper">
+  <view class='complete-header'>
+    <image src='/images/icon/pay_success.png'></image>
+    <view class='nav-btn' bindtap='homeTap'>
+      完成
+    </view>
+  </view>
+  <view class='bill'>
+    <view class='bill-title'>账单</view>
+    <view class='bill-content'>
+      <view class='bill-tr'>
+        <view class='bill-type' wx:if="{{orderInfo.DisMoney > 0}}"></view>
+        <view class='bill-name'>消费金额：</view>
+        <view class='bill-money'>{{orderInfo.Money}}元</view>
+      </view>
+      <!-- wx:if="{{orderInfo.DisMoney > 0}}" -->
+      <view class='bill-tr bill-coupon' wx:if="{{orderInfo.DisMoney > 0}}"> 
+        <view class='bill-type'>
+          <text wx:if="{{couponType == 1}}" class='type'>满减券</text>
+          <text wx:if="{{couponType == 2}}" class='type'>折扣券</text>
+          <text wx:if="{{couponType == 3}}" class='type'>随机减</text>
+        </view>
+        <view class='bill-name'>优惠金额：</view>
+        <view class='bill-money coupon-money'>-{{orderInfo.DisMoney}}元</view>
+      </view>
+      <view class='bill-tr'>
+        <view class='bill-type' wx:if="{{orderInfo.DisMoney > 0}}"></view>
+        <view class='bill-name'>实际付款金额：</view>
+        <view class='bill-money'>{{orderInfo.PayMoney}}元</view>
+      </view>
+    </view>
+  </view>
+</view>

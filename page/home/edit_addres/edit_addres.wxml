@@ -1,0 +1,50 @@
+<view class="page">
+  <view class="people">
+    <view class="name">
+      联系人</view>
+    <view class="mk">
+      <input placeholder='请输入你的名字' bindinput="getName" maxlength="10" value="{{name}}"></input>
+      <view class="selectbox">
+        <view class="selectbtn {{sex==1?'active':''}}" data-sex='1' bindtap='swtichSex'>先生</view>
+        <view class="selectbtn {{sex==2?'active':''}}" data-sex='2' bindtap='swtichSex'>女士</view>
+      </view>
+    </view>
+  </view>
+  <view class="phone">
+    <view class="name">
+      电话</view>
+    <view class="mk">
+      <input placeholder='请输入您的手机号码' bindinput="getPhone" type="number" value="{{tphone}}"></input>
+    </view>
+  </view>
+  <view class="phone add" bindtap='selectAdd'>
+    <view class="name">
+      地址</view>
+    <view class="mk">
+      <view class="address">
+        <view wx:if='{{address==""}}'>
+          请选择收货地址
+          <image src='/images/address/back.png'></image>
+        </view>
+        <view wx:else>
+          {{address}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="addinfo">
+    <view class="name">
+      具体位置</view>
+    <view class="mk">
+      <textarea bindinput="getlocal" placeholder='例：综合楼三 703' value='{{local}}'></textarea>
+    </view>
+  </view>
+</view>
+<view class="opt" bindtap='swtichDfl' data-id='{{dfl}}'>
+  <view class="f">
+    <image src='/images/address/def.png' wx:if='{{dfl==1}}'></image>
+  </view>
+  <text>设为默认地址</text>
+</view>
+<view class="btn " bindtap='insertAdd'>
+  保存
+</view>

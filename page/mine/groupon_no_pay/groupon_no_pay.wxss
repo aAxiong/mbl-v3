@@ -1,0 +1,65 @@
+
+page{
+  background: #f8f8f8;
+}
+
+.order-head{
+  padding: 30rpx 40rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #e8e8e8;
+}
+
+.order-content{
+  padding-bottom: 40rpx;
+  background: #fff;
+}
+
+.order-content .order-li{
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx 40rpx 0;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.order-content .order-li .left{
+  width: 60%;
+}
+
+.order-content .order-li .right{
+  width: 40%;
+}
+
+.order-operation{
+  margin-top: 120rpx;
+  text-align: center;
+}
+
+.order-operation .btn{
+  display: inline-block;
+  margin: 0 40rpx;
+  padding: 24rpx 48rpx;
+  border-radius: 8rpx;
+}
+
+.order-operation .btn-cancel{
+  background: #999;
+  color: #fff;
+}
+
+.order-operation .btn-pay{
+  background: #fd2e2e;
+  color: #fff;
+}
+
+.order-content .order-li .left{
+  display: inline-block;
+  width: 50%;
+  line-height: 44rpx;
+}
+
+.order-content .order-li .right{
+  display: inline-block;
+  line-height: 44rpx;
+  width: 50%
+}

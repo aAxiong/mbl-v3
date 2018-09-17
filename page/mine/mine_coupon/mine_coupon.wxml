@@ -1,0 +1,66 @@
+
+<view class="mine-coupon-wrapper" hidden="{{mask}}">
+<!-- 优惠券头部 -->
+  <view class='coupon-nav'>
+    <block wx:for="{{['未使用','已使用','已过期']}}" wx:key="index">
+      <view class='coupon-a'><text class="text {{currentIndex == index?'active':''}}" data-idx="{{index}}" bindtap='couponTap'>{{item}}</text></view>
+    </block>
+  </view>
+  <!-- 优惠券各列表 -->
+  <view class='coupon-content'>
+    <!-- 未使用优惠券 -->
+    <view class='coupon-list' hidden='{{currentIndex != 0}}'>
+      <block wx:for="{{noneCoupon}}" wx:key="index">
+        <view class='coupon unused-coupon'>
+          <view class='left'>
+            <coupon_ic coupon-data="{{item.Discount}}" coupon-type="{{item.DisType}}" coupon-condition="{{item.Condition}}"></coupon_ic>
+          </view>
+          <view class='right'>
+            <view class='btn-coupon btn-detail' data-idx="{{index}}" bindtap='viewDetail'>查看详情</view>
+            <text class='date-time'>{{item.StartTime}}-{{item.EndTime}}</text>
+          </view>
+        </view>
+      </block>
+      <view class='my-coupon-none' wx:if="{{noneCoupon.length === 0}}">
+        <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+        <view class='text'>暂无未使用优惠券</view>
+      </view>
+    </view>
+    <!-- 已使用优惠券 -->
+    <view class='coupon-list' hidden='{{currentIndex != 1}}'>
+      <block wx:for="{{usedCoupon}}" wx:key="index">
+        <view class='coupon used-coupon'>
+          <view class='left'>
+            <coupon_ic coupon-data="{{item.Discount}}" coupon-type="{{item.DisType}}" coupon-condition="{{item.Condition}}"></coupon_ic>
+          </view>
+          <view class='right'>
+            <view class='btn-coupon btn-none'>已使用</view>
+            <text class='date-time'>{{item.StartTime}}-{{item.EndTime}}</text>
+          </view>
+        </view>
+      </block>
+      <view class='my-coupon-none' wx:if="{{usedCoupon.length === 0}}">
+        <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+        <view class='text'>暂无已使用优惠券</view>
+      </view>
+    </view>
+    <!-- 已过期优惠券 -->
+    <view class='coupon-list' hidden='{{currentIndex != 2}}'>
+      <block wx:for="{{overCoupon}}" wx:key="index">
+        <view class='coupon used-coupon'>
+            <view class='left'>
+              <coupon_ic coupon-data="{{item.Discount}}" coupon-type="{{item.DisType}}" coupon-condition="{{item.Condition}}"></coupon_ic>
+            </view>
+            <view class='right'>
+              <view class='btn-coupon btn-none'>已过期</view>
+              <text class='date-time'>{{item.StartTime}}-{{item.EndTime}}</text>
+            </view>
+        </view>
+      </block>
+      <view class='my-coupon-none' wx:if="{{overCoupon.length === 0}}">
+        <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+        <view class='text'>暂无已过期优惠券</view>
+      </view>
+    </view>
+  </view> 
+</view>

@@ -1,0 +1,31 @@
+<view class='wrapper'>
+  <view class='icon-wrp' bindtap='selectCancleTap'>
+    ￥{{shopData.SpecificationPrice}}
+    <text>(</text>
+    <text wx:if='{{shopData!=""}}'>{{shopData.SpecificationName}}</text>
+    <text wx:if='{{shopData1!=""}}'> {{shopData1.LableName}}</text>
+    <text>)</text>
+    <image class='cancle' src='/images/icon/o_cancle.png '></image>
+  </view>
+  <scroll-view scroll-y class="list-box">
+    <view class='size' wx:if="{{sizeTaste.SpecificationList.length >= 1}}">
+      <view class='title'>规格</view>
+      <view class='select'>
+        <block wx:for="{{sizeTaste.SpecificationList}}" wx:key="{{index}}">
+          <view catchtap='sizeTap' data-sizeid="{{item.SpecificationID}}" data-idx="{{index}}" class='select-item {{sizeIndex==index ? "active": ""}} '>{{item.SpecificationName}}</view>
+        </block>
+      </view>
+    </view>
+    <view class='taste' wx:if="{{sizeTaste.LableList.length >= 1}}">
+      <view class='title'>口味</view>
+      <view class='select'>
+        <block wx:for="{{sizeTaste.LableList}}" wx:key="{{index}}">
+          <view catchtap='tasteTap' data-taste="{{item.LableName}}" data-idx="{{index}}" class='select-item {{tasteIndex==index? "active": ""}}'>{{item.LableName}}</view>
+        </block>
+      </view>
+    </view>
+  </scroll-view>
+  <view class='btn-wrp'>
+    <view class='btn' bindtap='selectFixTap'>确定</view>
+  </view>
+</view>

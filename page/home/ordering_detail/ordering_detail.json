@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "ordering_select": "/components/ordering_select/ordering_select"
+  }
+}

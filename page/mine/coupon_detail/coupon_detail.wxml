@@ -1,0 +1,7 @@
+
+<view class="coupon-detail">
+  <view class='detail' wx:if="{{couponInfo.ctype == 1}}">优惠券详情：满{{couponInfo.condition}}元减{{couponInfo.discount}}元</view>
+  <view class='detail' wx:if="{{couponInfo.ctype == 2}}">优惠券详情：满{{couponInfo.condition}}元打{{couponInfo.discount}}折</view>
+  <view class='detail'>有效期：{{couponInfo.stime}}-{{couponInfo.etime}}</view>
+  <view class='detail'>券码：{{couponInfo.code}}</view>
+</view>

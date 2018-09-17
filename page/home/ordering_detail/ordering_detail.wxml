@@ -1,0 +1,48 @@
+<view class="shop-detail-wrapper" hidden='{{isShow}}'>
+  <view class='detail-wrapper'>
+    <view class='header'>
+      <view class='detail-image'>
+        <image mode='aspectFill' src='{{imgUrl}}{{goodsData.ImgPath}}'></image>
+      </view>
+      <view class='detail-intro'>
+        <view class='left'>
+          <text class='name'>{{goodsData.CommodityName}}</text>
+        </view>
+        <view class='right'>
+          <image src='/images/icon/share.png'></image>
+          <!-- <text class='share'>分享</text> -->
+          <button open-type='share' class='share' plain='true'>分享</button>
+        </view>
+      </view>
+      <view class='detail-price'>
+        <text class='price'>￥{{goodsData.Money}}</text>
+        <text class='price-old' wx:if="{{goodsData.Money1}}">￥{{goodsData.Money1}}</text>
+        <text class='count' wx:if="{{isShowSales === 1}}">月销量:{{goodsData.Sales}}份</text>
+      </view>
+    </view>
+    <view class='bg-line'></view>
+    <view class='detail-text' wx:for="{{goodsCustom}}" wx:key="{{index}}" wx:if='{{item.Title}}'>
+      <view class='title'>{{item.Title+"："}}</view>
+      <view class='content'>
+        <view class='text-line' wx:for="{{item.Describe}}" wx:key="{{index}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='orders-wrapper'>
+    <view class='wrapper'>
+      <view class='unit-price'>小计金额：
+        <text class='price'><text class='sign'>￥</text>{{totalMoney}}</text>
+      </view>
+      <view class='add-cart' bindtap='goodsSizeTap'>
+        <image class='cart' src='/images/icon/o_cart_de.png'></image>
+        <text class='text'>加入购物车</text>
+      </view>
+      <view class='btn-orders' bindtap='ordersPayTap'>立即下单</view>
+    </view>
+  </view>
+</view>
+<view class='select-wrapper' hidden='{{isShowSelect}}'>
+  <ordering_select bind:selectTriggerTap="selectData" bind:moneyTriggerTap="moneyData" size-taste="{{goodsData}}"></ordering_select>
+</view>

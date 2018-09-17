@@ -1,0 +1,10 @@
+
+<view class='auth-wrapper'>
+  <view class='icon'>
+    <icon type='warn' size='48' color='#179B16'></icon>
+  </view>
+  <text class='text'>为了更好的用户体验，此应用需要您授权获取头像、昵称等信息</text>
+  <view class='btn'>
+    <button type='primary' open-type='getUserInfo' bindgetuserinfo="userInfo">确定授权</button>
+  </view>
+</view>

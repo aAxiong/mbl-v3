@@ -1,0 +1,79 @@
+<view class="mine-wrapper" hidden="{{mask}}">
+  <view class='mine-header'>
+    <view class='avatar-wrapper'>
+      <image class='avatar' wx:if="{{userInfo}}" src='{{userInfo.avatarUrl}}'></image>
+      <image class='avatar' wx:else src='/images/icon/avatar.png'></image>
+    </view>
+    <view class='mine-info'>
+      <view wx:if="{{userInfo}}" class='nick-name'>{{userInfo.nickName}}</view>
+      <view wx:else class='nick-name'>{{snapName}}</view>
+      <view class='tel_number' wx:if="{{phone}}">
+        <image class='tel-icon' src='/images/icon/m_tel.png'></image>
+        <text class='tel'>{{phone}}</text>
+      </view>
+    </view>
+    <view class='mine-detail'>
+      <!-- <image class='detail-icon' src='/images/icon/m_det.png'></image> -->
+    </view>
+  </view>
+  <view class="bllang">
+    <image src='/images/icon/bolang.png'></image>
+  </view>
+  <view class='mine-list'>
+    <view class='mine-item' bindtap='mineGroupon'>
+      <view class="list-box">
+        <view class='item-icon'>
+          <image src='/images/icon/m_groupon.png'></image>
+        </view>
+        <view class='text'>
+          团购订单
+        </view>
+      </view>
+      <image src='/images/icon/s_arrow.png'></image>
+    </view>
+    <!-- <view class='mine-item' bindtap='mineCoupon'>
+      <view class='item-icon'>
+        <image src='/images/icon/m_coupon.png'></image>
+      </view>
+      <view class='text'>
+        我的优惠券
+      </view>
+    </view> -->
+    <view class='mine-item' bindtap='mineOrder'>
+      <view class="list-box">
+        <view class='item-icon'>
+          <image src='/images/icon/m_order.png'></image>
+        </view>
+        <view class='text'>
+          线下订单
+        </view>
+      </view>
+      <image src='/images/icon/s_arrow.png'></image>
+    </view>
+    <view class='mine-item' bindtap='mineTakeaway'>
+      <view class="list-box">
+        <view class='item-icon'>
+          <image src='/images/icon/m_takeaway.png'></image>
+        </view>
+        <view class='text'>
+          外卖订单
+        </view>
+      </view>
+      <image src='/images/icon/s_arrow.png'></image>
+    </view>
+    <view class='mine-item' bindtap='mineOrdering' wx:if="{{isOrdering == 1}}">
+      <view class="list-box">
+        <view class='item-icon'>
+          <image src='/images/icon/m_ordering.png'></image>
+        </view>
+        <view class='text'>
+          点餐订单
+        </view>
+      </view>
+      <image src='/images/icon/s_arrow.png'></image>
+    </view>
+  </view>
+  <view class="callme">
+    <image src='/images/icon/call@2x.png' style="width:292rpx;height:71rpx;"></image>
+  </view>
+</view>

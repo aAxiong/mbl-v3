@@ -1,0 +1,38 @@
+
+.pay-complete .pay-prompt{
+  margin-top: 300rpx;
+  text-align: center;
+}
+
+.pay-complete .pay-prompt .icon{
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.pay-complete .pay-prompt .prompt{
+  margin-top: 40rpx;
+  font-size: 36rpx;
+  color: #333;
+}
+
+.pay-bottom{
+  margin-top: 350rpx;
+}
+
+.pay-bottom .btn{
+  width: 200rpx;
+  margin: 0 auto;
+  padding: 12rpx 0;
+  background: #ff861a;
+  color: #fff;
+  font-size: 36rpx;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+.pay-bottom .prompt{
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  color: #999;
+  text-align: center;
+}

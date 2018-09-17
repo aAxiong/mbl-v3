@@ -1,0 +1,440 @@
+page {
+  background: #f8f8f8;
+}
+
+.tabbox {
+  width: 100%;
+  height: 550rpx;
+  background: #fff3ca;
+}
+
+.sendBox {
+  padding-top: 60rpx;
+  margin-bottom: 30rpx;
+}
+
+.sendBox .clc {
+  width: 205rpx;
+  height: 205rpx;
+  margin: 0 auto;
+  border: 10rpx solid #fff;
+  border-radius: 200rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.sendBox .clc view {
+  width: 100%;
+  text-align: center;
+  color: #333;
+  font-size: 34rpx;
+}
+
+.sendBox  .status {
+  text-align: center;
+  font-size: 32rpx;
+  color: #333;
+  margin-top: 20rpx;
+}
+
+.sendBox  .subTime {
+  text-align: center;
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 10rpx;
+}
+
+.sendBox .toolbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 480rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+}
+
+.sendBox .toolbar .btn {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #fd2e2e;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+.sendBox .toolbar1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 680rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+}
+
+.sendBox .toolbar1 .btn {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #fd2e2e;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+.sendBox .toolbar1 .btn.canel {
+  background: #d5d5d5;
+  color: #fff;
+}
+
+.sendBox .toolbar .text {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.sendBox .toolbar1 .text {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.peopleInfoBox {
+  margin: 0 20rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.peopleInfoBox .tit {
+  margin: 0 10rpx;
+  height: 100rpx;
+  font-size: 32rpx;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #ddd;
+  text-indent: 20rpx;
+}
+
+.peopleInfoBox .con {
+  margin: 0 10rpx;
+  padding: 25rpx 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.peopleInfoBox .con .people {
+  margin-left: 30rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.peopleInfoBox .con .people image {
+  width: 42rpx;
+  height: 38rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+
+.peopleInfoBox .con .call {
+  width: 140rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  background: #ff9e04;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 8rpx;
+  margin-right: 50rpx;
+}
+
+.map {
+  width: 100%;
+  height: 474rpx;
+  text-align: center;
+}
+
+.map image {
+  width: 100%;
+}
+
+.sendInfoBox {
+  margin: 0 20rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.sendInfoBox .tit {
+  margin: 0 10rpx;
+  height: 100rpx;
+  font-size: 32rpx;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #ddd;
+  text-indent: 20rpx;
+}
+
+.sendInfoBox .con {
+  padding: 30rpx 0;
+}
+
+.sendInfoBox .con .info {
+  margin: 0 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.sendInfoBox .con .info text {
+  margin-left: 20rpx;
+  color: #333;
+  margin-right: 40rpx;
+  font-size: 30rpx;
+}
+
+.sendInfoBox .con .local {
+  margin: 0 10rpx;
+  display: flex;
+  align-items: flex-start;
+}
+
+.sendInfoBox .con .local image {
+  width: 27rpx;
+  height: 33rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+}
+
+.sendInfoBox .con .local .text {
+  width: 600rpx;
+  color: #666;
+  font-size: 30rpx;
+}
+
+.orderInfo {
+  margin: 0 20rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.orderInfo .tit {
+  margin: 0 10rpx;
+  height: 100rpx;
+  font-size: 32rpx;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #ddd;
+  text-indent: 20rpx;
+}
+
+.orderInfo .con {
+  padding-top: 30rpx;
+}
+
+.orderInfo .disconut {
+  margin: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.orderInfo .disconut text {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.orderInfo .disconut view {
+  color: #999;
+  font-size: 28rpx;
+}
+
+.orderInfo .disconut image {
+  width: 46rpx;
+  height: 28rpx;
+  vertical-align: sub;
+  margin-right: 10rpx;
+}
+
+.orderInfo .con .productList {
+  margin: 0 30rpx;
+}
+
+.orderInfo .con .productList .list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.orderInfo .con .productList .list:last-child {
+  margin-bottom: 0;
+}
+
+.orderInfo .con .productList .list .pro {
+  width: 250rpx;
+}
+
+.orderInfo .con .productList .list .pro .name {
+  color: #333;
+  font-size: 30rpx;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.orderInfo .con .productList .list .pro .type {
+  color: #999;
+  font-size: 26rpx;
+}
+
+.orderInfo .con .productList .list .pro .type text {
+  color: #999;
+  font-size: 26rpx;
+}
+
+.orderInfo .con .productList .list .num {
+  color: #333;
+  font-size: 30rpx;
+  width: 100rpx;
+}
+
+.orderInfo .con .productList .list .price {
+  color: #333;
+  font-size: 30rpx;
+  width: 100rpx;
+}
+
+.orderInfo .con .sendPrice {
+  margin: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+  line-height: 100rpx;
+}
+
+.orderInfo .con .sendPrice text {
+  font-size: 30rpx;
+}
+
+.totalPrice {
+  text-align: right;
+  line-height: 100rpx;
+  color: #333;
+  font-size: 34rpx;
+  margin: 0 30rpx;
+  border-top: 2rpx solid #f8f8f8;
+}
+
+.orderBox {
+  margin: 0 20rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.orderBox .tit {
+  margin: 0 10rpx;
+  height: 100rpx;
+  font-size: 32rpx;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #ddd;
+  text-indent: 20rpx;
+}
+
+.orderBox .con {
+  margin: 0 30rpx;
+  padding: 25rpx 0 10rpx 0;
+}
+
+.orderBox .con .list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.orderBox .con .list text {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.re {
+  margin: 0 20rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.re .tit {
+  margin: 0 10rpx;
+  height: 100rpx;
+  font-size: 32rpx;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #ddd;
+  text-indent: 20rpx;
+}
+
+.re .con {
+  margin: 0 30rpx;
+  padding: 25rpx 0 10rpx 0;
+  min-height: 150rpx;
+}
+
+.re .con .text {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.mysendInfoBox {
+  margin: 0 20rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.mysendInfoBox .tit {
+  margin: 0 10rpx;
+  height: 100rpx;
+  font-size: 32rpx;
+  line-height: 100rpx;
+  border-bottom: 2rpx solid #ddd;
+  text-indent: 20rpx;
+}
+
+.mysendInfoBox .con {
+  padding: 30rpx 0;
+}
+
+.mysendInfoBox .con .info {
+  margin: 0 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.mysendInfoBox .con .info text {
+  margin-left: 20rpx;
+  color: #333;
+  margin-right: 40rpx;
+  font-size: 30rpx;
+}
+
+.mysendInfoBox .con .local {
+  margin: 0 10rpx;
+  display: flex;
+  align-items: flex-start;
+}
+
+.mysendInfoBox .con .local image {
+  width: 27rpx;
+  height: 33rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+}
+
+.mysendInfoBox .con .local .text {
+  width: 500rpx;
+  color: #666;
+  font-size: 30rpx;
+}
+
+.mysendInfoBox .con .local .dh {
+  width: 105rpx;
+  height: 50rpx;
+  background: #5397fe;
+  border-radius: 5rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 50rpx;
+  font-size: 30rpx;
+}

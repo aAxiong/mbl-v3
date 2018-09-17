@@ -1,0 +1,33 @@
+
+<view class="phone-wrapper">
+  <form bindsubmit='formsubmit'>
+    <view class='phone-bg'>
+      <view class='phone-item'>
+        <view class='phone-label'>姓名</view>
+        <view class='phone-ipt'>
+          <input type='text' class='ipt-control' name="userName"></input>
+        </view>
+      </view>
+      <view class='phone-item'>
+        <view class='phone-label'>手机号</view>
+        <view class='phone-ipt'>
+          <input type='text' class='ipt-control' name="userPhone" bindinput='userPhone'></input>
+        </view>
+      </view>
+      <view class='phone-item'>
+        <view class='phone-label'>验证码</view>
+        <view class='phone-ipt'>
+          <input type='text' class='ipt-control' name="userCode"></input>
+        </view>
+        <view class='phone-code'>
+          <text wx:if="{{codefirst}}" class='code-text' bindtap='sendCode'>发送验证码</text>
+          <text wx:if="{{codeMins}}" class='code-text'>{{min}}s</text>
+          <text wx:if="{{sendRest}}" class='code-text' bindtap='sendCode'>重新发送</text>
+        </view>
+      </view>
+    </view>
+    <view class='btn-wrappper'>
+      <button form-type='submit' class='btn-submit'>提交</button>
+    </view>
+  </form>
+</view>

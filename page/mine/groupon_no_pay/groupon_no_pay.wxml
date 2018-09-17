@@ -1,0 +1,32 @@
+
+<view class='order-pay-wrapper' hidden='{{isShow}}'>
+  <view class='order-head'>
+    订单信息
+  </view>
+  <view class='order-content'>
+    <view class='order-li'>
+      <text class='left'>{{order.CommodityName}}</text>
+      <text class='right'>￥{{order.Money}}</text>
+    </view>
+    <view class='order-li'>
+      <text class='left'>数量</text>
+      <text class='right'>{{order.CommodityNum}}份</text>
+    </view>
+    <view class='order-li'>
+      <text class='left'>订单号</text>
+      <text class='right'>{{order.OrderID}}</text>
+    </view>
+    <view class='order-li'>
+      <text class='left'>订单金额</text>
+      <text class='right'>￥{{order.PayMoney}}</text>
+    </view>
+    <view class='order-li'>
+      <text class='left'>下单时间</text>
+      <text class='right'>{{order.CreateTime}}</text>
+    </view>
+  </view>
+  <view class='order-operation'>
+    <view class='btn btn-cancel' bindtap="cancelPayment" data-id="{{order.OrderID}}">取消订单</view>
+    <view class='btn btn-pay' bindtap='userPayment' data-id="{{order.OrderID}}">去付款</view>
+  </view>
+</view>

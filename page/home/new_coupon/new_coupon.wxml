@@ -1,0 +1,79 @@
+<view class="coupon-wrapper" hidden='{{isShow}}'>
+  <view class='coupon-flag'>
+    <text class='text'>不参与优惠活动</text>
+    <image wx:if="{{isUseCoupon}}" bindtap='isUseTap' class='is-use' src='/images/icon/coupon_t.png'></image>
+    <image wx:else class='is-use' bindtap='isUseTap' src='/images/icon/coupon_f.png'></image>
+  </view>
+  <view class='use-coupon-wrapper coupon-wrapper'>
+    <view class='use-title'>
+      <text class='text'>参与优惠活动</text>
+    </view>
+    <view class='coupon-list'>
+      <view class='coupon-item' wx:for="{{couponList}}" wx:if="{{pNumber.getNumber(payMoney) >= pNumber.getNumber(item.Condition)}}" wx:key="{{index}}" bindtap='couponUsedTap' data-id="{{item.DisCouponID}}" data-discount="{{item.Discount}}" data-type="{{item.DisType}}"
+        data-name='{{item.DisCouponName}}'>
+        <view class='coupon-left'>
+          <view class='condition'>满{{item.Condition}}元可用</view>
+          <view class='random' wx:if="{{item.DisType == 3}}">随机立减{{item.Discount}}元</view>
+          <view class='date'>{{item.StartTime}}-{{item.EndTime}}</view>
+        </view>
+        <view class='coupon-right'>
+          <view class='money' wx:if="{{item.DisType == 1}}">
+            <text class='sign'>￥</text>{{item.Discount}}
+          </view>
+          <view class='money' wx:if="{{item.DisType == 2}}">
+            {{item.Discount}}
+            <text class='sign'>折</text>
+          </view>
+          <view class='money' wx:if="{{item.DisType == 3}}">
+            随机立减
+          </view>
+        </view>
+        <view class='coupon-bg'>
+          <image class='bg' src='/images/icon/coupon_use_t.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='none-coupon-wrapper coupon-wrapper'>
+    <view class='none-title'>
+      <text class='text'>不可参与优惠活动</text>
+    </view>
+    <view class='coupon-list'>
+      <view class='coupon-item' wx:for="{{couponList}}" wx:if="{{pNumber.getNumber(payMoney) < pNumber.getNumber(item.Condition)}}" wx:key="{{index}}">
+        <view class='coupon-left'>
+          <view class='condition'>满{{item.Condition}}元可用</view>
+          <view class='random' wx:if="{{item.DisType == 3}}">随机立减 {{item.Discount}}元</view>
+          <view class='date'>{{item.StartTime}}-{{item.EndTime}}</view>
+        </view>
+        <view class='coupon-right'>
+          <view class='money' wx:if="{{item.DisType == 1}}">
+            <text class='sign'>￥</text>{{item.Discount}}
+          </view>
+          <view class='money' wx:if="{{item.DisType == 2}}">
+            {{item.Discount}}
+            <text class='sign'>折</text>
+          </view>
+          <view class='money' wx:if="{{item.DisType == 3}}">
+            随机立减
+          </view>
+        </view>
+        <view class='coupon-bg'>
+          <image class='bg' src='/images/icon/coupon_none_f.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{couponList.length === 0}}" hidden='{{isShow}}' class='none-coupon'>
+  <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+  <view class='text'>暂无可参与优惠活动</view>
+</view>
+
+<!-- 金额格式化 -->
+<wxs module="pNumber">
+  var getNumber = function(num) {
+    return parseFloat(num) || 0
+  }
+
+  module.exports.getNumber = getNumber
+</wxs>

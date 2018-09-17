@@ -1,0 +1,80 @@
+.detail-image {
+  width: 100%;
+}
+
+.detail-intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 24rpx;
+  padding-top: 20rpx;
+}
+
+.detail-intro .left .name {
+  display: inline-block;
+  margin-right: 20rpx;
+  line-height: 42rpx;
+  font-size: 32rpx;
+}
+
+.price-wrapper {
+  margin: 0 24rpx 20rpx;
+}
+
+.price-wrapper .price {
+  line-height: 42rpx;
+  font-size: 32rpx;
+  color: #fd2e2e;
+}
+
+.detail-intro .right {
+  position: relative;
+}
+
+.detail-intro .right .share {
+  display: inline-block;
+  padding-left: 48rpx;
+  line-height: 46rpx;
+  font-size: 32rpx;
+  border: none;
+}
+
+.detail-intro .right image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 46rpx;
+  height: 46rpx;
+  vertical-align: top;
+}
+
+.bg-line {
+  width: 100%;
+  height: 20rpx;
+  background: #f1f1f1;
+}
+
+.detail-image image {
+  width: 100%;
+  /* height: 480rpx; */
+  height: 85vw;
+}
+
+.detail-text {
+  padding: 0 24rpx;
+  background: #fff;
+}
+
+.detail-text .title {
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.detail-text .section {
+  display: block;
+  margin: 20rpx 0;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color: #333;
+}

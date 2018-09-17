@@ -1,0 +1,49 @@
+<view class="ordering-pay" hidden='{{isShow}}' wx:if="{{goodsList.length}}">
+  <view class='ordering-detail'>
+    <view class='title'>商品详情</view>
+    <view class='goods-item' wx:for="{{goodsList}}" wx:key="{{index}}">
+      <view class='text name'>{{item.CommodityName}}</view>
+      <view class='text count'>x{{item.CommodityNum}}</view>
+      <view class='text price'>￥{{item.CommodityPrice}}</view>
+    </view>
+    <view class='goods-item total'>
+      <view class='text-total tot'>共计</view>
+      <view class='text-total count'>x{{totalNum}}</view>
+      <view class='text-total price'>￥{{totalPrice}}</view>
+    </view>
+  </view>
+  <view class='coupon' bindtap='selectCouponTap' wx:if="{{isShowDisCoupon == 1}}">
+    <view class='title'>优惠</view>
+    <view class="hbox" wx:if="{{couponInfo.couponType==2||couponInfo.couponType==1}}">
+      <image src='/images/takeaway/half@2x.png' wx:if="{{couponInfo.couponType==2}}"></image>
+      <image src='/images/takeaway/fulla@2x.png' wx:else></image>
+      <text>{{couponInfo.disCouponName}}</text>
+    </view>
+    <view class='coupon-status'>
+      <text wx:if="{{couponInfo && couponInfo.couponType == 2}}" class='use-coupon'>{{couponInfo.discount}}折</text>
+      <text wx:elif="{{couponInfo}}" class='use-coupon'>-{{couponInfo.discount}}元</text>
+      <text wx:elif="{{isUsedCoupon >= 1 && !couponInfo}}" class='use-coupon h'>有可用优惠券</text>
+      <text wx:else class='coupon-none'>无可用优惠券</text>
+      <image class='coupon-icon' src='/images/icon/coupon-use.png'></image>
+    </view>
+  </view>
+  <view class='order-number'>
+    <view class='label'>用餐人数</view>
+    <view class='ipt'>
+      <input type='number' bindinput='orderNumber' value='{{numberVal}}' class='ipt-number'></input>
+    </view>
+  </view>
+  <view class='pay-wrapper'>
+    <view class='total-money-pay'>
+      <text class='text'>共计：</text>
+      <text class='money'>￥{{priceIsCoupon}}</text>
+    </view>
+    <view class='pay-btn' bindtap='paymentTap'>
+      立即支付
+    </view>
+  </view>
+</view>
+<view class='my-coupon-none' hidden='{{isShow}}' wx:if="{{goodsList.length === 0}}">
+  <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+  <view class='text'>暂时还没你的订单！</view>
+</view>

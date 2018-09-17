@@ -1,0 +1,49 @@
+
+<view class="orders-detail-wrapper" hidden='{{isShow}}'>
+  <view class='goods-info'>
+    <view class='pic'>
+      <image class='goods-pic' src='{{imgUrl}}{{orderInfo.ImgPaht}}'></image>
+    </view>
+    <view class='right'>
+      <view class='name'>{{orderInfo.CommodityName}}</view>
+      <view class='price-old' wx:if="{{orderInfo.Money1}}">￥{{orderInfo.Money1}}</view>
+      <view class='price-count'>
+        <text class='price'><text class='sign'>￥</text>{{orderInfo.CommodityMoney}}</text>
+        <text class='count'>x{{orderInfo.CommodityNum}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='orders-info'>
+    <view class='orders-info-li'>
+      <view class='title'>{{orderInfo.CommodityName}}</view>
+      <view class='value'>￥{{orderInfo.CommodityMoney}}</view>
+    </view>
+    <view class='orders-info-li'>
+      <view class='title'>数量</view>
+      <view class='value'>{{orderInfo.CommodityNum}}份</view>
+    </view>
+    <view class='orders-info-li'>
+      <view class='total-pay'>小计</view>
+      <view class='total-pay'>￥{{totalPrice}}</view>
+    </view>
+  </view>
+  <view class='coupon' bindtap='selectCouponTap' wx:if="{{orderInfo.AvailableCouponsNum != -1}}">
+      <view class='title'>优惠</view>
+      <view class='coupon-status'>
+        <text wx:if="{{orderInfo.IsDisCouponExpired == '0' && couponInfo.discount > '0'}}" class='use-coupon'>{{couponInfo.discount}}元</text>
+        <text wx:elif="{{orderInfo.AvailableCouponsNum >= 1}}" class='coupon-used'>有可用优惠券</text>
+        <text wx:else class='coupon-none'>无可用优惠券</text>      
+        <image class='coupon-icon' src='/images/icon/coupon-use.png'></image>
+      </view>
+  </view>
+
+  <view class='pay-wrapper'>
+    <view class='total-money-pay'>
+      <text class='text'>共计：</text>
+      <text class='money'>￥{{payMoney}}</text>
+    </view>
+    <view class='pay-btn' bindtap='paymentTap'>
+      立即支付
+    </view>
+  </view>
+</view>

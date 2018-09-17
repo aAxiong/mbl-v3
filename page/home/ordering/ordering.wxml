@@ -1,0 +1,79 @@
+
+<view class="ordering-wrapper" hidden='{{isShow}}'>
+  <view class='ordering-header'>
+    <scroll-view class='menu' scroll-x="true">
+      <view bindtap='menuTap' wx:for="{{menuList}}" data-idx="{{index}}" data-id="{{item.ID}}" class="menu-item {{menuIndex === index ? 'active':''}}" wx:key="{{index}}">{{item.CategoryName}}</view>
+    </scroll-view>
+  </view>
+  <!-- 菜品 -->
+  <view class='ordering-content'>
+    <view class='goods-wrapper'>
+      <view class='item' wx:for="{{goodsList}}" wx:key="{{index}}" data-id="{{item.CommodityID}}" data-inv="{{item.IsInventory}}" bindtap='goodsDetailTap'>
+        <view class='pic'>
+          <image mode='aspectFill' class='goods-pic' src='{{imgUrl}}{{item.ImgPath}}'></image>
+        </view>
+        <view class='bottom-wrap'>
+          <view class='name {{item.StarNum>0?"isScore":""}}'>{{item.CommodityName}}</view>
+          <view class='price'>
+            <view class='price-wrp'>
+              ￥<text class='price-now'>{{item.Money}}</text>
+            </view>
+            <view class='old-price' wx:if="{{item.Money1}}">￥{{item.Money1}}</view>
+          </view>
+          <view class='star-num'>
+            <star score="{{item.StarNum}}"></star>
+          </view>
+          <view class='goods-btn' catchtap='goodsSizeTap' data-idx="{{index}}" wx:if="{{item.IsInventory === 1}}">        
+            <image class='increment' src='/images/icon/o_increment.png'></image>
+          </view>
+        </view>
+        <view class='none' wx:if="{{item.IsInventory === 0}}">
+          <image class='none-icon' src='/images/icon/o_none.png'></image>
+        </view>
+      </view>
+    </view>
+    <view class='goods-cart'>
+      <view class='cart' bindtap='goodsCartTap'>
+        <image class='cart-icon' src='/images/icon/o_cart.png'></image>
+        <text class='count'>{{goodsCartTotalNum}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 规格选择 -->
+<view class='select-wrapper' hidden='{{isShowSelect}}'>
+  <ordering_select bind:selectTriggerTap="selectData" size-taste="{{goodsSizeTaste}}"></ordering_select>
+</view>
+<!-- 购物车列表 -->
+<view class='goods-car' hidden='{{isShowCart}}'>
+    <view class='goods-car-cancel'>
+      <image bindtap='goodsCartTap' class='cancel-pic' src='/images/icon/cancel.png'></image>
+    </view>
+    <view class='header'>
+      <view class='left text'>已选商品</view>
+      <view class='right text' bindtap='clearAllGoods'><image class='icon-pic' src='/images/icon/clear.png'></image> 清空</view>
+    </view>
+    <scroll-view scroll-y class='scroll-view'>
+      <view class='goods' wx:for="{{goodsCartList}}" wx:key="{{index}}">
+        <view class='left'>
+          <text class='name text'>{{item.CommodityName}}</text>
+          <text class='count text'>x{{item.CommodityNum}}</text>
+          <text class='price text'>￥{{item.CommodityPrice}}</text>
+        </view>
+        <view class='count-control'>
+          <image class='control' bindtap='decrementTap' data-id="{{item.ShoppingCartID}}" data-idx="{{index}}" src='/images/icon/decrement.png'></image>
+          <text class='count'>{{item.CommodityNum}}</text>
+          <image class='control' bindtap='incrementTap' data-id="{{item.ShoppingCartID}}" data-idx="{{index}}" src='/images/icon/increment.png'></image>
+        </view>
+      </view>
+      <view class='goods-none' wx:if="{{goodsCartList.length === 0}}">还没商品哟！</view>
+    </scroll-view>
+    <view class='btn-pay-wrapper'>
+      <view class='total'>
+        <text class='total-count'>合计金额({{goodsCartTotalNum}}份)</text>
+        <text class='money'>￥{{goodsCartTotalPrice}}</text>
+      </view>
+      <view class='pay' bindtap='orderTap'>立即下单</view>
+    </view>
+</view>
+<view class='mask' hidden='{{isShowCart}}'></view>

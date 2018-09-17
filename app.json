@@ -1,0 +1,83 @@
+{
+  "pages": [
+    "page/home/home",
+    "page/store/store",
+    "page/mine/mine",
+    "page/home/shop_detail/shop_detail",
+    "page/home/coupon/coupon",
+    "page/home/wifi/wifi",
+    "page/home/pay/pay",
+    "page/home/use_coupon/use_coupon",
+    "page/home/pay_complete/pay_complete",
+    "page/mine/mine_coupon/mine_coupon",
+    "page/mine/coupon_detail/coupon_detail",
+    "page/mine/mine_order/mine_order",
+    "page/mine/order_detail/order_detail",
+    "page/home/activ_detail/activ_detail",
+    "page/home/phone/phone",
+    "page/home/groupon/groupon",
+    "page/home/groupon_detail/groupon_detail",
+    "page/home/groupon_orders/groupon_orders",
+    "page/home/new_coupon/new_coupon",
+    "page/mine/mine_groupon/mine_groupon",
+    "page/mine/groupon_no_pay/groupon_no_pay",
+    "page/mine/groupon_unused/groupon_unused",
+    "page/mine/groupon_used/groupon_used",
+    "page/mine/groupon_refund/groupon_refund",
+    "page/mine/groupon_payment/groupon_payment",
+    "page/mine/authorize/authorize",
+    "page/home/groupon_paycomplete/groupon_paycomplete",
+    "page/home/pay1/pay1",
+    "page/home/ordering/ordering",
+    "page/home/ordering_detail/ordering_detail",
+    "page/home/ordering_pay/ordering_pay",
+    "page/home/ordering_complete/ordering_complete",
+    "page/mine/ordering/ordering",
+    "page/mine/ordering_detail/ordering_detail",
+    "page/mine/ordering_pay/ordering_pay",
+    "page/mine/ordering_payment/ordering_payment",
+    "page/home/takeaway/takeaway",
+    "page/home/suborder/suborder",
+    "page/home/takeaway_info/takeaway_info",
+    "page/home/address_list/address_list",
+    "page/home/add_address/add_address",
+    "page/home/edit_addres/edit_addres",
+    "page/home/takeaway_orderList/takeaway_orderList",
+    "page/home/takeaway_orderInfo/takeaway_orderInfo",
+    "page/home/my_active/my_active",
+    "components/auth_button/auth_button"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#fd2e2e",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "page/home/home",
+        "text": "首页",
+        "iconPath": "images/tab_bar/home.png",
+        "selectedIconPath": "images/tab_bar/home_a.png"
+      },
+      {
+        "pagePath": "page/store/store",
+        "text": "店铺",
+        "iconPath": "images/tab_bar/store.png",
+        "selectedIconPath": "images/tab_bar/store_a.png"
+      },
+      {
+        "pagePath": "page/mine/mine",
+        "text": "我的",
+        "iconPath": "images/tab_bar/mine.png",
+        "selectedIconPath": "images/tab_bar/mine_a.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000
+  }
+}

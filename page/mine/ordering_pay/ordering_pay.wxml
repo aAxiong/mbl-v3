@@ -1,0 +1,39 @@
+
+<view class="ordering-wrapper">
+  <view class='goods-detail'>
+    <view class='title'>商品详情</view>
+    <view class='goods-list'>
+      <view class='item' wx:for="{{orderInfo.OrderDetailList}}" wx:key="{{index}}">
+        <view class='name'>{{item.CommodityName}}</view>
+        <view class='count'>x{{item.CommodityNum}}</view>
+        <view class='price'>￥{{item.CommodityPrice}}</view>
+      </view>
+      <view class='item total'>
+        <view class='name'>共计</view>
+        <view class='count'>x{{orderInfo.OrderCommodityNum}}</view>
+        <view class='price'>￥{{orderInfo.SumCommodityMoney}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='order-info'>
+    <view class='title'>订单信息</view>
+    <view class='order-list'>
+      <view class='item'>
+        <view class='label'>订单号</view>
+        <view class='info'>{{orderId}}</view>
+      </view>
+      <view class='item'>
+        <view class='label'>订单金额</view>
+        <view class='info'>￥{{orderInfo.OrderMoney}}</view>
+      </view>
+      <view class='item'>
+        <view class='label'>下单时间</view>
+        <view class='info'>{{orderInfo.CreateTime}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='btn-wrapper'>
+    <view class='btn btn-cancle' bindtap='orderCancleTap'>取消订单</view>
+    <view class='btn btn-pay' bindtap='paymentTap'>付款</view>
+  </view>
+</view>

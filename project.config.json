@@ -1,0 +1,58 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.1",
+	"appid": "wxf8515865737d25b5",
+	"projectname": "mbl-v3-1",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "1",
+					"pathName": "page/home/home",
+					"query": "query=F1",
+					"scene": "1011"
+				},
+				{
+					"id": -1,
+					"name": "2",
+					"pathName": "page/home/ordering_complete/ordering_complete",
+					"query": "id=3534619125634564096"
+				},
+				{
+					"id": 2,
+					"name": "3",
+					"pathName": "page/home/home",
+					"query": "",
+					"scene": "1001"
+				}
+			]
+		}
+	}
+}

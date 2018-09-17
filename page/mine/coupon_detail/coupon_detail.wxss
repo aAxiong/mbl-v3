@@ -1,0 +1,15 @@
+page{
+  background: #f8f8f8;
+}
+
+.coupon-detail{
+  padding: 40rpx 30rpx;
+  background: #fff;
+}
+
+.coupon-detail .detail{
+  margin-bottom: 20rpx;
+  line-height: 46rpx;
+  font-size: 32rpx;
+  color: #666;
+}

@@ -1,0 +1,16 @@
+<view class="activity-wrapper" hidden='{{mask}}'>
+  <view class='activity-image'>
+    <image src='/images/icon/activity.png'></image>
+  </view>
+  <view class='activity-content'>
+    <view class='rule'>
+      <text class='title'>活动规则：</text> {{activity.DisContent}}
+    </view>
+    <view class='time'>
+      <text class='title'>活动时间：</text> {{activity.StartTime}}-{{activity.EndTime}}
+    </view>
+  </view>
+  <view class='share'>
+    <button open-type='share' class='share-btn'>立即分享</button>
+  </view>
+</view>

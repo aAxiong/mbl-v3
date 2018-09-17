@@ -1,0 +1,431 @@
+page {
+  background: #f8f8f8;
+}
+
+.tabbox {
+  width: 100%;
+  /* height: 450rpx; *//* background: #fff3ca; */
+}
+
+.tabbox .tab-bar {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  height: 90rpx;
+}
+
+.tabbox .tab-bar view {
+  width: 50%;
+  height: 90rpx;
+  background: #f8e191;
+  text-align: center;
+  color: #fff;
+  line-height: 90rpx;
+}
+
+.tabbox .tab-bar view.active {
+  color: #333;
+  background: #fff;
+}
+
+.tabbox .local-box {
+  width: 95%;
+  height: 190rpx;
+  background: #fff;
+  margin: 0 auto;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.tabbox .local-box  .addAddressbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.tabbox .local-box .addAddressbox .addA {
+  width: 266rpx;
+  height: 58rpx;
+  position: relative;
+  color: #999;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 58rpx;
+  text-indent: 30rpx;
+}
+
+.tabbox .local-box .addAddressbox .addA image {
+  width: 266rpx;
+  height: 58rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.tabbox .myself-box {
+  width: 95%;
+  height: 190rpx;
+  background: #fff;
+  margin: 0 auto;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.tabbox .est-time {
+  width: 95%;
+  height: 90rpx;
+  line-height: 90rpx;
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  margin: 0 auto;
+}
+
+.tabbox .est-time view {
+  margin: 0 35rpx 0 20rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+
+.tabbox .est-time .show-time image {
+  vertical-align: sub;
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+.tabbox .est-time .selct-time image {
+  width: 26rpx;
+  height: 26rpx;
+  vertical-align: inherit;
+}
+
+.tabbox .local-box .addAddressbox .addB {
+  padding: 0 20rpx;
+  display: flex;
+}
+
+.tabbox .local-box .addAddressbox .addB .left .addressInfo {
+  color: #333;
+  font-size: 34rpx;
+  margin-bottom: 10rpx;
+}
+
+.tabbox .local-box .addAddressbox .addB .left text {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.tabbox .local-box .addAddressbox .addB .left {
+  width: 650rpx;
+}
+
+.tabbox .local-box .addAddressbox .addB .right image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-top: 80rpx;
+}
+
+.myself-box .myaddress {
+  padding: 0 20rpx;
+  font-size: 34rpx;
+  color: #333;
+  padding-top: 20rpx;
+}
+
+.myself-box .d {
+  padding: 0 20rpx;
+}
+
+.myself-box .d::after {
+  display: block;
+  content: '';
+  visibility: hidden;
+  clear: both;
+}
+
+.myself-box .d .dh {
+  background: #5397fe;
+  font-size: 30rpx;
+  width: 105rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #fff;
+  float: right;
+  margin-top: 10rpx;
+}
+
+.shop-box {
+  width: 95%;
+  background: #fff;
+  margin: 30rpx auto 0 auto;
+}
+
+.shop-box .shop-title {
+  color: #333;
+  font-size: 30rpx;
+  height: 92rpx;
+  line-height: 92rpx;
+  border-bottom: 4rpx solid #f8f8f8;
+}
+
+.shop-box .shop-title image {
+  width: 38rpx;
+  height: 34rpx;
+  vertical-align: sub;
+  margin-left: 20rpx;
+}
+
+.shop-box .shop-title .callme {
+  float: right;
+  width: 143rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background: #ff9e04;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  border-radius: 5rpx;
+  margin-top: 20rpx;
+  margin-right: 30rpx;
+}
+
+.shop-content {
+  padding: 35rpx 0 30rpx 0;
+  border-bottom: 2rpx solid #f8f8f8;
+}
+
+.shop-content .shop-conetentbox {
+  padding: 0 20rpx;
+}
+
+.shop-content .shop-conetentbox .liProduct {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15rpx;
+}
+
+.shop-content .shop-conetentbox .liProduct image {
+  width: 141rpx;
+  height: 141rpx;
+}
+
+.shop-content .shop-conetentbox .liProduct .proInfo {
+  color: #333;
+  font-size: 32rpx;
+}
+
+.shop-content .shop-conetentbox .liProduct .proInfo {
+  width: 320rpx;
+}
+
+.shop-content .shop-conetentbox .liProduct .proInfo >view {
+  width: 100%;
+  margin-bottom: 5rpx;
+}
+
+.shop-content .shop-conetentbox .liProduct .proInfo >view.t {
+  color: #999;
+}
+
+.shop-content .shop-conetentbox .liProduct .much {
+  color: #333;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+  width: 150rpx;
+}
+
+.shop-box .sendMoney {
+  padding: 0 20rpx;
+  border-bottom: 2rpx solid #f8f8f8;
+  display: flex;
+  justify-content: space-between;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.shop-box .sendMoney text {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.shop-box .disconut {
+  padding: 0 20rpx;
+  border-bottom: 2rpx solid #f8f8f8;
+  display: flex;
+  justify-content: space-between;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.shop-box .disconut text {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.shop-box .disconut view {
+  color: #999;
+  font-size: 28rpx;
+}
+
+.shop-box .disconut image {
+  width: 46rpx;
+  height: 28rpx;
+  vertical-align: sub;
+  margin-right: 10rpx;
+}
+
+.shop-box .totalPrice {
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-around;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.shop-box .totalPrice .text {
+  color: #ccc;
+  font-size: 30rpx;
+}
+
+.shop-box .totalPrice .price {
+  color: #333;
+  font-size: 26rpx;
+}
+
+.shop-box .totalPrice .price text {
+  color: #f00;
+  font-size: 42rpx;
+}
+
+.remarks {
+  width: 95%;
+  margin: 30rpx auto 0 auto;
+}
+
+.remarks  .title {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.remarks .box {
+  height: 200rpx;
+  background: #fff;
+  padding: 10rpx;
+}
+
+.remarks .box textarea {
+  width: 100%;
+  height: 100%;
+  font-size: 30rpx;
+}
+
+.texta {
+  color: #ccc;
+}
+
+.btn {
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  background: #e4e4e4;
+  font-size: 32rpx;
+  color: #999;
+  line-height: 100rpx;
+  margin-top: 25rpx;
+}
+
+.btn.active {
+  background: #ff861a;
+  color: #fefefe;
+}
+
+.timebox {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+}
+
+.timebox .m {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.timecontent .title {
+  width: 100%;
+  height: 95rpx;
+  line-height: 95rpx;
+  color: #333;
+  font-size: 32rpx;
+  text-align: center;
+  background: #eaeaea;
+}
+
+.timebox .timecontent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+}
+
+.timebox .box {
+  width: 100%;
+  height: 340rpx;
+  display: flex;
+}
+
+.timebox .box .left {
+  width: 30%;
+  height: 342rpx;
+  background: #e5e5e5;
+}
+
+.timebox .box .left .day {
+  width: 100%;
+  height: 114rpx;
+  background: #e5e5e5;
+  color: #333;
+  font-size: 32rpx;
+  line-height: 115rpx;
+  text-align: center;
+}
+
+.timebox .box .left .day.active {
+  background: #fff;
+}
+
+.timebox .box .right {
+  flex: 1;
+  background: #fff;
+  height: 342rpx;
+}
+
+.timebox .box .time {
+  width: 100%;
+  height: 97rpx;
+  border-bottom: 1px solid #f8f8f8;
+  line-height: 98rpx;
+  background: #fff;
+  font-size: 28rpx;
+  color: #333;
+  position: relative;
+  text-align: center;
+}
+
+.timebox .box .time image {
+  width: 38rpx;
+  height: 38rpx;
+  position: absolute;
+  top: 30rpx;
+  right: 50rpx;
+}

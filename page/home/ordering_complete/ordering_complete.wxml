@@ -1,0 +1,23 @@
+
+<view class="payment-wrapper" hidden='{{isShow}}'>
+  <view class='header'>
+    <image class='pay-bg' src='/images/icon/o_payment.png'></image>
+    <view class='text'>下单成功，祝您用餐愉快！</view>
+  </view>
+  <view class='content'>
+    <view class='title'>商品详情</view>
+    <view class='goods-item' wx:for="{{orderInfo.OrderDetailList}}" wx:key="{{index}}">
+      <view class='text name'>{{item.CommodityName}}</view>
+      <view class='text'>x{{item.CommodityNum}}</view>
+      <view class='text'>￥{{item.CommodityPrice}}</view>
+    </view>
+    <view class='goods-item total'>
+      <view class='text-total tot'>共计</view>
+      <view class='text-total'>x{{orderInfo.OrderCommodityNum}}</view>
+      <view class='text-total'>￥{{orderInfo.PayMoney}}</view>
+    </view>
+  </view>
+  <view class='nav-bottom'>
+    <view class='btn-payment' bindtap='orderComplete'>完成</view>
+  </view>
+</view>

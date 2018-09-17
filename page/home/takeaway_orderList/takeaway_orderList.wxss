@@ -1,0 +1,145 @@
+page {
+  background: #f8f8f8;
+}
+
+.list {
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.list .tit {
+  line-height: 85rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20rpx;
+}
+
+.list .tit .date {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.list .tit .status {
+  color: #fd2e2e;
+  font-size: 28rpx;
+}
+
+.list .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20rpx;
+  margin-top: 20rpx;
+}
+
+.list .content image {
+  width: 89rpx;
+  height: 89rpx;
+}
+
+.list .contentbox {
+  margin-bottom: 55rpx;
+  max-height: 318rpx;
+  overflow: hidden;
+}
+
+.list .contentbox.active {
+  overflow: inherit;
+  max-height: 100%;
+}
+
+.list .content text {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.list .content view.text1 {
+  color: #333;
+  font-size: 30rpx;
+  width: 250rpx;
+}
+
+.list .content view.text1 .type  text {
+  color: #999;
+  font-size: 22rpx;
+}
+
+.list .content .num {
+  width: 80rpx;
+  text-align: left;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.list .more {
+  width: 150rpx;
+  height: 50rpx;
+  border: 2rpx solid #666;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 55rpx;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 55rpx;
+}
+
+.list .more image {
+  width: 22rpx;
+  height: 22rpx;
+  vertical-align: middle;
+}
+
+.list .toolbar {
+  width: 100%;
+  height: 100rpx;
+  background: #e9e9e9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list .toolbar .icon {
+  width: 65rpx;
+  height: 65rpx;
+  background: #fb5e5e;
+  color: #fff;
+  border-radius: 100rpx;
+  text-align: center;
+  line-height: 65rpx;
+  margin-left: 55rpx;
+}
+
+.list .toolbar .btn {
+  color: #fff;
+  background: #fd2e2e;
+  padding: 10rpx 15rpx;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  margin-left: 225rpx;
+}
+
+.list .toolbar .btn.active {
+  background: #5397fe;
+}
+
+.list .toolbar .price {
+  color: #333;
+  font-size: 32rpx;
+  margin-right: 20rpx;
+}
+
+.order-none {
+  margin-top: 300rpx;
+  text-align: center;
+}
+
+.order-none image {
+  width: 180rpx;
+  height: 168rpx;
+}
+
+.order-none .text {
+  margin-top: 10rpx;
+  font-size: 36rpx;
+  color: #999;
+}

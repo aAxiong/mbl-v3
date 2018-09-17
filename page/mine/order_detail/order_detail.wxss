@@ -1,0 +1,31 @@
+
+page{
+  background: #f8f8f8;
+}
+
+.order-detail{
+  padding: 30rpx;
+  background: #fff;
+}
+
+.order-row{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30rpx;
+}
+
+.order-row .left{
+  flex: 1;
+  line-height: 46rpx;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.order-row .right{
+ flex: 0 0 340rpx;
+ width: 340rpx;
+ font-size: 32rpx;
+ line-height: 46rpx; 
+ text-align: left;
+ color: #666;
+}

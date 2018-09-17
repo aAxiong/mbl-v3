@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "ordering_select": "/components/ordering_select/ordering_select",
+    "star": "/components/star/star"
+  },
+  "navigationBarTitleText": "点餐",
+  "enablePullDownRefresh": true
+}

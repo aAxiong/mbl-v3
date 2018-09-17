@@ -1,0 +1,13 @@
+<view class="authBox">
+  <view class="btnFlex">
+    <view class="btnBox">
+      <view class="tit">位置授权暂未开启，无法加载商品</view>
+      <view class="btn">
+        <button bindtap='authClick'>取消</button>
+        <button open-type='openSetting' bindtap='authClick' bindopensetting='authCallback'>开启授权</button>
+      </view>
+    </view>
+  </view>
+  <view class="black">
+  </view>
+</view>

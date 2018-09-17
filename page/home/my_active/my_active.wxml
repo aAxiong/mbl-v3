@@ -1,0 +1,57 @@
+<view class="coupon-wrapper" hidden='{{isShow}}'>
+  <view class='use-coupon-wrapper coupon-wrapper'>
+    <!-- <view class='use-title'>
+        <text class='text'>可使用优惠券</text>
+    </view> -->
+    <view class='coupon-list'>
+      <view class='coupon-item' wx:for="{{couponList}}" wx:key="{{index}}" bindtap='couponUsedTap' data-id="{{item.ID}}" data-type="{{item.DisType}}">
+        <view class='coupon-left'>
+          <view class='condition'>{{item.DisCouponName}}</view>
+          <view class='random' wx:if="{{item.DisType == 4}}" data-id="{{item.ID}}" bindtap='jumpActive'>
+            查看详情
+          </view>
+          <view class='tiaojian' wx:if="{{item.DisType == 1||item.DisType == 2}}">
+            满{{item.Condition}}可用
+          </view>
+          <view class='tiaojian' wx:if="{{item.DisType == 5||item.DisType == 6}}">
+            仅外卖可用
+          </view>
+          <view class='date'>{{item.StartTime}}-{{item.EndTime}}</view>
+        </view>
+        <view class='coupon-right'>
+          <view class='money' wx:if='{{item.DisType == 1}}'>
+            ￥{{item.Discount}}
+          </view>
+          <view class='money' wx:if='{{item.DisType == 2}}'>
+            {{item.Discount}}折
+          </view>
+          <view class='money' wx:if='{{item.DisType == 4}}'>
+            线下活动
+          </view>
+          <view class='money' wx:if='{{item.DisType == 5}}'>
+            第二份半价
+          </view>
+          <view class='money' wx:if='{{item.DisType == 6}}'>
+            单品折扣
+          </view>
+        </view>
+        <view class='coupon-bg'>
+          <image class='bg' src='/images/icon/coupon_use_t.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{couponList.length === 0}}" hidden='{{isShow}}' class='none-coupon'>
+  <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+  <view class='text'>暂无活动</view>
+</view>
+
+<!-- 金额格式化 -->
+<wxs module="pNumber">
+  var getNumber = function(num) {
+    return parseFloat(num) || 0
+  }
+
+  module.exports.getNumber = getNumber
+</wxs>

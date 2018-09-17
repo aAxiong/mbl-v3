@@ -1,0 +1,71 @@
+page{
+  background: #f8f8f8;
+}
+
+.order-list{
+  background: #fff;
+}
+
+.order-used{
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx 40rpx;
+  border-bottom: 1rpx solid #ececec;
+}
+
+.order-used .order-left{
+  display: flex;
+  flex: 1;
+}
+
+.order-used .order-left .order-info{
+  margin-left: 20rpx;
+}
+
+.order-used .order-left .order-info .name{
+  line-height: 42rpx;
+  font-size: 32rpx;  
+}
+
+.order-used .order-left .order-info .date{
+  margin-top: 4rpx;
+  line-height: 38rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.order-used .order-left .order-icon{
+  width: 78rpx;
+  height: 78rpx;
+}
+
+.order-used .order-left .icon image{
+  width: 78rpx;
+  height: 78rpx;
+}
+
+.order-used .order-right{
+  flex: 0 0 180rpx;
+  width: 180rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  line-height: 46rpx;
+  font-size: 36rpx;
+  text-align: right;
+}
+
+.order-none{
+  margin-top: 300rpx;
+  text-align: center;
+}
+
+.order-none image{
+  width: 180rpx;
+  height: 168rpx;
+}
+
+.order-none .text{
+  margin-top: 10rpx;
+  font-size: 36rpx;
+  color: #999;
+}

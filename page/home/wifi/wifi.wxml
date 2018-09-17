@@ -1,0 +1,24 @@
+
+<view class="wifi-wrapper" hidden='{{mask}}'>
+  <view class="wifi-header">
+    选取网络
+    <view class='android-wifi' bindtap='wifiTipTap' wx:if="{{platform == 'android'}}"><image src='/images/icon/problem.png'  class='problem'></image></view>
+  </view>
+  <view class='wifi-content'>
+    <view wx:if="{{wifiList.length>0}}">
+      <view bindtap='startConnectWifi' class='wifi-item' wx:for="{{wifiList}}" data-idx="{{index}}" wx:key="index">
+        <view class='left'>
+          <image wx:if="{{sucimg == index}}" class='suc-icon' src='/images/icon/suc_wifi.png'></image>
+          <text class='name'>账号：{{item.WiFiName}}</text>
+        </view>
+        <view class='right'>
+          <image src='/images/icon/get_wifi.png'></image>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{wifiList.length === 0}}" class='none-coupon'>
+        <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+        <view class='text'>暂无WIFI</view>
+      </view>
+  </view>
+</view>

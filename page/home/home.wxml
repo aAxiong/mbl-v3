@@ -1,0 +1,98 @@
+<view class='home-wrapper' hidden='{{mask}}'>
+  <!-- 轮播图 -->
+  <view class='slider'>
+    <swiper class='slider-content' indicator-dots="true" autoplay="true" circular="true" indicator-active-color="#fd2e2e">
+      <swiper-item wx:for="{{sliderImg}}" wx:key="{{index}}">
+        <image class='slider-img' mode="aspectFill" src='{{imgUrl}}{{item.ImgPaht}}'></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 导航菜单 -->
+  <view class='menu'>
+    <view class='menu-item' wx:for="{{versionList}}" wx:key="{{index}}" bindtap='{{item.hander}}'>
+      <view class='icon'>
+        <image src='{{item.icon}}'></image>
+      </view>
+      <text class='text'>{{item.name}}</text>
+    </view>
+  </view>
+  <!-- 门店信息 -->
+  <view class='header'>
+    <!-- <view class='header-bg'>
+      <image src='{{imgUrl}}{{storeInfo.LogoImage}}'></image>
+    </view> -->
+    <view class='header-content'>
+      <view class='logo'>
+        <image mode='aspectFill' src='{{imgUrl}}{{storeInfo.LogoImage}}'></image>
+      </view>
+      <view class='store-info'>
+        <view class='name'>{{storeInfo.StoreName}}</view>
+        <view class='contact'>
+          <view class='address info' bindtap='locationTap'>
+            <view class='address-icon con-icon'>
+              <image src='/images/icon/pos_h.png'></image>
+            </view>
+            <view class='text'>{{storeInfo.Address}}</view>
+          </view>
+          <view class='time info'>
+            <view class='time-icon con-icon'>
+              <image src='/images/icon/time_h.png'></image>
+            </view>
+            <view class='text'>{{storeInfo.StartBusinessHours}}-{{storeInfo.EndBusinessHours}}</view>
+          </view>
+          <view class='tel info' bindtap='telTap'>
+            <view class='tel-icon con-icon'>
+              <image src='/images/icon/tel_h.png'></image>
+            </view>
+            <view class='text'>{{storeInfo.Phone}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='mask'></view> -->
+  </view>
+  <!-- 店家推荐 -->
+  <view class='shop-content'>
+    <view class='title'>
+      店家推荐
+      <image src='/images/icon/rec.png'></image>
+    </view>
+    <view class='shop-wrapper'>
+      <block wx:for="{{productList}}" wx:key="index">
+        <view class='shop'>
+          <view class='shop-image' data-id='{{item.ProductID}}' bindtap='shopdetail'>
+            <image mode='aspectFill' src='{{imgUrl}}{{item.ImgPath}}'></image>
+          </view>
+          <view class='shop-intro'>
+            <view class='name'>{{item.ProductName}}</view>
+          </view>
+          <view class='price'>
+            <text class='sign'>￥</text>{{item.Money}}</view>
+          <view class='shop-share'>
+            <view class='share-wrapper'>
+              <image class='share-icon' src='/images/icon/share.png'></image>
+              <button open-type='share' class='share-btn'>分享</button>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class='video-positon'>
+    <view class='video-btn' bindtap='videoTap'>
+      <image class='icon' src='/images/icon/video.png'></image>
+      <text class='text'>视频</text>
+    </view>
+  </view>
+  <view class='video-playing' hidden='{{isShowPlaying}}'>
+    <view class="xx" bindtap='videoStopTap'>
+      <image src='/images/home/ios/xx.png'></image>
+    </view>
+    <view class='video-wrapper' catchtap="stopVideoWrapper">
+      <video class='video' id='storeVideo' binderror="errorHander" bindwaiting="wating" src='{{imgUrl}}{{videoSrc}}'></video>
+    </view>
+  </view>
+  <!-- <view class='desk-mask' hidden='{{isDeskMask}}'>
+    <view class='text'>桌号已过期</view>
+  </view> -->
+</view>

@@ -1,0 +1,30 @@
+
+.ic-item{
+  display: flex;
+  flex-direction: row;
+}
+
+.ic-item .ic-left image{
+  width: 177rpx;
+  height: 110rpx;
+}
+
+.ic-item .ic-right{
+  margin-top: 8rpx;
+  margin-left: 30rpx;
+}
+
+.ic-item .ic-right .price{
+  line-height: 58rpx;
+  font-size: 48rpx;
+  color: #fd2e2e;
+  font-weight: bold;
+}
+
+.ic-item .ic-right .condtion{
+  line-height: 48rpx;
+  font-size: 28rpx;
+  color: #000;
+}
+
+

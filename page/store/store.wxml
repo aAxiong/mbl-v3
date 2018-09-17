@@ -1,0 +1,54 @@
+
+<view class="store-wrappper" hidden="{{mask}}">
+  <!-- 门店定位电话 -->
+  <view class='store-info-list'>
+    <view class='store-info' bindtap='locationTap'>
+      <view class='info-icon'>
+        <image src='/images/icon/s_pos.png'></image>
+      </view>
+      <view class='info-text'>
+        {{storeInfo.Address}}
+      </view>
+      <view class='info-arrow'>
+        <image src='/images/icon/s_arrow.png'></image>
+      </view>
+    </view>
+    <view class='store-info'>
+      <view class='info-icon'>
+        <image src='/images/icon/s_time.png'></image>
+      </view>
+      <view class='info-text'>
+        {{storeInfo.StartBusinessHours}}--{{storeInfo.EndBusinessHours}}
+      </view>
+    </view>
+    <view class='store-info' bindtap='telTap'>
+      <view class='info-icon'>
+        <image src='/images/icon/s_tel.png'></image>
+      </view>
+      <view class='info-text'>
+        {{storeInfo.Phone}}
+      </view>
+      <view class='info-arrow'>
+        <image src='/images/icon/s_arrow.png'></image>
+      </view>
+    </view>
+  </view>
+  <!-- 门店照片简介 -->
+  <view class='store-info-content'>
+    <view class='store-pic-title'>
+      <image class='store' src='/images/icon/s_store.png'></image>
+      <text class='text'>门店照片</text>
+    </view>
+    <view class='pic-wrapper'>
+      <scroll-view scroll-x="true" lower-threshold="150" style='display:flex; white-space:nowrap;'>
+        <view class='pic' wx:for="{{storeImgs}}" wx:key="index" data-url="{{item.Path}}" bindtap='prevImgsTap'>
+          <image mode='aspectFill' src='{{imgUrl}}{{item.Path}}'></image>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='store-intro'>简介：</view>
+    <view class='store-intro-text'>
+      {{storeInfo.IntroductionContent}}
+    </view>
+  </view>
+</view>

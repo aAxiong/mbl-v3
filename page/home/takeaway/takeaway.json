@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "ordering_select": "/components/ordering_select/ordering_select",
+    "auth_button": "/components/auth_button/auth_button"
+  },
+  "navigationBarTitleText": "外卖",
+  "enablePullDownRefresh": true
+}

@@ -1,0 +1,85 @@
+.wrapper {
+  width: 680rpx;
+  height: auto;
+  background: #fff;
+  border-radius: 10rpx;
+  overflow: hidden;
+  box-shadow: 1px 2px 14px #ccc;
+}
+
+.wrapper .list-box {
+  /* height:900rpx; */
+  max-height: 800rpx;
+}
+
+.wrapper .icon-wrp {
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #f5f5f5;
+  color: #fd2e2e;
+  text-indent: 30rpx;
+}
+
+.wrapper .icon-wrp text {
+  color: #ccc;
+}
+
+.wrapper .icon-wrp .cancle {
+  width: 48rpx;
+  height: 48rpx;
+  float: right;
+  margin-top: 22rpx;
+  margin-right: 20rpx;
+}
+
+.wrapper .size, .wrapper .taste {
+  margin: 0 30rpx 30rpx;
+}
+
+.wrapper .title {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 36rpx;
+}
+
+.wrapper .select {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 -2%;
+}
+
+.wrapper .select-item {
+  margin: 0 2% 20rpx;
+  width: 29.3333%;
+  padding: 18rpx 0;
+  text-align: center;
+  font-size: 32rpx;
+  color: #333;
+  background: #f4f4f4;
+  border-radius: 6rpx;
+}
+
+.wrapper .select-item.active {
+  background: #ffe1e1;
+  color: #fd2e2e;
+}
+
+.wrapper .btn-wrp {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30rpx;
+  margin-top: 20rpx;
+}
+
+.wrapper .btn {
+  width: 390rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 36rpx;
+  background: #fd2e2e;
+  color: #fff;
+  border-radius: 6rpx;
+}

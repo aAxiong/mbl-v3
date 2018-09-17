@@ -1,0 +1,260 @@
+page {
+  background: #f8f8f8;
+}
+
+.detail-image {
+  width: 100%;
+}
+
+.detail-intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 24rpx;
+  padding-top: 20rpx;
+  padding-bottom: 10rpx;
+  background: #fff;
+}
+
+.detail-wrapper {
+  margin-bottom: 128rpx;
+}
+
+.detail-wrapper .header {
+  background: #fff;
+}
+
+.detail-intro .left {
+  flex: 1;
+}
+
+.detail-intro .left .name {
+  margin-right: 20rpx;
+  line-height: 24px;
+  font-size: 16px;
+}
+
+.detail-price {
+  padding: 0 24rpx 20rpx;
+}
+
+.detail-price .price {
+  display: inline-block;
+  line-height: 40rpx;
+  font-size: 36rpx;
+  color: #fd2e2e;
+}
+
+.detail-price .price-old {
+  display: inline-block;
+  margin-left: 10rpx;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color: #ccc;
+  text-decoration: line-through;
+}
+
+.detail-price .count {
+  margin-left: 40rpx;
+  line-height: 24px;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.detail-intro .right {
+  flex: 0 0 150rpx;
+  position: relative;
+}
+
+.detail-intro .right .share {
+  display: inline-block;
+  padding-left: 48rpx;
+  line-height: 46rpx;
+  font-size: 32rpx;
+  border: none;
+}
+
+.detail-intro .right image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 46rpx;
+  height: 46rpx;
+  vertical-align: top;
+}
+
+.bg-line {
+  width: 100%;
+  height: 20rpx;
+  background: #f8f8f8;
+}
+
+.detail-image image {
+  width: 100%;
+  height: 85vw;
+}
+
+.detail-text {
+  padding: 0 24rpx 24rpx;
+  margin-bottom: 20rpx;
+  background: #fff;
+}
+
+.detail-text .title {
+  padding: 30rpx 0;
+  line-height: 40rpx;
+  font-size: 36rpx;
+  color: #333;
+}
+
+.detail-text .content .text-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 20rpx 20rpx;
+}
+
+.detail-text .content .text-line .text {
+  display: inline-block;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.detail-text .content .text-line .left {
+  flex: 1;
+  overflow: hidden;
+}
+
+.detail-text .content .text-line .middle {
+  flex: 0 0 120rpx;
+  width: 120rpx;
+  text-align: center;
+}
+
+.detail-text .content .text-line .right {
+  flex: 0 0 160rpx;
+  width: 160rpx;
+  text-align: right;
+}
+
+.orders-wrapper {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.goods-car {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 20;
+  width: 100%;
+  background: #fff;
+}
+
+.goods-car .goods {
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx;
+}
+
+.goods-car .goods .left {
+  flex: 1;
+}
+
+.goods-car .goods .left .text {
+  display: inline-block;
+  line-height: 40rpx;
+  vertical-align: top;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.goods-car .goods .left .name {
+  max-width: 224rpx;
+  overflow: hidden;
+}
+
+.goods-car .goods .left .count {
+  width: 120rpx;
+  text-align: center;
+}
+
+.goods-car .goods .left .price {
+  max-width: 200rpx;
+  color: #fd2e2e;
+  word-break: break-word;
+}
+
+.goods-car .count-control {
+  flex: 0 0 170rpx;
+  width: 170rpx;
+}
+
+.goods-car .btn-pay {
+  width: 280rpx;
+  margin: 80rpx auto;
+  padding: 12rpx 0;
+  font-size: 36rpx;
+  color: #fff;
+  background: #fd2e2e;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+.goods-car .count-control .control {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.goods-car .count-control .count {
+  display: inline-block;
+  width: 80rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #333;
+  vertical-align: top;
+}
+
+.goods-car .goods-car-cancel {
+  position: relative;
+  top: -100rpx;
+  text-align: center;
+}
+
+.goods-car .cancel-pic {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.orders-wrapper .btn-orders {
+  width: 100%;
+  padding: 20rpx 0;
+  font-size: 36rpx;
+  text-align: center;
+  color: #fff;
+  background: #fd2e2e;
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hbox image {
+  width: 46rpx;
+  height: 28rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+
+.hbox text {
+  font-size: 26rpx;
+  color: #999;
+}

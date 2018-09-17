@@ -1,0 +1,27 @@
+
+<view class="groupon-wrapper" hidden='{{isShow}}'>
+  <view class='groupon-hader'>
+    <scroll-view class='menu' scroll-x="true">
+      <view bindtap='menuTap' data-idx="{{index}}" data-id="{{item.CategoryID}}" class="menu-item {{menuIndex === index ? 'active':''}}" wx:for="{{menuList}}" wx:key="{{index}}">{{item.CategoryName}}</view>
+    </scroll-view>
+  </view>
+  <view class='groupon-content'>
+    <view wx:for="{{goodsList}}" wx:key="{{index}}" class='goods-item' data-comId="{{item.CommodityID}}" bindtap='goodsDetailTap'>
+        <view class='goods-pic'>
+          <image class='goods' mode='aspectFill' src='{{imgUrl}}{{item.ImgPath}}'></image>
+        </view>
+        <view class='goods-info'>
+          <view class='name'>{{item.CommodityName}}</view>
+          <text class='price-old' wx:if="{{item.Money1}}">￥{{item.Money1}}</text>
+          <view class='bottom'>
+            <text class='price'><text class='sign'>￥</text>{{item.Money}}</text>
+            <text class='count' wx:if="{{item.IsShowSales == '1'}}">月销量：{{item.Sales}}</text>
+          </view>
+        </view>
+    </view>
+  </view>
+  <view class='none' wx:if="{{goodsList.length === 0}}" hidden='{{isNoneCoupon}}'>
+    <image class='none-pic' src='/images/icon/none_coupon.png'></image>
+    <view class='text'>暂无商品</view>
+  </view>
+</view>

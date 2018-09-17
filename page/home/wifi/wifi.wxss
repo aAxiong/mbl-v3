@@ -1,0 +1,85 @@
+page{
+  background: #f8f8f8;
+}
+
+.wifi-wrapper{
+  background: #fff;
+}
+
+.wifi-header{
+  position: relative;
+  padding: 20rpx 24rpx;
+  font-size: 16px;
+  color: #666;
+  margin-top: 20rpx;
+  border-bottom: 20rpx solid #f8f8f8;
+}
+
+.android-wifi{
+  position: absolute;
+  top: 20rpx;
+  right: 34rpx;
+  padding: 0 10px;
+}
+
+.android-wifi .problem{
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.wifi-content .wifi-item{
+  display: flex;
+  flex-direction: row;
+  margin: 0 24rpx;
+  padding: 30rpx 20rpx;
+  border-bottom: 1px solid #ececec;
+}
+
+.wifi-content .wifi-item .left{
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wifi-content .wifi-item .left .suc-icon{
+  margin-top:10rpx;
+  margin-right: 20rpx;
+  width: 36rpx;
+  height: 28rpx;
+}
+
+.wifi-content .wifi-item .left .name{
+  font-size: 36rpx;
+  height: 40rpx;
+}
+
+.wifi-content .wifi-item .right{
+  flex: 0 0 76rpx;
+  width: 76rpx;
+  height: 58rpx;
+  margin-left: 20rpx;
+}
+
+.wifi-content .wifi-item .right image{
+  width: 76rpx;
+  height: 58rpx;
+}
+
+.wifi-content .none-coupon{
+  padding-top: 120rpx;
+  text-align: center;
+  background: #f8f8f8;
+}
+
+.wifi-content .none-coupon .none-coupon{
+  width: 180rpx;
+  height: 168rpx;
+}
+
+.wifi-content .none-coupon .text{
+  margin-top: 18rpx;
+  line-height: 48rpx;
+  font-size: 36rpx;
+  color: #666;
+}

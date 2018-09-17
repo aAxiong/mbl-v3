@@ -1,0 +1,243 @@
+<!--pages/order/order.wxml-->
+<!--head -->
+
+<view class="search">
+  <view class="search-box {{seachPageShow==true?'active':''}}">
+    <image src='/images/takeaway/search@2x.png'></image>
+    <input type='text' placeholder="搜索" placeholder-class="phcolor" confirm-type="search" bindfocus="inputShow" bindconfirm="searchProduct" value="{{searchText}}"></input>
+  </view>
+  <view class="search-text" wx:if="{{seachPageShow}}" bindtap='inputHide'>
+    取消</view>
+</view>
+<view class="total_page">
+  <view class="headers">
+    <view class="header">
+      <view class="content-wrapper">
+        <view class="content">
+          <view class="local-info">
+            <image src='/images/takeaway/local.png'></image>
+            <text> 距离{{productyArr.Distance}}km | 配送约{{productyArr.DeliveryTime}}分钟</text>
+          </view>
+          <view class="hiddenbox {{drap==true?'active':''}}">
+            <view class="content-list">
+              <view class="discountList" wx:for="{{activityArr}}" wx:key="{{index}}">
+                <image src='/images/takeaway/fulla@2x.png' wx:if="{{item.DisType==1}}"></image>
+                <image src='/images/takeaway/tehui.png' wx:elif="{{item.DisType==6}}"></image>
+                <image src='/images/takeaway/discount@2x.png' wx:elif="{{item.DisType==2}}"></image>
+                <image src='/images/takeaway/exclusive@2x.png' wx:elif="{{item.DisType==4}}"></image>
+                <image src='/images/takeaway/half@2x.png' wx:elif="{{item.DisType==5}}"></image>
+                <image src='/images/takeaway/fulla@2x.png' wx:else></image>
+                <text>{{item.DisCouponName}}</text>
+              </view>
+            </view>
+            <view class="downdrap" bindtap='downdrap' wx:if='{{activityArr.length>4}}'>
+              <!-- wx:if='{{activityArr.length>0}}' -->
+              <image src='{{drap==false?"/images/takeaway/drop-down@2x.png":"/images/takeaway/drop-up@2x.png"}}'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="background">
+        <image src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg" style="width:100%;height:100%;"></image>
+      </view>
+    </view>
+  </view>
+  <!--head -->
+  <view class="goods" wx:if='{{productyArr.CommodityList.length>0}}'>
+    <view class="menu-wrapper">
+      <scroll-view scroll-y="true" style="height: 750rpx;" scroll-top="{{leftToTop}}">
+        <view wx:for="{{constants}}" wx:key="CategoryID" bindtap="jumpToSick" data-id="i{{item.CategoryID}}" class="menu-item border-1px {{'i'+item.CategoryID==currentLeftSelect?'active':''}}" data-item-index="{{index}}">
+          <view class="text">
+            {{item.CategoryName}}
+            <image src='/images/takeaway/hot@2x.png' wx:if='{{index==0}}'></image>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <scroll-view scroll-y="true" scroll-with-animation='true' style="height: 800rpx;" scroll-into-view="{{toView}}" class="foods-wrapper" bindscroll="rightScroll">
+      <view wx:for="{{constants}}" class="food-list food-list-hook" wx:for-index="parentIndex" wx:key="CategoryID" id="i{{item.CategoryID}}">
+        <view id="order{{parentIndex}}" class="title"></view>
+        <view wx:for="{{item.ProductList}}" wx:key="{{index}}" class="food-item" wx:for-item="food" data-id="{{food.CommodityID}}" bindtap='foodDetailTap' data-idx='{{index}}' data-paidx='{{parentIndex}}'>
+          <view class="icon">
+            <image src="{{imgUrl}}{{food.ImgPath}}" style="width: 205rpx;height: 150rpx" mode='aspectFill'></image>
+          </view>
+          <view class="content">
+            <view class="name">{{food.CommodityName}}</view>
+            <!-- <view class="desc">{{food.description}}</view> -->
+            <view class="extra">
+              <text class="count">月售{{food.Sales}}</text>
+              <!-- <text class="count">好评{{food.rating}}</text> -->
+            </view>
+            <view class="price">
+              <view class="old" wx:if="{{food.Ishalfprice==1}}">
+                <image src='/images/takeaway/half@2x.png'></image>第二份半价</view>
+              <view class="old" wx:if="{{food.Discount>0}}">
+                <image src='/images/takeaway/tehui.png'></image>{{food.Discount}}折</view>
+              <view class="old" wx:if='{{food.Discount<=0&&food.Ishalfprice!=1}}'></view>
+              <view class="now">￥{{food.Money}}
+                <text wx:if='{{food.Inventory<=10&&food.Inventory>0}}'>剩余{{food.Inventory}}份</text>
+              </view>
+            </view>
+
+            <!--cartControl-->
+            <view class="cartControl-wrapper" wx:if="{{food.Inventory>0}}">
+              <view class="cartControl">
+                <view name="fade">
+                  <view class="cart-add " id='a{{index}}' data-item-index="{{index}}" data-parentIndex="{{parentIndex}}" catchtap="goodsSizeTap">
+                    <image src='/images/takeaway/redadd@2x.png'></image>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class='select-wrapper' hidden='{{isShowSelect}}'>
+      <ordering_select bind:selectTriggerTap="selectData" size-taste="{{goodsSizeTaste}}"></ordering_select>
+    </view>
+  </view>
+  <!--shopCart-->
+  <view>
+    <view>
+      <view class="shopCart">
+        <view class="content">
+          <view class="content-left">
+            <view class="logo-wrapper" bindtap="toggleList">
+              <view class="logo highlight">
+                <view class="iconfont icon-gouwuche highlight"></view>
+              </view>
+              <view class="num" wx:if="{{totalCount> 0&&totalCount<999}}" animation="{{animationBall}}">{{totalCount}}</view>
+              <view class="num" animation="{{animationBall}}" wx:elif='{{totalCount>999}}'>999</view>
+            </view>
+            <view class="pricebox">
+              <view class="price highlight">共计：￥{{totalPrice}}</view>
+              <view class="desc">另需配送费{{productyArr.DeliveryFee}}元</view>
+            </view>
+          </view>
+          <view class="content-right">
+            <view class="pay {{payClass==1?'enough':''}}" :class="payClass" bindtap='jumpOrder' data-index='{{payClass}}'>
+              {{payDesc}}
+            </view>
+          </view>
+        </view>
+        <view class="shopcart-list" style="transform:translate(0, 0);" animation="{{animationData}}">
+          <view class="list-header">
+            <view class="title">已选商品</view>
+            <view class="emptybox">
+              <image src='/images/takeaway/delete@2x.png'></image>
+              <text class="empty" bindtap="emptyShopCart">清空</text>
+
+            </view>
+          </view>
+          <scroll-view scroll-y class="list-content">
+            <view class="shopcart-food" wx:for="{{carArray}}" wx:key="{{index}}">
+              <text class="name">{{item.CommodityName}}</text>
+              <view class="price" wx:if="{{item.CommodityNum > 0}}">
+                <span>￥{{item.CommodityPrice}}</span>
+              </view>
+              <!--cartControl-->
+              <view class="cartControl-wrapper" style="bottom:10px;" wx:if="{{item.CommodityNum > 0}}">
+                <view class="cartControl">
+                  <view name="fade">
+                    <view class="cart-decrease" style="display:inline-block;  line-height: 34rpx;" data-item-index="{{index}}" data-id="{{item.ShoppingCartID}}" catchtap="decreaseShopCart">
+                      <view class="inner" style="font-size:24px;color:#00A0DC;">
+                        <image src='/images/takeaway/reduce@2x.png'></image>
+                      </view>
+                    </view>
+                    <view class="cart-count" style="display:inline-block;width:72rpx;text-align:center;font-size:33rpx;">{{item.CommodityNum}}</view>
+                    <view class="cart-add " style="font-size:24px;  line-height: 34rpx; padding:0;" data-item-index="{{index}}" data-id="{{item.ShoppingCartID}}" catchtap="addShopCart">
+                      <image src='/images/takeaway/add@2x.png'></image>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <!--cartControl-->
+            </view>
+          </scroll-view>
+
+        </view>
+      </view>
+
+    </view>
+  </view>
+  <view name="fade">
+    <view class="list-mask" wx:if="{{listShow}}" bindtap="hideList"></view>
+  </view>
+  <view wx:if="{{productyArr.CommodityList.length === 0}}" class='none-coupon'>
+    <image src='/images/icon/none_coupon.png'></image>
+    <view class='text'>暂无商品</view>
+  </view>
+  <scroll-view scroll-y class="search_page" wx:if="{{seachPageShow}}">
+    <view class="labelBox" wx:if='{{HotListShow}}'>
+      <view class="label_hisBox">
+        <view class="tit">热门搜索</view>
+        <view class="content">
+          <view class="label" wx:for='{{HotList}}' wx:key='{{index}}' bindtap='searchProduct' data-con='{{item.CommodityName}}'>{{item.CommodityName}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="labelBox" wx:if='{{labelShow}}'>
+      <view class="label_hisBox">
+        <view class="tit">历史搜索
+          <text bindtap='rmoveHis'>清除</text>
+        </view>
+        <view class="content">
+          <view class="label" wx:for='{{labelList}}' wx:key='{{index}}' bindtap='searchProduct' data-con='{{item}}'>{{item}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="food-list food-list-hook">
+      <view wx:for="{{seaconstants}}" class="food-item" wx:key='{{index}}' data-id="{{item.CommodityID}}" wx:for-index="parentIndex">
+        <view class="icon">
+          <image src="{{imgUrl}}{{item.ImgPath}}" style="width: 205rpx;height: 150rpx"></image>
+        </view>
+        <view class="content">
+          <view class="name">{{item.CommodityName}}</view>
+          <!-- <view class="desc">{{food.description}}</view> -->
+          <view class="extra">
+            <text class="count">月售{{item.Sales}}</text>
+            <!-- <text class="count">好评{{food.rating}}</text> -->
+          </view>
+          <view class="price">
+            <view class="old" wx:if="{{item.Ishalfprice==1}}">
+              <image src='/images/takeaway/half@2x.png'></image>第二份半价</view>
+            <view class="old" wx:if="{{item.Discount>0}}">
+              <image src='/images/takeaway/tehui.png'></image>{{food.Discount}}折</view>
+            <view class="old" wx:if='{{item.Discount<=0&&item.Ishalfprice!=1}}'></view>
+            <view class="now">￥{{item.Money}}
+              <text wx:if='{{item.Inventory<=10}}'>剩余{{item.Inventory}}份</text>
+            </view>
+          </view>
+          <!--cartControl-->
+          <view class="cartControl-wrapper" wx:if="{{item.Inventory>0}}">
+            <view class="cartControl">
+              <view name="fade">
+                <view class="cart-add " data-idx="{{parentIndex}}" catchtap="segoodsSizeTap" id='b{{index}}' data-item-index='{{index}}'>
+                  <image src='/images/takeaway/redadd@2x.png'></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+</view>
+<view class="zhezao" style="display:{{cartShow}}" catchtap='carHide'></view>
+<view class="exceedingk" wx:if='{{tipstShow==true}}'>
+  <view class="m"></view>
+  <view class="tips">
+    <view class="tit">提示</view>
+    <view class="text">当前位置超出本店配送范围</view>
+    <view class="text">下单请选择其他地址或到店自取</view>
+    <image src='/images/takeaway/xx.png' class="xx" catchtap='closeTips'></image>
+  </view>
+
+</view>
+<view class="good_box" hidden="{{hide_good_box}}" style="left: {{bus_x}}px; top: {{bus_y}}px;">
+</view>
+<view hidden='{{authShow}}'>
+  <auth_button bind:authTriggerTap="authClcik"></auth_button>
+</view>

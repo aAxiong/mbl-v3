@@ -1,0 +1,59 @@
+
+page{
+  background: #f5f5f5;
+}
+
+.goods-detail,.order-info{
+  background: #fff;
+}
+
+.goods-detail .title,.order-info .title{
+  padding: 30rpx;
+  font-size: 36rpx;
+  color: #333;
+  border-bottom: 1rpx solid #f5f5f5;
+  font-weight: 700;
+}
+
+.goods-detail .goods-list .item{
+  display: flex;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  line-height: 44rpx;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.goods-detail .goods-list .item .name{
+  width: 50%;
+}
+
+.goods-detail .goods-list .item .count{
+  width: 20%;
+}
+
+.goods-detail .goods-list .item .price{
+  width: 30%;
+}
+
+.goods-detail .goods-list .item.total{
+  color: #333;
+  font-weight: 700;
+}
+
+.order-info .order-list .item{
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 30rpx;
+  line-height: 44rpx;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.order-info .order-list .item .label{
+  width: 50%;
+}
+
+.order-info .order-list .item .info{
+  width: 50%;
+}

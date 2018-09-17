@@ -1,0 +1,51 @@
+
+<view class='use-coupon-wrapper' hidden='{{mask}}'>
+  <!-- 可用优惠券 -->
+  <view class='use-coupon-list'>
+    <block wx:for="{{couponList}}" wx:if="{{item.DisType != 3}}" wx:key="index">
+      <view class='coupon-item'>
+        <view class='coupon-left'>
+          <coupon_ic coupon-data="{{item.Discount}}" coupon-condition="{{item.Condition}}" coupon-type="{{item.DisType}}"></coupon_ic>    
+        </view>
+        <view class='coupon-right'>
+          <!-- 没有输入金额或小于输入金额不能使用 -->
+          <view wx:if="{{payMoney == '' || pNumber.getNumber(payMoney) < pNumber.getNumber(item.Condition)}}" class='dis-coupon-btn coupon-btn-left'>不可使用</view>
+          <view wx:else bindtap='useCouponTap' class='use-coupon-btn coupon-btn-left' data-type="{{item.DisType}}" data-id="{{item.DisCouponID}}">立即使用</view>          
+          <text class='use-indate'>{{item.StartTime}}-{{item.EndTime}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 可用活动券 -->
+  <view class='use-activity-list'>
+    <block wx:for="{{couponList}}" wx:if="{{item.DisType == 3}}" wx:key="index">
+      <view class='activity-item'>
+        <view class='activity-left'>
+          随机立减
+          <view class='de-moeny'>{{item.Discount}}元</view>
+        </view>
+        <view class='activity-right'>
+          <view wx:if="{{payMoney == '' || pNumber.getNumber(payMoney) < pNumber.getNumber(item.Condition)}}" class='act-coupon-btn activity-btn-left'>不可使用</view>
+          <view wx:else class='use-coupon-btn activity-btn-left' bindtap='useCouponTap' data-type="{{item.DisType}}" data-id="{{item.DisCouponID}}">
+            立即使用
+          </view>
+          <text class='use-indate'>{{item.StartTime}}-{{item.EndTime}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view wx:if="{{couponList.length === 0}}"  class='none-coupon'>
+      <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+      <view class='text'>暂无可用优惠券</view>
+  </view>
+</view>
+
+<!-- 金额格式化 -->
+<wxs module="pNumber">
+  var getNumber = function(num){
+    return parseFloat(num) || 0
+  }
+
+  module.exports.getNumber = getNumber
+</wxs>
+

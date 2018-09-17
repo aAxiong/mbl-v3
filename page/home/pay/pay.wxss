@@ -1,0 +1,110 @@
+page {
+  background: #f1f1f1;
+}
+
+.pay {
+  padding: 40rpx 20rpx;
+  margin-top: 30rpx;
+  background: #fff;
+}
+
+.pay .pay-title {
+  line-height: 40rpx;
+  font-size: 36rpx;
+  margin-bottom: 80rpx;
+}
+
+.pay-ipt {
+  display: flex;
+  flex-direction: row;
+}
+
+.pay-ipt .pay-label {
+  flex: 0 0 60rpx;
+  width: 60rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
+  margin-top: -4rpx;
+}
+
+.pay-ipt .pay-label image {
+  width: 60rpx;
+  height: 50rpx;
+  vertical-align: middle;
+}
+
+.pay-ipt .ipt {
+  flex: 1;
+  height: 50rpx;
+}
+
+.pay-ipt .ipt {
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 36rpx;
+}
+
+.coupon {
+  margin: 100rpx 0 30rpx;
+  text-align: center;
+}
+
+.coupon .coupon-text {
+  font-size: 36rpx;
+  color: #ff861a;
+}
+
+.pay-submit {
+  margin: 0 40rpx;
+}
+
+.pay-submit .pay-button {
+  padding: 20rpx;
+  font-size: 36rpx;
+  color: #fff;
+  text-align: center;
+  background: #fd2e2e;
+  border-radius: 12rpx;
+  margin-top: 100rpx;
+}
+
+.offer-coupon {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30rpx;
+  padding: 30rpx;
+  background: #fff;
+}
+
+.offer-coupon .text {
+  font-size: 28rpx;
+}
+
+.offer-coupon .money {
+  font-size: 28rpx;
+  color: #fd2e2e;
+}
+
+.offer-coupon .money.gray {
+  color: #ccc;
+}
+
+.offer-coupon .money image {
+  width: 36rpx;
+  height: 36rpx;
+  vertical-align: sub;
+}
+
+.offer-coupon .hbox image {
+  width: 46rpx;
+  height: 28rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+
+.offer-coupon .hbox text {
+  font-size: 26rpx;
+  color: #999;
+}

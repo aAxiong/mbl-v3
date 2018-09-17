@@ -1,0 +1,8 @@
+
+view,text{
+  font-family:  "PingFang SC", "Helvetica Neue", Helvetica,"Microsoft YaHei";
+}
+
+image{
+  vertical-align: top
+}

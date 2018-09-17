@@ -1,0 +1,123 @@
+page{
+  background: #f1f1f1;
+}
+
+.use-coupon-list{
+  background: #fff;
+}
+
+.coupon-item{
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+
+.coupon-item .coupon-left{
+  flex: 1;
+  margin-right: 18rpx;
+}
+
+.coupon-item .coupon-right{
+  flex: 0 0 260rpx;
+  width: 260prx;
+  margin-top: 10rpx;
+}
+
+.use-coupon-wrapper .use-coupon-btn{
+  width: 128rpx;
+  padding: 12rpx;
+  line-height: 40rpx;
+  font-size: 32rpx;
+  color: #fff;
+  border-radius: 12rpx;
+  background: #fd2e2e;
+}
+
+.use-coupon-wrapper .dis-coupon-btn{
+    width: 128rpx;
+    padding: 12rpx;
+    line-height: 40rpx;
+    font-size: 32rpx;
+    color: #fff;
+    border-radius: 12rpx;
+    background: #d2d2d2;
+}
+
+.coupon-item .coupon-right .coupon-btn-left{
+    margin-left: 68rpx;
+    
+}
+
+.use-coupon-wrapper .use-indate{
+  display:block;
+  margin-top: 14rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.use-activity-list{
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  background: #fff;
+}
+
+.activity-item{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+
+.activity-item .activity-left{
+  flex: 0 0 280rpx;
+  padding: 30rpx 0;
+  line-height: 74rpx;
+  font-size: 48rpx;
+  background: #f9d391;
+  color: #fff;
+  text-align: center;
+}
+
+.activity-item .activity-left .de-moeny{
+  line-height: 24rpx;
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.activity-item .activity-right{
+  flex: 1;
+  margin: 26rpx 40rpx;
+  text-align: right;
+}
+
+.activity-item .activity-right .act-coupon-btn{
+    width: 128rpx;
+    padding: 12rpx;
+    line-height: 40rpx;
+    font-size: 32rpx;
+    color: #fff;
+    border-radius: 12rpx;
+    background: #d2d2d2;
+}
+
+.activity-item .activity-right .activity-btn-left{
+  display: inline-block;
+  margin-right: 10rpx;
+}
+
+.use-coupon-wrapper .none-coupon{
+  margin-top: 120rpx;
+  text-align: center;
+}
+
+.use-coupon-wrapper .none-coupon .none-coupon{
+  width: 180rpx;
+  height: 168rpx;
+}
+
+.use-coupon-wrapper .none-coupon .text{
+  margin-top: 18rpx;
+  line-height: 48rpx;
+  font-size: 36rpx;
+  color: #666;
+}

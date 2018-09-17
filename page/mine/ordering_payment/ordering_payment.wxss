@@ -1,0 +1,146 @@
+page{
+  background: #f5f5f5;
+}
+
+.ordering-detail{
+  padding: 30rpx 30rpx 40rpx;
+  background: #fff;
+}
+
+.ordering-detail .title{
+  margin-bottom: 20rpx;
+  line-height: 50rpx;
+  font-size: 36rpx;
+  color: #333;
+}
+
+.ordering-detail .goods-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.ordering-detail .goods-item .text{
+  max-height: 88rpx;
+  line-height: 44rpx;
+  font-size: 32rpx;
+  color: #666;
+  overflow: hidden;
+}
+
+.ordering-detail .goods-item .name,.ordering-detail .total .tot{
+  width: 50%;
+}
+
+.ordering-detail .goods-item .count,.ordering-detail .total .count{
+  width: 20%;
+  text-align: center;
+}
+
+.ordering-detail .goods-item .price,.ordering-detail .total .price{
+  width: 30%;
+  text-align: right;
+}
+
+.ordering-detail .text-total{
+  font-size: 32rpx;
+  color: #000;
+}
+
+.coupon{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30rpx;
+  margin-bottom: 140rpx;
+  padding: 30rpx 40rpx;
+  background: #fff;
+}
+
+.coupon .title{
+  font-size: 32rpx;
+  color: #333;
+}
+
+.coupon .coupon-status .use-coupon{
+  font-size: 32rpx;
+  color: #fd2e2e;
+}
+
+.coupon .coupon-status .coupon-none{
+  font-size: 32rpx;
+  color: #999;
+}
+
+.coupon .coupon-status .coupon-icon{
+  margin-top: 4rpx;
+  margin-left: 4rpx;
+}
+
+.coupon .coupon-status .coupon-icon{
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.order-number{
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx 40rpx;
+  background: #fff;
+}
+
+.order-number .label{
+  flex: 0 0 160rpx;
+  width: 160rpx;
+  line-height: 64rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.order-number .ipt{
+  flex:1;
+}
+
+.order-number .ipt .ipt-number{
+  padding: 10rpx;
+  height: 44rpx;
+  min-height: 44rpx;
+  line-height: 44rpx;
+  font-size: 32rpx;
+  border: 1rpx solid #eee;
+}
+
+.pay-wrapper{
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+}
+
+.pay-wrapper .total-money-pay{
+  flex: 1;
+  margin-left: 30rpx;
+  line-height: 100rpx;
+  font-size: 36rpx;
+  color: #333;
+}
+
+.pay-wrapper .total-money-pay .money{
+  font-size: 36rpx;
+  color: #fd2e2e;
+}
+
+.pay-wrapper .pay-btn{
+  flex: 0 0 280rpx;
+  line-height: 100rpx;
+  font-size: 36rpx;
+  text-align: center;
+  color: #fff;
+  background: #ff861a;
+}

@@ -1,0 +1,68 @@
+
+<view class="shop-detail-wrapper" hidden='{{isLoad}}'>
+  <view class='detail-wrapper'>
+    <view class='header'>
+      <view class='detail-image'>
+        <image mode='aspectFill' src='{{imgUrl}}{{goodsInfo.CommodityList.ImgPath}}'></image>
+      </view>
+      <view class='detail-intro'>
+        <view class='left'>
+          <text class='name'>{{goodsInfo.CommodityList.CommodityName}}</text>
+        </view>
+        <view class='right'>
+          <image src='/images/icon/share.png'></image>
+          <!-- <text class='share'>分享</text> -->
+          <button open-type='share' class='share' plain='true'>分享</button>
+        </view>
+      </view>
+      <view class='detail-price'>
+        <text class='price'>￥{{goodsInfo.CommodityList.Money}}</text>
+        <text class='price-old' wx:if="{{goodsInfo.CommodityList.Money1}}">￥{{goodsInfo.CommodityList.Money1}}</text>
+        <text class='count' wx:if="{{goodsInfo.IsShowSales == '1'}}">月销量:{{goodsInfo.CommodityList.Sales}}份</text>
+      </view>
+    </view>
+    <view class='bg-line'></view>
+    <view class='detail-text' wx:if="{{goodsInfo.SpecificationList.length > 0}}">
+      <view class='title'>商品详情：</view>
+      <view class='content'>
+        <view class='text-line' wx:for="{{goodsInfo.SpecificationList}}" wx:key="{{index}}">
+          <text class='text left'>{{item.Name}}</text>
+          <text class='text middle'>x{{item.Specification}}</text>
+          <text class='text right'>￥{{item.Price}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='detail-text' wx:if="{{goodsInfo.CustomInfoList}}" wx:for="{{goodsInfo.CustomInfoList}}" wx:key="{{index}}">
+      <view class='title'>{{item.Title}}</view>
+      <view class='content'>
+        <view class='text-line' wx:for="{{item.Describe}}" wx:key="{{index}}">
+          <text class='text'>{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='orders-wrapper'>
+    <view class='btn-orders' bindtap='ordersTap'>立即下单</view>
+  </view>
+  <view class='goods-car' wx:if="{{isShow}}">
+    <view class='goods-car-cancel'>
+      <image bindtap='ordersCancel' class='cancel-pic' src='/images/icon/cancel.png'></image>
+    </view>
+    <view class='goods'>
+      <view class='left'>
+        <text class='name text'>{{goodsInfo.CommodityList.CommodityName}}</text>
+        <text class='count text'>x{{count}}</text>
+        <text class='price text'>￥{{totalPrice}}</text>
+      </view>
+      <view class='count-control'>
+        <image class='control' bindtap='decrementTap' src='/images/icon/decrement.png'></image>
+        <text class='count'>{{count}}</text>
+        <image class='control' bindtap='incrementTap' src='/images/icon/increment.png'></image>
+      </view>
+    </view>
+    <view class='btn-pay' bindtap='ordersPayTap'>确定</view>
+  </view>
+</view>
+<view class='mask' bindtap='ordersCancel' wx:if="{{isShow}}">
+
+</view>

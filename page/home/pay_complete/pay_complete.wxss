@@ -1,0 +1,70 @@
+
+.complete-header{
+  text-align: center;
+  margin: 80rpx 0 60rpx;
+}
+
+.complete-header image{
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.complete-header .nav-btn{
+  width: 180rpx;
+  padding: 12rpx;
+  margin: 60rpx auto 0;
+  line-height: 46rpx;
+  font-size: 36rpx;
+  color: #fff;
+  background: #ff861a;
+  border-radius: 12rpx;
+}
+
+.bill .bill-title{
+  background: #f1f1f1;
+  padding: 16rpx;
+  line-height: 42rpx;
+  font-size: 32rpx;
+}
+
+.bill .bill-content .bill-tr{
+  display: flex;
+  flex-direction: row;
+  margin: 40rpx;
+}
+
+.bill .bill-content .bill-tr .bill-type{
+  flex: 0 0 80rpx;
+  width: 80rpx;
+}
+
+.bill .bill-content .bill-tr .bill-type .type{
+  display: inline-block;
+  vertical-align: top;
+  height: 36rpx;
+  padding: 0 10rpx;
+  margin-top: 6rpx;
+  line-height: 36rpx;
+  font-size: 20rpx;
+  color: #fff;
+  background: #fe7a7a;
+  border-radius: 6rpx;
+}
+
+.bill .bill-content .bill-tr .bill-name{
+  flex: 0 0 300rpx;
+  width: 300rpx;
+  margin-left: 10rpx;
+  line-height: 48rpx;
+  font-size: 36rpx;
+  font-weight: 400;
+}
+
+.bill .bill-content .bill-tr .bill-money{
+  flex: 1;
+  text-align: right;
+}
+
+.bill .bill-content .bill-tr .coupon-money{
+  color: #fe7a7a;
+}

@@ -1,0 +1,45 @@
+<view class="pay-wrapper">
+  <view class='pay'>
+    <view class='pay-title'>
+      买单金额
+    </view>
+    <view class='pay-ipt'>
+      <view class='pay-label'>
+        <image src='/images/icon/pay_m.png'></image>
+      </view>
+      <view class='ipt'>
+        <input class='money' placeholder='请输入买单金额' type='digit' bindinput='userMoney' placeholder-style="color:#999;" value='{{inputValue}}'></input>
+      </view>
+    </view>
+  </view>
+  <view class='offer-coupon' bindtap='useCouponTap'>
+    <text class='text'>优惠</text>
+    <view class="hbox" wx:if="{{couponType==2||couponType==1}}">
+      <image src='/images/takeaway/half@2x.png' wx:if="{{couponType==2}}"></image>
+      <image src='/images/takeaway/fulla@2x.png' wx:else></image>
+      <text>{{disCouponName}}</text>
+    </view>
+    <view class="money" wx:if="{{couponType == 2}}">
+      <text>{{discount}}折</text>
+      <image src='/images/icon/coupon-use.png'></image>
+    </view>
+    <view class="money" wx:elif='{{couponType == 1}}'>
+      <text>  -{{discount}}元</text>
+      <image src='/images/icon/coupon-use.png'></image>
+    </view>
+    <view class="money" wx:elif='{{couponType == 4}}'>有可参与活动
+      <image src='/images/icon/coupon-use.png'></image>
+    </view>
+    <view class="money gray" wx:else>无可参与活动
+      <image src='/images/icon/coupon-use.png'></image>
+    </view>
+  </view>
+  <!-- <view class="coupon" bindtap='useCouponTap'>
+    <text class="coupon-text">我的优惠券</text>
+  </view> -->
+  <view class="pay-submit">
+    <view class='pay-button' bindtap='userPayTap'>
+      确定
+    </view>
+  </view>
+</view>

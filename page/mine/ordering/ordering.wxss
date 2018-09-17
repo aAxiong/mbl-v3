@@ -1,0 +1,117 @@
+
+page{
+  background: #f5f5f5
+}
+
+.ordering-wrapper{
+  background: #fff;
+}
+
+.header{
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1rpx solid #f8f8f8;
+  background: #fff;
+}
+
+.header .nav-item{
+  height: 120rpx;
+  padding: 0 20rpx;
+  line-height: 120rpx;
+  font-size: 32rpx;
+  color: #999;
+}
+
+.header .nav-item.active{
+  color: #333;
+  border-bottom: 1rpx solid #fd2e2e;
+}
+
+.ordering-list{
+  background: #fff;
+}
+
+.ordering-list .item{
+  display: flex;
+  padding: 30rpx;
+}
+
+.ordering-list .item .left{
+  width: 240rpx;
+}
+
+.ordering-list .item .left .pic{
+  width: 240rpx;
+  height: 170rpx;
+  border-radius: 10rpx;
+}
+
+.ordering-list .item .middle{
+  width: 250rpx;
+  margin-left: 20rpx;
+}
+
+.ordering-list .item .middle .name{
+  height: 88rpx;
+  max-height: 88rpx;
+  line-height: 44rpx;
+  font-size: 32rpx;
+  color: #333;
+  overflow: hidden;
+}
+
+.ordering-list .item .middle .price{
+  line-height: 44rpx;
+  font-size: 32rpx;
+  color: #fd2e2e;
+}
+
+.ordering-list .item .middle .datetime{
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.ordering-list .item .right{
+  width: 160rpx;
+  margin-left: 20rpx;
+  text-align: center;
+}
+
+.ordering-list .item .right .statu{
+  font-size: 36rpx;
+  color: #fd2e2e;
+}
+
+.ordering-list .item .right .statu-complete{
+  font-size: 36rpx;
+  color: #999;
+}
+
+.ordering-list .item .right .btn-tap{
+  width: 100%;
+  height: 80rpx;
+  margin-top: 30rpx;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  color: #fff;
+  background: #fd2e2e;
+  border-radius: 10rpx;
+}
+
+.my-coupon-none{
+  margin-top: 200rpx;
+  text-align: center;
+}
+
+.my-coupon-none .none-coupon{
+  width: 180rpx;
+  height: 168rpx;
+}
+
+.my-coupon-none .text{
+  margin-top: 18rpx;
+  line-height: 48rpx;
+  font-size: 36rpx;
+  color: #666;
+}

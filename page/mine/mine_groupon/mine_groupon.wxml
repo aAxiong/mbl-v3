@@ -1,0 +1,31 @@
+
+<view class="groupon-wrapper" hidden='{{isShow}}'>
+  <view class='nav'>
+    <view class="nav-li" wx:for="{{['全部','待使用','已使用']}}" wx:key="{{index}}">
+      <text bindtap='navTap' data-idx="{{index}}" class="text {{currentIndex == index?'active':''}}">{{item}}</text>
+    </view>
+  </view>
+  <view class='groupon-content'>
+    <view class='item-wrapper'>
+      <view wx:for="{{orderList}}" wx:key="{{index}}" class='groupon-item' bindtap='orderDetailTap' data-id="{{item.OrderID}}" data-status="{{item.Status}}" data-detailid="{{item.OrderDetailID}}">
+        <view class='pic-wrapper'>
+          <image class='goods' src='{{imgUrl}}{{item.ImgPath}}'></image>
+        </view>
+        <view class='middle'>
+          <view class='name'>{{item.CommodityName}}</view>
+          <view class='price'><text class='sign'>￥</text>{{item.PayMoney}}</view>
+        </view>
+        <view class='right'>
+          <view class='used-status' wx:if="{{item.Status == 3 || item.Status == 4}}">{{item.strStatus}}</view>
+          <view class='status' wx:else>{{item.strStatus}}</view>
+          <view class='detail' wx:if="{{item.Status == 1}}" catchtap='userPayment' data-id="{{item.OrderID}}">去付款</view>
+          <view class='detail' wx:if="{{item.Status == 2}}">查看券码</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='my-coupon-none' wx:if="{{orderList.length === 0}}" hidden='{{isNone}}'>
+  <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+  <view class='text'>暂无团购订单</view>
+</view>

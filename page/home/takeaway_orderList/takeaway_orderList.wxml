@@ -1,0 +1,42 @@
+<view class="page">
+  <view class="list" wx:for='{{orderList.OrderList}}' data-id='{{item.OrderID}}' bindtap='jumpInfoPage'>
+    <view class="tit">
+      <text class="date">{{item.CreateTime}}</text>
+      <text class="status">{{item.StrOrderStatus}}</text>
+    </view>
+    <view class="contentbox {{item.check==true?'active':''}}">
+      <view class="content" wx:for="{{item.ProductList}}" wx:for-item="food">
+        <image src='{{imgUrl}}{{food.ImgPath}}'></image>
+        <view class="text1">
+          <view>{{food.CommodityName}}</view>
+          <view class="type">
+            <text>{{food.Unit}}</text>
+            <text wx:if='{{food.Unit!=""&&food.LabelName!=""}}'>/</text>
+            <text>{{food.LabelName}}</text>
+          </view>
+        </view>
+        <text>￥{{food.PreferentialPrice}}</text>
+        <view class="num">x{{food.ProductNum}}</view>
+      </view>
+    </view>
+    <view class="more" wx:if='{{item.ProductList.length>2&&item.check==false}}' catchtap='dropDown' data-index='{{index}}'>展开更多
+      <image src='/images/takeaway/down.png'></image>
+    </view>
+    <view class="more" wx:if='{{item.ProductList.length>2&&item.check==true}}' data-index='{{index}}' catchtap='dropUp'>点击收起
+      <image src='/images/takeaway/up.png'></image>
+    </view>
+    <view class="toolbar">
+      <view class="icon" wx:if='{{item.ReceivingType==1}}'>配</view>
+      <view class="icon" wx:else>自</view>
+      <view class="btn" wx:if='{{(item.OrderStatus==0||item.OrderStatus==2)}}' data-index='{{item.OrderID}}' catchtap='Reminder' data-idx='{{index}}'>催单</view>
+      <view class="btn" wx:elif='{{(item.OrderStatus==1||item.OrderStatus==4||item.OrderStatus==5)&&item.ReceivingType==1}}' catchtap='jumpHome'>再来一单</view>
+      <view class="btn" wx:elif='{{(item.OrderStatus==3)&&item.ReceivingType==1}}' data-ph='item.DeliveryManPhone'>联系小哥</view>
+      <view class="btn active" wx:elif='{{(item.OrderStatus==3||item.OrderStatus==4)&&item.ReceivingType==2}}' catchtap='Navigation'>导航</view>
+      <view class="price">实付：￥{{item.PayMoney}}</view>
+    </view>
+  </view>
+  <view class='order-none' wx:if="{{orderList.OrderList == 0}}">
+    <image src='/images/icon/none_coupon.png'></image>
+    <view class='text'>暂无订单</view>
+  </view>
+</view>

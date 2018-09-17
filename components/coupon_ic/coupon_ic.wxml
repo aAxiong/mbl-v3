@@ -1,0 +1,13 @@
+
+<view class='coupon-ic-list'>
+  <view class='ic-item'>
+    <view class='ic-left'>
+      <image src='/images/icon/coupon_ic.png'></image>
+    </view>
+    <view class='ic-right'>
+      <view class='price' wx:if="{{couponType == 1}}">￥{{couponData}}</view>
+      <view class='price' wx:if="{{couponType == 2}}">{{couponData}}折</view>
+      <view class='condtion'>满{{couponCondition}}元使用</view>
+    </view>
+  </view>
+</view>

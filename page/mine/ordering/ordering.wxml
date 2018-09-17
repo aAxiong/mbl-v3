@@ -1,0 +1,31 @@
+
+<view class="ordering-wrapper" hidden='{{isShow}}'>
+  <view class='header'>
+    <view wx:for="{{['全部订单','已完成订单']}}" wx:key="{{index}}" data-idx="{{index}}" bindtap='orderSwitchTap' class='nav-item {{curIndex==index?"active":""}}'>
+      {{item}}
+    </view>
+  </view>
+  <view class='ordering-list'>
+    <view class='item' wx:for="{{orderList}}" wx:key="{{index}}" data-idx="{{index}}" data-id="{{item.OrderID}}" data-status="{{item.Status}}" bindtap='orderDetailTap'>
+      <view class='left'>
+        <image class='pic' src='{{imgUrl}}{{item.ImgPath}}'></image>
+      </view>
+      <view class='middle'>
+        <view class='name'>{{item.CommodityName}}</view>
+        <text class='price'>￥{{item.PayMoney}}</text>
+        <view class='datetime'>{{item.CreateTime}}</view>
+      </view>
+      <view class='right' wx:if="{{item.Status == 0}}">
+        <view class='statu'>{{item.strStatus}}</view>
+        <view class='btn-tap' data-id="{{item.OrderID}}" catchtap='orderPayTap'>去付款</view>
+      </view>
+      <view class='right' wx:if="{{item.Status == 1}}">
+        <view class='statu-complete'>{{item.strStatus}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='my-coupon-none' wx:if="{{orderList.length === 0}}">
+  <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+  <view class='text'>暂无点餐订单</view>
+</view>

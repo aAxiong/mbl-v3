@@ -1,0 +1,134 @@
+page{
+  background: #f8f8f8;
+}
+
+.groupon-wrapper{
+  background: #fff;
+}
+
+.nav{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1rpx solid #e8e8e8;
+}
+
+.nav .nav-li{
+  width: 33.333%;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.nav .nav-li .text{
+  display: inline-block;
+  padding: 0 20rpx;
+  line-height: 100rpx;
+  font-size: 36rpx;
+  color: #999;
+}
+
+.nav .nav-li .text.active{
+  color: #333;
+  border-bottom: 2rpx solid #fd2e2e;
+}
+
+.groupon-content{
+  margin-bottom: 30rpx;
+}
+
+.groupon-content .groupon-item{
+  padding:30rpx;
+  border-bottom: 1rpx solid #e8e8e8;
+}
+
+.groupon-content .groupon-item{
+  display: flex;
+  flex-direction: row;
+}
+
+.groupon-content .groupon-item .pic-wrapper{
+  flex: 0 0 280rpx;
+  width: 280rpx;
+  height: 180rpx;
+  margin-right: 30rpx;
+}
+
+.groupon-content .groupon-item .pic-wrapper .goods{
+  width: 280rpx;
+  height: 180rpx;
+  border-radius: 8rpx;
+}
+
+.groupon-content .groupon-item .middle{
+  position: relative;
+  flex: 0 0 200rpx;
+  width: 200rpx;
+}
+
+.groupon-content .groupon-item .middle .name{
+  height: 84rpx;
+  max-height: 84rpx;
+  line-height: 42rpx;
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 400;
+  overflow: hidden;
+}
+
+.groupon-content .groupon-item .middle .price{
+  position: absolute;
+  left: 0;
+  bottom: 10rpx;
+  font-size: 36rpx;
+  color: #fd2e2e;
+}
+
+.groupon-content .groupon-item .middle .price .sign{
+  font-size: 28rpx;
+}
+
+.groupon-content .groupon-item .right{
+  position: relative;
+  flex: 1;
+}
+
+.groupon-content .groupon-item .right .status{
+  font-size: 32rpx;
+  color: #fd2e2e;
+  text-align: center;
+}
+
+.groupon-content .groupon-item .right .used-status{
+  font-size: 32rpx;
+  color: #999;
+  text-align: center;
+}
+
+.groupon-content .groupon-item .right .detail{
+  position: absolute;
+  left: 0;
+  bottom: 10rpx;
+  width: 100%;
+  padding: 12rpx 0;
+  text-align: center;
+  font-size: 32rpx;
+  color: #fff;
+  background: #fd2e2e;
+  border-radius: 8rpx;
+}
+
+.my-coupon-none{
+  margin-top: 200rpx;
+  text-align: center;
+}
+
+.my-coupon-none .none-coupon{
+  width: 180rpx;
+  height: 168rpx;
+}
+
+.my-coupon-none .text{
+  margin-top: 18rpx;
+  line-height: 48rpx;
+  font-size: 36rpx;
+  color: #666;
+}

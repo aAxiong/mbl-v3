@@ -1,0 +1,19 @@
+
+<view class="order-detail">
+  <view class='order-row'>
+    <view class='left'>消费金额：</view>
+    <view class='right'>{{order.total}}元</view>
+  </view>
+  <view class='order-row'>
+    <view class='left'>优惠金额：</view>
+    <view class='right'>{{order.disMoney}}元</view>
+  </view>
+  <view class='order-row'>
+    <view class='left'>实付金额：</view>
+    <view class='right'>{{order.payMoney}}元</view>
+  </view>
+  <view class='order-row'>
+    <view class='left'>买单时间：</view>
+    <view class='right'>{{order.payTime}}</view>
+  </view>
+</view>

@@ -1,0 +1,91 @@
+
+<view class="coupon-wrapper" hidden='{{mask}}'>
+  <!-- 优惠券头部 -->
+  <view class='coupon-header'>
+      <view class='get-coupon head'>
+        <text data-id='0' bindtap='couponTap' class="text {{couIndex == 0?'text-active active':''}}">优惠券</text>
+      </view>
+      <view class='get-activit head'>
+        <text data-id='1' bindtap='couponTap' class="text {{couIndex == 1?'text-active active':''}}">活动</text>  
+      </view>
+  </view>
+  <!-- 优惠券列表 -->
+  <view class='coupon-content'>
+    <view class='coupon-list' hidden='{{couIndex != 0}}'>
+      <view wx:if="{{couponList.length > 0}}">
+        <!-- 可领取优惠券 -->     
+        <block wx:for="{{couponList}}" wx:key="index">
+          <view wx:if="{{item.ResidueNum > 0 && item.IsGet == 0}}" class='coupon-item'>
+            <view class='coupon-left'>
+              <!-- 1是减元2是折扣 -->
+              <view wx:if="{{item.DisType === '1'}}" class='coupon-name'>满{{item.Condition}}元减{{item.Discount}}元</view>
+              <view wx:elif="{{item.DisType === '2'}}" class='coupon-name'>满{{item.Condition}}元享{{item.Discount}}折</view>
+              <view class='coupon-time'>活动时间</view>
+              <view class='date-time'>{{item.StartTime}}-{{item.EndTime}}</view>
+            </view>
+            <view class='coupon-right'>
+              <view class='coupon-button' data-id="{{item.ID}}" data-index="{{index}}" bindtap='getCoupon'>立即领取</view>
+            </view>
+          </view>
+        </block>
+        <!-- 已领取优惠券 -->
+        <block wx:for="{{couponList}}" wx:key="index">
+           <view wx:if="{{item.IsGet == 1}}" class='coupon-item'>
+            <view class='coupon-left'>
+              <view wx:if="{{item.DisType === '1'}}" class='coupon-name'>满{{item.Condition}}元减{{item.Discount}}元</view>
+              <view wx:elif="{{item.DisType === '2'}}" class='coupon-name'>满{{item.Condition}}元享{{item.Discount}}折</view>
+              <view class='coupon-time'>活动时间</view>
+              <view class='date-time'>{{item.StartTime}}-{{item.EndTime}}</view>
+            </view>
+            <view class='coupon-right'>
+              <view class='coupon-none'>
+                <view class='coupon-btn-none' >已领取</view>
+              </view>
+            </view>
+          </view>
+        </block>
+        <!-- 名额已满优惠券 -->
+        <block wx:for="{{couponList}}" wx:key="index">
+          <view wx:if="{{item.ResidueNum <= 0 && item.IsGet != 1}}" class='coupon-item'>
+            <view class='coupon-left'>
+              <view wx:if="{{item.DisType === '1'}}" class='coupon-name'>满{{item.Condition}}元减{{item.Discount}}元</view>
+              <view wx:elif="{{item.DisType === '2'}}" class='coupon-name'>满{{item.Condition}}元享{{item.Discount}}折</view>
+              <view class='coupon-time'>活动时间</view>
+              <view class='date-time'>{{item.StartTime}}-{{item.EndTime}}</view>
+            </view>
+            <view class='coupon-right'>
+              <view class='coupon-none'>
+                <view class='coupon-btn-none' >立即领取</view>
+                <image class='num-none' src='/images/icon/num_none.png'></image>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view wx:else  class='none-coupon'>
+        <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+        <view class='text'>暂无优惠券</view>
+      </view>
+    </view>
+    <view class='activit-list' hidden='{{couIndex != 1}}'>
+      <view wx:if="{{activityList.length > 0}}">
+        <block wx:for="{{activityList}}" wx:key="index">
+          <view class='coupon-item'>
+            <view class='coupon-left'>
+              <view class='coupon-name'>{{item.DisCouponName}}</view>
+              <view class='coupon-time'>活动时间</view>
+              <view class='date-time'>{{item.StartTime}}-{{item.EndTime}}</view>
+            </view>
+            <view class='coupon-right'>
+              <view data-id="{{item.ID}}" bindtap='activityTap' class='coupon-button'>立即参加</view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view wx:else class='none-coupon'>
+        <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+        <view class='text'>暂无活动</view>
+      </view>
+    </view>
+  </view>
+</view>

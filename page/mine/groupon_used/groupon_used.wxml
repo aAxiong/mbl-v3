@@ -1,0 +1,50 @@
+
+<view class='coupon-used' wx:hidden='{{isShow}}'>
+  <view class='coupon coupon-info'>
+    <view class='head'>团购券</view>
+    <view class='content'>
+      <view class='order-li-coupon'>
+        <text class='left'>券码：</text>
+        <text class='right'>{{order.TuanGouCouponCode}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='coupon'>
+    <view class='head'>订单信息</view>
+    <view class='content'>
+      <view class='order-li'>
+        <text class='left'>订单号</text>
+        <text class='right'>{{order.OrderID}}</text>
+      </view>
+      <view class='order-li'>
+        <text class='left'>订单金额</text>
+        <text class='right'>￥{{order.Money}}</text>
+      </view>
+      <view class='order-li'>
+        <text class='left'>下单时间</text>
+        <text class='right'>{{order.CreateTime}}</text>
+      </view>
+      <view class='order-li'>
+        <text class='left'>使用时间</text>
+        <text class='right'>{{order.UseTime}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='coupon'>
+    <view class='head'>支付信息</view>
+    <view class='content'>
+      <view class='order-li'>
+        <text class='left'>优惠金额</text>
+        <text class='right'>{{order.DisMoney}}</text>
+      </view>
+      <view class='order-li'>
+        <text class='left'>支付金额</text>
+        <text class='right'>{{order.PayMoney}}</text>
+      </view>
+      <view class='order-li'>
+        <text class='left'>支付时间</text>
+        <text class='right'>{{order.PayTime}}</text>
+      </view>
+    </view>
+  </view>
+</view>

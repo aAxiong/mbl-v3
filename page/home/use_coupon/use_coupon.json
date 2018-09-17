@@ -1,0 +1,5 @@
+{
+  "usingComponents":{
+    "coupon_ic":"/components/coupon_ic/coupon_ic"
+  }
+}

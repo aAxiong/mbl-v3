@@ -1,0 +1,47 @@
+
+page{
+  background: #f8f8f8;
+}
+
+.coupon .head{
+  padding: 30rpx 40rpx;
+  font-size: 36rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #e8e8e8;
+}
+
+.coupon-info{
+  margin-bottom: 30rpx;
+}
+
+.coupon .content{
+  padding-bottom: 30rpx;
+  background: #fff;
+}
+
+.coupon .content .order-li,.coupon .content .order-li-coupon{
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx 30rpx 0;
+  vertical-align: middle;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.coupon .content .order-li-coupon .left{
+  display: inline-block;
+  width: 30%;
+  line-height: 44rpx;
+}
+
+.coupon .content .order-li-coupon .right{
+  display: inline-block;
+  line-height: 44rpx;
+  width: 70%
+}
+
+.coupon .content .order-li .left,.coupon .content .order-li .right{
+  display: inline-block;
+  width: 50%;
+  line-height: 44rpx;
+}

@@ -1,0 +1,13 @@
+
+<view class="pay-complete">
+  <view class='pay-prompt'>
+    <image class='icon' src='/images/icon/pay_success.png'></image>
+    <view class='prompt'>订单支付成功!</view>
+  </view>
+  <view class='pay-bottom'>
+    <view class='btn' bindtap='completeTap'>完成</view>
+    <view class='prompt'>
+      到 "我的-团购订单" 里可查看券码
+    </view>
+  </view>
+</view>

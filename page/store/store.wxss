@@ -1,0 +1,90 @@
+
+.store-info-list .store-info{
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #ececec;
+}
+
+.store-info-list .store-info .info-icon{
+  flex: 0 0 54rpx;
+  width: 54rpx;
+}
+
+.store-info-list .store-info .info-icon image{
+  width: 54rpx;
+  height: 54rpx;
+}
+
+.store-info-list .store-info .info-text{
+  flex: 1;
+  padding: 0 10rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  font-size: 36rpx;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.store-info-list .store-info .info-arrow{
+  flex: 0 0 30rpx;
+  width: 30rpx;
+  margin-top: 6rpx;
+}
+
+.store-info-list .store-info .info-arrow image{
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
+}
+
+.store-info-content .store-pic-title{
+  padding: 30rpx 20rpx;
+  border-top: 20rpx solid #f8f8f8;
+}
+
+.store-info-content .store-pic-title .store{
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: -2rpx;
+  vertical-align: middle;
+}
+
+.store-info-content .store-pic-title .text{
+  vertical-align: top;
+  line-height: 40rpx;
+  font-size: 32rpx;
+  color: #000;
+  font-weight: bold;
+}
+
+.store-info-content .pic-wrapper .pic{
+  display: inline-block;
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 4rpx;
+  overflow: hidden
+}
+
+.store-info-content .pic-wrapper image{
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.store-info-content .store-intro{
+  margin: 20rpx;
+  font-size: 36rpx;
+  color: #000;
+  font-weight: bold;
+}
+
+.store-info-content .store-intro-text{
+  margin: 0 30rpx;
+  font-size: 28rpx;
+  line-height: 38rpx;
+  color: #666;
+  font-weight: 400;
+}
+

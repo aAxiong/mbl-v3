@@ -1,0 +1,24 @@
+
+<view class="shop-detail-wrapper" hidden='{{mask}}'>
+  <view class='detail-image'>
+    <image mode='aspectFill' src='{{imgUrl}}{{shopDetail.ImgPath}}'></image>
+  </view>
+  <view class='detail-intro'>
+    <view class='left'>
+      <text class='name'>{{shopDetail.ProductName}}</text>
+    </view>
+    <view class='right'>
+      <image src='/images/icon/share.png'></image>
+      <!-- <text class='share'>分享</text> -->
+      <button open-type='share' class='share' plain='true'>分享</button>
+    </view>
+  </view>
+  <view class='price-wrapper'>
+    <text class='price'>￥{{shopDetail.Money}}</text>
+  </view>
+  <view class='bg-line'></view>
+  <view class='detail-text'>
+    <view class='title'>简介:</view>
+    <text class='section'>{{shopDetail.Describe}}</text>
+  </view>
+</view>

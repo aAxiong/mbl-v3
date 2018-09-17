@@ -1,0 +1,25 @@
+
+<view class="order-wrapper" hidden='{{mask}}'>
+  <view class='order-list'>
+    <block wx:for="{{orderList}}" wx:key="index">
+      <view class='order-used' data-idx="{{index}}" bindtap='orderDetail'>
+        <view class='order-left'>
+          <view class='icon'>
+            <image src='/images/icon/m_store.png'></image>
+          </view>
+          <view class='order-info'>
+            <view class='name'>{{storeName}}</view>
+            <view class='date'>{{item.PayTime}}</view>
+          </view>
+        </view>
+        <view class='order-right'>
+          <text class='price'>{{item.PayMoney}}元</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='order-none' wx:if="{{orderList.length == 0}}">
+    <image src='/images/icon/none_coupon.png'></image>
+    <view class='text'>暂无订单</view>
+  </view>
+</view>

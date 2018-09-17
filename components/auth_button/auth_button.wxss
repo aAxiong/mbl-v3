@@ -1,0 +1,80 @@
+/* components/auth_button/auth_button.wxss */
+
+.authBox {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 999;
+}
+
+.authBox .btnFlex {
+  width: 80%;
+  z-index: 99;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.authBox .btnFlex .btnBox {
+  background: #fff;
+  width: 100%;
+  border-radius: 5rpx;
+}
+
+.authBox .btnFlex .btnBox .btn button:first-child {
+  border-right: 1rpx solid #ccc;
+  border-bottom-left-radius: 5rpx;
+}
+
+.authBox .btnFlex .btnBox .btn button:last-child {
+  border-right: 1rpx solid #ccc;
+  border-bottom-right-radius: 5rpx;
+  color: #4dca32;
+}
+
+.authBox .btnFlex .btnBox .tit {
+  text-align: center;
+  color: #ababab;
+  font-size: 30rpx;
+  height: 130rpx;
+  line-height: 130rpx;
+}
+
+.authBox .btnFlex .btnBox .btn {
+  display: flex;
+  justify-content: center;
+  border-top: 1rpx solid #ccc;
+}
+
+.authBox .btnFlex .btnBox .btn button {
+  flex: 1;
+  width: 50%;
+  border: 0 none;
+  background: #fff;
+  padding: 0;
+  border-radius: 0;
+  font-size: 32rpx;
+  height: 94rpx;
+  line-height: 94rpx;
+}
+
+.authBox .btnFlex .btnBox .btn button::after {
+  border: 0;
+}
+
+.authBox .btnFlex .btnBox .btn button:active {
+  background: #f1f1f1;
+}
+
+.black {
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

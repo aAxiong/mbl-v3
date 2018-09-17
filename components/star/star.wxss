@@ -1,0 +1,5 @@
+.star-num-wrap .star-icon{
+  width: 22rpx;
+  height: 28rpx;
+  margin-right: 8rpx;
+}

@@ -1,0 +1,45 @@
+
+<view class='coupon-used' hidden='{{isShow}}'>
+  <view class='coupon'>
+    <view class='head'>订单信息</view>
+    <view class='content'>
+      <view class='order-li'>
+        <text class='left'>{{order.CommodityName}}</text>
+        <text class='right'></text>
+      </view>
+      <view class='order-li'>
+        <text class='left'>数量</text>
+        <text class='right'>{{order.CommodityNum}}份</text>
+      </view>
+      <view class='order-li'>
+        <text class='left'>订单号</text>
+        <text class='right'>{{order.OrderID}}</text>
+      </view>
+      <view class='order-li'>
+        <text class='left'>订单金额</text>
+        <text class='right'>￥{{order.Money}}</text>
+      </view>
+      <view class='order-li'>
+        <text class='left'>下单时间</text>
+        <text class='right'>{{order.CreateTime}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='coupon'>
+    <view class='head'>退款信息</view>
+    <view class='content'>
+      <view class='order-li'>
+        <text class='left'>退款状态</text>
+        <text class='right'>已退款</text>
+      </view>
+      <view class='order-li'>
+        <text class='left'>退款金额</text>
+        <text class='right'>￥{{order.RefundMoney}}</text>
+      </view>
+      <view class='order-li'>
+        <text class='left'>退款时间</text>
+        <text class='right'>{{order.RefundTime}}</text>
+      </view>
+    </view>
+  </view>
+</view>
