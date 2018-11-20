@@ -2,12 +2,12 @@
   <view class="header">
     <view class="content-wrapper">
       <view class="logo">
-        <image src="/images/store/logo@2x.png"></image>
+        <image src="{{imgUrl}}{{storeInfo.LogoImage}}"></image>
       </view>
       <view class="textbox">
-        <view class="titile">真功夫（上合门店）</view>
+        <view class="titile">{{storeInfo.StoreName}}</view>
         <view class="procuct">
-          <text>简介：</text>本店是自开张以来啊，那顾 客是络绎不绝,弄的附近几家店是冷 冷清清...
+          <text>简介：</text>{{storeInfo.IntroductionContent}}
         </view>
       </view>
     </view>
@@ -26,40 +26,35 @@
 </view>
 <view class="container">
   <view class="newActives" wx:if='{{navbarActive==0}}'>
-    <view class="li">
+    <view class="li" wx:for='{{activeList}}'>
       <view class="head">
         <view class="imgbox">
-          <image src="/images/store/logo@2x.png"></image>
+          <image src="{{imgUrl}}{{storeInfo.LogoImage}}"></image>
         </view>
-        <view class="text">真功夫</view>
+        <view class="text">{{storeInfo.StoreName}}</view>
         <!-- <view class="shareIcon">
           <image src="/images/store/logo@2x.png"></image>
         </view> -->
       </view>
       <view class="textbox">
-        出新啦~出新啦~真功夫（上合门店 特此推出《香辣 牛肉》美味菜品，由36种配料研制而成。
+        {{item.DynamicContent}}
       </view>
       <view class="photobox">
-        <image src="/images/store/sucai1@2x.png"></image>
-        <image src="/images/store/sucai1@2x.png"></image>
-        <image src="/images/store/sucai1@2x.png"></image>
-        <image src="/images/store/sucai1@2x.png"></image>
-        <image src="/images/store/sucai1@2x.png"></image>
-        <image src="/images/store/sucai1@2x.png"></image>
+        <image src="{{imgUrl}}{{imgItem.ImgPath}}" wx:for="{{item.ImgPathList}}" wx:for-index='childIndex' wx:key="indexs" wx:for-item='imgItem' data-url="{{imgItem.ImgPath}}" data-index='{{index}}' bindtap='activeImgsTap'></image>
       </view>
       <view class="toolbar">
-        <view class="date">2018-09-18
-          <text>两小时前发布</text>
+        <view class="date">{{item.CreateTime}}
         </view>
         <view class="goods">
-          <image src="/images/store/weidianzan@2x.png"></image>
-          <text>20</text>
+          <image src="/images/store/weidianzan@2x.png" wx:if='{{item.IsGiveALike==0}}' data-index='0' data-id='{{item.DynamicInfoID}}' bindtap='goodTap'></image>
+          <image src="/images/store/dianzan@2x.png" data-index='1' data-id='{{item.DynamicInfoID}}' bindtap='goodTap' wx:else></image>
+          <text>{{item.GiveALikeNumber}}</text>
         </view>
       </view>
     </view>
 
   </view>
   <view class="storePhoto" wx:if='{{navbarActive==1}}'>
-    <image src="/images/store/sucai1@2x.png"></image>
+    <image mode='aspectFill' src='{{imgUrl}}{{item.Path}}' wx:for="{{storeImgs}}" wx:key="index" data-url="{{item.Path}}" bindtap='prevImgsTap '></image>
   </view>
 </view>

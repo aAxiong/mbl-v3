@@ -52,7 +52,7 @@
 .header .content-wrapper .textbox .titile {
   font-size: 41.87rpx;
   color: #fff;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 }
 
 .header .content-wrapper .textbox .procuct text {
