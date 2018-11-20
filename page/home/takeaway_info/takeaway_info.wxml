@@ -30,7 +30,7 @@
         <view class="tit">{{item.OptionsName}}:</view>
         <view class="box">
           <view wx:for="{{item.OptionsValueList}}" wx:for-item='opItem' wx:for-index='childIndex' wx:key="{{index}}" catchtap='tasteTap' data-taste="{{opItem.OptonsValue}}" data-paindex='{{index}}' data-index='{{childIndex}}' data-id="{{opItem.LableID}}" class='{{opItem.check==true ? "active":""}}'>{{opItem.OptonsValue}}</view>
-        </view>.
+        </view>
       </view>
 
     </view>
