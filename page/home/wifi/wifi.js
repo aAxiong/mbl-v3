@@ -1,5 +1,6 @@
-
-import {Wifi} from 'wifi_model.js'
+import {
+  Wifi
+} from 'wifi_model.js'
 var wifi = new Wifi()
 
 Page({
@@ -8,20 +9,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    wifiList:[],
-    sucimg:null,
-    isWifi:null,
-    mask:true,
-    platform:'',
-    system:'',
-    wifiName:'',
-    isFirst:true
+    wifiList: [],
+    sucimg: null,
+    isWifi: null,
+    mask: true,
+    platform: '',
+    system: '',
+    wifiName: '',
+    isFirst: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     wx.setNavigationBarTitle({
       title: '一键WIFI',
     })
@@ -30,12 +31,12 @@ Page({
     let system = wx.getSystemInfoSync().system
     this.setData({
       platform: platform,
-      system:system
+      system: system
     })
     this._loadWifi()
     //监测网络变化
     wx.startWifi({
-      success:(res)=>{
+      success: (res) => {
         //监测wifi变化
         wx.onWifiConnected((res) => {
           let ssid = res.wifi.SSID
@@ -54,23 +55,23 @@ Page({
         })
       }
     })
-    wx.onNetworkStatusChange((res)=>{
-      if(res.networkType != 'wifi'){
+    wx.onNetworkStatusChange((res) => {
+      if (res.networkType != 'wifi') {
         this.setData({
-          sucimg:null
+          sucimg: null
         })
       }
     })
   },
   //加载wifi数据
-  _loadWifi(){
+  _loadWifi() {
     wx.showLoading({
       title: '加载中...',
     })
-    wifi.getWifiData((res)=>{
+    wifi.getWifiData((res) => {
       this.setData({
-        wifiList:res.WifiList,
-        mask:false
+        wifiList: res.WifiList,
+        mask: false
       })
       wx.hideLoading()
       this.isWfiConnect()
@@ -82,7 +83,7 @@ Page({
     })
   },
   //检测已连接的wifi是否在列表中
-  isWfiConnect(){
+  isWfiConnect() {
     wx.startWifi({
       success: (res) => {
         wx.getConnectedWifi({
@@ -91,19 +92,19 @@ Page({
               if (item.WiFiName == res.wifi.SSID) {
                 this.setData({
                   sucimg: index,
-                  isFirst:false
+                  isFirst: false
                 })
               }
             })
           },
           fail: (res) => {
             if (this.data.platform == 'android') {
-              if (res.errCode == '12004'){
+              if (res.errCode == '12004') {
                 this.wifiTipTap()
-              } else if (res.errCode == '12005'){
+              } else if (res.errCode == '12005') {
                 this.wifiTipTap()
-              } 
-             
+              }
+
             }
           }
         })
@@ -111,20 +112,20 @@ Page({
     })
   },
   //检查是否为wifi
-  isWifiType(){
+  isWifiType() {
     wx.getNetworkType({
-      success:(res)=>{
+      success: (res) => {
         let networkType = res.networkType
-        if(networkType != 'wifi'){
+        if (networkType != 'wifi') {
           this.setData({
-            isWifi:false
+            isWifi: false
           })
           wx.showToast({
             title: '请先确保wifi开关',
-            icon:'none',
-            duration:1500
+            icon: 'none',
+            duration: 1500
           })
-        }else{
+        } else {
           if (this.data.wifiList.length === 1) {
             this.wifiConnect(0)
           }
@@ -136,11 +137,11 @@ Page({
     })
   },
   //检测连接wifi
-  startConnectWifi(e){ 
+  startConnectWifi(e) {
     let tapIndex = e.currentTarget.dataset.idx
-    if (wx.startWifi){
+    if (wx.startWifi) {
       this.wifiConnect(tapIndex)
-    }else{
+    } else {
       wx.showModal({
         title: '提示',
         content: '微信版本过低或手机版本不支持'
@@ -148,30 +149,29 @@ Page({
     }
   },
   //连接wifi
-  wifiConnect(e){
+  wifiConnect(e) {
     let _self = this
     let wifi = this.data.wifiList
     let tapIndex = e
     wx.startWifi({
-      success: function (res) {
+      success: function(res) {
         //ios系统仅支持11及以上版本
         let iosSystem = parseInt(_self.data.system.substr(4))
-        if (_self.data.platform == 'ios' && iosSystem >= 11){
+        if (_self.data.platform == 'ios' && iosSystem >= 11) {
           wx.showLoading({
             title: '连接中...',
           })
-        } else if (iosSystem < 11){
-          _self.msgToast('适用于系统版本为11.0.0以上')
+        } else if (iosSystem < 10) {
+          _self.msgToast('适用于系统版本为10.0.0以上')
           return
         }
-        //android系统不支持版本6以下
+        //android系统不支持版本4以下
         let androidSystem = parseInt(_self.data.system.substr(8))
         console.log(_self.data.system, androidSystem)
-        if (_self.data.platform == 'android' && androidSystem < 6){
-          _self.msgToast('适用于系统版本为6.0.0以上')
+        if (_self.data.platform == 'android' && androidSystem < 4) {
+          _self.msgToast('适用于系统版本为4.0.0以上')
           return
         }
-
         _self.setData({
           wifiName: wifi[tapIndex].WiFiName
         })
@@ -179,9 +179,9 @@ Page({
           SSID: wifi[tapIndex].WiFiName,
           BSSID: wifi[tapIndex].bssid,
           password: wifi[tapIndex].WiFiPassWord,
-          success: function (res) {
+          success: function(res) {
             //android
-            if (_self.data.platform == 'android'){
+            if (_self.data.platform == 'android') {
               if (res.errCode == 0) {
                 wx.showToast({
                   title: 'wifi连接成功',
@@ -196,60 +196,60 @@ Page({
             }
             //ios
             if (_self.data.platform == 'ios') {
-                if(res.errMsg == 'connectWifi:ok'){
-                  _self.setData({
-                    sucimg: tapIndex
-                  })
-                  //当前wifi是否为设备连接的wifi
-                  wx.getConnectedWifi({
-                    success: (res) => {
-                      if (res.wifi.SSID != wifi[tapIndex].WiFiName) {
-                        _self.setData({
-                          sucimg: null
-                        })
-                      }
+              if (res.errMsg == 'connectWifi:ok') {
+                _self.setData({
+                  sucimg: tapIndex
+                })
+                //当前wifi是否为设备连接的wifi
+                wx.getConnectedWifi({
+                  success: (res) => {
+                    if (res.wifi.SSID != wifi[tapIndex].WiFiName) {
+                      _self.setData({
+                        sucimg: null
+                      })
                     }
-                  })
-                }else{
-                  _self.msgToast('wifi未能连接')
-                }
+                  }
+                })
+              } else {
+                _self.msgToast('wifi未能连接')
+              }
             }
           },
-          faile: function (res) {
+          faile: function(res) {
             if (res.errCode == 12002) {
               _self.msgToast('Wi-Fi密码错误')
             } else if (res.errCode == 12003) {
               _self.msgToast('Wi-Fi连接超时')
             } else {
               _self.msgToast('连接失败')
+
             }
             if (_self.data.platform == 'ios') {
               _self.msgToast('连接失败')
               wx.hideLoading()
             }
           },
-          complete: function (res) {
-            if (_self.data.platform == 'android'){
-              if(res.errCode == 0){
+          complete: function(res) {
+            if (_self.data.platform == 'android') {
+              if (res.errCode == 0) {
                 return
-              }
-              else if(res.errCode == 12002) {
+              } else if (res.errCode == 12002) {
                 _self.msgToast('Wi-Fi密码错误')
               } else if (res.errCode == 12003) {
                 _self.msgToast('Wi-Fi连接超时')
-              } else if (res.errCode == 12004){
+              } else if (res.errCode == 12004) {
                 _self.msgToast('重复连接Wi-Fi')
-              }else {
+              } else {
                 _self.msgToast('连接失败')
               }
             }
-            if (_self.data.platform == 'ios'){
+            if (_self.data.platform == 'ios') {
               wx.hideLoading()
             }
           }
         })
       },
-      fail: function (res) {
+      fail: function(res) {
         if (res.errCode == 12001) {
           _self.msgToast('当前系统不支持相关能力')
         } else if (res.errCode == 12005) {
@@ -261,20 +261,20 @@ Page({
     })
   },
   //信息提示
-  msgToast(msg){
+  msgToast(msg) {
     wx.showToast({
       title: msg,
-      icon:'none'
+      icon: 'none'
     })
   },
   //andriod wifi提示
-  wifiTipTap(){
+  wifiTipTap() {
     let _self = this
     wx.showModal({
       title: 'WIFI提示',
       content: '请确保打开wifi开关和定位开关，若没有打开，小程序wifi信息将无法与系统wifi信息同步',
-      success:(res)=>{
-        if(res.confirm){
+      success: (res) => {
+        if (res.confirm) {
           _self.isWfiConnect()
         }
       }

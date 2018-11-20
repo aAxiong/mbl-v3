@@ -1,10 +1,13 @@
 <view class='wrapper'>
   <view class='icon-wrp' bindtap='selectCancleTap'>
-    ￥{{shopData.SpecificationPrice}}
-    <text>(</text>
-    <text wx:if='{{shopData!=""}}'>{{shopData.SpecificationName}}</text>
-    <text wx:if='{{shopData1!=""}}'> {{shopData1.LableName}}</text>
-    <text>)</text>
+    <view class="textbox">
+      ￥{{shopData.SpecificationPrice}}
+      <text>(</text>
+      <text wx:if='{{shopData!=""}}'>{{shopData.SpecificationName}}</text>
+      <text wx:if='{{shopData1!=""}}'> |</text>
+      <text wx:if='{{shopData1!=""}}'> {{shopData1}}</text>
+      <text>)</text>
+    </view>
     <image class='cancle' src='/images/icon/o_cancle.png '></image>
   </view>
   <scroll-view scroll-y class="list-box">
@@ -16,11 +19,12 @@
         </block>
       </view>
     </view>
-    <view class='taste' wx:if="{{sizeTaste.LableList.length >= 1}}">
-      <view class='title'>口味</view>
+    <view class='taste' wx:for='{{sizeTaste.LableList}}'>
+      <view class='title'>{{item.OptionsName}}</view>
       <view class='select'>
-        <block wx:for="{{sizeTaste.LableList}}" wx:key="{{index}}">
-          <view catchtap='tasteTap' data-taste="{{item.LableName}}" data-idx="{{index}}" class='select-item {{tasteIndex==index? "active": ""}}'>{{item.LableName}}</view>
+        <block>
+          <view catchtap='tasteTap' wx:for="{{item.OptionsValueList}}" wx:for-item='opItem' wx:for-index='childIndex' wx:key="{{index}}" class='select-item {{opItem.check==true? "active": ""}}' data-taste="{{opItem.OptonsValue}}" data-paindex='{{index}}' data-index='{{childIndex}}'
+            data-id="{{opItem.LableID}}">{{opItem.OptonsValue}}</view>
         </block>
       </view>
     </view>

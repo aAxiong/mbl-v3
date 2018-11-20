@@ -53,12 +53,16 @@
 
 .total_page .search_page {
   width: 100%;
-  height: 1015rpx;
-  padding: 0 0 55rpx 0;
+  height: 80vh;
+  padding: 0 0 140rpx 0;
   background: #fff;
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 52;
+}
+
+.total_page .search_page.active {
   z-index: 49;
 }
 
@@ -84,7 +88,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  max-width: 140rpx;
+  max-width: 135rpx;
 }
 
 .total_page .search_page .labelBox .label_hisBox {
@@ -170,6 +174,11 @@
 .goods .foods-wrapper {
   flex: 1;
 }
+
+.goods .foods-wrapper {
+  height:486.95px;
+}
+
 
 .goods .foods-wrapper .food-list .title {
   height: 20rpx;
@@ -364,11 +373,13 @@
   position: absolute;
   top: 5rpx;
   right: -10rpx;
-  padding: 0rpx 4rpx;
-  min-width: 30rpx;
+  padding: 0rpx 2rpx;
+  min-width: 28rpx;
+  height: 33rpx;
   text-align: center;
   border-radius: 16px;
   font-size: 25.3rpx;
+  line-height: 33rpx;
   font-weight: 700;
   color: #fff;
   background: rgb(240, 20, 20);
@@ -427,7 +438,7 @@
   line-height: 96rpx;
   text-align: center;
   font-size: 32rpx;
-  //color: rgba(255, 255, 255, 0.4);
+  /* //color: rgba(255, 255, 255, 0.4); */
   color: #fff;
   font-weight: 700;
   background: #ccc;

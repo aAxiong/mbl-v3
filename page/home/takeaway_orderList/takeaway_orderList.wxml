@@ -37,6 +37,6 @@
   </view>
   <view class='order-none' wx:if="{{orderList.OrderList == 0}}">
     <image src='/images/icon/none_coupon.png'></image>
-    <view class='text'>暂无订单</view>
+    <view class='text'>暂无外卖订单</view>
   </view>
 </view>

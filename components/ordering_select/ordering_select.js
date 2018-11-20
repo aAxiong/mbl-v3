@@ -9,13 +9,12 @@ Component({
       observer(newData) { //默认选中第一个
         let initSizeId = newData.SpecificationList.length > 0 ? newData.SpecificationList[0].SpecificationID : ''
         let ins = newData.SpecificationList.length > 0 ? newData.SpecificationList[0] : ''
-        let initTasteName = newData.LableList[0] ? newData.LableList[0].LableName : ''
-        let sda = newData.LableList.length > 0 ? newData.LableList[0] : ''
+        this.selectLabelOpt()
         this.setData({
           sizeId: initSizeId,
-          tasteName: initTasteName,
+          // tasteName: initTasteName,
           shopData: ins,
-          shopData1: sda
+          shopData1: this.labelGenerate()
         })
         this.triggerEvent('moneyTriggerTap', {
           'index': 0
@@ -33,7 +32,7 @@ Component({
     sizeId: '',
     tasteName: '',
     shopData: [],
-    shopData1: []
+    shopData1: ""
   },
   /**
    * 组件的方法列表
@@ -67,17 +66,55 @@ Component({
     },
     //口味选择
     tasteTap(e) {
-      let index = e.currentTarget.dataset.idx
-      let tasteName = e.currentTarget.dataset.taste
+      let index = e.currentTarget.dataset.index
+      let paindex = e.currentTarget.dataset.paindex
+      let id = e.currentTarget.dataset.id
+      let list = this.properties.sizeTaste
+      for (var i = 0, length = list.LableList[paindex].OptionsValueList.length; i < length; i++) {
+        list.LableList[paindex].OptionsValueList[i].check = false;
+      }
+      list.LableList[paindex].OptionsValueList[index].check = true;
       this.setData({
-        tasteIndex: index,
-        tasteName: tasteName,
-        shopData1: this.properties.sizeTaste.LableList[index]
+        sizeTaste: list,
+        shopData1: this.labelGenerate()
       })
+    },
+    selectLabelOpt() { //商品详情规格标签操作
+      let list = this.properties.sizeTaste
+      for (var i = 0, length = list.LableList.length; i < length; i++) {
+        for (var j = 0, jlength = list.LableList[i].OptionsValueList.length; j < jlength; j++) {
+          if (j == 0) {
+            list.LableList[i].OptionsValueList[j].check = true;
+          } else {
+            list.LableList[i].OptionsValueList[j].check = false;
+          }
+        }
+      }
+      this.setData({
+        sizeTaste: list
+      })
+    },
+    labelGenerate() {
+      let tasteName = ""
+      let count = 0
+      let list = this.properties.sizeTaste
+      for (var i = 0, length = list.LableList.length; i < length; i++) { //口味操作 xx | xx 格式
+        for (var j = 0, jlength = list.LableList[i].OptionsValueList.length; j < jlength; j++) {
+          if (list.LableList[i].OptionsValueList[j].check == true) {
+            if (count == 0) {
+              tasteName = list.LableList[i].OptionsValueList[j].OptonsValue
+              count++
+            } else {
+              tasteName += " | " + list.LableList[i].OptionsValueList[j].OptonsValue
+            }
+          }
+        }
+      }
+      return tasteName
     },
     selectFixTap() {
       let size = this.data.sizeId
-      let taste = this.data.tasteName
+      let taste = this.data.shopData1
       if (size && (taste || this.data.sizeTaste.LableList.length === 0)) {
         this.triggerEvent('selectTriggerTap', {
           'orderSelect': true,

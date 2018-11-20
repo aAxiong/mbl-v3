@@ -44,7 +44,7 @@ Page({
       inputValue: value
     })
     for (let i = 0; i < this.data.couponList.length; i++) {
-      if (value >= this.getNumber(this.data.couponList[i].Condition)) {
+      if (value >= this.getNumber(this.data.couponList[i].Condition) && value != "") {
         this.setData({
           couponType: 4
         })
@@ -54,6 +54,7 @@ Page({
           couponType: 3
         })
       }
+
     }
     if (this.data.couponId) {
       this.setData({

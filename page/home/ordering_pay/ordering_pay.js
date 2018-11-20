@@ -168,6 +168,7 @@ Page({
     //使用优惠券获取实际支付金额
     if (app.globalData.useCouponInfo) {
       this.getOfferData(app.globalData.useCouponInfo.id, this.data.totalPrice)
+      
       this.setData({
         couponInfo: app.globalData.useCouponInfo
       })

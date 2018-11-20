@@ -30,7 +30,8 @@ page {
 .info_box  .product_info .info .name {
   font-size: 32rpx;
   color: #333;
-  width: 150rpx;
+  max-width: 310rpx;
+  min-width: 200rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -83,8 +84,9 @@ page {
 }
 
 .info_box .product_select .box view {
-  width: 160rpx;
+  min-width: 120rpx;
   height: 60rpx;
+  padding: 0 20rpx;
   background: #f4f4f4;
   border-radius: 5rpx;
   text-align: center;
@@ -157,11 +159,13 @@ page {
   position: absolute;
   top: 5rpx;
   right: -10rpx;
-  padding: 0rpx 4rpx;
-  min-width: 30rpx;
+  padding: 0rpx 2rpx;
+  min-width: 28rpx;
+  height: 33rpx;
   text-align: center;
   border-radius: 16px;
   font-size: 25.3rpx;
+  line-height: 33rpx;
   font-weight: 700;
   color: #fff;
   background: rgb(240, 20, 20);
@@ -222,7 +226,7 @@ page {
   font-size: 32rpx;
   color: rgba(255, 255, 255, 0.4);
   font-weight: 700;
-  background: #2b333b;
+  background: #ccc;
 }
 
 .shopCart .content .content-right .pay.not-enough {

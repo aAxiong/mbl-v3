@@ -1,6 +1,8 @@
 import {
   TOrderInfo
 } from 'takeaway_orderInfo_model.js'
+var QRCode = require('../../../utils/qrcode.js');
+var qrcode;
 var tOrderInfo = new TOrderInfo()
 Page({
 
@@ -120,6 +122,17 @@ Page({
           OrderDiscouponInfo: res.Datas.OrderDiscouponInfo,
           OrderProductList: res.Datas.OrderProductList
         })
+        let a = 'a'
+        if (this.data.OrderDetailInfo.OrderStatus == 3 && this.data.OrderDetailInfo.DeliveryType == 2) {
+          qrcode = new QRCode('canvas', {
+            text: this.data.OrderDetailInfo.QrCodeContent,
+            width: 150,
+            height: 150,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H,
+          });
+        }
       } else {
         wx.showToast({
           title: '加载失败',
@@ -131,6 +144,9 @@ Page({
       wx.stopPullDownRefresh()
     })
 
+  },
+  tapHandler: function(e) {
+    qrcode.makeCode(e.target.dataset.code); //用元素对应的code更新二维码
   },
   /**
    * 生命周期函数--监听页面加载

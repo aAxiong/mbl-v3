@@ -1,4 +1,3 @@
-
 <view class="ordering-wrapper">
   <view class='goods-detail'>
     <view class='title'>商品详情</view>
@@ -34,6 +33,6 @@
   </view>
   <view class='btn-wrapper'>
     <view class='btn btn-cancle' bindtap='orderCancleTap'>取消订单</view>
-    <view class='btn btn-pay' bindtap='paymentTap'>付款</view>
+    <view class='btn btn-pay' bindtap='paymentTap'>去付款</view>
   </view>
 </view>

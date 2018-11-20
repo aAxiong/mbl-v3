@@ -15,6 +15,7 @@ class Takeaway extends Base {
         Type: 1
       },
       sCallback: function(data) {
+        console.log(data)
         if (data.Status == '0') {
           data = data.Datas
           callback && callback(data)
@@ -26,10 +27,11 @@ class Takeaway extends Base {
 
   getproductData(LonLat, callback) { //商品列表
     let userid = wx.getStorageSync('userId')
+
     let params = {
       url: 'Waimai.ashx',
       data: {
-        Type: 2,
+        Type: 24,
         OpenUserID: userid,
         LonLat: LonLat
       },
@@ -97,7 +99,7 @@ class Takeaway extends Base {
     let params = {
       url: 'Waimai.ashx',
       data: {
-        Type: 5,
+        Type: 25,
         SearchKey: con
       },
       sCallback(data) {

@@ -1,6 +1,8 @@
 import {
   Home
 } from 'home_model.js'
+// var QRCode = require('../../utils/qrcode.js');
+// var qrcode;
 var home = new Home()
 var app = getApp()
 
@@ -17,37 +19,39 @@ Page({
     videoSrc: '',
     sliderImg: [],
     iconList: [{
-      icon: '/images/icon/coupon.png',
-      id: '1',
-      hander: 'couponTap',
-      name: '优惠活动'
+      icon: '/images/icon/icon-tuangou@2x.png',
+      id: '4',
+      hander: 'grouponTap',
+      name: '团购',
     }, {
-      icon: '/images/icon/wifi.png',
+      icon: '/images/icon/icon-waimai@2x.png',
+      id: '6',
+      hander: 'takeawayTap',
+      name: '配送'
+    }, {
+      icon: '/images/icon/icon-wifi@2x.png',
       id: '2',
       hander: 'wifiTap',
       name: '一键WIFI'
     }, {
-      icon: '/images/icon/pay.png',
+      icon: '/images/icon/icon-youhui@2x.png',
+      id: '1',
+      hander: 'couponTap',
+      name: '优惠活动'
+    }, {
+      icon: '/images/icon/icon-maidan@2x.png',
       id: '3',
       hander: 'payTap',
       name: '买单'
-    }, {
-      icon: '/images/icon/groupon.png',
-      id: '4',
-      hander: 'grouponTap',
-      name: '团购'
     }],
     ordering: {
-      icon: '/images/icon/ordering.png',
+      icon: '/images/icon/icon-diancan@2x.png',
       id: '5',
       hander: 'orderingTap',
       name: '点餐'
     },
     takeaway: {
-      icon: '/images/icon/takeaway.png',
-      id: '6',
-      hander: 'takeawayTap',
-      name: '外卖'
+
     },
     deskNumber: '',
     isInfo: false,
@@ -64,6 +68,19 @@ Page({
     let deskNumber = options.query || '';
     this.loadHomeData(deskNumber)
     this.videoContext = wx.createVideoContext('storeVideo')
+    // qrcode = new QRCode('canvas', {
+    //   text: "code=0000000000000",
+    //   width: 150,
+    if (this.data.totalPrice < this.data.minPrice) {
+      return;
+    } //   height: 150,
+    //   colorDark: "#000000",
+    //   colorLight: "#ffffff",
+    //   correctLevel: QRCode.CorrectLevel.H,
+    // });
+  },
+  tapHandler: function(e) {
+    qrcode.makeCode(e.target.dataset.code); //用元素对应的code更新二维码
   },
   loadHomeData(deskNumber) {
     wx.showLoading({
@@ -78,7 +95,7 @@ Page({
       let isSeat = res.IsSeat
       let list = [].concat(this.data.iconList)
       if (deskNumber && isSeat === 1) {
-        list.push(this.data.ordering)
+        list.unshift(this.data.ordering)
         wx.setStorage({
           key: 'deskNumber',
           data: deskNumber
@@ -87,14 +104,17 @@ Page({
         this.setData({
           isDeskMask: false
         })
-        //  wx.hideTabBar({})   //记得上线的时候打开
+        //   wx.hideTabBar({}) //记得上线的时候打开
       }
-      list.push(this.data.takeaway)
+      // list.push(this.data.takeaway)
+      wx.setStorageSync("VersionList", res.VersionList);
       //获取导航功能
       let iconList = []
       list.forEach((icon, idx) => {
         res.VersionList.forEach((item, index) => {
           if (icon.id == item.VersionID) {
+            icon.name = item.VersionName
+            icon.icon = item.LogoImgPath
             iconList.push(icon)
           }
         })

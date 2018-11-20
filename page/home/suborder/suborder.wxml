@@ -92,8 +92,9 @@
     </view>
     <view class="totalPrice">
       <view class="text">已选择优惠价格最高活动</view>
-      <view class="price">共计:
-        <text>￥{{totalArr.SumCommodityPrice}}</text>
+      <view class="price" w>共计:
+        <text wx:if='{{active==1}}'>￥{{totalArr.SumCommodityPrice}}</text>
+        <text wx:if='{{active==2}}'>￥{{totalArr.Money}}</text>
       </view>
     </view>
 

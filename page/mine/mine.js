@@ -14,7 +14,29 @@ Page({
     snapName: '',
     phone: '',
     isOrdering: '',
-    mask: true
+    mask: true,
+    VersionList: [],
+    iconList: [{
+      icon: '/images/icon/m_groupon.png',
+      id: '4',
+      hander: 'mineGroupon',
+      name: '团购订单'
+    }, {
+      icon: '/images/icon/m_order.png',
+      id: '3',
+      hander: 'mineOrder',
+      name: '线下订单'
+    }, {
+      icon: '/images/icon/m_takeaway.png',
+      id: '6',
+      hander: 'mineTakeaway',
+      name: '外卖订单'
+    }, {
+      icon: '/images/icon/m_ordering.png',
+      id: '5',
+      hander: 'mineOrdering',
+      name: '点餐订单'
+    }],
   },
 
   /**
@@ -102,6 +124,19 @@ Page({
   },
   onShow: function() {
     let self = this
+    let vli = wx.getStorageSync('VersionList')
+    let list = this.data.iconList
+    let iconList = []
+    list.forEach((icon, idx) => {
+      vli.forEach((item, index) => {
+        if (icon.id == item.VersionID) {
+          iconList.push(icon)
+        }
+      })
+    })
+    this.setData({
+      VersionList: iconList
+    })
     wx.getSetting({
       success(res) {
         if (!res.authSetting['scope.userInfo']) {

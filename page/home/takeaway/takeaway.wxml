@@ -5,6 +5,7 @@
   <view class="search-box {{seachPageShow==true?'active':''}}">
     <image src='/images/takeaway/search@2x.png'></image>
     <input type='text' placeholder="搜索" placeholder-class="phcolor" confirm-type="search" bindfocus="inputShow" bindconfirm="searchProduct" value="{{searchText}}"></input>
+
   </view>
   <view class="search-text" wx:if="{{seachPageShow}}" bindtap='inputHide'>
     取消</view>
@@ -54,7 +55,7 @@
         </view>
       </scroll-view>
     </view>
-    <scroll-view scroll-y="true" scroll-with-animation='true' style="height: 800rpx;" scroll-into-view="{{toView}}" class="foods-wrapper" bindscroll="rightScroll">
+    <scroll-view style='height:{{sceenHeight}}px' scroll-y="true" scroll-with-animation='true' scroll-into-view="{{toView}}" class="foods-wrapper" bindscroll="rightScroll" >
       <view wx:for="{{constants}}" class="food-list food-list-hook" wx:for-index="parentIndex" wx:key="CategoryID" id="i{{item.CategoryID}}">
         <view id="order{{parentIndex}}" class="title"></view>
         <view wx:for="{{item.ProductList}}" wx:key="{{index}}" class="food-item" wx:for-item="food" data-id="{{food.CommodityID}}" bindtap='foodDetailTap' data-idx='{{index}}' data-paidx='{{parentIndex}}'>
@@ -124,9 +125,9 @@
         <view class="shopcart-list" style="transform:translate(0, 0);" animation="{{animationData}}">
           <view class="list-header">
             <view class="title">已选商品</view>
-            <view class="emptybox">
+            <view class="emptybox" bindtap="emptyShopCart">
               <image src='/images/takeaway/delete@2x.png'></image>
-              <text class="empty" bindtap="emptyShopCart">清空</text>
+              <text class="empty">清空</text>
 
             </view>
           </view>
@@ -140,13 +141,13 @@
               <view class="cartControl-wrapper" style="bottom:10px;" wx:if="{{item.CommodityNum > 0}}">
                 <view class="cartControl">
                   <view name="fade">
-                    <view class="cart-decrease" style="display:inline-block;  line-height: 34rpx;" data-item-index="{{index}}" data-id="{{item.ShoppingCartID}}" catchtap="decreaseShopCart">
+                    <view class="cart-decrease" style="display:inline-block;  line-height: 34rpx;" data-item-index="{{index}}" data-id="{{item.ShoppingCartID}}" data-pid='{{item.CommodityID}}' catchtap="decreaseShopCart">
                       <view class="inner" style="font-size:24px;color:#00A0DC;">
                         <image src='/images/takeaway/reduce@2x.png'></image>
                       </view>
                     </view>
                     <view class="cart-count" style="display:inline-block;width:72rpx;text-align:center;font-size:33rpx;">{{item.CommodityNum}}</view>
-                    <view class="cart-add " style="font-size:24px;  line-height: 34rpx; padding:0;" data-item-index="{{index}}" data-id="{{item.ShoppingCartID}}" catchtap="addShopCart">
+                    <view class="cart-add " style="font-size:24px;  line-height: 34rpx; padding:0;" data-item-index="{{index}}" data-id="{{item.ShoppingCartID}}" data-pid='{{item.CommodityID}}' catchtap="addShopCart">
                       <image src='/images/takeaway/add@2x.png'></image>
                     </view>
                   </view>
@@ -168,7 +169,7 @@
     <image src='/images/icon/none_coupon.png'></image>
     <view class='text'>暂无商品</view>
   </view>
-  <scroll-view scroll-y class="search_page" wx:if="{{seachPageShow}}">
+  <scroll-view scroll-y class="search_page {{HotListShow==false?'active':''}}" wx:if="{{seachPageShow}}">
     <view class="labelBox" wx:if='{{HotListShow}}'>
       <view class="label_hisBox">
         <view class="tit">热门搜索</view>
@@ -206,7 +207,7 @@
               <image src='/images/takeaway/tehui.png'></image>{{food.Discount}}折</view>
             <view class="old" wx:if='{{item.Discount<=0&&item.Ishalfprice!=1}}'></view>
             <view class="now">￥{{item.Money}}
-              <text wx:if='{{item.Inventory<=10}}'>剩余{{item.Inventory}}份</text>
+              <text wx:if='{{item.Inventory<=10&&item.Inventory>0}}'>剩余{{item.Inventory}}份</text>
             </view>
           </view>
           <!--cartControl-->

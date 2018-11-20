@@ -15,7 +15,7 @@
   <view class='offer-coupon' bindtap='useCouponTap'>
     <text class='text'>优惠</text>
     <view class="hbox" wx:if="{{couponType==2||couponType==1}}">
-      <image src='/images/takeaway/half@2x.png' wx:if="{{couponType==2}}"></image>
+      <image src='/images/takeaway/discount@2x.png' wx:if="{{couponType==2}}"></image>
       <image src='/images/takeaway/fulla@2x.png' wx:else></image>
       <text>{{disCouponName}}</text>
     </view>

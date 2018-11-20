@@ -45,7 +45,8 @@
     "page/home/takeaway_orderList/takeaway_orderList",
     "page/home/takeaway_orderInfo/takeaway_orderInfo",
     "page/home/my_active/my_active",
-    "components/auth_button/auth_button"
+    "components/auth_button/auth_button",
+    "page/store_new/store"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
@@ -60,20 +61,20 @@
       {
         "pagePath": "page/home/home",
         "text": "首页",
-        "iconPath": "images/tab_bar/home.png",
-        "selectedIconPath": "images/tab_bar/home_a.png"
+        "iconPath": "images/tab_bar/icon-sy-wxz@2x.png",
+        "selectedIconPath": "images/tab_bar/icon-sy-xz@2x.png"
       },
       {
         "pagePath": "page/store/store",
         "text": "店铺",
-        "iconPath": "images/tab_bar/store.png",
-        "selectedIconPath": "images/tab_bar/store_a.png"
+        "iconPath": "images/tab_bar/icon-dp-wxz@2x.png",
+        "selectedIconPath": "images/tab_bar/icon-dp-xz@2x.png"
       },
       {
         "pagePath": "page/mine/mine",
         "text": "我的",
-        "iconPath": "images/tab_bar/mine.png",
-        "selectedIconPath": "images/tab_bar/mine_a.png"
+        "iconPath": "images/tab_bar/icon-wd-wxz@2x.png",
+        "selectedIconPath": "images/tab_bar/icon-wd-xz@2x.png"
       }
     ]
   },

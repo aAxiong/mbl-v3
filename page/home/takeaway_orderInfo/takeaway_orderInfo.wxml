@@ -1,4 +1,4 @@
-<view class="tabbox">
+<view class="tabbox {{OrderDetailInfo.OrderStatus==3&&OrderDetailInfo.DeliveryType==2?'active':''}}">
   <view class="sendBox">
     <view class="clc">
       <view class="text" wx:if='{{OrderDetailInfo.DeliveryType==1}}'>预计送达</view>
@@ -25,8 +25,9 @@
       <view class="btn" bindtap='callshop'>联系商家</view>
     </view>
     <view class="toolbar" wx:elif='{{OrderDetailInfo.OrderStatus==3&&OrderDetailInfo.DeliveryType==2}}'>
+      <view class="btn" catchtap='Reminder'>催单</view>
       <view class="btn" bindtap='callshop'>联系商家</view>
-      <view class="text">验证码：{{OrderDetailInfo.TuanGouCouponCode}}</view>
+      <!-- <view class="text">验证码：{{OrderDetailInfo.TuanGouCouponCode}}</view> -->
     </view>
     <view class="toolbar" wx:elif='{{OrderDetailInfo.OrderStatus==4}}'>
       <view class="btn" bindtap='callshop'>联系商家</view>
@@ -35,6 +36,10 @@
     <view class="toolbar" wx:else>
       <view class="btn" catchtap='Reminder'>催单</view>
       <view class="btn" bindtap='callshop'>联系商家</view>
+    </view>
+    <view class="qrcode" wx:if='{{OrderDetailInfo.OrderStatus==3&&OrderDetailInfo.DeliveryType==2}}'>
+      <canvas class='canvas' canvas-id='canvas'></canvas>
+      <view class="text">验证码：{{OrderDetailInfo.TuanGouCouponCode}}</view>
     </view>
   </view>
   <view class="mysendInfoBox" wx:if='{{OrderDetailInfo.DeliveryType==2}}'>

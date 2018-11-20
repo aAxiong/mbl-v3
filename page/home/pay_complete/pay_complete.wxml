@@ -1,4 +1,3 @@
-
 <view class="pay-complete-wrapper">
   <view class='complete-header'>
     <image src='/images/icon/pay_success.png'></image>
@@ -15,11 +14,13 @@
         <view class='bill-money'>{{orderInfo.Money}}元</view>
       </view>
       <!-- wx:if="{{orderInfo.DisMoney > 0}}" -->
-      <view class='bill-tr bill-coupon' wx:if="{{orderInfo.DisMoney > 0}}"> 
+      <view class='bill-tr bill-coupon' wx:if="{{orderInfo.DisMoney > 0}}">
         <view class='bill-type'>
-          <text wx:if="{{couponType == 1}}" class='type'>满减券</text>
-          <text wx:if="{{couponType == 2}}" class='type'>折扣券</text>
-          <text wx:if="{{couponType == 3}}" class='type'>随机减</text>
+          <text wx:if="{{couponType == 1}}" class='type'>满减</text>
+          <text wx:if="{{couponType == 2}}" class='type' style="background:#37bff2">折扣</text>
+          <text wx:if="{{couponType == 6}}" class='type' style="background:#ff6000">特惠</text>
+          <text wx:if="{{couponType == 4}}" class='type' style="background:#39cb8c">线下</text>
+          <text wx:if="{{couponType == 5}}" class='type' style="background:#ffc000">半价</text>
         </view>
         <view class='bill-name'>优惠金额：</view>
         <view class='bill-money coupon-money'>-{{orderInfo.DisMoney}}元</view>

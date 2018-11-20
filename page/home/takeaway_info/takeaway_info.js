@@ -1,4 +1,5 @@
 // const constants = require('../../../utils/constants.js')
+const util = require('../../../utils/util.js')
 import {
   TakeawayInfo
 } from 'takeaway_info_model.js'
@@ -14,11 +15,8 @@ Page({
     productyArr: [],
     customInfoList: [],
     sizeIndex: 0,
-    tasteIndex: 0,
     sizeId: '',
-    tasteid: '',
     price: '',
-    tasteName: '',
     shopData: [],
     shopData1: [],
     foodCounts: 0,
@@ -39,13 +37,32 @@ Page({
     LonLat: '',
     payClass: 0,
     authShow: true,
-    animationNum: {},
-    Proportion: ''
+    animationBall: {},
+    Proportion: '',
+    buttonClicked: true
   },
   optShopCart: function(e, opt, num) { //操作购物车+ - 清空
+    if (this.data.buttonClicked == false) return
+    this.setData({
+      buttonClicked: false
+    })
     let id = e.currentTarget.dataset.id;
     let index = e.currentTarget.dataset.itemIndex;
     let cararr = this.data.carArray;
+    let cvalue = this.data.productList;
+    let ids = this.data.commodityId;
+    for (var i = 0; i < cararr.length; i++) {
+      if (cvalue.CommodityID == ids && opt == 'add') {
+        if (cvalue.Inventory <= 0) {
+          wx.showToast({
+            title: '已经没有库存了~',
+            icon: 'none',
+            mask: true
+          })
+          return
+        }
+      }
+    }
     if (cararr[index].CommodityNum == 1 && opt == 'del') {
       cararr.splice(index, 1)
     } else if (opt == 'del') {
@@ -66,13 +83,13 @@ Page({
           totalPrice: res.Datas.SumCommodityPrice
         })
         if (num == -1 && cararr.length > 0) {
-          let length = that.data.carArray.length > 4 ? 4.4 : that.data.carArray.length
+          let length = this.data.carArray.length > 4 ? 4.4 : this.data.carArray.length
           this.setData({
             rectHeight: (this.data.Proportion * 92) + ((92 * this.data.Proportion) * length)
           })
           this.cartShow(false);
         }
-
+        this.shopCarAddJStock(opt, num)
         this.setData({
           payDesc: this.payDesc()
         })
@@ -84,19 +101,25 @@ Page({
           mask: true
         })
       }
+      this.setData({
+        buttonClicked: true
+      })
     })
   },
-  addShopCart: function(e) { //添加购物车 +号
-    this.optShopCart(e, "add", 1)
-  },
-  decreaseShopCart: function(e) { //减少购物车产品 -号
-    this.optShopCart(e, "del", -1)
-  },
+  addShopCart: util.throttle(function(e) {
+    //添加购物车 +号
+    this.optShopCart(e, "add", 1);
+  }, 700),
+  decreaseShopCart: util.throttle(function(e) {
+    //减少购物车产品 -号
+    this.optShopCart(e, "del", -1);
+  }, 700),
   emptyShopCart: function(e) { //清空购物车
     let id = "";
     let cararr = this.data.carArray;
     takeawayInfo.operateCart(id, "empty", (res) => {
       if (res.Status === 0) {
+        this.shopCarAddJStock("empty", "")
         cararr = [];
         this.setData({
           carArray: cararr,
@@ -143,21 +166,49 @@ Page({
     if (this.data.productList.Inventory <= 0) {
       return
     }
+    let that = this;
+    let tasteName = '';
+    let count = 0;
+    let list = this.data.productList
     wx.showLoading({
       title: '正在加入购物车...',
       mask: true
     })
-    takeawayInfo.addCart(this.data.commodityId, this.data.sizeId, this.data.tasteName, 1, (res) => {
+    var an = wx.createAnimation({
+      duration: 300, // 以毫秒为单位  
+      timingFunction: 'linear',
+      delay: 100,
+      transformOrigin: '50% 50%'
+    });
+
+    for (var i = 0, length = list.LableList.length; i < length; i++) { //口味操作 xx | xx 格式
+      for (var j = 0, jlength = list.LableList[i].OptionsValueList.length; j < jlength; j++) {
+        if (list.LableList[i].OptionsValueList[j].check == true) {
+          if (count == 0) {
+            tasteName = list.LableList[i].OptionsValueList[j].OptonsValue
+            count++
+          } else {
+            tasteName += " | " + list.LableList[i].OptionsValueList[j].OptonsValue
+          }
+
+        }
+      }
+    }
+    takeawayInfo.addCart(this.data.commodityId, this.data.sizeId, tasteName, 1, (res) => {
       if (res.Status === 0) {
         wx.hideLoading()
         this.setData({
           totalCount: res.Datas.SumCommodityNum,
           totalPrice: res.Datas.SumCommodityPrice,
         })
+        an.scale(1.15).step();
+        an.scale(1).step();
         this.setData({
-          payDesc: this.payDesc()
+          payDesc: this.payDesc(),
+          animationBall: an.export()
         })
         // this.loadCartData()
+        this.addJStock();
       } else {
         wx.showToast({
           title: '添加失败',
@@ -179,8 +230,13 @@ Page({
       this.setData({
         payClass: 0
       })
-      let diff = minPrice - this.data.totalPrice;
-      return '还差' + diff + '元起送';
+      let diff = String(minPrice - this.data.totalPrice)
+      if (diff.indexOf('.') > -1) {
+        if (diff.split('.')[1].length > 2) {
+          diff = parseFloat(diff).toFixed(2);
+        }
+      }
+      return '还差' + diff + '元';
     } else {
       this.setData({
         payClass: 1
@@ -268,14 +324,19 @@ Page({
     })
   },
   tasteTap: function(e) {
-    let index = e.currentTarget.dataset.idx
-    let sizeId = e.currentTarget.dataset.tasteid
-    let taste = e.currentTarget.dataset.taste
+    let index = e.currentTarget.dataset.index
+    let paindex = e.currentTarget.dataset.paindex
+    let id = e.currentTarget.dataset.id
+    let list = this.data.productList
+    for (var i = 0, length = list.LableList[paindex].OptionsValueList.length; i < length; i++) {
+      list.LableList[paindex].OptionsValueList[i].check = false;
+    }
+    list.LableList[paindex].OptionsValueList[index].check = true;
     this.setData({
-      tasteIndex: index,
-      tasteid: sizeId,
-      tasteName: taste
+      productList: list
     })
+
+
   },
   userAuth(id) {
     let that = this;
@@ -320,7 +381,7 @@ Page({
       let sl = res.CommodityList.SpecificationList.length;
       let ll = res.CommodityList.LableList.length;
       let st = sl > 0 ? res.CommodityList.SpecificationList[0].SpecificationID : "";
-      let lt = ll > 0 ? res.CommodityList.LableList[0].LableName : "";
+      //  let lt = ll > 0 ? res.CommodityList.LableList[0].LableName : "";
       that.setData({
         productyArr: res,
         productList: res.CommodityList,
@@ -330,18 +391,34 @@ Page({
         totalCount: res.SumCommodityNum,
         totalPrice: res.SumCommodityPrice,
         sizeId: st,
-        tasteName: lt,
       })
+      this.selectLabelOpt();
       that.lookStock("productList", that.data.productList)
       that.setData({
         payDesc: that.payDesc()
       });
     })
   },
-  jumpOrder: function() {
+
+  selectLabelOpt() { //商品详情规格标签操作
+    let list = this.data.productList
+    for (var i = 0, length = list.LableList.length; i < length; i++) {
+      for (var j = 0, jlength = list.LableList[i].OptionsValueList.length; j < jlength; j++) {
+        if (j == 0) {
+          list.LableList[i].OptionsValueList[j].check = true;
+        } else {
+          list.LableList[i].OptionsValueList[j].check = false;
+        }
+      }
+    }
+    this.setData({
+      productList: list
+    })
+  },
+  jumpOrder: function() { //跳转到订单结算页面
     let totalPrice = parseFloat(this.data.totalPrice);
     let minPrice = parseFloat(this.data.minPrice);
-    if (totalPrice > minPrice) {
+    if (totalPrice >= minPrice && this.data.payClass == 1) {
       wx.navigateTo({
         url: '/page/home/suborder/suborder?deliveryFee=' + this.data.productyArr.DeliveryFee,
       })
@@ -367,19 +444,42 @@ Page({
   },
   optStock(key, value) { //操作库存 
     let carArray = this.data.carArray;
-    console.log(carArray);
-    console.log(value);
-    console.log(this.data[key])
     for (var k = 0; k < carArray.length; k++) {
       if (value.CommodityID == carArray[k].CommodityID) {
         value.Inventory = value.Inventory - carArray[k].CommodityNum;
       }
     }
-
     this.setData({
       [key]: value
     })
-    console.log(this.data[key])
+  },
+  addJStock() { //库存加减 商品列表库存加减
+    // this.lookStock("constants", this.data.constants)
+    let carArray = this.data.carArray;
+    let cvalue = this.data.productList;
+    let id = this.data.commodityId;
+    cvalue.Inventory = cvalue.Inventory - 1;
+    this.setData({
+      productList: cvalue
+    })
+  },
+  shopCarAddJStock(opt, num) { //购物车库存加减
+    let carArray = this.data.carArray;
+    let cvalue = this.data.productList;
+    let id = this.data.commodityId;
+    if (opt == "empty") { //清空操作
+      for (var k = 0; k < carArray.length; k++) {
+        if (id == carArray[k].CommodityID) {
+          cvalue.Inventory = cvalue.Inventory + carArray[k].CommodityNum;
+        }
+      }
+    } else {
+      cvalue.Inventory = cvalue.Inventory - num;
+    }
+
+    this.setData({
+      productList: cvalue
+    })
   },
   //授权
   authClcik(e) {

@@ -29,7 +29,8 @@
             线下活动
           </view>
           <view class='money' wx:if='{{item.DisType == 5}}'>
-            第二份半价
+            <view>第二份</view>
+            半价
           </view>
           <view class='money' wx:if='{{item.DisType == 6}}'>
             单品折扣
@@ -42,7 +43,7 @@
     </view>
   </view>
 </view>
-<view wx:if="{{couponList.length === 0}}" hidden='{{isShow}}' class='none-coupon'>
+<view wx:if="{{couponList.length === 0}}" class='none-coupon'>
   <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
   <view class='text'>暂无活动</view>
 </view>

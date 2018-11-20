@@ -24,10 +24,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.loadOrderData(this.data.pageIndex, -1)
+    this.loadOrderData(this.data.pageIndex, -1, 1)
   },
   //订单数据
-  loadOrderData(pageIndex, statu) {
+  loadOrderData(pageIndex, statu, s) {
     wx.showLoading({
       title: '加载中...',
     })
@@ -50,6 +50,13 @@ Page({
             isShow: false
           })
         } else {
+          if (s == 1) {
+            this.setData({
+              orderList: res.Datas.OrderList,
+              isShow: false
+            })
+            return
+          }
           this.setData({
             orderList: this.data.orderList.concat(res.Datas.OrderList),
             isShow: false
@@ -92,13 +99,14 @@ Page({
     })
   },
   onShow() {
-    let spliceIndex = this.data.spliceIndex
-    if (spliceIndex) {
-      this.data.orderList.splice(spliceIndex, 1)
-      this.setData({
-        orderList: this.data.orderList
-      })
-    }
+    this.onLoad()
+    // let spliceIndex = this.data.spliceIndex
+    // if (spliceIndex) {
+    //   this.data.orderList.splice(spliceIndex, 1)
+    //   this.setData({
+    //     orderList: this.data.orderList
+    //   })
+    // }
   },
   /**
    * 页面上拉触底事件的处理函数

@@ -51,8 +51,12 @@ Page({
   loadOrderingMenu() {
     ordering.getOrderingMenu((res) => {
       if (res.Status === 0) {
+        let menulist = [{
+          ID: -1,
+          CategoryName: '全部'
+        }]
         this.setData({
-          menuList: this.data.menuList.concat(res.Datas.CategoryList)
+          menuList: menulist.concat(res.Datas.CategoryList)
         })
       }
     })

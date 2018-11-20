@@ -1,60 +1,59 @@
-
-page{
+page {
   background: #f8f8f8;
 }
 
-.goods-info{
+.goods-info {
   display: flex;
   flex-direction: row;
   padding: 30rpx;
   background: #fff;
 }
 
-.goods-info .pic{
+.goods-info .pic {
   flex: 0 0 280rpx;
   width: 280rpx;
 }
 
-.goods-info .pic .goods-pic{
+.goods-info .pic .goods-pic {
   width: 280rpx;
   height: 180rpx;
 }
 
-.goods-info .right{
+.goods-info .right {
   flex: 1;
   margin-left: 30rpx;
 }
 
-.goods-info .right .name{
+.goods-info .right .name {
   margin-bottom: 30rpx;
   font-size: 32rpx;
   color: #333;
 }
 
-.goods-info .right .price-old{
+.goods-info .right .price-old {
   font-size: 28rpx;
   color: #999;
   text-decoration: line-through;
 }
 
-.goods-info .right .price-count{
+.goods-info .right .price-count {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.goods-info .right .price-count .price{
+.goods-info .right .price-count .price {
   display: inline-block;
   line-height: 44rpx;
   font-size: 32rpx;
   color: #fd2e2e;
 }
 
-.goods-info .right .price-count .price .sign{
+.goods-info .right .price-count .price .sign {
   font-size: 24rpx;
 }
 
-.goods-info .right .price-count .count{
+.goods-info .right .price-count .count {
   display: inline-block;
   margin-left: 10rpx;
   line-height: 44rpx;
@@ -62,37 +61,37 @@ page{
   color: #999;
 }
 
-.orders-info{
+.orders-info {
   margin-top: 30rpx;
   padding-top: 40rpx;
   background: #fff;
 }
 
-.orders-info .orders-info-li{
+.orders-info .orders-info-li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 0 40rpx 40rpx;
 }
 
-.orders-info .orders-info-li .title{
+.orders-info .orders-info-li .title {
   margin-right: 20rpx;
   font-size: 32rpx;
   color: #666;
 }
 
-.orders-info .orders-info-li .value{
+.orders-info .orders-info-li .value {
   font-size: 32rpx;
   color: #666;
 }
 
-.orders-info .orders-info-li .total-pay{
+.orders-info .orders-info-li .total-pay {
   font-size: 32rpx;
   color: #333;
   font-weight: 700;
 }
 
-.coupon{
+.coupon {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -101,37 +100,38 @@ page{
   background: #fff;
 }
 
-.coupon .title{
+.coupon .title {
   font-size: 32rpx;
   color: #333;
 }
 
-.coupon .coupon-status .use-coupon{
+.coupon .coupon-status .use-coupon {
   font-size: 32rpx;
   color: #fd2e2e;
 }
 
-.coupon .coupon-status .coupon-used{
+.coupon .coupon-status .coupon-used {
   font-size: 32rpx;
-  color: #666;
+  color: #fd2e2e;
 }
 
-.coupon .coupon-status .coupon-none{
+.coupon .coupon-status .coupon-none {
   font-size: 32rpx;
   color: #999;
 }
 
-.coupon .coupon-status .coupon-icon{
+.coupon .coupon-status .coupon-icon {
   margin-top: 4rpx;
   margin-left: 4rpx;
 }
 
-.coupon .coupon-status .coupon-icon{
+.coupon .coupon-status .coupon-icon {
   width: 36rpx;
   height: 36rpx;
+  vertical-align: sub;
 }
 
-.pay-wrapper{
+.pay-wrapper {
   display: flex;
   flex-direction: row;
   position: fixed;
@@ -142,7 +142,7 @@ page{
   background: #fff;
 }
 
-.pay-wrapper .total-money-pay{
+.pay-wrapper .total-money-pay {
   flex: 1;
   margin-left: 30rpx;
   line-height: 100rpx;
@@ -150,12 +150,12 @@ page{
   color: #333;
 }
 
-.pay-wrapper .total-money-pay .money{
+.pay-wrapper .total-money-pay .money {
   font-size: 36rpx;
   color: #fd2e2e;
 }
 
-.pay-wrapper .pay-btn{
+.pay-wrapper .pay-btn {
   flex: 0 0 280rpx;
   line-height: 100rpx;
   font-size: 36rpx;

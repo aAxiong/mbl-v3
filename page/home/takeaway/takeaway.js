@@ -1,5 +1,7 @@
 // pages/goods/goods.js
 // const constants = require('../../../utils/constants.js')
+
+const util = require('../../../utils/util.js')
 import {
   Takeaway
 } from 'takeaway_model.js'
@@ -7,6 +9,7 @@ var takeaway = new Takeaway()
 var app = getApp()
 Page({
   data: {
+    sceenHeight: '',
     HotList: [],
     // toView: '0',
     searchText: "",
@@ -27,7 +30,8 @@ Page({
     cartShow: 'none',
     status: 0,
     active: 0,
-    constants: [], // 数据
+    constants: [], // 数据,
+    mpconstants: [],
     seaconstants: [], //搜索产品数组
     toView: null, // 左 => 右联动 右scroll-into-view 所需的id
     currentLeftSelect: null, // 当前左侧选择的
@@ -59,7 +63,8 @@ Page({
     HotListShow: false,
     authShow: true,
     searchIndex: 0,
-    Proportion: ''
+    Proportion: '',
+    buttonClicked: true
   },
 
   /*规格操作 */
@@ -73,16 +78,6 @@ Page({
     let currentGoodsId = sizeTaste.CommodityID
     let that = this;
     let id = e.currentTarget.id;
-    /*小球跳动 */
-    // var query = wx.createSelectorQuery() //创建节点查询器 query
-    // query.select('#' + id).boundingClientRect() //这段代码的意思是选择Id=the-id的节点，获取节点位置信息的查询请求
-    // query.exec(function(res) {
-    //   console.log(res);
-    //   that.setData({
-    //     x: res[0].left,
-    //     y: res[0].top
-    //   })
-    // })
     if (ll === 0 && sl === 0) {
       this.setData({
         currentGoodsId: currentGoodsId,
@@ -107,15 +102,6 @@ Page({
     let sl = this.data.seaconstants[paindex].SpecificationList.length;
     let that = this;
     let id = e.currentTarget.id;
-    // var query = wx.createSelectorQuery() //创建节点查询器 query
-    // query.select('#' + id).boundingClientRect() //这段代码的意思是选择Id=the-id的节点，获取节点位置信息的查询请求
-    // query.exec(function(res) {
-    //   console.log(res);
-    //   that.setData({
-    //     x: res[0].left,
-    //     y: res[0].top
-    //   })
-    // })
     if (ll === 0 && sl === 0) {
       this.setData({
         currentGoodsId: currentGoodsId,
@@ -143,13 +129,13 @@ Page({
         return
       }
     }
-    wx.showLoading({
-      title: '正在加入购物车...',
-      mask: true
-    })
+    // wx.showLoading({
+    //   title: '正在加入购物车...',
+    //   mask: true
+    // })
     let that = this;
-    this.animationMiddleHeaderItem = wx.createAnimation({
-      duration: 1000, // 以毫秒为单位  
+    var an = wx.createAnimation({
+      duration: 300, // 以毫秒为单位  
       timingFunction: 'linear',
       delay: 100,
       transformOrigin: '50% 50%'
@@ -164,10 +150,13 @@ Page({
         })
         /*小球跳动*/
         // this.touchOnGoods();
-        // that.animationBall.scale(1.15).step();
+        an.scale(1.15).step();
+        an.scale(1).step();
         this.setData({
-          payDesc: this.payDesc()
+          payDesc: this.payDesc(),
+          animationBall: an.export()
         })
+        this.addJStock();
         // this.loadCartData()
       } else {
         wx.showToast({
@@ -182,9 +171,25 @@ Page({
   /*购物车操作 */
   optShopCart: function(e, opt, num) { //操作购物车+ - 清空
     let id = e.currentTarget.dataset.id;
+    let pid = e.currentTarget.dataset.pid
     let that = this;
+    let cvalue = this.data.constants;
     let index = e.currentTarget.dataset.itemIndex;
     let cararr = this.data.carArray;
+    for (var i = 0; i < cvalue.length; i++) {
+      for (var j = 0; j < cvalue[i].ProductList.length; j++) {
+        if (cvalue[i].ProductList[j].CommodityID == pid && opt == 'add') {
+          if (cvalue[i].ProductList[j].Inventory <= 0) {
+            wx.showToast({
+              title: '已经没有库存了~',
+              icon: 'none',
+              mask: true
+            })
+            return
+          }
+        }
+      }
+    }
     if (cararr[index].CommodityNum == 1 && opt == 'del') {
       cararr.splice(index, 1)
     } else if (opt == 'del') {
@@ -194,6 +199,7 @@ Page({
       cararr[index].CommodityPrice = (parseFloat(cararr[index].UnitPrice) + parseFloat(cararr[index].CommodityPrice)).toFixed(2)
       cararr[index].CommodityNum += num
     }
+
     takeaway.operateCart(id, opt, (res) => {
       if (res.Status === 0) {
         if (cararr.length <= 0) {
@@ -204,7 +210,6 @@ Page({
           totalCount: res.Datas.SumCommodityNum,
           totalPrice: res.Datas.SumCommodityPrice
         })
-
         if (num == -1 && cararr.length > 0) {
           let length = that.data.carArray.length > 4 ? 4.4 : that.data.carArray.length
           this.setData({
@@ -212,13 +217,11 @@ Page({
           })
           this.cartShow(false);
         }
-
-
         this.setData({
           payDesc: this.payDesc()
         })
-
-        // this.loadCartData()
+        this.shopCarAddJStock(pid, opt, num)
+        // this.loadCartData() 3571204333494075392
       } else {
         wx.showToast({
           title: '操作失败',
@@ -228,17 +231,20 @@ Page({
       }
     })
   },
-  addShopCart: function(e) { //添加购物车 +号
-    this.optShopCart(e, "add", 1)
-  },
-  decreaseShopCart: function(e) { //减少购物车产品 -号
-    this.optShopCart(e, "del", -1)
-  },
+  addShopCart: util.throttle(function(e) {
+    //添加购物车 +号
+    this.optShopCart(e, "add", 1);
+  }, 700),
+  decreaseShopCart: util.throttle(function(e) {
+    //减少购物车产品 -号
+    this.optShopCart(e, "del", -1);
+  }, 700),
   emptyShopCart: function(e) { //清空购物车
     let id = "";
     let cararr = this.data.carArray;
     takeaway.operateCart(id, "empty", (res) => {
       if (res.Status === 0) {
+        this.shopCarAddJStock("", "empty", "")
         cararr = [];
         this.setData({
           carArray: cararr,
@@ -295,8 +301,13 @@ Page({
       this.setData({
         payClass: 0
       })
-      let diff = minPrice - this.data.totalPrice;
-      return '还差' + diff + '元起送';
+      let diff = String(minPrice - this.data.totalPrice)
+      if (diff.indexOf('.') > -1) {
+        if (diff.split('.')[1].length > 2) {
+          diff = parseFloat(diff).toFixed(2);
+        }
+      }
+      return '还差' + diff + '元';
     } else {
       this.setData({
         payClass: 1
@@ -492,7 +503,6 @@ Page({
     let that = this;
     wx.getLocation({
       success: function(res) {
-        wx.hideLoading();
         that.setData({
           LonLat: res.longitude + "," + res.latitude
         })
@@ -526,9 +536,12 @@ Page({
     takeaway.getproductData(that.data.LonLat, (res) => {
       that.data.constants = res.CommodityList;
       //停止刷新
-      wx.stopPullDownRefresh()
-      if (res.CommodityList.length <= 0) {
+      setTimeout(() => {
+        wx.stopPullDownRefresh()
         wx.hideLoading();
+      }, 500)
+      if (res.CommodityList.length <= 0) {
+
         wx.showToast({
           title: '暂无商品',
           icon: 'none',
@@ -543,6 +556,7 @@ Page({
       } else {
         that.setData({
           constants: res.CommodityList,
+          mpconstants: res.CommodityList,
           currentLeftSelect: "i" + that.data.constants[0].CategoryID,
           eachRightItemToTop: that.getEachRightItemToTop(),
           productyArr: res,
@@ -670,7 +684,7 @@ Page({
   jumpOrder: function() {
     let totalPrice = parseFloat(this.data.totalPrice);
     let minPrice = parseFloat(this.data.minPrice);
-    if (totalPrice >= minPrice) {
+    if (totalPrice >= minPrice && this.data.payClass == 1) {
       this.cartShow(true);
       wx.navigateTo({
         url: '/page/home/suborder/suborder?deliveryFee=' + this.data.productyArr.DeliveryFee,
@@ -700,11 +714,11 @@ Page({
         // let RIGHT_ITEM_HEIGHT = res.windowWidth / 750 * 20;
         self.setData({
           Proportion: res.windowWidth / 750,
+          sceenHeight: res.windowHeight - res.windowWidth / 750 * 400,
         })
 
       },
     })
-    console.log(this.data.Proportion);
     // 页面初始化 options为页面跳转所带来的参数
     this.busPos = {};
     this.busPos['x'] = 45; //购物车的位置
@@ -748,6 +762,7 @@ Page({
   },
   optStock(key, value) { //操作库存 
     let carArray = this.data.carArray;
+    let cvalue = [].concat(this.data.constants)
     for (var k = 0; k < carArray.length; k++) {
       for (var i = 0; i < value.length; i++) {
         for (var j = 0; j < value[i].ProductList.length; j++) {
@@ -762,11 +777,14 @@ Page({
     })
   },
   searoptStock(key, value) { //操作库存 搜索操作库存
-    let carArray = this.data.carArray;
-    for (var k = 0; k < carArray.length; k++) {
-      for (var i = 0; i < value.length; i++) {
-        if (value[i].CommodityID == carArray[k].CommodityID) {
-          value[i].Inventory = value[i].Inventory - carArray[k].CommodityNum;
+    let cvalue = this.data.constants;
+
+    for (var k = 0; k < cvalue.length; k++) {
+      for (var j = 0; j < cvalue[k].ProductList.length; j++) {
+        for (var i = 0; i < value.length; i++) {
+          if (value[i].CommodityID == cvalue[k].ProductList[j].CommodityID) {
+            value[i].Inventory = cvalue[k].ProductList[j].Inventory
+          }
         }
       }
     }
@@ -776,13 +794,89 @@ Page({
     })
   },
   addJStock() { //库存加减 商品列表库存加减
+    // this.lookStock("constants", this.data.constants)
+    let carArray = this.data.carArray;
+    let cvalue = this.data.constants;
+    let sealue1 = this.data.seaconstants;
+    let id = this.data.currentGoodsId;
+    for (var i = 0; i < cvalue.length; i++) {
+      for (var j = 0; j < cvalue[i].ProductList.length; j++) {
+        if (cvalue[i].ProductList[j].CommodityID == id) {
+          cvalue[i].ProductList[j].Inventory = cvalue[i].ProductList[j].Inventory - 1;
+        }
+      }
+    }
+    this.setData({
+      constants: cvalue
+    })
+    if (this.data.seachPageShow == true) { //搜索库存加减
+      for (var i = 0; i < sealue1.length; i++) {
+        if (sealue1[i].CommodityID == id) {
+          sealue1[i].Inventory = sealue1[i].Inventory - 1;
+        }
+      }
+      this.setData({
+        seaconstants: sealue1
+      })
+    }
 
   },
-  searchAddJStock() { //搜索库存加减
-
+  shopCarAddJStock(id, opt, num) { //购物车库存加减
+    let carArray = this.data.carArray;
+    let cvalue = this.data.constants;
+    // let id = this.data.currentGoodsId;
+    if (opt == "empty") { //清空操作
+      for (var k = 0; k < carArray.length; k++) {
+        for (var i = 0; i < cvalue.length; i++) {
+          for (var j = 0; j < cvalue[i].ProductList.length; j++) {
+            if (cvalue[i].ProductList[j].CommodityID == carArray[k].CommodityID) {
+              cvalue[i].ProductList[j].Inventory = cvalue[i].ProductList[j].Inventory + carArray[k].CommodityNum;
+            }
+          }
+        }
+      }
+    } else {
+      for (var i = 0; i < cvalue.length; i++) {
+        for (var j = 0; j < cvalue[i].ProductList.length; j++) {
+          if (cvalue[i].ProductList[j].CommodityID == id) {
+            cvalue[i].ProductList[j].Inventory = cvalue[i].ProductList[j].Inventory - num;
+          }
+        }
+      }
+    }
+    this.setData({
+      constants: cvalue
+    })
+    this.seashopCarAddJStock(id, opt, num)
   },
-  shopCarAddJStock() { //购物车库存加减
+  seashopCarAddJStock(id, opt, num) {
+    let carArray = this.data.carArray;
+    let sealue1 = this.data.seaconstants;
+    // let id = this.data.currentGoodsId;
+    if (this.seachPageShow == false) {
+      return
+    }
+    if (opt == "empty") { //清空操作
+      for (var k = 0; k < carArray.length; k++) {
+        for (var i = 0; i < sealue1.length; i++) {
+          if (sealue1[i].CommodityID == carArray[k].CommodityID) {
+            sealue1[i].Inventory = sealue1[i].Inventory + carArray[k].CommodityNum;
+          }
+        }
+      }
+    } else {
+      for (var i = 0; i < sealue1.length; i++) {
+        for (var j = 0; j < sealue1.length; j++) {
+          if (sealue1[i].CommodityID == id) {
+            sealue1[i].Inventory = sealue1[i].Inventory - num;
+          }
+        }
 
+      }
+    }
+    this.setData({
+      seaconstants: sealue1
+    })
   },
   onPullDownRefresh() {
     this.onShow()

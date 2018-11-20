@@ -30,13 +30,15 @@ App({
     wx.getExtConfig({
       success: function(res) {
         let config = res.extConfig
-        let miniAppsId = config.MiniAppsID //config.MiniAppsID  //3448703498688943123 3504456223506300928
+        let miniAppsId = config.MiniAppsID
+        //'3534917029020565504' '3571207309373734912''3571207309373734912' '3448703498688943123' '3504456223506300928'
         //获取用户id
         _self.globalData.miniAppsId = miniAppsId
         if (miniAppsId) {
           wx.setStorageSync('miniAppsId', miniAppsId) //miniAppsId
           auth.getUserAuth(miniAppsId, (res) => {
             wx.setStorageSync('userId', res.OpenUserID)
+
             // 添加回调返回用户id
             if (_self.userIdBack) {
               _self.userIdBack(res.OpenUserID)

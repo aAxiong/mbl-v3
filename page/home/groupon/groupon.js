@@ -63,6 +63,14 @@ Page({
             isNoneCoupon: false
           })
         } else {
+          if (pageIndex == 1) {
+            this.setData({
+              goodsList: res.Datas,
+              isShow: false,
+              isNoneCoupon: true
+            })
+            return
+          }
           this.setData({
             goodsList: this.data.goodsList.concat(res.Datas),
             isShow: false,
@@ -104,6 +112,7 @@ Page({
     }
   },
   onPullDownRefresh() {
+
     this.onLoad()
   },
   /**

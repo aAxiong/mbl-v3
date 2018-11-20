@@ -1,4 +1,3 @@
-
 <view class="shop-detail-wrapper" hidden='{{isLoad}}'>
   <view class='detail-wrapper'>
     <view class='header'>
@@ -32,7 +31,7 @@
         </view>
       </view>
     </view>
-    <view class='detail-text' wx:if="{{goodsInfo.CustomInfoList}}" wx:for="{{goodsInfo.CustomInfoList}}" wx:key="{{index}}">
+    <view class='detail-text' wx:for="{{goodsInfo.CustomInfoList}}" wx:if="{{item.Title}}" wx:key="{{index}}">
       <view class='title'>{{item.Title}}</view>
       <view class='content'>
         <view class='text-line' wx:for="{{item.Describe}}" wx:key="{{index}}">

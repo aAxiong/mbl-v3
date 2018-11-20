@@ -92,7 +92,7 @@ page {
   height: 30rpx;
 }
 
-.mine-list .mine-item:last-child {
+.mine-list > view:last-child {
   border-bottom: 0;
 }
 

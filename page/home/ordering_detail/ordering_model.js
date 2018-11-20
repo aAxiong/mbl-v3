@@ -9,7 +9,7 @@ class Ordering extends Base {
     let params = {
       url:'QRCodeOrderDishes.ashx',
       data:{
-        Type:3,
+        Type: 16,
         CommodityID:id
       },
       sCallback(data){

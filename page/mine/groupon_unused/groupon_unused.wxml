@@ -1,4 +1,3 @@
-
 <view class='coupon-used' hidden='{{isShow}}'>
   <view class='coupon coupon-info'>
     <view class='head'>团购券</view>
@@ -7,6 +6,9 @@
         <image class='icon' src='/images/icon/coupon-icon.png'></image>
         <text class='left'>券码</text>
         <text class='right'>{{order.TuanGouCouponCode}}</text>
+      </view>
+      <view class="qrcode">
+        <canvas class='canvas' canvas-id='canvas'></canvas>
       </view>
     </view>
   </view>

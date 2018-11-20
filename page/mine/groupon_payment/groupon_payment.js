@@ -1,4 +1,6 @@
-import { Pay } from 'order_model.js'
+import {
+  Pay
+} from 'order_model.js'
 var pay = new Pay()
 var app = getApp()
 
@@ -9,47 +11,50 @@ Page({
    */
   data: {
     totalPrice: '',
-    payMoney:'',
+    payMoney: '',
     orderId: '',
-    isShow:true,
+    isShow: true,
     imgUrl: app.globalData.imgUrl,
-    orderInfo: {},     //订单信息
-    couponInfo:null     //优惠券信息
+    orderInfo: {}, //订单信息
+    couponInfo: null //优惠券信息
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.loadPaymentData(options.orderId)
     //let goodsInfo = wx.getStorageSync('goodsInfo')
+    app.globalData.useCouponInfo = null
+    app.globalData.isUseCoupon = false
     this.setData({
       orderId: options.orderId
     })
   },
-  loadPaymentData(orderId){
+  loadPaymentData(orderId) {
     wx.showLoading({
       title: '加载中...',
-      mask:true
+      mask: true
     })
-    pay.getOrderData(orderId,(res)=>{
-      if(res.Status === 0){
+    pay.getOrderData(orderId, (res) => {
+      if (res.Status === 0) {
         wx.hideLoading()
         let data = res.Datas
         wx.setNavigationBarTitle({
           title: data.CommodityName,
         })
         this.setData({
-          isShow:false,
+          isShow: false,
           orderInfo: data,
           totalPrice: data.SumMoney,
           payMoney: data.PayMoney,
         })
-        if (data.DisCouponID && data.IsDisCouponExpired == '0'){
+        if (data.DisCouponID && data.IsDisCouponExpired == '0') {
           this.setData({
-            couponInfo:{
+            couponInfo: {
               id: data.DisCouponID,
-              discount: data.DisMoney
+              discount: data.DisMoney,
+              AvailableCouponsNum: res.Datas.AvailableCouponsNum
             }
           })
         }
@@ -66,10 +71,12 @@ Page({
       if (res.Status === 0) {
         wx.hideLoading()
         this.setData({
+
           payMoney: res.Datas.PayMoney,
-          couponInfo:{
+          couponInfo: {
             id: disCouponId,
-            discount: res.Datas.DisMoney
+            discount: res.Datas.DisMoney,
+            AvailableCouponsNum: res.Datas.AvailableCouponsNum
           }
         })
       }
@@ -82,7 +89,7 @@ Page({
   getUserPayParams() {
     let self = this
     wx.login({
-      success: function (res) {
+      success: function(res) {
         if (res.code) {
           let orderData = self.data.orderInfo
 
@@ -118,7 +125,7 @@ Page({
           })
         }
       },
-      fail: function () {
+      fail: function() {
         wx.showToast({
           title: '取消支付',
           icon: 'none'
@@ -136,12 +143,12 @@ Page({
       'package': data.package,
       signType: data.signType,
       paySign: data.paySign,
-      success: function (res) {
+      success: function(res) {
         wx.navigateTo({
           url: '/page/home/groupon_paycomplete/groupon_paycomplete?orderId=' + orderId + '&couponType=' + couponType,
         })
       },
-      fail: function (res) {
+      fail: function(res) {
         wx.showToast({
           title: '取消支付',
           icon: 'none',
@@ -158,12 +165,14 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     if (app.globalData.useCouponInfo) {
       this.setData({
         couponInfo: app.globalData.useCouponInfo
       })
       this.loadCouponData(app.globalData.useCouponInfo.id, this.data.orderInfo.CommodityID, this.data.orderInfo.CommodityNum)
+    } else if (app.globalData.isUseCoupon == false) {
+      return
     } else if (this.data.couponInfo) {
       this.setData({
         couponInfo: null
@@ -176,34 +185,33 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  },
+  onHide: function() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
     app.globalData.useCouponInfo = null
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

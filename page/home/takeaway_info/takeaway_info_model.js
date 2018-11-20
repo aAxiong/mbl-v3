@@ -12,7 +12,7 @@ class TakeawayInfo extends Base {
     let params = {
       url: 'Waimai.ashx',
       data: {
-        Type: 4,
+        Type: 23,
         CommodityID: id,
         OpenUserID: userid,
         DeliveryFee: 0,

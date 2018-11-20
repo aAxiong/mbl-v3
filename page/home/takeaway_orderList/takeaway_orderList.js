@@ -76,6 +76,7 @@ Page({
         title: '还不到催单时间哦~',
         mask: true
       })
+      return
     }
     tOrderList.reminder(idx, (res) => {
       console.log(res);
@@ -107,11 +108,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    wx.showLoading({
-      title: '加载中...',
-      mask: true
-    })
-    this.loadData();
+    // wx.showLoading({
+    //   title: '加载中...',
+    //   mask: true
+    // })
+    // this.loadData();
   },
 
   /**
@@ -125,7 +126,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
+    this.loadData();
   },
 
   /**

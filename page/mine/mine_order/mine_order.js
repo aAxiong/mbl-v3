@@ -59,6 +59,32 @@ Page({
       }
     })
   },
+  loadOrder1(pageSize, pageIndex) {
+    wx.showLoading({
+      title: '加载中...',
+    })
+    order.getOrder(pageSize, pageIndex, (res) => {
+      if (res.Status == 0) {
+        let newOrderList = res.Datas.OrderList
+        if (newOrderList.length === 0) {
+          this.setData({
+            mineFlag: true,
+            mask: false
+          })
+        } else {
+          this.setData({
+            orderList: newOrderList,
+            mask: false
+          })
+        }
+        setTimeout(() => {
+          wx.hideLoading()
+          //停止刷新
+          wx.stopPullDownRefresh()
+        }, 500)
+      }
+    })
+  },
   orderDetail(e) {
     let index = e.currentTarget.dataset.idx
     let order = this.data.orderList[index]
@@ -79,7 +105,7 @@ Page({
 
   },
   onPullDownRefresh() {
-    this.onLoad()
+    this.loadOrder1(10, 1)
   }
 
 })

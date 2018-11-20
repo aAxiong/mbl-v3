@@ -8,6 +8,10 @@ page {
   background: #fff3ca;
 }
 
+.tabbox.active {
+  height: 950rpx;
+}
+
 .sendBox {
   padding-top: 60rpx;
   margin-bottom: 30rpx;
@@ -437,4 +441,17 @@ page {
   text-align: center;
   line-height: 50rpx;
   font-size: 30rpx;
+}
+
+.qrcode canvas {
+  width: 300rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+}
+
+.qrcode .text {
+  color: #333;
+  font-size: 30rpx;
+  text-align: center;
+  margin-top: 10rpx;
 }

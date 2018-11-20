@@ -25,10 +25,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.loadOrdersData(this.data.status, this.data.pageIndex)
+    this.loadOrdersData(this.data.status, this.data.pageIndex, 1)
   },
   //加载订单
-  loadOrdersData(status, pageIndex) {
+  loadOrdersData(status, pageIndex, type) {
     wx.showLoading({
       title: '加载中...',
       mask: true
@@ -42,8 +42,14 @@ Page({
             isNone: false
           })
         } else {
+          let newlist;
+          if (type == 1) {
+            newlist = this.data.orderList.concat(res.Datas.OrderList)
+          } else {
+            newlist = res.Datas.OrderList
+          }
           this.setData({
-            orderList: this.data.orderList.concat(res.Datas.OrderList),
+            orderList: newlist,
             isShow: false,
             isNone: true
           })
@@ -139,7 +145,7 @@ Page({
     }
   },
   onPullDownRefresh() {
-    this.onLoad()
+    this.loadOrdersData(this.data.status, this.data.pageIndex, 0)
   },
   /**
    * 用户点击右上角分享
