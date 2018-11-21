@@ -88,6 +88,11 @@ Page({
             goodsList: this.data.goodsList.concat(res.Datas.CommodityList)
           })
         }
+        if (this.data.goodsList.length === 0) {
+          this.setData({
+            isShow: true
+          })
+        }
       }
 
     })

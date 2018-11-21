@@ -2,8 +2,8 @@ import {
   OrderDetail
 } from '../groupon_order_model.js'
 var orderDetail = new OrderDetail()
-var QRCode = require('../../../utils/qrcode.js');
-var qrcode;
+// var QRCode = require('../../../utils/qrcode.js');
+// var qrcode;
 Page({
 
   /**
@@ -32,14 +32,14 @@ Page({
           order: res.Datas.OrderDetail[0],
           isShow: false
         })
-        qrcode = new QRCode('canvas', {
-          text: this.data.order.QrCodeContent,
-          width: 150,
-          height: 150,
-          colorDark: "#000000",
-          colorLight: "#ffffff",
-          correctLevel: QRCode.CorrectLevel.H,
-        });
+        // qrcode = new QRCode('canvas', {
+        //   text: this.data.order.QrCodeContent,
+        //   width: 150,
+        //   height: 150,
+        //   colorDark: "#000000",
+        //   colorLight: "#ffffff",
+        //   correctLevel: QRCode.CorrectLevel.H,
+        // });
         wx.hideLoading()
       }
     })

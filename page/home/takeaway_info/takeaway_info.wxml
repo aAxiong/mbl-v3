@@ -35,7 +35,7 @@
 
     </view>
     <view class="product_introduce" wx:if='{{customInfoList.length>0}}'>
-      <view class="bigtit">简介:</view>
+      <!-- <view class="bigtit">简介:</view> -->
       <view wx:for='{{customInfoList}}' style="margin-bottom:25rpx;margin-left:30rpx">
         <view class="tit" wx:if='{{item.Title!=""}}'>{{item.Title}}:</view>
         <view class="tit" wx:else></view>

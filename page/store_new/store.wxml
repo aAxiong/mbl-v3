@@ -55,6 +55,6 @@
 
   </view>
   <view class="storePhoto" wx:if='{{navbarActive==1}}'>
-    <image mode='aspectFill' src='{{imgUrl}}{{item.Path}}' wx:for="{{storeImgs}}" wx:key="index" data-url="{{item.Path}}" bindtap='prevImgsTap '></image>
+    <image mode='aspectFill' src='{{imgUrl}}{{item.Path}}' wx:for="{{storeImgs}}" wx:key="index" data-url="{{item.Path}}" bindtap='prevImgsTap'></image>
   </view>
 </view>

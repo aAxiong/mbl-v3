@@ -6,9 +6,9 @@
         <text class='left'>券码：</text>
         <text class='right'>{{order.TuanGouCouponCode}}</text>
       </view>
-      <view class="qrcode">
+      <!-- <view class="qrcode">
         <canvas class='canvas' canvas-id='canvas'></canvas>
-      </view>
+      </view> -->
     </view>
   </view>
   <view class='coupon'>

@@ -57,8 +57,8 @@
             <view>{{item.CommodityName}}
             </view>
             <view class="t">
-              {{item.LabelName}}
-              <text wx:if='{{item.LabelName!=""&&item.SpeciName!=""}}'>/</text>{{item.SpeciName}}
+             {{item.SpeciName}} 
+              <text wx:if='{{item.LabelName!=""&&item.SpeciName!=""}}'>|</text> {{item.LabelName}}
             </view>
             <view> x{{item.CommodityNum}}</view>
           </view>

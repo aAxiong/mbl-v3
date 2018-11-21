@@ -33,17 +33,16 @@ page {
   /* margin-top: 10rpx; */
 }
 
-.ordering-content .goods-cart {
+.goods-cart {
   position: fixed;
   right: 0;
   bottom: 200rpx;
 }
 
-.ordering-content .goods-cart .cart {
+.goods-cart .cart {
   position: relative;
 }
-
-.ordering-content .goods-cart .cart .count {
+.goods-cart .cart .count {
   position: absolute;
   top: 20rpx;
   right: 15rpx;
@@ -56,7 +55,7 @@ page {
   line-height: 21rpx;
 }
 
-.ordering-content .goods-cart .cart .cart-icon {
+.goods-cart .cart .cart-icon {
   width: 108rpx;
   height: 108rpx;
 }

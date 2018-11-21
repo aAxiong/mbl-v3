@@ -43,6 +43,10 @@ page {
   line-height: 44rpx;
 }
 
+.coupon .content .order-li .left {
+  width: 20%;
+}
+
 .qrcode canvas {
   width: 300rpx;
   margin: 0 auto;
