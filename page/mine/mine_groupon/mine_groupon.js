@@ -28,11 +28,14 @@ Page({
     this.loadOrdersData(this.data.status, this.data.pageIndex, 1)
   },
   //加载订单
-  loadOrdersData(status, pageIndex, type) {
+  loadOrdersData(status, pageIndex, type1) {
     wx.showLoading({
       title: '加载中...',
       mask: true
     })
+    console.log(status);
+    console.log(pageIndex);
+    console.log(type1);
     groupon.getOrdersData(status, pageIndex, (res) => {
       if (res.Status === 0) {
         if (res.Datas.OrderList.length === 0) {
@@ -43,7 +46,7 @@ Page({
           })
         } else {
           let newlist;
-          if (type == 1) {
+          if (type1 == 1) {
             newlist = this.data.orderList.concat(res.Datas.OrderList)
           } else {
             newlist = res.Datas.OrderList
@@ -141,7 +144,7 @@ Page({
   onReachBottom: function() {
     if (this.data.isLoad) {
       let pageIndex = this.data.pageIndex += 1
-      this.loadOrdersData(this.data.status, pageIndex)
+      this.loadOrdersData(this.data.status, pageIndex, 1)
     }
   },
   onPullDownRefresh() {

@@ -67,7 +67,7 @@ page {
 
 .header {
   position: relative;
-  margin: 0 20rpx 25rpx;
+  margin: 0 20rpx 20rpx;
   box-shadow: 0 2rpx 18rpx 3rpx rgba(9, 9, 9, 0.1);
   border-radius: 8rpx;
   height: 390rpx;
@@ -170,8 +170,8 @@ page {
   justify-content: left;
   position: relative;
   margin: 0 auto;
-  margin-top: 22rpx;
-  margin-bottom: 20rpx;
+  margin-top: 20rpx;
+  margin-bottom: 12rpx;
   /* box-shadow: 0 2rpx 18rpx 3rpx rgba(9, 9, 9, 0.1); */
   border-radius: 10rpx;
   z-index: 99;
@@ -274,7 +274,7 @@ page {
 }
 
 .shop-content .shop .shop-intro {
-  margin: 10rpx 24rpx 0rpx;
+  margin: 10rpx 24rpx 10rpx;
 }
 
 .shop-content .shop .shop-intro .name {
