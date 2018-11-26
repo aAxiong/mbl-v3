@@ -119,7 +119,11 @@ Page({
   },
 
   onPullDownRefresh() {
-    this.onLoad()
+    this.setData({
+      pageIndex: 1
+    })
+    let pageIndex = this.data.pageIndex += 1
+    this.loadOrderData(pageIndex, this.data.curStatus)
   },
   /**
    * 用户点击右上角分享

@@ -27,7 +27,6 @@ class Takeaway extends Base {
 
   getproductData(LonLat, callback) { //商品列表
     let userid = wx.getStorageSync('userId')
-
     let params = {
       url: 'Waimai.ashx',
       data: {

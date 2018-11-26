@@ -75,8 +75,6 @@ Page({
           storeInfo: data.StoreInfo,
           mask: false
         })
-        wx.hideLoading()
-
         //设置标题
         wx.setNavigationBarTitle({
           title: data.StoreInfo.StoreName,
@@ -90,6 +88,11 @@ Page({
         this.setData({
           prevImgsList: pevImgsPath
         })
+        //停止刷新
+        setTimeout(() => {
+          wx.stopPullDownRefresh()
+          wx.hideLoading();
+        }, 500)
       }
     })
   },
@@ -103,7 +106,11 @@ Page({
         this.setData({
           activeList: data
         })
-        wx.hideLoading()
+        //停止刷新
+        setTimeout(() => {
+          wx.stopPullDownRefresh()
+          wx.hideLoading();
+        }, 500)
       }
     })
   },
@@ -138,14 +145,23 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
+    let active = this.data.navbarActive;
+    if (active == 1) {
+      this.loadStore();
+    } else {
+      this.page = 1;
+      this.loadActive();
+    }
 
   },
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-    this.page++;
-    this.loadActive();
+    if (active == 0) {
+      this.page++;
+      this.loadActive();
+    }
   },
 
 })

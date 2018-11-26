@@ -1,6 +1,7 @@
 /* page/store_new/store.wxss */
 
 .headers {
+  position: relative;
   height: 315rpx;
 }
 

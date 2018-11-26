@@ -112,8 +112,14 @@ Page({
     }
   },
   onPullDownRefresh() {
-
-    this.onLoad()
+    if (this.data.isBottom) {
+      this.setData({
+        pageIndex: 1
+      })
+      let pageIndex = this.data.pageIndex
+      let typeId = this.data.typeId
+      this.loadGoodsData(typeId, pageIndex)
+    }
   },
   /**
    * 用户点击右上角分享

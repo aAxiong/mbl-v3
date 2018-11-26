@@ -9,8 +9,8 @@
         </view>
         <view class="tool">
           <view class="info">
-            <text>{{item.UserName}}</text>
-            <text>{{item.Phone}}</text>
+            <view class="text name">{{item.UserName}}</view>
+            <view class="text">{{item.Phone}}</view>
           </view>
           <view class="toolBar">
             <image src='/images/address/updata.png' style="width:60rpx;height:42rpx;" data-idx='{{index}}' data-id='{{item.AddressID}}' catchtap='jumpEdit'></image>
@@ -32,8 +32,8 @@
         </view>
         <view class="tool">
           <view class="info">
-            <text>{{item.UserName}}</text>
-            <text>{{item.Phone}}</text>
+            <view class="text name">{{item.UserName}}</view>
+            <view class="text">{{item.Phone}}</view>
           </view>
           <view class="toolBar">
             <image src='/images/address/updata.png' style="width:60rpx;height:42rpx;" data-idx='{{index}}' data-id='{{item.AddressID}}' catchtap='jumpEdit'></image>

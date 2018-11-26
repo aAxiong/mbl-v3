@@ -55,7 +55,7 @@
         </view>
       </scroll-view>
     </view>
-    <scroll-view style='height:{{sceenHeight}}px' scroll-y="true" scroll-with-animation='true' scroll-into-view="{{toView}}" class="foods-wrapper" bindscroll="rightScroll" >
+    <scroll-view style='height:{{sceenHeight}}px' scroll-y="true" scroll-with-animation='true' scroll-into-view="{{toView}}" class="foods-wrapper" bindscroll="rightScroll">
       <view wx:for="{{constants}}" class="food-list food-list-hook" wx:for-index="parentIndex" wx:key="CategoryID" id="i{{item.CategoryID}}">
         <view id="order{{parentIndex}}" class="title"></view>
         <view wx:for="{{item.ProductList}}" wx:key="{{index}}" class="food-item" wx:for-item="food" data-id="{{food.CommodityID}}" bindtap='foodDetailTap' data-idx='{{index}}' data-paidx='{{parentIndex}}'>
@@ -99,69 +99,66 @@
     </view>
   </view>
   <!--shopCart-->
-  <view>
-    <view>
-      <view class="shopCart">
-        <view class="content">
-          <view class="content-left">
-            <view class="logo-wrapper" bindtap="toggleList">
-              <view class="logo highlight">
-                <view class="iconfont icon-gouwuche highlight"></view>
-              </view>
-              <view class="num" wx:if="{{totalCount> 0&&totalCount<999}}" animation="{{animationBall}}">{{totalCount}}</view>
-              <view class="num" animation="{{animationBall}}" wx:elif='{{totalCount>999}}'>999</view>
-            </view>
-            <view class="pricebox">
-              <view class="price highlight">共计：￥{{totalPrice}}</view>
-              <view class="desc">另需配送费{{productyArr.DeliveryFee}}元</view>
-            </view>
+  <view class="shopCart">
+    <view class="content">
+      <view class="content-left">
+        <view class="logo-wrapper" bindtap="toggleList">
+          <view class="logo highlight">
+            <view class="iconfont icon-gouwuche highlight"></view>
           </view>
-          <view class="content-right">
-            <view class="pay {{payClass==1?'enough':''}}" :class="payClass" bindtap='jumpOrder' data-index='{{payClass}}'>
-              {{payDesc}}
-            </view>
-          </view>
+          <view class="num" wx:if="{{totalCount> 0&&totalCount<999}}" animation="{{animationBall}}">{{totalCount}}</view>
+          <view class="num" animation="{{animationBall}}" wx:elif='{{totalCount>999}}'>999</view>
         </view>
-        <view class="shopcart-list" style="transform:translate(0, 0);" animation="{{animationData}}">
-          <view class="list-header">
-            <view class="title">已选商品</view>
-            <view class="emptybox" bindtap="emptyShopCart">
-              <image src='/images/takeaway/delete@2x.png'></image>
-              <text class="empty">清空</text>
-
-            </view>
-          </view>
-          <scroll-view scroll-y class="list-content">
-            <view class="shopcart-food" wx:for="{{carArray}}" wx:key="{{index}}">
-              <text class="name">{{item.CommodityName}}</text>
-              <view class="price" wx:if="{{item.CommodityNum > 0}}">
-                <span>￥{{item.CommodityPrice}}</span>
-              </view>
-              <!--cartControl-->
-              <view class="cartControl-wrapper" style="bottom:10px;" wx:if="{{item.CommodityNum > 0}}">
-                <view class="cartControl">
-                  <view name="fade">
-                    <view class="cart-decrease" style="display:inline-block;  line-height: 34rpx;" data-item-index="{{index}}" data-id="{{item.ShoppingCartID}}" data-pid='{{item.CommodityID}}' catchtap="decreaseShopCart">
-                      <view class="inner" style="font-size:24px;color:#00A0DC;">
-                        <image src='/images/takeaway/reduce@2x.png'></image>
-                      </view>
-                    </view>
-                    <view class="cart-count" style="display:inline-block;width:72rpx;text-align:center;font-size:33rpx;">{{item.CommodityNum}}</view>
-                    <view class="cart-add " style="font-size:24px;  line-height: 34rpx; padding:0;" data-item-index="{{index}}" data-id="{{item.ShoppingCartID}}" data-pid='{{item.CommodityID}}' catchtap="addShopCart">
-                      <image src='/images/takeaway/add@2x.png'></image>
-                    </view>
-                  </view>
-                </view>
-              </view>
-              <!--cartControl-->
-            </view>
-          </scroll-view>
+        <view class="pricebox">
+          <view class="price highlight">共计：￥{{totalPrice}}</view>
+          <view class="desc">另需配送费{{productyArr.DeliveryFee}}元</view>
+        </view>
+      </view>
+      <view class="content-right">
+        <view class="pay {{payClass==1?'enough':''}}" :class="payClass" bindtap='jumpOrder' data-index='{{payClass}}'>
+          {{payDesc}}
+        </view>
+      </view>
+    </view>
+    <view class="shopcart-list" style="transform:translate(0, 0);" animation="{{animationData}}">
+      <view class="list-header">
+        <view class="title">已选商品</view>
+        <view class="emptybox" bindtap="emptyShopCart">
+          <image src='/images/takeaway/delete@2x.png'></image>
+          <text class="empty">清空</text>
 
         </view>
       </view>
+      <scroll-view scroll-y class="list-content">
+        <view class="shopcart-food" wx:for="{{carArray}}" wx:key="{{index}}">
+          <text class="name">{{item.CommodityName}}</text>
+          <view class="price" wx:if="{{item.CommodityNum > 0}}">
+            <span>￥{{item.CommodityPrice}}</span>
+          </view>
+          <!--cartControl-->
+          <view class="cartControl-wrapper" style="bottom:10px;" wx:if="{{item.CommodityNum > 0}}">
+            <view class="cartControl">
+              <view name="fade">
+                <view class="cart-decrease" style="display:inline-block;  line-height: 34rpx;" data-item-index="{{index}}" data-id="{{item.ShoppingCartID}}" data-pid='{{item.CommodityID}}' catchtap="decreaseShopCart">
+                  <view class="inner" style="font-size:24px;color:#00A0DC;">
+                    <image src='/images/takeaway/reduce@2x.png'></image>
+                  </view>
+                </view>
+                <view class="cart-count" style="display:inline-block;width:72rpx;text-align:center;font-size:33rpx;">{{item.CommodityNum}}</view>
+                <view class="cart-add " style="font-size:24px;  line-height: 34rpx; padding:0;" data-item-index="{{index}}" data-id="{{item.ShoppingCartID}}" data-pid='{{item.CommodityID}}' catchtap="addShopCart">
+                  <image src='/images/takeaway/add@2x.png'></image>
+                </view>
+              </view>
+            </view>
+          </view>
+          <!--cartControl-->
+        </view>
+      </scroll-view>
 
     </view>
   </view>
+
+
   <view name="fade">
     <view class="list-mask" wx:if="{{listShow}}" bindtap="hideList"></view>
   </view>

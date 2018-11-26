@@ -148,6 +148,9 @@ Page({
     }
   },
   onPullDownRefresh() {
+    this.setData({
+      pageIndex: 1
+    })
     this.loadOrdersData(this.data.status, this.data.pageIndex, 0)
   },
   /**

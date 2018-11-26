@@ -57,10 +57,21 @@ page {
   align-items: center;
 }
 
-.validListBox .li .infoBox .tool .info text {
+.validListBox .li  .infoBox .tool .info {
+  display: flex;
+}
+
+.validListBox .li  .infoBox .tool .info .text {
   font-size: 26rpx;
   color: #666;
   margin-right: 50rpx;
+}
+
+.validListBox .li  .infoBox .tool .info .text.name {
+  width: 208rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .validListBox .li .infoBox .tool .toolBar image {
@@ -123,11 +134,22 @@ page {
   align-items: center;
 }
 
-.invalidListBox .li  .infoBox .tool .info text {
+.invalidListBox .li  .infoBox .tool .info {
+  display: flex;
+}
+
+.invalidListBox .li  .infoBox .tool .info .text {
   font-size: 26rpx;
   color: #666;
   margin-right: 50rpx;
   opacity: 0.5;
+}
+
+.invalidListBox .li  .infoBox .tool .info .text.name {
+  width: 208rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .invalidListBox .li  .infoBox .tool .toolBar image {
