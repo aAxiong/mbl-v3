@@ -2,7 +2,7 @@
 <view class="takeawayInfo_page total_page">
   <scroll-view scroll-y class="info_box">
     <view class="imagebox">
-      <image src='{{imgUrl}}{{productList.ImgPath}}' mode='aspectFill'></image>
+      <image src='{{imgUrl}}{{productList.ImgPath}}' mode='aspectFit'></image>
     </view>
     <view class="product_info">
       <view class="info">

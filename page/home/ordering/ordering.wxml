@@ -79,8 +79,7 @@
 </view>
 <view class='mask' hidden='{{isShowCart}}'></view>
 
-
-<view class='none' wx:if="{{goodsList.length >0}}">
+<view class='none' wx:if="{{goodsList.length==0}}">
   <image class='none-pic' src='/images/icon/none_coupon.png'></image>
   <view class='text'>暂无商品</view>
 </view>

@@ -1,5 +1,6 @@
 page {
   background: #f8f8f8;
+  padding-bottom: 128rpx;
 }
 
 .detail-image {
@@ -17,7 +18,7 @@ page {
 }
 
 .detail-wrapper {
-  margin-bottom: 128rpx;
+  /* margin-bottom: 128rpx; */
 }
 
 .detail-wrapper .header {

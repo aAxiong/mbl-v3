@@ -11,7 +11,7 @@
           <view>{{food.CommodityName}}</view>
           <view class="type">
             <text>{{food.Unit}}</text>
-            <text wx:if='{{food.Unit!=""&&food.LabelName!=""}}'>/</text>
+            <text wx:if='{{food.Unit!=""&&food.LabelName!=""}}'> | </text>
             <text>{{food.LabelName}}</text>
           </view>
         </view>

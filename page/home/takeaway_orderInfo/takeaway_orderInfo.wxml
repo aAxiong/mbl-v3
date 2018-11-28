@@ -101,7 +101,7 @@
             <view class="type">
               {{item.Unit}}
               <!-- <text wx:if='{{item.LabelName!=""&&item.Unit!=""}}'>/</text>{{item.LableName}} -->
-              <text wx:if='{{item.LabelName!=""&&item.Unit!=""}}'>|</text> {{item.LabelName}}
+              <text wx:if='{{item.LableName.length>0&&item.Unit.length>0}}'>|</text> {{item.LableName}}
             </view>
           </view>
           <view class="num">x{{item.CommodityNum}}</view>

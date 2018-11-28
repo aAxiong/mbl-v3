@@ -75,7 +75,8 @@ Page({
       if (res.Status === 0) {
         if (res.Datas.CommodityList.length === 0) {
           this.setData({
-            isLoad: false
+            isLoad: false,
+            isShowCart: false
           })
         }
         if (pageIndex === 1) {

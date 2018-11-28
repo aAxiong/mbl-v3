@@ -4,8 +4,8 @@
       ￥{{shopData.SpecificationPrice}}
       <text>(</text>
       <text wx:if='{{shopData!=""}}'>{{shopData.SpecificationName}}</text>
-      <text wx:if='{{shopData1!=""}}'> |</text>
-      <text wx:if='{{shopData1!=""}}'> {{shopData1}}</text>
+      <text wx:if='{{shopData1!=""&&shopData!=""}}'> | </text>
+      <text wx:if='{{shopData1!=""}}'>{{shopData1}}</text>
       <text>)</text>
     </view>
     <image class='cancle' src='/images/icon/o_cancle.png '></image>

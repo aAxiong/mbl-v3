@@ -300,6 +300,7 @@ page {
 }
 
 .orderInfo .con .productList .list .price {
+  text-align: right;
   color: #333;
   font-size: 30rpx;
   width: 100rpx;

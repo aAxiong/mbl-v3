@@ -115,26 +115,27 @@ Component({
     selectFixTap() {
       let size = this.data.sizeId
       let taste = this.data.shopData1
-      if (size && (taste || this.data.sizeTaste.LableList.length === 0)) {
-        this.triggerEvent('selectTriggerTap', {
-          'orderSelect': true,
-          'size': size,
-          'taste': taste,
-          'type': 0
-        })
-        this.setData({
-          sizeIndex: 0,
-          tasteIndex: 0,
-          sizeId: '',
-          tasteName: ''
-        })
-      } else {
-        wx.showToast({
-          title: '没选择规格或口味哦！',
-          icon: 'none',
-          mask: true
-        })
-      }
+      // if (size && (taste || this.data.sizeTaste.LableList.length === 0)) {
+      this.triggerEvent('selectTriggerTap', {
+        'orderSelect': true,
+        'size': size,
+        'taste': taste,
+        'type': 0
+      })
+      this.setData({
+        sizeIndex: 0,
+        tasteIndex: 0,
+        sizeId: '',
+        tasteName: ''
+      })
+      // } 
+      // else {
+      //   wx.showToast({
+      //     title: '没选择规格或口味哦！',
+      //     icon: 'none',
+      //     mask: true
+      //   })
+      // }
 
     }
   }

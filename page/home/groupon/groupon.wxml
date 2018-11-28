@@ -1,5 +1,5 @@
 <view class="groupon-wrapper" hidden='{{isShow}}'>
-  <view class='groupon-hader'>
+  <view class='groupon-hader' wx:if='{{menuList.length>0}}'>
     <scroll-view class='menu' scroll-x="true">
       <view bindtap='menuTap' data-idx="{{index}}" data-id="{{item.CategoryID}}" class="menu-item {{menuIndex === index ? 'active':''}}" wx:for="{{menuList}}" wx:key="{{index}}">{{item.CategoryName}}</view>
     </scroll-view>
