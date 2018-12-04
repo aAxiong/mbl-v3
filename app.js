@@ -30,7 +30,7 @@ App({
     wx.getExtConfig({
       success: function(res) {
         let config = res.extConfig
-        let miniAppsId = config.MiniAppsID // '3583475337759031296' // config.MiniAppsID //'3504456223506300928' //config.MiniAppsID
+        let miniAppsId = '3448703498688943123' //config.MiniAppsID // '3583475337759031296' // config.MiniAppsID //'3504456223506300928' //config.MiniAppsID
         //'3534917029020565504''3571207309373734912' '3448703498688943123' '3504456223506300928'
         //获取用户id
         _self.globalData.miniAppsId = miniAppsId

@@ -65,7 +65,7 @@
       <block wx:for="{{productList}}" wx:key="index">
         <view class='shop'>
           <view class='shop-image' data-id='{{item.ProductID}}' bindtap='shopdetail'>
-            <image src='{{imgUrl}}{{item.ImgPath}}'></image>
+            <image src='{{imgUrl}}{{item.ImgPath}}' mode="aspectFill" lazy-load='true'></image>
           </view>
           <view class='shop-intro'>
             <view class='name'>{{item.ProductName}}</view>

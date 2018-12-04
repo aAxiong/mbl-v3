@@ -52,7 +52,9 @@
           <view class="content-left">
             <view class="logo-wrapper">
               <view class="logo highlight">
-                <view class="iconfont icon-gouwuche highlight"></view>
+                <!-- <view class="iconfont icon-gouwuche highlight"></view> -->
+                <image src='/images/takeaway/you@2x.png' wx:if="{{totalCount> 0&&totalCount<999}}"></image>
+                <image src='/images/takeaway/wu@2x.png' wx:else></image>
               </view>
               <view class="num" wx:if="{{totalCount> 0&&totalCount<999}}" animation="{{animationBall}}">{{totalCount}}</view>
               <view class="num" animation="{{animationBall}}" wx:elif='{{totalCount>999}}'>999</view>

@@ -34,7 +34,7 @@
     </view>
   </view>
 </view>
-<view class='goods-cart'>
+<view class='goods-cart' hidden='{{iconShowCart}}'>
   <view class='cart' bindtap='goodsCartTap'>
     <image class='cart-icon' src='/images/icon/o_cart.png'></image>
     <text class='count'>{{goodsCartTotalNum}}</text>

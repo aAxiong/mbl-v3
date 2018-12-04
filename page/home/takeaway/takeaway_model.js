@@ -62,6 +62,26 @@ class Takeaway extends Base {
     }
     this.request(params)
   }
+  //商品添加购物车
+  optCart(id, size, taste, count, opt, callback) {
+    let userid = wx.getStorageSync('userId')
+    let params = {
+      url: 'Waimai.ashx',
+      data: {
+        Type: 26,
+        CommodityID: id,
+        OpenUserID: userid,
+        SpecificationID: size,
+        LabelName: taste,
+        BuyNum: count,
+        OperationType: opt
+      },
+      sCallback(data) {
+        callback && callback(data)
+      }
+    }
+    this.request(params)
+  }
   getCartData(callback) { //获取购物车数据
     let userid = wx.getStorageSync('userId')
     let params = {

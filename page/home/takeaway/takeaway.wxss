@@ -119,15 +119,13 @@
   width: 146rpx;
   height: 115rpx;
   line-height: 20px;
-  padding: 0 15rpx;
-  border-left: 4rpx solid #f8f8f8;
+  /* padding: 0 15rpx; *//* border-left: 4rpx solid #f8f8f8; */
 }
 
 .goods .menu-wrapper .menu-item.active {
   position: relative;
   z-index: 10;
-  background: #fff;
-  border-left: 4rpx solid #fd2e2e;
+  /* background: #fff; *//* border-left: 4rpx solid #fd2e2e; */
 }
 
 .goods .menu-wrapper .menu-item:current {
@@ -160,15 +158,25 @@
   font-size: 32rpx;
   border-bottom: 1px solid rgba(7, 17, 27, 0.1);
   color: #333;
+  z-index: 3;
+  padding: 0 15rpx;
 }
 
 .goods .menu-wrapper .menu-item.active .text {
-  border-bottom: 1px solid #fff;
+  /* border-bottom: 1px solid #fff; */
 }
 
-.goods .menu-wrapper .menu-item .text image {
-  width: 38rpx;
-  height: 38rpx;
+.goods .menu-wrapper .menu-item.active .activeImg {
+  position: absolute;
+  left: 0;
+  top: -17rpx;
+  width: 172rpx;
+  height: 150rpx;
+}
+
+.goods .menu-wrapper .menu-item .text image.hoticon {
+  width: 25rpx;
+  height: 32rpx;
 }
 
 .goods .foods-wrapper {
@@ -176,9 +184,8 @@
 }
 
 .goods .foods-wrapper {
-  height:486.95px;
+  height: 486.95px;
 }
-
 
 .goods .foods-wrapper .food-list .title {
   height: 20rpx;
@@ -274,7 +281,19 @@
 /* cartControl 样式 */
 
 .goods .foods-wrapper .food-list .food-item .content .cartControl-wrapper .cartControl {
-  font-size: 0;
+  /* font-size: 0; */
+}
+
+.food-item .cart-add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.food-item .cart-add .text {
+  width: 60rpx;
+  text-align: center;
+  font-size: 28rpx;
 }
 
 .goods .foods-wrapper .food-list .food-item .content .cartControl-wrapper .cartControl .cart-decrease,
@@ -396,6 +415,11 @@
 
 .shopCart .content .content-left .logo-wrapper .logo.highlight {
   background: #ff9e04;
+}
+
+.shopCart .content .content-left .logo-wrapper .logo.highlight image {
+  width: 96rpx;
+  height: 96rpx;
 }
 
 .shopCart .content .content-left .logo-wrapper .logo .icon-gouwuche {
@@ -967,7 +991,7 @@
 
 .total_page .search_page .food-list .food-item .content .cartControl-wrapper .cartControl .cart-decrease,
 .cart-add {
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .total_page .search_page .food-list .food-item .content .cartControl-wrapper .cartControl .cart-decrease,
@@ -1009,6 +1033,15 @@
   padding-top: 6px;
   text-align: center;
   color: rgb(147, 153, 159);
+}
+
+.guige {
+  display: inline-block;
+  color: #fff;
+  font-size: 22rpx;
+  background: #fc4c4c;
+  border-radius: 100rpx;
+  padding: 10rpx 20rpx;
 }
 
 .select-wrapper {

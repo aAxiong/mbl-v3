@@ -129,10 +129,6 @@ Page({
         return
       }
     }
-    // wx.showLoading({
-    //   title: '正在加入购物车...',
-    //   mask: true
-    // })
     let that = this;
     var an = wx.createAnimation({
       duration: 300, // 以毫秒为单位  
@@ -141,7 +137,7 @@ Page({
       transformOrigin: '50% 50%'
     });
 
-    takeaway.addCart(this.data.currentGoodsId, data.size, data.taste, 1, (res) => {
+    takeaway.optCart(this.data.currentGoodsId, data.size, data.taste, 1, "+", (res) => {
       if (res.Status === 0) {
         wx.hideLoading()
         this.setData({
@@ -156,7 +152,7 @@ Page({
           payDesc: this.payDesc(),
           animationBall: an.export()
         })
-        this.addJStock();
+        this.addJStock("add");
         // this.loadCartData()
       } else {
         wx.showToast({
@@ -166,8 +162,62 @@ Page({
         })
       }
     })
-
   },
+
+  //外卖列表&搜索列表 减少产品操作
+  reduceProduct: function(e) { //减少商品操作 --外卖列表
+    let paindex = e.currentTarget.dataset.parentindex
+    let index = e.currentTarget.dataset.itemIndex
+    let sizeTaste = this.data.constants[paindex].ProductList[index]
+    let currentGoodsId = sizeTaste.CommodityID
+    this.setData({
+      currentGoodsId: currentGoodsId,
+    })
+    this.reduceProductOpt();
+  },
+  reduceSeProduct: function(e) { //减少商品操作 --外卖列表
+    let paindex = e.currentTarget.dataset.idx
+    let sizeTaste = this.data.seaconstants[paindex]
+    let currentGoodsId = sizeTaste.CommodityID
+    this.setData({
+      currentGoodsId: currentGoodsId,
+    })
+    this.reduceProductOpt();
+  },
+  reduceProductOpt: function() { //total  外卖列表&搜索列表 减少产品操作
+    var an = wx.createAnimation({
+      duration: 300, // 以毫秒为单位  
+      timingFunction: 'linear',
+      delay: 100,
+      transformOrigin: '50% 50%'
+    });
+    takeaway.optCart(this.data.currentGoodsId, "", "", 1, "-", (res) => { //减少商品操作 --外卖搜索列表
+      if (res.Status === 0) {
+        wx.hideLoading()
+        this.setData({
+          totalCount: res.Datas.SumCommodityNum,
+          totalPrice: res.Datas.SumCommodityPrice
+        })
+        /*小球跳动*/
+        // this.touchOnGoods();
+        an.scale(1.15).step();
+        an.scale(1).step();
+        this.setData({
+          payDesc: this.payDesc(),
+          animationBall: an.export()
+        })
+        this.addJStock("reduce");
+        // this.loadCartData()
+      } else {
+        wx.showToast({
+          title: '操作失败',
+          mask: true,
+          icon: 'none'
+        })
+      }
+    })
+  },
+
   /*购物车操作 */
   optShopCart: function(e, opt, num) { //操作购物车+ - 清空
     let id = e.currentTarget.dataset.id;
@@ -380,57 +430,6 @@ Page({
       animationData: animation.export(),
     })
 
-  },
-
-  //抛物线
-  touchOnGoods: function(e) {
-    this.finger = {};
-    var topPoint = {};
-    this.finger['x'] = this.data.x; //点击的位置
-    this.finger['y'] = this.data.y;
-
-    if (this.finger['y'] < this.busPos['y']) {
-      topPoint['y'] = this.finger['y'] - 150;
-    } else {
-      topPoint['y'] = this.busPos['y'] - 150;
-    }
-    topPoint['x'] = Math.abs(this.finger['x'] - this.busPos['x']) / 2;
-
-    if (this.finger['x'] > this.busPos['x']) {
-      topPoint['x'] = (this.finger['x'] - this.busPos['x']) / 2 + this.busPos['x'];
-    } else { //
-      topPoint['x'] = (this.busPos['x'] - this.finger['x']) / 2 + this.finger['x'];
-    }
-
-    this.linePos = app.bezier([this.busPos, topPoint, this.finger], 30);
-    this.startAnimation(e);
-  },
-  startAnimation: function(e) {
-    var index = 0,
-      that = this,
-      bezier_points = that.linePos['bezier_points'];
-    this.setData({
-      hide_good_box: false,
-      bus_x: that.finger['x'],
-      bus_y: that.finger['y']
-    })
-    var len = bezier_points.length;
-    index = len
-    this.timer = setInterval(function() {
-      for (let i = index - 1; i > -1; i--) {
-        that.setData({
-          bus_x: bezier_points[i]['x'],
-          bus_y: bezier_points[i]['y']
-        })
-
-        if (i < 1) {
-          clearInterval(that.timer);
-          that.setData({
-            hide_good_box: true
-          })
-        }
-      }
-    }, 100);
   },
   onLoad: function(options) {
 
@@ -766,53 +765,76 @@ Page({
     for (var k = 0; k < carArray.length; k++) {
       for (var i = 0; i < value.length; i++) {
         for (var j = 0; j < value[i].ProductList.length; j++) {
+          if (k == 0) { //第一轮循环就加上一个CommodityNum字段
+            value[i].ProductList[j].CommodityNum = 0
+          }
           if (value[i].ProductList[j].CommodityID == carArray[k].CommodityID) {
             value[i].ProductList[j].Inventory = value[i].ProductList[j].Inventory - carArray[k].CommodityNum;
+            value[i].ProductList[j].CommodityNum = carArray[k].CommodityNum
           }
         }
       }
     }
+    console.log(value);
     this.setData({
       [key]: value
     })
   },
   searoptStock(key, value) { //操作库存 搜索操作库存
     let cvalue = this.data.constants;
-
     for (var k = 0; k < cvalue.length; k++) {
       for (var j = 0; j < cvalue[k].ProductList.length; j++) {
         for (var i = 0; i < value.length; i++) {
+          if (k == 0 && j == 0) { //第一轮循环就加上一个CommodityNum字段
+            value[i].CommodityNum = 0
+          }
           if (value[i].CommodityID == cvalue[k].ProductList[j].CommodityID) {
             value[i].Inventory = cvalue[k].ProductList[j].Inventory
+            value[i].CommodityNum = cvalue[k].ProductList[j].CommodityNum
+          }
+        }
+      }
+    }
+    console.log(value);
+    this.setData({
+      [key]: value
+    })
+  },
+  addJStock(types) { //库存加减 商品列表库存加减
+    // this.lookStock("constants", this.data.constants)
+    let carArray = this.data.carArray;
+    let cvalue = this.data.constants;
+    let sealue1 = this.data.seaconstants;
+    let id = this.data.currentGoodsId;
+
+    for (var i = 0; i < cvalue.length; i++) {
+      for (var j = 0; j < cvalue[i].ProductList.length; j++) {
+        if (cvalue[i].ProductList[j].CommodityID == id) {
+          if (types == "add") {
+            cvalue[i].ProductList[j].Inventory = cvalue[i].ProductList[j].Inventory - 1;
+            cvalue[i].ProductList[j].CommodityNum = cvalue[i].ProductList[j].CommodityNum + 1
+          } else {
+            cvalue[i].ProductList[j].Inventory = cvalue[i].ProductList[j].Inventory + 1;
+            cvalue[i].ProductList[j].CommodityNum = cvalue[i].ProductList[j].CommodityNum - 1
           }
         }
       }
     }
 
     this.setData({
-      [key]: value
-    })
-  },
-  addJStock() { //库存加减 商品列表库存加减
-    // this.lookStock("constants", this.data.constants)
-    let carArray = this.data.carArray;
-    let cvalue = this.data.constants;
-    let sealue1 = this.data.seaconstants;
-    let id = this.data.currentGoodsId;
-    for (var i = 0; i < cvalue.length; i++) {
-      for (var j = 0; j < cvalue[i].ProductList.length; j++) {
-        if (cvalue[i].ProductList[j].CommodityID == id) {
-          cvalue[i].ProductList[j].Inventory = cvalue[i].ProductList[j].Inventory - 1;
-        }
-      }
-    }
-    this.setData({
       constants: cvalue
     })
     if (this.data.seachPageShow == true) { //搜索库存加减
+
       for (var i = 0; i < sealue1.length; i++) {
         if (sealue1[i].CommodityID == id) {
-          sealue1[i].Inventory = sealue1[i].Inventory - 1;
+          if (types == "add") {
+            sealue1[i].Inventory = sealue1[i].Inventory - 1;
+            sealue1[i].CommodityNum = sealue1[i].CommodityNum + 1;
+          } else {
+            sealue1[i].Inventory = sealue1[i].Inventory + 1;
+            sealue1[i].CommodityNum = sealue1[i].CommodityNum - 1;
+          }
         }
       }
       this.setData({
@@ -831,6 +853,7 @@ Page({
           for (var j = 0; j < cvalue[i].ProductList.length; j++) {
             if (cvalue[i].ProductList[j].CommodityID == carArray[k].CommodityID) {
               cvalue[i].ProductList[j].Inventory = cvalue[i].ProductList[j].Inventory + carArray[k].CommodityNum;
+              cvalue[i].ProductList[j].CommodityNum = 0
             }
           }
         }
@@ -840,6 +863,7 @@ Page({
         for (var j = 0; j < cvalue[i].ProductList.length; j++) {
           if (cvalue[i].ProductList[j].CommodityID == id) {
             cvalue[i].ProductList[j].Inventory = cvalue[i].ProductList[j].Inventory - num;
+            cvalue[i].ProductList[j].CommodityNum = cvalue[i].ProductList[j].CommodityNum + num
           }
         }
       }
@@ -861,6 +885,7 @@ Page({
         for (var i = 0; i < sealue1.length; i++) {
           if (sealue1[i].CommodityID == carArray[k].CommodityID) {
             sealue1[i].Inventory = sealue1[i].Inventory + carArray[k].CommodityNum;
+            sealue1[i].CommodityNum = 0
           }
         }
       }
@@ -869,6 +894,7 @@ Page({
         for (var j = 0; j < sealue1.length; j++) {
           if (sealue1[i].CommodityID == id) {
             sealue1[i].Inventory = sealue1[i].Inventory - num;
+            sealue1[i].CommodityNum = sealue1[i].CommodityNum + num
           }
         }
 

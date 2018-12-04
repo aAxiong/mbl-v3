@@ -50,8 +50,9 @@
         <view wx:for="{{constants}}" wx:key="CategoryID" bindtap="jumpToSick" data-id="i{{item.CategoryID}}" class="menu-item border-1px {{'i'+item.CategoryID==currentLeftSelect?'active':''}}" data-item-index="{{index}}">
           <view class="text">
             {{item.CategoryName}}
-            <image src='/images/takeaway/hot@2x.png' wx:if='{{index==0}}'></image>
+            <image src='/images/takeaway/hot@2x.png' wx:if='{{item.CategoryName=="热销"}}' class="hoticon"></image>
           </view>
+          <image src='/images/takeaway/xuanz@2x.png' class="activeImg" wx:if='{{"i"+item.CategoryID==currentLeftSelect}}'></image>
         </view>
       </scroll-view>
     </view>
@@ -60,7 +61,7 @@
         <view id="order{{parentIndex}}" class="title"></view>
         <view wx:for="{{item.ProductList}}" wx:key="{{index}}" class="food-item" wx:for-item="food" data-id="{{food.CommodityID}}" bindtap='foodDetailTap' data-idx='{{index}}' data-paidx='{{parentIndex}}'>
           <view class="icon">
-            <image src="{{imgUrl}}{{food.ImgPath}}" style="width: 205rpx;height: 150rpx" mode='aspectFill'></image>
+            <image src="{{imgUrl}}{{food.ImgPath}}" style="width: 205rpx;height: 150rpx" mode='aspectFill' lazy-load='true'></image>
           </view>
           <view class="content">
             <view class="name">{{food.CommodityName}}</view>
@@ -79,13 +80,19 @@
                 <text wx:if='{{food.Inventory<=10&&food.Inventory>0}}'>剩余{{food.Inventory}}份</text>
               </view>
             </view>
-
             <!--cartControl-->
             <view class="cartControl-wrapper" wx:if="{{food.Inventory>0}}">
               <view class="cartControl">
                 <view name="fade">
-                  <view class="cart-add " id='a{{index}}' data-item-index="{{index}}" data-parentIndex="{{parentIndex}}" catchtap="goodsSizeTap">
-                    <image src='/images/takeaway/redadd@2x.png'></image>
+                  <view class="cart-add" wx:if='{{food.LableList.length==0&&food.SpecificationList.length==0}}'>
+                    <image src='/images/takeaway/jian@2x.png' wx:if='{{food.CommodityNum>0}}' id='a{{index}}' data-item-index="{{index}}" data-parentIndex="{{parentIndex}}" catchtap='reduceProduct'></image>
+                    <view class='text' wx:if='{{food.CommodityNum>0}}'>{{food.CommodityNum}}</view>
+                    <image src='/images/takeaway/redadd@2x.png' id='a{{index}}' data-item-index="{{index}}" data-parentIndex="{{parentIndex}}" catchtap="goodsSizeTap"></image>
+
+                  </view>
+
+                  <view class="guige" id='a{{index}}' data-item-index="{{index}}" data-parentIndex="{{parentIndex}}" catchtap="goodsSizeTap" wx:else>
+                    选规格
                   </view>
                 </view>
               </view>
@@ -104,7 +111,9 @@
       <view class="content-left">
         <view class="logo-wrapper" bindtap="toggleList">
           <view class="logo highlight">
-            <view class="iconfont icon-gouwuche highlight"></view>
+            <!-- <view class="iconfont icon-gouwuche highlight"></view> -->
+            <image src='/images/takeaway/you@2x.png' wx:if="{{totalCount> 0&&totalCount<999}}"></image>
+            <image src='/images/takeaway/wu@2x.png' wx:else></image>
           </view>
           <view class="num" wx:if="{{totalCount> 0&&totalCount<999}}" animation="{{animationBall}}">{{totalCount}}</view>
           <view class="num" animation="{{animationBall}}" wx:elif='{{totalCount>999}}'>999</view>
@@ -211,8 +220,13 @@
           <view class="cartControl-wrapper" wx:if="{{item.Inventory>0}}">
             <view class="cartControl">
               <view name="fade">
-                <view class="cart-add " data-idx="{{parentIndex}}" catchtap="segoodsSizeTap" id='b{{index}}' data-item-index='{{index}}'>
-                  <image src='/images/takeaway/redadd@2x.png'></image>
+                <view class="cart-add " wx:if='{{item.LableList.length==0&&item.SpecificationList.length==0}}'>
+                  <image src='/images/takeaway/jian@2x.png' wx:if='{{item.CommodityNum>0}}' data-idx="{{parentIndex}}" catchtap="segoodsSizeTap" id='b{{index}}' data-item-index='{{index}}' catchtap='reduceSeProduct'></image>
+                  <view class='text' wx:if='{{item.CommodityNum>0}}'>{{item.CommodityNum}}</view>
+                  <image src='/images/takeaway/redadd@2x.png' catchtap="segoodsSizeTap" data-idx="{{parentIndex}}" id='b{{index}}' data-item-index='{{index}}'></image>
+                </view>
+                <view class="guige" data-idx="{{parentIndex}}" catchtap="segoodsSizeTap" id='b{{index}}' data-item-index='{{index}}' wx:else>
+                  选规格
                 </view>
               </view>
             </view>

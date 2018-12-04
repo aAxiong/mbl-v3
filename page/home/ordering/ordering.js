@@ -15,6 +15,7 @@ Page({
     tasteIndex: 0,
     isShowSelect: true, //规格口味选项
     isShowCart: true, //购物车
+    iconShowCart: false,
     menuList: [{
       ID: -1,
       CategoryName: '全部'
@@ -76,17 +77,19 @@ Page({
         if (res.Datas.CommodityList.length === 0) {
           this.setData({
             isLoad: false,
-            isShowCart: false
+            iconShowCart: true
           })
         }
         if (pageIndex === 1) {
           this.setData({
             goodsList: res.Datas.CommodityList,
-            isShow: false
+            isShow: false,
+            iconShowCart: true
           })
         } else {
           this.setData({
-            goodsList: this.data.goodsList.concat(res.Datas.CommodityList)
+            goodsList: this.data.goodsList.concat(res.Datas.CommodityList),
+            iconShowCart: true
           })
         }
         if (this.data.goodsList.length === 0) {

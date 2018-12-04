@@ -4,7 +4,7 @@
   <view class="bg" style="width:100%;height:450rpx;background:#fff3ca;position:absolute;top:0;left:0;z-index:-1;"></view>
   <view class="tab-bar">
     <view class="{{active==1?'active':''}}" bindtap='swtichMenu' data-id='1'>
-      外卖配送
+      商品配送
     </view>
     <view class="{{active==2?'active':''}}" bindtap='swtichMenu' data-id='2'>
       到店自取
@@ -57,7 +57,7 @@
             <view>{{item.CommodityName}}
             </view>
             <view class="t">
-             {{item.SpeciName}} 
+              {{item.SpeciName}}
               <text wx:if='{{item.LabelName!=""&&item.SpeciName!=""}}'>|</text> {{item.LabelName}}
             </view>
             <view> x{{item.CommodityNum}}</view>
