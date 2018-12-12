@@ -39,14 +39,13 @@
     "page/home/takeaway/takeaway",
     "page/home/suborder/suborder",
     "page/home/takeaway_info/takeaway_info",
-    "page/home/address_list/address_list",
-    "page/home/add_address/add_address",
-    "page/home/edit_addres/edit_addres",
+    "page/mine/address_list/address_list",
+    "page/mine/add_address/add_address",
+    "page/mine/edit_addres/edit_addres",
     "page/home/takeaway_orderList/takeaway_orderList",
     "page/home/takeaway_orderInfo/takeaway_orderInfo",
     "page/home/my_active/my_active",
-    "components/auth_button/auth_button",
-    "page/store_new/store"
+    "components/auth_button/auth_button"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",
@@ -65,7 +64,7 @@
         "selectedIconPath": "images/tab_bar/icon-sy-xz@2x.png"
       },
       {
-        "pagePath": "page/store_new/store",
+        "pagePath": "page/store/store",
         "text": "店铺",
         "iconPath": "images/tab_bar/icon-dp-wxz@2x.png",
         "selectedIconPath": "images/tab_bar/icon-dp-xz@2x.png"

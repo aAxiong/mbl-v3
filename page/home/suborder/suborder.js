@@ -27,7 +27,7 @@ Page({
   },
   jumpadd: function() {
     wx.navigateTo({
-      url: '/page/home/address_list/address_list',
+      url: '/page/mine/address_list/address_list',
     })
   },
   getRemark: function(e) {

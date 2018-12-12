@@ -1,54 +1,60 @@
-
-<view class="store-wrappper" hidden="{{mask}}">
-  <!-- 门店定位电话 -->
-  <view class='store-info-list'>
-    <view class='store-info' bindtap='locationTap'>
-      <view class='info-icon'>
-        <image src='/images/icon/s_pos.png'></image>
+<view class="headers">
+  <view class="header">
+    <view class="content-wrapper">
+      <view class="logo">
+        <image src="{{imgUrl}}{{storeInfo.LogoImage}}"></image>
       </view>
-      <view class='info-text'>
-        {{storeInfo.Address}}
-      </view>
-      <view class='info-arrow'>
-        <image src='/images/icon/s_arrow.png'></image>
+      <view class="textbox">
+        <view class="titile">{{storeInfo.StoreName}}</view>
+        <view class="procuct">
+          <text>简介：</text>{{storeInfo.IntroductionContent}}
+        </view>
       </view>
     </view>
-    <view class='store-info'>
-      <view class='info-icon'>
-        <image src='/images/icon/s_time.png'></image>
-      </view>
-      <view class='info-text'>
-        {{storeInfo.StartBusinessHours}}--{{storeInfo.EndBusinessHours}}
-      </view>
-    </view>
-    <view class='store-info' bindtap='telTap'>
-      <view class='info-icon'>
-        <image src='/images/icon/s_tel.png'></image>
-      </view>
-      <view class='info-text'>
-        {{storeInfo.Phone}}
-      </view>
-      <view class='info-arrow'>
-        <image src='/images/icon/s_arrow.png'></image>
-      </view>
+    <view class="background">
+      <image src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg" style="width:100%;height:100%;"></image>
     </view>
   </view>
-  <!-- 门店照片简介 -->
-  <view class='store-info-content'>
-    <view class='store-pic-title'>
-      <image class='store' src='/images/icon/s_store.png'></image>
-      <text class='text'>门店照片</text>
-    </view>
-    <view class='pic-wrapper'>
-      <scroll-view scroll-x="true" lower-threshold="150" style='display:flex; white-space:nowrap;'>
-        <view class='pic' wx:for="{{storeImgs}}" wx:key="index" data-url="{{item.Path}}" bindtap='prevImgsTap'>
-          <image mode='aspectFill' src='{{imgUrl}}{{item.Path}}'></image>
+</view>
+<view class="navbar">
+  <view class="li {{navbarActive==1?'active':''}}" bindtap='chageNav' data-index='1'>门店照片
+    <view class="border"></view>
+  </view>
+  <view class="li {{navbarActive==0?'active':''}}" bindtap='chageNav' data-index='0'>最新动态
+    <view class="border"></view>
+  </view>
+</view>
+<view class="container">
+  <view class="newActives" wx:if='{{navbarActive==0}}'>
+    <view class="li" wx:for='{{activeList}}'>
+      <view class="head">
+        <view class="imgbox">
+          <image src="{{imgUrl}}{{storeInfo.LogoImage}}"></image>
         </view>
-      </scroll-view>
+        <view class="text">{{storeInfo.StoreName}}</view>
+        <!-- <view class="shareIcon">
+          <image src="/images/store/logo@2x.png"></image>
+        </view> -->
+      </view>
+      <view class="textbox">
+        {{item.DynamicContent}}
+      </view>
+      <view class="photobox">
+        <image src="{{imgUrl}}{{imgItem.ImgPath}}" wx:for="{{item.ImgPathList}}" wx:for-index='childIndex' wx:key="indexs" wx:for-item='imgItem' data-url="{{imgItem.ImgPath}}" data-index='{{index}}' bindtap='activeImgsTap'></image>
+      </view>
+      <view class="toolbar">
+        <view class="date">{{item.CreateTime}}
+        </view>
+        <view class="goods">
+          <image src="/images/store/weidianzan@2x.png" wx:if='{{item.IsGiveALike==0}}' data-index='0' data-id='{{item.DynamicInfoID}}' bindtap='goodTapTime'></image>
+          <image src="/images/store/dianzan@2x.png" data-index='1' data-id='{{item.DynamicInfoID}}' bindtap='goodTapTime' wx:else></image>
+          <text>{{item.GiveALikeNumber}}</text>
+        </view>
+      </view>
     </view>
-    <view class='store-intro'>简介：</view>
-    <view class='store-intro-text'>
-      {{storeInfo.IntroductionContent}}
-    </view>
+
+  </view>
+  <view class="storePhoto" wx:if='{{navbarActive==1}}'>
+    <image mode='aspectFill' src='{{imgUrl}}{{item.Path}}' wx:for="{{storeImgs}}" wx:key="index" data-url="{{item.Path}}" bindtap='prevImgsTap'></image>
   </view>
 </view>

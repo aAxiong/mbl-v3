@@ -71,6 +71,7 @@ page {
   box-shadow: 0 2rpx 18rpx 3rpx rgba(9, 9, 9, 0.1);
   border-radius: 8rpx;
   height: 390rpx;
+  background: #fff;
 }
 
 .header .header-bg image {

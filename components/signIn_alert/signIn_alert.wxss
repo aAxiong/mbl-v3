@@ -1,0 +1,187 @@
+/* components/signIn_alert /signIn_alert .wxss */
+
+@font-face {
+  font-family: 'xiaowei';
+  src: url('//at.alicdn.com/t/webfont_vret05vzojf.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/webfont_vret05vzojf.eot?#iefix') format('embedded-opentype'),
+         /* IE6-IE8 */ url('//at.alicdn.com/t/webfont_vret05vzojf.woff') format('woff'),
+         /* chrome、firefox */ url('//at.alicdn.com/t/webfont_vret05vzojf.ttf') format('truetype'),
+         /* chrome、firefox、opera、Safari,
+         Android,
+         iOS 4.2+*/ url('//at.alicdn.com/t/webfont_vret05vzojf.svg#站酷小薇体') format('svg'); /* iOS 4.1- */
+}
+
+@font-face {
+  font-family: 'siyuan';
+  src: url('//at.alicdn.com/t/webfont_3n0yfyct9rj.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/webfont_3n0yfyct9rj.eot?#iefix') format('embedded-opentype'),
+         /* IE6-IE8 */ url('//at.alicdn.com/t/webfont_3n0yfyct9rj.woff') format('woff'),
+         /* chrome、firefox */ url('//at.alicdn.com/t/webfont_3n0yfyct9rj.ttf') format('truetype'),
+         /* chrome、firefox、opera、Safari,
+         Android,
+         iOS 4.2+*/ url('//at.alicdn.com/t/webfont_3n0yfyct9rj.svg#NotoSansHans-DemiLight') format('svg'); /* iOS 4.1- */
+}
+
+.signIn_alert {
+  position: relative;
+}
+
+.signIn_alert .mask {
+  opacity: 0;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  visibility: hidden;
+}
+
+.signIn_alert .mask.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.windows {
+  opacity: 0;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+
+.windows.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.windows .windows_boxs {
+  width: 560rpx;
+  height: 760rpx;
+}
+
+.windows .windows_boxs image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 560rpx;
+  height: 760rpx;
+}
+
+.windows .go {
+  width: 100%;
+  text-align: center;
+  margin-top: 60rpx;
+}
+
+.windows .go image {
+  width: 134rpx;
+  height: 134rpx;
+  margin: 0 auto;
+}
+
+.windows .Coupon {
+  margin: 0 auto;
+  width: 370rpx;
+  position: relative;
+  top: 230rpx;
+}
+
+.windows .Coupon .li {
+  width: 100%;
+  height: 148rpx;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.windows .Coupon .li image {
+  width: 370rpx;
+  height: 148rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.windows .Coupon .li .libox {
+  position: relative;
+  z-index: 3;
+}
+
+.windows .Coupon .li .libox .topBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20rpx;
+}
+
+.windows .Coupon .li .libox .topBox .tit {
+  font-size: 55rpx;
+  color: #fc4c4c;
+  font-family: 'xiaowei';
+  margin-right: 10rpx;
+  width: 100rpx;
+  text-align: center;
+}
+
+.windows .Coupon .li .libox .topBox .content {
+  font-size: 36rpx;
+  color: #333;
+  width: 230rpx;
+  height: 100rpx;
+  border-left: 4rpx solid #333;
+  font-family: 'siyuan';
+  line-height: 36rpx;
+  padding-left: 10rpx;
+}
+
+.windows .Coupon .li .libox .topBox .content text {
+  color: #fc4c4c;
+}
+
+.windows .Coupon .li .libox.pribox .topBox .content {
+  height: 75rpx;
+  line-height: 75rpx;
+}
+
+.windows .Coupon .li .libox.pribox .bottomBox {
+  font-size: 20rpx;
+  color: #333;
+  font-family: 'siyuan';
+  text-align: center;
+  margin-top: 5rpx;
+}
+
+.signIn {
+  position: relative;
+  top: 270rpx;
+  z-index: 3;
+  text-align: center;
+}
+
+.signIn .day_s {
+  color: #333;
+  font-size: 46rpx;
+}
+
+.signIn .day_s text {
+  color: #fc4c4c;
+}
+
+.signIn .day {
+  color: #fc4c4c;
+  font-size: 20rpx;
+}
+
+.signIn .shuoming {
+  color: #333;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}

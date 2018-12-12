@@ -49,7 +49,7 @@
       </view>
 
     </view>
-    <image src='/images/icon/shangjia-background.png'></image>
+    <!-- <image src='/images/icon/shangjia-background.png'></image> -->
     <!-- <view class='mask'></view> -->
   </view>
   <!-- 店家推荐 -->
@@ -82,7 +82,7 @@
       </block>
     </view>
   </view>
-  <view class='video-positon' style='display:none;'>
+  <!-- <view class='video-positon' style='display:none;'>
     <view class='video-btn' bindtap='videoTap'>
 
       <image class='icon' src='/images/icon/video.png'></image>
@@ -97,10 +97,10 @@
     <view class='video-wrapper' catchtap="stopVideoWrapper">
       <video class='video' id='storeVideo' binderror="errorHander" bindwaiting="wating" src='{{imgUrl}}{{videoSrc}}'></video>
     </view>
-  </view>
+  </view> -->
   <!-- <view class='desk-mask' hidden='{{isDeskMask}}'>
     <view class='text'>桌号已过期</view>
   </view> -->
 </view>
-
+<signIn_alert></signIn_alert>
 <!-- <canvas class='canvas' canvas-id='canvas'></canvas> -->

@@ -122,6 +122,9 @@
           <view class="price highlight">共计：￥{{totalPrice}}</view>
           <view class="desc">另需配送费{{productyArr.DeliveryFee}}元</view>
         </view>
+        <view class="serves">
+          <button open-type="contact" />
+        </view>
       </view>
       <view class="content-right">
         <view class="pay {{payClass==1?'enough':''}}" :class="payClass" bindtap='jumpOrder' data-index='{{payClass}}'>
