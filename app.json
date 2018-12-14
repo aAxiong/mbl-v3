@@ -45,7 +45,9 @@
     "page/home/takeaway_orderList/takeaway_orderList",
     "page/home/takeaway_orderInfo/takeaway_orderInfo",
     "page/home/my_active/my_active",
-    "components/auth_button/auth_button"
+    "components/auth_button/auth_button",
+    "page/mine/all_order/all_order",
+    "page/mine/vipInfo_no/vipInfo_no"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

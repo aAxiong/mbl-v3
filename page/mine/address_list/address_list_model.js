@@ -24,6 +24,24 @@ class AddList extends Base {
     }
     this.request(params)
   }
+  getAddListh1(callback) { //地址内容
+    let userid = wx.getStorageSync('userId')
+    let params = {
+      url: 'Waimai.ashx',
+      data: {
+        Type: 27,
+        OpenUserID: userid,
+      },
+      sCallback: function(data) {
+        if (data.Status == '0') {
+          data = data
+          callback && callback(data)
+        }
+      }
+    }
+    this.request(params)
+  }
+
   delAddListh(id, callback) { //删除
     let userid = wx.getStorageSync('userId')
     let params = {

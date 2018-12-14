@@ -1,0 +1,13 @@
+<view class='mine-list'>
+  <view class='mine-item' bindtap='{{item.hander}}' wx:for='{{VersionList}}'>
+    <view class="list-box">
+      <!-- <view class='item-icon'>
+          <image src='{{item.icon}}'></image>
+        </view> -->
+      <view class='text'>
+        {{item.name}}
+      </view>
+    </view>
+    <image src='/images/icon/s_arrow.png'></image>
+  </view>
+</view>

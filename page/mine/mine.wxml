@@ -3,36 +3,95 @@
     <view class='avatar-wrapper'>
       <image class='avatar' wx:if="{{userInfo}}" src='{{userInfo.avatarUrl}}'></image>
       <image class='avatar' wx:else src='/images/icon/avatar.png'></image>
+      <image class="erwei" src='/images/mine/erwei.png'></image>
+      <image class="vip" src='/images/mine/icon-vip@2x.png'></image>
     </view>
     <view class='mine-info'>
       <view wx:if="{{userInfo}}" class='nick-name'>{{userInfo.nickName}}</view>
       <view wx:else class='nick-name'>{{snapName}}</view>
-      <view class='tel_number' wx:if="{{phone}}">
+      <!-- <view class='tel_number' wx:if="{{phone}}">
         <image class='tel-icon' src='/images/icon/m_tel.png'></image>
         <text class='tel'>{{phone}}</text>
+      </view> -->
+    </view>
+    <view class="mine-vipinfo">
+      <view class="li">
+        <view class="top">
+          <image src='/images/mine/icon-integral@2x.png'></image>
+          <text>积分</text>
+        </view>
+        <view class="bottom">6549</view>
+      </view>
+      <view class="li middle">
+        <view class="top">
+          <image src='/images/mine/icon-yue@2x.png'></image>
+          <text>余额</text>
+        </view>
+        <view class="bottom">￥6549</view>
+      </view>
+      <view class="li" bindtap='jumpVipPage'>
+        <view class="top">
+          <image src='/images/mine/icon-level@2x.png'></image>
+          <text>等级</text>
+        </view>
+        <view class="bottom">青铜</view>
       </view>
     </view>
-    <view class='mine-detail'>
-      <!-- <image class='detail-icon' src='/images/icon/m_det.png'></image> -->
-    </view>
   </view>
-  <view class="bllang">
-    <image src='/images/icon/bolang.png'></image>
+  <view class="receiveVip">
+    点我领取会员
   </view>
   <view class='mine-list'>
-    <view class='mine-item' bindtap='{{item.hander}}' wx:for='{{VersionList}}'>
+    <view class='mine-item' bindtap='jumpAllOrder'>
       <view class="list-box">
-        <view class='item-icon'>
-          <image src='{{item.icon}}'></image>
-        </view>
         <view class='text'>
-          {{item.name}}
+          全部订单
         </view>
       </view>
       <image src='/images/icon/s_arrow.png'></image>
     </view>
-  </view>
-  <view class="callme">
-    <image src='/images/icon/call@2x.png' style="width:292rpx;height:71rpx;"></image>
+    <view class='mine-item' bindtap='jumpAllOrder'>
+      <view class="list-box">
+        <view class='text'>
+          我的兑换券
+        </view>
+      </view>
+      <image src='/images/icon/s_arrow.png'></image>
+    </view>
+    <view class='mine-item' bindtap='jumpAllOrder'>
+      <view class="list-box">
+        <view class='text'>
+          积分兑换
+        </view>
+      </view>
+      <image src='/images/icon/s_arrow.png'></image>
+    </view>
+    <view class='mine-item' bindtap='jumpAllOrder'>
+      <view class="list-box">
+        <view class='text'>
+          在线充值
+        </view>
+      </view>
+      <image src='/images/icon/s_arrow.png'></image>
+    </view>
+    <view class='mine-item' bindtap='jumpAllOrder'>
+      <view class="list-box">
+        <!-- <view class='item-icon'>
+          <image src='{{item.icon}}'></image>
+        </view> -->
+        <view class='text'>
+          在线客服
+        </view>
+      </view>
+      <image src='/images/icon/s_arrow.png'></image>
+    </view>
+    <view class='mine-item' bindtap='jumpAddressList'>
+      <view class="list-box">
+        <view class='text'>
+          地址管理
+        </view>
+      </view>
+      <image src='/images/icon/s_arrow.png'></image>
+    </view>
   </view>
 </view>

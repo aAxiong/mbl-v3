@@ -1,0 +1,15 @@
+<view class="tips">
+  您还未领取会员卡，不能进行该操作
+</view>
+<view class="info">
+  <view class="wrapper">
+    <view class='avatar-wrapper'>
+      <image class='avatar' wx:if="{{userInfo}}" src='{{userInfo.avatarUrl}}'></image>
+      <image class='avatar' wx:else src='/images/icon/avatar.png'></image>
+    </view>
+    <view wx:if="{{userInfo}}" class='nick-name'>{{userInfo.nickName}}</view>
+    <view wx:else class='nick-name'>{{snapName}}</view>
+  </view>
+
+</view>
+<!-- <web-view src="https://www.taobao.com"></web-view> -->

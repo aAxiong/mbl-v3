@@ -6,10 +6,30 @@ page {
   position: relative;
   /* flex-direction: row; */
   padding: 30rpx 40rpx;
-  background: #fd2e2e;
   color: #fff;
   text-align: center;
-  padding-bottom: 70rpx;
+  padding-bottom: 40rpx;
+  background: #fff;
+}
+
+.mine-header .avatar-wrapper {
+  position: relative;
+}
+
+.mine-header .avatar-wrapper .erwei {
+  width: 70rpx;
+  height: 70rpx;
+  position: absolute;
+  top: 20rpx;
+  right: 0rpx;
+}
+
+.mine-header .avatar-wrapper .vip {
+  width: 39rpx;
+  height: 32rpx;
+  position: absolute;
+  bottom: 0rpx;
+  right: 270rpx;
 }
 
 .mine-header .avatar {
@@ -27,7 +47,8 @@ page {
   width: 100%;
   margin-top: 10rpx;
   line-height: 42rpx;
-  font-size: 32rpx;
+  font-size: 34rpx;
+  color: #ccc;
 }
 
 .mine-info .tel_number {
@@ -67,9 +88,9 @@ page {
 
 .mine-list {
   background: #fff;
-  margin-top: -40rpx;
   position: relative;
   z-index: 11;
+  margin-top: 20rpx;
 }
 
 .list-box {
@@ -80,9 +101,8 @@ page {
 .mine-list .mine-item {
   display: flex;
   flex-direction: row;
-  margin: 0 36rpx;
   padding: 30rpx 0;
-  border-bottom: 1rpx solid #ececec;
+  border-bottom: 1rpx solid #f8f8f8;
   justify-content: space-between;
   align-items: center;
 }
@@ -90,10 +110,7 @@ page {
 .mine-list .mine-item >image {
   width: 30rpx;
   height: 30rpx;
-}
-
-.mine-list > view:last-child {
-  border-bottom: 0;
+  margin-right: 36rpx;
 }
 
 .mine-list .mine-item .item-icon {
@@ -107,30 +124,53 @@ page {
 }
 
 .mine-list .mine-item .text {
-  margin-left: 20rpx;
+  margin-left: 40rpx;
   line-height: 60rpx;
   font-size: 36rpx;
 }
 
-.callme {
-  position: absolute;
-  left: 0%;
-  bottom: 70rpx;
+.mine-vipinfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40rpx;
+  color: #333;
+}
+
+.mine-vipinfo .li {
+  width: 220rpx;
+}
+
+.mine-vipinfo .li.middle {
+  border-left: 1rpx solid #ccc;
+  border-right: 1rpx solid #ccc;
+}
+
+.mine-vipinfo .li .top {
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mine-vipinfo .li .top image {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 10rpx;
+}
+
+.mine-vipinfo .li .bottom {
+  color: #fc4c4c;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}
+
+.receiveVip {
   width: 100%;
+  height: 80rpx;
+  background: #fa5a59;
+  font-size: 32rpx;
+  color: #fff;
   text-align: center;
-}
-
-.callme image {
-  text-align: center;
-}
-
-.bllang {
-  margin-top: -60rpx;
-  position: relative;
-  z-index: 10;
-}
-
-.bllang image {
-  width: 100%;
-  height: 110rpx;
+  line-height: 80rpx;
 }

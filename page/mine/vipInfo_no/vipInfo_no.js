@@ -1,32 +1,18 @@
-import {
-  Mine
-} from 'mine_model.js'
-const app = getApp()
-var mine = new Mine()
-
+// page/mine/vipInfo_no/vipInfo_no.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: null,
-    snapName: '',
-    phone: '',
-    isOrdering: '',
-    mask: true,
-    vipStatus: false
+    snapName: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-    wx.setNavigationBarTitle({
-      title: '我的'
-    })
+  onLoad: function(options) {
     this.getUserInfoAuth()
-    this.loadPhone()
   },
   //用户是否授权
   getUserInfoAuth() {
@@ -51,29 +37,14 @@ Page({
         this.setData({
           userInfo: res.userInfo
         })
-        mine.commitUserInfo(userId, res.userInfo, (data) => {
-          if (data.Status == 0) {
 
-          }
-        })
       }
     })
   },
-  loadPhone() {
-    wx.showLoading({
-      title: '加载中...',
-    })
-    mine.MineInfo((res) => {
-      if (res.Status == '0') {
-        this.setData({
-          phone: res.Datas.Phone,
-          isOrdering: res.Datas.IsQrCodeOrder,
-          mask: false
-        })
-        wx.hideLoading()
-      }
-    })
-  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
   onShow: function() {
     let self = this
     wx.getSetting({
@@ -87,23 +58,7 @@ Page({
       }
     })
   },
-  jumpAllOrder: function(e) { //跳转到全部订单
-    wx.navigateTo({
-      url: '/page/mine/all_order/all_order',
-    })
-  },
-  jumpAddressList: function(e) {
-    wx.navigateTo({
-      url: '/page/mine/address_list/address_list?type=1',
-    })
-  },
-  jumpVipPage: function(e) {
-    if (this.data.vipStatus == false) {
-      wx.navigateTo({
-        url: '/page/mine/vipInfo_no/vipInfo_no',
-      })
-    }
-  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
