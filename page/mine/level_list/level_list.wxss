@@ -1,0 +1,228 @@
+/* page/mine/vipInfo_no/vipInfo_no.wxss */
+
+page {
+  background: #f8f8f8;
+}
+
+.info {
+  position: relative;
+  background: #fff;
+  padding-top: 120rpx;
+  margin-bottom: 20rpx;
+}
+
+.info .wrapper  .avatar-wrapper .avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.info .wrapper {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  top: -60rpx;
+  width: 670rpx;
+  margin: 0 auto;
+}
+
+.info .bg {
+  position: absolute;
+  top: 63%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 670rpx;
+  height: 300rpx;
+}
+
+.info .wrapper .nick-name {
+  font-size: 36rpx;
+  color: #fff;
+  margin-top: 15rpx;
+}
+
+.integralBox {
+  width: 670rpx;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 26rpx;
+  margin-top: 30rpx;
+}
+
+.integralBox .tiao {
+  margin: 0 20rpx;
+}
+
+.progressBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+  color: #fff;
+  margin-top: 20rpx;
+}
+
+.progressBar .progressBox {
+  width: 400rpx;
+  margin: 0 10rpx;
+  border-radius: 100rpx;
+  border: 1rpx solid #fff;
+  height: 10rpx;
+}
+
+.progressBar .progressBox .progress {
+  background: #fff;
+  border-radius: 100rpx;
+  height: 10rpx;
+}
+
+.vip_colum {
+  background: #fff;
+}
+
+.vip_colum .tit {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+
+.vip_discount .tit image {
+  width: 32rpx;
+  height: 26rpx;
+  vertical-align: middle;
+}
+
+.vip_discount .box {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 25rpx;
+}
+
+.vip_discount .box .li {
+  width: 130rpx;
+  text-align: center;
+}
+
+.vip_discount .box .li .level {
+  color: #333;
+  font-size: 32rpx;
+}
+
+.vip_discount .box .li .discount {
+  color: #333;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+
+.vip_discount .box .li.active .level {
+  color: #fc4c4c;
+}
+
+.vip_discount .box .li.active .discount {
+  color: #fc4c4c;
+}
+
+.vip_discount .box .li .tiao {
+  width: 45rpx;
+  height: 5rpx;
+  background: #fc4c4c;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  display: none;
+}
+
+.vip_discount .box .li.active .tiao {
+  display: block;
+}
+
+.vip_level {
+  margin-top: 20rpx;
+}
+
+.vip_level .tit image {
+  width: 32rpx;
+  height: 26rpx;
+  vertical-align: middle;
+}
+
+.vip_level .box {
+  margin-top: 40rpx;
+  width: 100%;
+  height: 215rpx;
+  overflow: hidden;
+}
+
+.vip_level .box .li {
+  width: 148rpx;
+  height: 215rpx;
+  display: inline-block;
+  position: relative;
+  margin-left: 25rpx;
+}
+
+.vip_level .box .li:first-child {
+  margin-left: 0;
+}
+
+.vip_level .box .li image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 148rpx;
+  height: 160rpx;
+  box-shadow: 0px 3px 22px 0px rgba(51, 51, 51, 0.12);
+}
+
+.vip_level .box .box_scroll {
+  white-space: nowrap;
+}
+
+.vip_level .box .li .wrapper {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+
+.vip_level .box .li .wrapper .level {
+  font-size: 40rpx;
+  color: #333;
+  margin-top: 35rpx;
+  font-weight: bold;
+}
+
+.vip_level .box .li .wrapper.active .level {
+  color: #fff;
+}
+
+.vip_level .box .li .wrapper .int {
+  font-size: 26rpx;
+  color: #333;
+}
+
+.vip_level .box .li .wrapper.active .int {
+  color: #fff;
+}
+
+.vip_level .box .li .tiao {
+  width: 120rpx;
+  height: 5rpx;
+  background: #fc4c4c;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.vip_level .box .li.active .tiao {
+  display: block;
+}

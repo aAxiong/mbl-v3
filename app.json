@@ -47,7 +47,9 @@
     "page/home/my_active/my_active",
     "components/auth_button/auth_button",
     "page/mine/all_order/all_order",
-    "page/mine/vipInfo_no/vipInfo_no"
+    "page/mine/vipInfo_no/vipInfo_no",
+    "page/mine/level_list/level_list",
+    "page/mine/my_integral/my_integral"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

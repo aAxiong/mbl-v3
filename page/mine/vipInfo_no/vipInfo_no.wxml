@@ -9,7 +9,22 @@
     </view>
     <view wx:if="{{userInfo}}" class='nick-name'>{{userInfo.nickName}}</view>
     <view wx:else class='nick-name'>{{snapName}}</view>
+    <view class="integralBox">
+      <view class="integral">当前积分：0</view>
+      <view class="tiao">|</view>
+      <view class="level_integral">升到下一级还需100积分</view>
+    </view>
+    <view class="progressBar">
+      <view class="start">0</view>
+      <view class="progressBox">
+        <view class="progress" style="width:{{progress}}%;"></view>
+      </view>
+      <view class="end">1000</view>
+    </view>
   </view>
-
+  <image src='/images/mine/bg.png' class="bg"></image>
+</view>
+<view class="btn">
+立即领取
 </view>
 <!-- <web-view src="https://www.taobao.com"></web-view> -->

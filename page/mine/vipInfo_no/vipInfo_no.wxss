@@ -4,14 +4,95 @@
   font-size: 26rpx;
   color: #808080;
   text-align: center;
-  margin-top: 25rpx;
+  line-height: 85rpx;
+  border-top: 1rpx solid #f8f8f8;
+  border-bottom: 1rpx solid #f8f8f8;
+  margin-bottom: 110rpx;
 }
 
-.info{
-  
+.info {
+  position: relative;
 }
-.avatar-wrapper .avatar {
-  width: 142rpx;
-  height: 142rpx;
+
+.info .wrapper  .avatar-wrapper .avatar {
+  width: 120rpx;
+  height: 120rpx;
   border-radius: 50%;
+}
+
+.info .wrapper {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  top: -60rpx;
+  width: 670rpx;
+  margin: 0 auto;
+}
+
+.info .bg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 670rpx;
+  height: 300rpx;
+}
+
+.info .wrapper .nick-name {
+  font-size: 36rpx;
+  color: #fff;
+  margin-top: 15rpx;
+}
+
+.integralBox {
+  width: 670rpx;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 26rpx;
+  margin-top: 30rpx;
+}
+
+.integralBox .tiao {
+  margin: 0 20rpx;
+}
+
+.progressBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+  color: #fff;
+  margin-top: 20rpx;
+}
+
+.progressBar .progressBox {
+  width: 400rpx;
+  margin: 0 10rpx;
+  border-radius: 100rpx;
+  border: 1rpx solid #fff;
+  height: 10rpx;
+}
+
+.progressBar .progressBox .progress {
+  background: #fff;
+  border-radius: 100rpx;
+  height: 10rpx;
+}
+
+.btn {
+  width: 670rpx;
+  height: 100rpx;
+  font-size: 40rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 100rpx;
+  position: absolute;
+  bottom: 30rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fb5151;
+  border-radius: 10rpx;
 }

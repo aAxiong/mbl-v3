@@ -1,0 +1,7 @@
+<view class="int_box">
+  <view class="int_wrapper">
+    <view class="tit"></view>
+    <view class="int"></view>
+  </view>
+  <image src='/images/mine/backg-wodejifen@2x.png'></image>
+</view>

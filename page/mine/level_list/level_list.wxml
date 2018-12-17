@@ -1,0 +1,54 @@
+<view class="info">
+  <view class="wrapper">
+    <view class='avatar-wrapper'>
+      <image class='avatar' wx:if="{{userInfo}}" src='{{userInfo.avatarUrl}}'></image>
+      <image class='avatar' wx:else src='/images/icon/avatar.png'></image>
+    </view>
+    <view wx:if="{{userInfo}}" class='nick-name'>{{userInfo.nickName}}</view>
+    <view wx:else class='nick-name'>{{snapName}}</view>
+    <view class="integralBox">
+      <view class="integral">当前积分：0</view>
+      <view class="tiao">|</view>
+      <view class="level_integral">升到下一级还需100积分</view>
+    </view>
+    <view class="progressBar">
+      <view class="start">0</view>
+      <view class="progressBox">
+        <view class="progress" style="width:{{progress}}%;"></view>
+      </view>
+      <view class="end">1000</view>
+    </view>
+  </view>
+  <image src='/images/mine/bg.png' class="bg"></image>
+</view>
+<view class="vip_discount vip_colum">
+  <view class="tit">会员折扣
+    <image src='/images/mine/icon-level@2x.png'></image>
+  </view>
+  <view class="box">
+    <view class="li {{levelnow==index?'active':''}}" wx:for='{{levelDiscount}}'>
+      <view class="level">{{item.level}}</view>
+      <view class="discount">{{item.discount}}</view>
+      <view class="tiao"></view>
+    </view>
+  </view>
+</view>
+
+<view class="vip_level vip_colum">
+  <view class="tit">等级成长
+    <image src='/images/mine/icon-level-up@2x.png'></image>
+  </view>
+  <view class="box">
+    <scroll-view scroll-x="true" scroll-with-animation='true' scroll-into-view="{{toView}}" class="box_scroll">
+      <view class="li {{level_tiao==index?'active':''}}" wx:for='{{levelTop}}' bindtap='changeLevel' data-index='{{index}}' id='toView{{index}}'>
+        <view class="wrapper {{level_k==index?'active':''}}">
+          <view class="level">{{item.level}}</view>
+          <view class="int">{{item.starInt}} - {{item.endInt}}</view>
+        </view>
+        <view class="tiao"></view>
+        <image src='/images/mine/backg-xz@2x.png' wx:if='{{level_k==index}}'></image>
+        <image src='/images/mine/backg-wxz@2x.png' wx:else></image>
+      </view>
+    </scroll-view>
+  </view>
+</view>
