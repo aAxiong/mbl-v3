@@ -775,7 +775,6 @@ Page({
         }
       }
     }
-    console.log(value);
     this.setData({
       [key]: value
     })
@@ -795,7 +794,6 @@ Page({
         }
       }
     }
-    console.log(value);
     this.setData({
       [key]: value
     })

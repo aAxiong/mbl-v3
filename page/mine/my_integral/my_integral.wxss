@@ -1,3 +1,182 @@
 page {
   background: #f8f8f8;
 }
+
+.int_box {
+  width: 670rpx;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 20rpx;
+  height: 250rpx;
+}
+
+.int_box .int_wrapper {
+  position: relative;
+  z-index: 3;
+  color: #fff;
+  text-align: center;
+}
+
+.int_box .int_wrapper .tit {
+  font-size: 44rpx;
+  padding-top: 40rpx;
+}
+
+.int_box .int_wrapper .int {
+  font-size: 60rpx;
+}
+
+.int_box image {
+  width: 670rpx;
+  height: 244rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.inf_box {
+  margin-top: 20rpx;
+  background: #fff;
+}
+
+.inf_box .nav {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+
+.inf_box .nav .li {
+  position: relative;
+  width: 140rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #333;
+  font-size: 32rpx;
+}
+
+.inf_box .nav .li.active {
+  color: #fc4c4c;
+}
+
+.inf_box .nav .li .tiao {
+  width: 118rpx;
+  height: 5rpx;
+  border-radius: 100rpx;
+  background: #fc4c4c;
+  position: absolute;
+  bottom: -1rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+
+.inf_box .nav .li.active .tiao {
+  display: block;
+}
+
+.consumption {
+  width: 675rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  padding-bottom: 10rpx;
+}
+
+.consumption .li {
+  display: flex;
+  align-items: center;
+  width: 675rpx;
+  height: 100rpx;
+  box-shadow: 0px 3px 22px 0px rgba(51, 51, 51, 0.15);
+  margin-bottom: 25rpx;
+}
+
+.consumption .li image {
+  width: 55rpx;
+  height: 55rpx;
+  border-radius: 100rpx;
+  margin-left: 30rpx;
+}
+
+.consumption .li .info {
+  margin-left: 30rpx;
+}
+
+.consumption .li .info .tit {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.consumption .li .info .time {
+  font-size: 25rpx;
+  color: #adadad;
+}
+
+.consumption .li .int {
+  font-size: 28rpx;
+  color: #333;
+  margin-left: auto;
+  margin-right: 35rpx;
+}
+
+.shopCity {
+  width: 675rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  padding-bottom: 10rpx;
+}
+
+.shopCity .li {
+  display: flex;
+  align-items: center;
+  width: 675rpx;
+  height: 200rpx;
+  box-shadow: 0px 3px 22px 0px rgba(51, 51, 51, 0.15);
+  margin-bottom: 25rpx;
+}
+
+.shopCity .li image {
+  width: 155rpx;
+  height: 155rpx;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+}
+
+.shopCity .li .info {
+  margin-left: 30rpx;
+  text-align: left;
+}
+
+.shopCity .li .info .tit {
+  font-size: 32rpx;
+  color: #333;
+}
+
+.shopCity .li .info .int {
+  font-size: 26rpx;
+  color: #fc4c4c;
+  margin-top: 10rpx;
+}
+
+.shopCity .li .info .remark {
+  font-size: 24rpx;
+  color: #ccc;
+  margin-top: 30rpx;
+}
+
+.shopCity .li .btn {
+  width: 120rpx;
+  height: 50rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  background: #fa5454;
+  line-height: 50rpx;
+  color: #fff;
+  font-size: 26rpx;
+  margin-left: auto;
+  margin-right: 30rpx;
+}
+
+.shopCity .li .btn.active {
+  background: #ccc;
+}

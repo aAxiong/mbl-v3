@@ -64,6 +64,10 @@ page {
   font-size: 36rpx;
   color: #333;
   font-weight: bold;
+  width: 430rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .use-coupon-wrapper .coupon-item .coupon-left .random,

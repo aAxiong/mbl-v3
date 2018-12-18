@@ -1,3 +1,7 @@
 {
+  "usingComponents": {
+    "tips": "/components/tips/tips"
+  },
+  "enablePullDownRefresh": true,
   "navigationBarTitleText": "积分"
 }

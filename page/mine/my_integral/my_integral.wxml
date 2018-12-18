@@ -1,7 +1,58 @@
 <view class="int_box">
   <view class="int_wrapper">
-    <view class="tit"></view>
-    <view class="int"></view>
+    <view class="tit">我的积分</view>
+    <view class="int">1350</view>
   </view>
   <image src='/images/mine/backg-wodejifen@2x.png'></image>
 </view>
+<view class="inf_box">
+  <view class="nav">
+    <view class="li {{activeNav==0?'active':''}}" bindtap='changNav' data-index='0'>积分明细
+      <view class="tiao"></view>
+    </view>
+    <view class="li {{activeNav==1?'active':''}}" bindtap='changNav' data-index='1'>积分商城
+      <view class="tiao"></view>
+    </view>
+  </view>
+  <view class="inf_wrapper">
+    <view class="consumption" wx:if='{{activeNav==0}}'>
+      <view class="li">
+        <image src='/images/mine/backg-wodejifen@2x.png'></image>
+        <view class="info">
+          <view class="tit">积分增加</view>
+          <view class="time">2018年5月2日</view>
+        </view>
+        <view class="int">-50</view>
+      </view>
+      <view class="li">
+        <image src='/images/mine/backg-wodejifen@2x.png'></image>
+        <view class="info">
+          <view class="tit">积分增加</view>
+          <view class="time">2018年5月2日</view>
+        </view>
+        <view class="int">-50</view>
+      </view>
+    </view>
+    <view class="shopCity" wx:if='{{activeNav==1}}'>
+      <view class="li">
+        <image src='/images/mine/backg-wodejifen@2x.png'></image>
+        <view class="info">
+          <view class="tit">积分增加</view>
+          <view class="int">50积分兑换</view>
+          <view class="remark">(仅可兑换一次)</view>
+        </view>
+        <view class="btn" bindtap='showWindowSucc'>兑换</view>
+      </view>
+      <view class="li active">
+        <image src='/images/mine/backg-wodejifen@2x.png'></image>
+        <view class="info">
+          <view class="tit">积分增加</view>
+          <view class="int">50积分兑换</view>
+          <view class="remark">(仅可兑换一次)</view>
+        </view>
+        <view class="btn active" bindtap='showWindowFail'>兑换</view>
+      </view>
+    </view>
+  </view>
+</view>
+<tips id='tips' text='{{tipsText}}'></tips>

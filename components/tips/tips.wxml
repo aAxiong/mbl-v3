@@ -1,0 +1,13 @@
+<view class="tips">
+  <view class="mask {{alertShow==true?'visible':''}}" bindtap='closeAlert'></view>
+  <view class="windows {{alertShow==true?'visible':''}}">
+    <view class="tit">
+      提示
+      <image src='/images/mine/icon-cancel@2x.png' bindtap='closeAlert'></image>
+    </view>
+    <view class="box">
+      <view class="text">{{text}}</view>
+      <view class="btn" bindtap='closeAlert'>确定</view>
+    </view>
+  </view>
+</view>
