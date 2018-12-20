@@ -130,7 +130,6 @@ Page({
     this.setData({
       tphone: e.detail.value
     })
-
   },
   getName: function(e) {
     this.setData({

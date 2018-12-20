@@ -1,0 +1,101 @@
+<view class="nav">
+  <view class="li {{navActive==0?'active':''}}" data-index='0' bindtap='changNav'>余额充值
+    <view class="tiao"></view>
+  </view>
+  <view class="li {{navActive==1?'active':''}}" data-index='1' bindtap='changNav'>余额明细
+    <view class="tiao"></view>
+  </view>
+</view>
+<view class="box">
+  <view class="recharge" wx:if='{{navActive==0}}'>
+    <view class="re_headerbox">
+      <view class="re_header">
+        <view class="tit">自定义金额充值</view>
+        <view class="k">
+          <input type='text' placeholder='最低充值25元起' placeholder-class='inputp' bindinput="getMoney"></input>
+          <view class="re_btn">充值</view>
+        </view>
+        <view class="remark">*充满100赠送10元</view>
+      </view>
+    </view>
+    <view class="re_body">
+      <view class="tit">固定金额充值</view>
+      <view class="ul">
+        <view class="li">
+          <view class="money">50元</view>
+        </view>
+        <view class="li">
+          <view class="money">50元</view>
+          <view class="remark">赠送10元</view>
+        </view>
+        <view class="li">
+          <view class="money">50元</view>
+          <view class="remark">赠送10元</view>
+        </view>
+        <view class="li">
+          <view class="money">50元</view>
+          <view class="remark">赠送10元</view>
+        </view>
+        <view class="li">
+          <view class="money">50元</view>
+          <view class="remark">赠送10元</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="info" wx:if='{{navActive==1}}'>
+    <view class="info_nav">
+      <view class="navbar">
+        <view class="li {{infoNavActive==0?'active':''}}" data-index='0' bindtap='changinfoNav'>消费
+          <view class="tiao"></view>
+        </view>
+        <view class="li {{infoNavActive==1?'active':''}}" data-index='1' bindtap='changinfoNav'>充值
+          <view class="tiao"></view>
+        </view>
+        <view class="screen">筛选
+          <image src='/images/mine/jt.png'></image>
+        </view>
+      </view>
+      <view class="inf_wrapper" wx:if='{{infoNavActive==0}}'>
+        <view class="consumption">
+          <view class="li">
+            <image src='/images/mine/backg-wodejifen@2x.png'></image>
+            <view class="info">
+              <view class="tit">积分增加</view>
+              <view class="time">2018年5月2日</view>
+            </view>
+            <view class="int">-50</view>
+          </view>
+          <view class="li">
+            <image src='/images/mine/backg-wodejifen@2x.png'></image>
+            <view class="info">
+              <view class="tit">积分增加</view>
+              <view class="time">2018年5月2日</view>
+            </view>
+            <view class="int">-￥50</view>
+          </view>
+        </view>
+      </view>
+      <view class="inf_wrapper" wx:if='{{infoNavActive==1}}'>
+        <view class="consumption">
+          <view class="li">
+            <image src='/images/mine/backg-wodejifen@2x.png'></image>
+            <view class="info">
+              <view class="tit">积分增加1</view>
+              <view class="time">2018年5月2日</view>
+            </view>
+            <view class="int">-￥50</view>
+          </view>
+          <view class="li">
+            <image src='/images/mine/backg-wodejifen@2x.png'></image>
+            <view class="info">
+              <view class="tit">积分增加1</view>
+              <view class="time">2018年5月2日</view>
+            </view>
+            <view class="int">-￥50</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

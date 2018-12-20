@@ -49,7 +49,9 @@
     "page/mine/all_order/all_order",
     "page/mine/vipInfo_no/vipInfo_no",
     "page/mine/level_list/level_list",
-    "page/mine/my_integral/my_integral"
+    "page/mine/my_integral/my_integral",
+    "page/mine/balance/balance",
+    "page/mine/my_integralInfo/my_integralInfo"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

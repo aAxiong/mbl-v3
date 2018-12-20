@@ -1,0 +1,21 @@
+<!-- 轮播图 -->
+<view class='slider'>
+  <swiper class='slider-content' bindchange="handleChange" circular='true' indicator-dots="true" autoplay="true" circular="true" indicator-active-color="#fd2e2e" previous-margin='50rpx' next-margin='50rpx'>
+    <swiper-item wx:for="{{sliderImg}}" wx:key="{{index}}">
+      <image class="slider-img {{currentIndex == index?'active': ''}}" mode="aspectFill" src='{{imgUrl}}{{item.ImgPaht}}'></image>
+    </swiper-item>
+  </swiper>
+</view>
+<view class="titbox">
+  <view class="tit">美甲套餐</view>
+  <view class="num">商品剩余5件</view>
+  <view class="int">2000积分</view>
+</view>
+<view class="infobox">
+  <view class="tit">商品详情</view>
+  <view class="content">
+    1、准备好所需的甲胶和工具，修剪指甲并打磨好甲面，刷上底 胶，照灯60秒。为甲面均匀的涂上黑色底色，照灯60秒。 2、再选择几种自己搭配的指甲油颜色，分别涂抹在指甲中和...
+  </view>
+</view>
+
+<view class="btn">立即兑换</view>
