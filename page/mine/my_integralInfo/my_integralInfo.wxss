@@ -15,7 +15,7 @@
   height: 605rpx;
   margin: 0 auto;
   border-radius: 16rpx;
-  margin-top: 40rpx;
+  margin-top: 60rpx;
 }
 
 .slider .slider-img.active {
@@ -23,7 +23,7 @@
   z-index: 10;
   height: 690rpx;
   transition: all 0.2s ease-in 0s;
-  margin-top: 0;
+  margin-top: 10rpx;
 }
 
 .slider .wx-swiper-dot {
@@ -108,4 +108,5 @@
   border-radius: 7rpx;
   background: #fc4e4e;
   margin: 0 auto;
+  margin-bottom: 20rpx;
 }

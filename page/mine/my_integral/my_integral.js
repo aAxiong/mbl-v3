@@ -1,13 +1,23 @@
 // page/mine/my_integral/my_integral.js
+import {
+  Myintegral
+} from 'my_integral_model.js'
+const app = getApp()
+var myintegral = new Myintegral()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    activeNav: 0,
+    activeNav: 1,
     tipsText: '兑换成功，请到团购订单列表查看兑换券',
-    alertShow: false
+    alertShow: false,
+    DetailList: [], //明细数组
+    shopMallList: [], //积分商城数组
+    MyIntegral: '',
+    imgUrl: app.globalData.imgUrl,
+
   },
 
   /**
@@ -15,6 +25,8 @@ Page({
    */
   onLoad: function(options) {
     this.tips = this.selectComponent("#tips");
+    this.page = 1; //积分明细页数
+    this.getShopMallData();
   },
 
   /**
@@ -30,19 +42,55 @@ Page({
   onShow: function() {
 
   },
-  changNav: function(e) {
+  getShopMallData() { //获取积分明细数据
+    wx.showLoading({
+      title: '加载中...',
+    })
+    myintegral.getShopMallData((res) => {
+      wx.hideLoading();
+      if (res.Status == '0') {
+        this.setData({
+          shopMallList: res.Datas.CommodityList,
+          MyIntegral: res.Datas.MyIntegral
+        })
+      }
+      wx.stopPullDownRefresh()
+    })
+  },
+  getInfoData() { //获取积分明细数据
+    wx.showLoading({
+      title: '加载中...',
+    })
+    myintegral.getIntDetails(this.page, (res) => {
+      wx.hideLoading();
+      if (res.Status == '0') {
+        this.setData({
+          DetailList: res.Datas.DetailList
+        })
+      }
+      wx.stopPullDownRefresh()
+    })
+  },
+  changNav: function(e) { //导航条切换
     let index = e.currentTarget.dataset.index;
+    if (index == 0) {
+      this.page = 1
+      this.getInfoData();
+    } else {
+      this.getShopMallData();
+    }
     this.setData({
       activeNav: index
     })
+
   },
-  showWindowFail: function() {
+  showWindowFail: function() { //兑换失败弹窗
     this.tips.showAlert();
     this.setData({
       tipsText: '兑换失败，风里雨里，攒够积分等你~'
     })
   },
-  showWindowSucc: function() {
+  showWindowSucc: function() { //兑换成功弹窗
     this.tips.showAlert();
     this.setData({
       tipsText: '兑换成功，请到团购订单列表查看兑换券'
@@ -52,14 +100,22 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    if (this.data.activeNav == 0) {
+      this.page = 1
+      this.getInfoData();
+    } else {
+      this.getShopMallData();
+    }
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    if (this.data.activeNav == 0) {
+      this.page++;
+      this.getInfoData();
+    }
   },
 
   /**

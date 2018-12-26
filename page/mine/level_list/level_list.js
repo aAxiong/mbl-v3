@@ -1,4 +1,8 @@
-// page/mine/vipInfo_no/vipInfo_no.js
+import {
+  LevelList
+} from 'level_list_model.js'
+const app = getApp()
+var levelList = new LevelList()
 Page({
 
   /**
@@ -47,9 +51,10 @@ Page({
       endInt: 100
     }],
     level_tiao: 0,
-    level_k: -1
-
-
+    level_k: -1,
+    MyIntegral: 0,
+    MyVip: '',
+    StillNeed: ''
   },
 
   /**
@@ -84,11 +89,24 @@ Page({
         this.setData({
           userInfo: res.userInfo
         })
-        wx.hideLoading();
+        this.getLevelList();
       }
     })
   },
-
+  getLevelList: function() {
+    levelList.getLevelData((res) => {
+      wx.hideLoading();
+      if (res.Status == '0') {
+        this.setData({
+          MyIntegral: res.Datas.MyIntegral,
+          MyVip: res.Datas.MyIntegral,
+          StillNeed: res.Datas.MyIntegral,
+          levelTop: res.Datas.VipList
+        })
+      }
+      wx.stopPullDownRefresh()
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

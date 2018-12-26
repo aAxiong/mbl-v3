@@ -1,7 +1,7 @@
 <view class="int_box">
   <view class="int_wrapper">
     <view class="tit">我的积分</view>
-    <view class="int">1350</view>
+    <view class="int">{{MyIntegral}}</view>
   </view>
   <image src='/images/mine/backg-wodejifen@2x.png'></image>
 </view>
@@ -16,41 +16,25 @@
   </view>
   <view class="inf_wrapper">
     <view class="consumption" wx:if='{{activeNav==0}}'>
-      <view class="li">
+      <view class="li" wx:for='{{DetailList}}'>
         <image src='/images/mine/backg-wodejifen@2x.png'></image>
         <view class="info">
-          <view class="tit">积分增加</view>
-          <view class="time">2018年5月2日</view>
+          <view class="tit" wx:if='{{item.IntegralType==1}}'>积分增加</view>
+          <view class="tit" wx:if='{{item.IntegralType==2}}'>积分消费</view>
+          <view class="time">{{item.CreateTime}}</view>
         </view>
-        <view class="int">-50</view>
-      </view>
-      <view class="li">
-        <image src='/images/mine/backg-wodejifen@2x.png'></image>
-        <view class="info">
-          <view class="tit">积分增加</view>
-          <view class="time">2018年5月2日</view>
-        </view>
-        <view class="int">-50</view>
+        <view class="int">-{{item.Integral}}</view>
       </view>
     </view>
     <view class="shopCity" wx:if='{{activeNav==1}}'>
-      <view class="li">
-        <image src='/images/mine/backg-wodejifen@2x.png'></image>
+      <view class="li" wx:for='{{shopMallList}}'>
+        <image src='{{imgUrl}}{{item.Path}}'></image>
         <view class="info">
-          <view class="tit">积分增加</view>
-          <view class="int">50积分兑换</view>
-          <view class="remark">(仅可兑换一次)</view>
+          <view class="tit">{{item.CommodityName}}</view>
+          <view class="int">{{item.IntegralNumber}}积分兑换</view>
+          <view class="remark" wx:if='{{item.LimitedNumber>0}}'>(仅可兑换{{item.LimitedNumber}}次)</view>
         </view>
-        <view class="btn" bindtap='showWindowSucc'>兑换</view>
-      </view>
-      <view class="li active">
-        <image src='/images/mine/backg-wodejifen@2x.png'></image>
-        <view class="info">
-          <view class="tit">积分增加</view>
-          <view class="int">50积分兑换</view>
-          <view class="remark">(仅可兑换一次)</view>
-        </view>
-        <view class="btn active" bindtap='showWindowFail'>兑换</view>
+        <view class="btn {{item.InventoryNumber<=0?'active':''}}" bindtap='showWindowSucc'>兑换</view>
       </view>
     </view>
   </view>

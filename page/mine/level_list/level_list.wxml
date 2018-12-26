@@ -7,9 +7,9 @@
     <view wx:if="{{userInfo}}" class='nick-name'>{{userInfo.nickName}}</view>
     <view wx:else class='nick-name'>{{snapName}}</view>
     <view class="integralBox">
-      <view class="integral">当前积分：0</view>
+      <view class="integral">当前积分：{{MyIntegral}}</view>
       <view class="tiao">|</view>
-      <view class="level_integral">升到下一级还需100积分</view>
+      <view class="level_integral">升到下一级还需{{StillNeed}}积分</view>
     </view>
     <view class="progressBar">
       <view class="start">0</view>
@@ -26,9 +26,9 @@
     <image src='/images/mine/icon-level@2x.png'></image>
   </view>
   <view class="box">
-    <view class="li {{levelnow==index?'active':''}}" wx:for='{{levelDiscount}}'>
-      <view class="level">{{item.level}}</view>
-      <view class="discount">{{item.discount}}</view>
+    <view class="li {{levelnow==index?'active':''}}" wx:for='{{levelTop}}'>
+      <view class="level">{{item.Name}}</view>
+      <view class="discount">{{item.Discount}}</view>
       <view class="tiao"></view>
     </view>
   </view>
@@ -42,8 +42,8 @@
     <scroll-view scroll-x="true" scroll-with-animation='true' scroll-into-view="{{toView}}" class="box_scroll">
       <view class="li {{level_tiao==index?'active':''}}" wx:for='{{levelTop}}' bindtap='changeLevel' data-index='{{index}}' id='toView{{index}}'>
         <view class="wrapper {{level_k==index?'active':''}}">
-          <view class="level">{{item.level}}</view>
-          <view class="int">{{item.starInt}} - {{item.endInt}}</view>
+          <view class="level">{{item.Name}}</view>
+          <view class="int">{{item.Integral}}</view>
         </view>
         <view class="tiao"></view>
         <image src='/images/mine/backg-xz@2x.png' wx:if='{{level_k==index}}'></image>
