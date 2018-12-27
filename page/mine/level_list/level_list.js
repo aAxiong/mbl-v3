@@ -12,49 +12,16 @@ Page({
     snapName: '',
     toView: 'toView0',
     progress: 40,
-    levelDiscount: [{
-      level: '青铜',
-      discount: '无折扣'
-    }, {
-      level: '白银',
-      discount: '9.8折'
-    }, {
-      level: '黄金',
-      discount: '9.5折'
-    }, {
-      level: '白金',
-      discount: '9.3折'
-    }, {
-      level: '钻石',
-      discount: '9折'
-    }],
+    levelDiscount: [],
     levelnow: 0,
-    levelTop: [{
-      level: '青铜',
-      starInt: 0,
-      endInt: 100
-    }, {
-      level: '白银',
-      starInt: 0,
-      endInt: 100
-    }, {
-      level: '黄金',
-      starInt: 0,
-      endInt: 100
-    }, {
-      level: '白金',
-      starInt: 0,
-      endInt: 100
-    }, {
-      level: '钻石',
-      starInt: 0,
-      endInt: 100
-    }],
+    levelTop: [],
     level_tiao: 0,
     level_k: -1,
     MyIntegral: 0,
     MyVip: '',
-    StillNeed: ''
+    StillNeed: '',
+    star: 0,
+    end: 0
   },
 
   /**
@@ -97,10 +64,21 @@ Page({
     levelList.getLevelData((res) => {
       wx.hideLoading();
       if (res.Status == '0') {
+        for (var i = 0; i < res.Datas.VipList.length; i++) {
+          res.Datas.MyIntegral
+          if (res.Datas.MyVip == res.Datas.VipList[i].Name) {
+            this.setData({
+              levelnow: i,
+              level_tiao: i,
+              star: res.Datas.VipList[i].Integral.split('-')[0],
+              end: res.Datas.VipList[i].Integral.split('-')[1]
+            })
+          }
+        }
         this.setData({
           MyIntegral: res.Datas.MyIntegral,
           MyVip: res.Datas.MyIntegral,
-          StillNeed: res.Datas.MyIntegral,
+          StillNeed: res.Datas.StillNeed,
           levelTop: res.Datas.VipList
         })
       }

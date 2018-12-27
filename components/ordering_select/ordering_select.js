@@ -14,7 +14,8 @@ Component({
           sizeId: initSizeId,
           // tasteName: initTasteName,
           shopData: ins,
-          shopData1: this.labelGenerate()
+          shopData1: this.labelGenerate(),
+          money: ins.SpecificationPrice || newData.Money
         })
         this.triggerEvent('moneyTriggerTap', {
           'index': 0
@@ -32,7 +33,8 @@ Component({
     sizeId: '',
     tasteName: '',
     shopData: [],
-    shopData1: ""
+    shopData1: "",
+    money: ''
   },
   /**
    * 组件的方法列表

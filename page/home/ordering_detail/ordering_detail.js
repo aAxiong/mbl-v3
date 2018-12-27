@@ -57,45 +57,60 @@ Page({
   },
   //显示规格口味
   goodsSizeTap() {
-    this.setData({
-      isShowSelect: false,
-      goodsData: this.data.goodsData
-    })
+    let ll = this.data.goodsData.LableList.length;
+    let sl = this.data.goodsData.SpecificationList.length;
+    if (ll === 0 && sl === 0) {
+      this.selectData("");
+      return
+    } else {
+      this.setData({
+        isShowSelect: false,
+        goodsData: this.data.goodsData
+      })
+    }
+
   },
   //修改金额
   moneyData(e) {
     let data = e.detail
+    // let Money = this.data.goodsData.SpecificationList[data.index].SpecificationPrice || this.data.goodsData.Money
+    let Money = this.data.goodsData.Money
     this.setData({
-      totalMoney: this.data.goodsData.SpecificationList[data.index].SpecificationPrice
+      totalMoney: Money
     })
   },
   //选择,加入购物车 
   selectData(e) {
-    let data = e.detail
-    this.setData({
-      isShowSelect: data.orderSelect
-    })
-    if (data.size) {
-      wx.showLoading({
-        title: '正在加入购物车...',
-        mask: true
+    let data = e.detail || ""
+    let size = data.size || "";
+    let taste = data.taste || "";
+    if (data != "") {
+      this.setData({
+        isShowSelect: data.orderSelect
       })
-      let deskNumber = wx.getStorageSync('deskNumber')
-      ordering.addCart(this.data.commodityId, data.size, data.taste, deskNumber, 1, (res) => {
-        if (res.Status === 0) {
-          wx.hideLoading()
-          wx.showToast({
-            title: '添加成功',
-            mask: true
-          })
-        } else {
-          wx.showToast({
-            title: '添加失败',
-            mask: true
-          })
-        }
-      })
+      if (data.type == 1) { //点了取消
+        return
+      }
     }
+    wx.showLoading({
+      title: '正在加入购物车...',
+      mask: true
+    })
+    let deskNumber = wx.getStorageSync('deskNumber')
+    ordering.addCart(this.data.commodityId, size, taste, deskNumber, 1, (res) => {
+      if (res.Status === 0) {
+        wx.hideLoading()
+        wx.showToast({
+          title: '添加成功',
+          mask: true
+        })
+      } else {
+        wx.showToast({
+          title: '添加失败',
+          mask: true
+        })
+      }
+    })
   },
 
   /**

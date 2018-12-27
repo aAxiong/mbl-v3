@@ -8,37 +8,22 @@
 </view>
 <view class="box">
   <view class="recharge" wx:if='{{navActive==0}}'>
-    <view class="re_headerbox">
+    <view class="re_headerbox" wx:if='{{AchieveArray[0].IsChoose==1&&AchieveArray[0].Type==1}}'>
       <view class="re_header">
         <view class="tit">自定义金额充值</view>
         <view class="k">
-          <input type='text' placeholder='最低充值25元起' placeholder-class='inputp' bindinput="getMoney"></input>
-          <view class="re_btn">充值</view>
+          <input type='text' placeholder='最低充值{{AchieveArray[0].AchieveAmount}}元起' placeholder-class='inputp' bindinput="getMoney"></input>
+          <view class="re_btn" data-index='-1' bindtap='balance'>充值</view>
         </view>
-        <view class="remark">*充满100赠送10元</view>
+        <view class="remark">*{{AchieveArray[0].StrGivingAmount}}</view>
       </view>
     </view>
-    <view class="re_body">
+    <view class="re_body" wx:if='{{AchieveArray.length>0}}'>
       <view class="tit">固定金额充值</view>
       <view class="ul">
-        <view class="li">
-          <view class="money">50元</view>
-        </view>
-        <view class="li">
-          <view class="money">50元</view>
-          <view class="remark">赠送10元</view>
-        </view>
-        <view class="li">
-          <view class="money">50元</view>
-          <view class="remark">赠送10元</view>
-        </view>
-        <view class="li">
-          <view class="money">50元</view>
-          <view class="remark">赠送10元</view>
-        </view>
-        <view class="li">
-          <view class="money">50元</view>
-          <view class="remark">赠送10元</view>
+        <view class="li" wx:for='{{AchieveArray}}' wx:if='{{item.Type==2&&item.IsChoose==1}}' data-index='{{item.TopupSetID}}' bindtap='balance'>
+          <view class="money">{{item.AchieveAmount}}元</view>
+          <view class="remark" wx:if='{{item.StrGivingAmount!=""}}'>赠送{{item.StrGivingAmount}}元</view>
         </view>
       </view>
     </view>

@@ -137,7 +137,7 @@ Page({
       transformOrigin: '50% 50%'
     });
 
-    takeaway.optCart(this.data.currentGoodsId, data.size, data.taste, 1, "+", (res) => {
+    takeaway.optCart(this.data.currentGoodsId, size, taste, 1, "+", (res) => {
       if (res.Status === 0) {
         wx.hideLoading()
         this.setData({

@@ -64,6 +64,7 @@ Page({
   },
 
   switchDefault: function(e) {
+    if (this.data.type == 1) return
     this.setData({
       active: e.currentTarget.dataset.id
     })

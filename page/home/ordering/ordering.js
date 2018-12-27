@@ -77,19 +77,17 @@ Page({
         if (res.Datas.CommodityList.length === 0) {
           this.setData({
             isLoad: false,
-            iconShowCart: true
+            iconShowCart: false
           })
         }
         if (pageIndex === 1) {
           this.setData({
             goodsList: res.Datas.CommodityList,
             isShow: false,
-            iconShowCart: true
           })
         } else {
           this.setData({
             goodsList: this.data.goodsList.concat(res.Datas.CommodityList),
-            iconShowCart: true
           })
         }
         if (this.data.goodsList.length === 0) {
@@ -153,40 +151,60 @@ Page({
     let index = e.currentTarget.dataset.idx
     let sizeTaste = this.data.goodsList[index]
     let currentGoodsId = this.data.goodsList[index].CommodityID
-    this.setData({
-      isShowSelect: false,
-      goodsSizeTaste: sizeTaste,
-      currentGoodsId: currentGoodsId
-    })
+    let ll = this.data.goodsList[index].LableList.length;
+    let sl = this.data.goodsList[index].SpecificationList.length;
+    if (ll === 0 && sl === 0) {
+      this.setData({
+        currentGoodsId: currentGoodsId,
+      })
+      this.selectData("");
+      return
+    } else {
+      this.setData({
+        isShowSelect: false,
+        goodsSizeTaste: sizeTaste,
+        currentGoodsId: currentGoodsId
+      })
+    }
+    // this.setData({
+    //   isShowSelect: false,
+    //   goodsSizeTaste: sizeTaste,
+    //   currentGoodsId: currentGoodsId
+    // })
   },
   //规格选择
   selectData(e) {
-    let data = e.detail
-    this.setData({
-      isShowSelect: data.orderSelect
-    })
-    if (data.size) {
-      wx.showToast({
-        title: '正在加入购物车',
-        icon: 'loading',
-        mask: 'true',
-        duration: 600
+    let data = e.detail || ""
+    let size = data.size || "";
+    let taste = data.taste || "";
+    if (data != "") {
+      this.setData({
+        isShowSelect: data.orderSelect
       })
-      ordering.addCart(this.data.currentGoodsId, data.size, data.taste, this.data.deskNumber, 1, (res) => {
-        if (res.Status === 0) {
-          //wx.hideLoading()
-          // this.setData({
-          //   goodsCartTotalNum: res.Datas.SumCommodityNum
-          // })
-          this.loadCartData()
-        } else {
-          wx.showToast({
-            title: '添加失败',
-            mask: true
-          })
-        }
-      })
+      if (data.type == 1) { //点了取消
+        return
+      }
     }
+    wx.showToast({
+      title: '正在加入购物车',
+      icon: 'loading',
+      mask: 'true',
+      duration: 600
+    })
+    ordering.addCart(this.data.currentGoodsId, size, taste, this.data.deskNumber, 1, (res) => {
+      if (res.Status === 0) {
+        //wx.hideLoading()
+        this.setData({
+          goodsCartTotalNum: res.Datas.SumCommodityNum
+        })
+        this.loadCartData()
+      } else {
+        wx.showToast({
+          title: '添加失败',
+          mask: true
+        })
+      }
+    })
   },
   //购物车数据
   loadCartData() {
