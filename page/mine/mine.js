@@ -104,6 +104,20 @@ Page({
       })
     }
   },
+  jumpBalance: function(e) {
+    if (this.data.vipStatus == false) {
+      wx.navigateTo({
+        url: '/page/mine/balance/balance',
+      })
+    }
+  },
+  jumpmy_integral: function(e) {
+    if (this.data.vipStatus == false) {
+      wx.navigateTo({
+        url: '/page/mine/my_integral/my_integral',
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

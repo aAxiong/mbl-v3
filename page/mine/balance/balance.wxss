@@ -231,3 +231,10 @@ page {
   margin-left: auto;
   margin-right: 35rpx;
 }
+
+.info .pickerDate .picker {
+  display: inline-block;
+  font-size: 28rpx;
+  color: #9b9b9b;
+  margin-right: 10rpx;
+}

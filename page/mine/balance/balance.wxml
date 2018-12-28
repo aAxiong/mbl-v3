@@ -37,47 +37,40 @@
         <view class="li {{infoNavActive==1?'active':''}}" data-index='1' bindtap='changinfoNav'>充值
           <view class="tiao"></view>
         </view>
-        <view class="screen">筛选
-          <image src='/images/mine/jt.png'></image>
+        <view class="screen">
+          <view class="pickerDate">
+            <view class="picker">
+              <picker mode="date" value="{{nowTime}}" bindchange="bindDateChange">
+                <view class="picker">
+                  {{nowTime}}
+                </view>
+                <image src='/images/mine/jt.png'></image>
+              </picker>
+            </view>
+          </view>
         </view>
       </view>
       <view class="inf_wrapper" wx:if='{{infoNavActive==0}}'>
         <view class="consumption">
-          <view class="li">
-            <image src='/images/mine/backg-wodejifen@2x.png'></image>
+          <view class="li" wx:for='{{RDArray}}' wx:if='{{item.TopupType==1}}'>
+            <image src='{{imgheader}}'></image>
             <view class="info">
-              <view class="tit">积分增加</view>
-              <view class="time">2018年5月2日</view>
+              <view class="tit">金额消费</view>
+              <view class="time">{{item.CreateTime}}</view>
             </view>
-            <view class="int">-50</view>
-          </view>
-          <view class="li">
-            <image src='/images/mine/backg-wodejifen@2x.png'></image>
-            <view class="info">
-              <view class="tit">积分增加</view>
-              <view class="time">2018年5月2日</view>
-            </view>
-            <view class="int">-￥50</view>
+            <view class="int">-￥{{item.Money}}</view>
           </view>
         </view>
       </view>
       <view class="inf_wrapper" wx:if='{{infoNavActive==1}}'>
         <view class="consumption">
-          <view class="li">
-            <image src='/images/mine/backg-wodejifen@2x.png'></image>
+          <view class="li" wx:for='{{RDArray}}' wx:if='{{item.TopupType==2}}'>
+            <image src='{{imgheader}}'></image>
             <view class="info">
-              <view class="tit">积分增加1</view>
-              <view class="time">2018年5月2日</view>
+              <view class="tit">金额充值</view>
+              <view class="time">{{item.CreateTime}}</view>
             </view>
-            <view class="int">-￥50</view>
-          </view>
-          <view class="li">
-            <image src='/images/mine/backg-wodejifen@2x.png'></image>
-            <view class="info">
-              <view class="tit">积分增加1</view>
-              <view class="time">2018年5月2日</view>
-            </view>
-            <view class="int">-￥50</view>
+            <view class="int">+￥{{item.Money}}</view>
           </view>
         </view>
       </view>

@@ -58,7 +58,7 @@
       </view>
       <image src='/images/icon/s_arrow.png'></image>
     </view>
-    <view class='mine-item' bindtap='jumpAllOrder'>
+    <view class='mine-item' bindtap='jumpmy_integral'>
       <view class="list-box">
         <view class='text'>
           积分兑换
@@ -66,7 +66,7 @@
       </view>
       <image src='/images/icon/s_arrow.png'></image>
     </view>
-    <view class='mine-item' bindtap='jumpAllOrder'>
+    <view class='mine-item' bindtap='jumpBalance'>
       <view class="list-box">
         <view class='text'>
           在线充值

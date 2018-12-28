@@ -7,7 +7,7 @@ class Balance extends Base {
     super()
   }
 
-  getBalanceData(callback) { //获取等级页面数据
+  getBalanceData(callback) { //获取充值内容数据
     let userId = wx.getStorageSync('userId')
     let params = {
       url: 'MyCenter.ashx',
@@ -21,7 +21,7 @@ class Balance extends Base {
     }
     this.request(params)
   }
-  orderPay(Code, Fee, TopupSetID, callback) {
+  orderPay(Code, Fee, TopupSetID, callback) { //支付接口
     let userid = wx.getStorageSync('userId')
     let params = {
       url: 'MyCenter.ashx',
@@ -40,8 +40,23 @@ class Balance extends Base {
     }
     this.request(params)
   }
-
-
+  rechargeDetails(StartTime, EndTime, PageIndex, callback) { //获取充值详情数据
+    let userId = wx.getStorageSync('userId')
+    let params = {
+      url: 'MyCenter.ashx',
+      data: {
+        Type: 9,
+        OpenUserID: userId,
+        PageIndex: PageIndex,
+        StartTime: StartTime,
+        EndTime: EndTime
+      },
+      sCallback: function(data) {
+        callback && callback(data)
+      }
+    }
+    this.request(params)
+  }
 }
 
 export {

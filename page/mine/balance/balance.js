@@ -12,7 +12,10 @@ Page({
     navActive: 0,
     infoNavActive: 0,
     balanceMoney: '', //充值金额
-    AchieveArray: []
+    AchieveArray: [],
+    RDArray: [], //详情数据
+    nowTime: '',
+    imgheader: ''
   },
 
   /**
@@ -20,6 +23,13 @@ Page({
    */
   onLoad: function(options) {
     this.getBalanceData();
+    this.page = 1;
+    let info = wx.getStorageSync('userInfo')
+    this.setData({
+      nowTime: this.getNowFormatDate(),
+      imgheader: info.avatarUrl
+    })
+    this.rechargeDetails(this.data.nowTime, this.data.nowTime);
   },
   getBalanceData() {
     wx.showLoading({
@@ -29,6 +39,12 @@ Page({
       if (res.Status == '0') {
         this.setData({
           AchieveArray: res.Datas
+        })
+      } else {
+        wx.showToast({
+          title: '获取数据失败',
+          icon: 'none',
+          duration: 1500
         })
       }
       wx.hideLoading();
@@ -136,6 +152,45 @@ Page({
       }
     })
   },
+  rechargeDetails(starTime, endTime) {
+    balance.rechargeDetails(starTime, endTime, this.page, (res) => {
+      if (res.Status == '0') {
+        this.setData({
+          RDArray: res.Datas.DetailList
+        })
+      } else {
+        wx.showToast({
+          title: '获取数据失败',
+          icon: 'none',
+          duration: 1500
+        })
+      }
+      wx.hideLoading();
+      wx.stopPullDownRefresh()
+    })
+  },
+  bindDateChange(e) { //时间监听
+    this.setData({
+      nowTime: e.detail.value,
+    })
+    this.page = 1;
+    this.rechargeDetails(this.data.nowTime, this.data.nowTime);
+  },
+  getNowFormatDate() {
+    var date = new Date();
+    var seperator1 = "-";
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+      month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+      strDate = "0" + strDate;
+    }
+    var currentdate = year + seperator1 + month + seperator1 + strDate;
+    return currentdate;
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -170,6 +225,9 @@ Page({
   onPullDownRefresh: function() {
     if (this.data.navActive == 0) {
       this.getBalanceData();
+    } else {
+      this.page = 1;
+      this.rechargeDetails(this.data.nowTime, this.data.nowTime);
     }
   },
 
@@ -177,6 +235,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    if (this.data.navActive == 1) {
+      this.page++;
+      this.rechargeDetails(this.data.nowTime, this.data.nowTime);
+    }
 
   },
 

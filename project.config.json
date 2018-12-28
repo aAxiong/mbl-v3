@@ -35,7 +35,7 @@
 				{
 					"id": 0,
 					"name": "1",
-					"pathName": "page/mine/balance/balance",
+					"pathName": "page/home/home",
 					"query": "query=F1&id=3564947617899085824",
 					"scene": "1011"
 				},
