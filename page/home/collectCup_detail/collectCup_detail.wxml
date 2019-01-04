@@ -1,0 +1,26 @@
+<view class="activity-wrapper" hidden='{{mask}}'>
+  <view class='activity-image'>
+    <image src='/images/home/collectbg@2x.png' class="bg"></image>
+    <view class="textbox">
+      <image class="textimg" src='/images/home/collectText.png'></image>
+      <view class="text">{{activity.Jibei}}</view>
+    </view>
+    <image class="jucie" src='/images/home/Cup.gif'></image>
+  </view>
+  <view class='activity-content'>
+    <view class='rule'>
+      <view class='title'>活动规则：</view>
+      <view class="content">{{activity.DisContent}}</view>
+    </view>
+    <view class='time'>
+      <view class='title'>活动时间：</view>
+      <view class="content">{{activity.StartTime}}-{{activity.EndTime}}</view>
+    </view>
+    <view class="remark">*注意事项：集满后点击立即兑换即可获得一张团购兑换券</view>
+  </view>
+  <view class='share'>
+    <view class='share-btn active' wx:if='{{activity.Jibei>=activity.Condition}}' bindtap='optExchange'>立即兑换</view>
+    <view class='share-btn' wx:else>立即兑换</view>
+
+  </view>
+</view>

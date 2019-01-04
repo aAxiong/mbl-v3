@@ -60,6 +60,10 @@
             </view>
             <view class="int">-￥{{item.Money}}</view>
           </view>
+          <view wx:if='{{RDArray.length<=0}}' class='none-coupon'>
+            <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+            <view class='text'>暂无数据</view>
+          </view>
         </view>
       </view>
       <view class="inf_wrapper" wx:if='{{infoNavActive==1}}'>
@@ -71,6 +75,10 @@
               <view class="time">{{item.CreateTime}}</view>
             </view>
             <view class="int">+￥{{item.Money}}</view>
+          </view>
+          <view wx:if='{{RDArray.length<=0}}' class='none-coupon'>
+            <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+            <view class='text'>暂无数据</view>
           </view>
         </view>
       </view>

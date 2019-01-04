@@ -10,6 +10,9 @@
           <view class='random' wx:if="{{item.DisType == 4}}" data-id="{{item.ID}}" bindtap='jumpActive'>
             查看详情
           </view>
+          <view class='random' wx:if="{{item.DisType == 7}}" data-id="{{item.ID}}" bindtap='jumpCup'>
+            查看详情
+          </view>
           <view class='tiaojian' wx:if="{{item.DisType == 1||item.DisType == 2}}">
             满{{item.Condition}}可用
           </view>
@@ -34,6 +37,9 @@
           </view>
           <view class='money' wx:if='{{item.DisType == 6}}'>
             单品折扣
+          </view>
+          <view class='money' wx:if='{{item.DisType == 7}}'>
+            集杯活动
           </view>
         </view>
         <view class='coupon-bg'>

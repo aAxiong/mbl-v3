@@ -92,31 +92,36 @@ Page({
       url: '/page/mine/all_order/all_order',
     })
   },
-  jumpAddressList: function(e) {
+  jumpAddressList: function(e) {//跳转到地址列表
     wx.navigateTo({
       url: '/page/mine/address_list/address_list?type=1',
     })
   },
-  jumpVipPage: function(e) {
+  jumpVipPage: function(e) {//跳转到vip页面
     if (this.data.vipStatus == false) {
       wx.navigateTo({
         url: '/page/mine/vipInfo_no/vipInfo_no',
       })
     }
   },
-  jumpBalance: function(e) {
+  jumpBalance: function(e) {//跳转到积分商城
     if (this.data.vipStatus == false) {
       wx.navigateTo({
         url: '/page/mine/balance/balance',
       })
     }
   },
-  jumpmy_integral: function(e) {
+  jumpmy_integral: function(e) {//跳转到我的积分
     if (this.data.vipStatus == false) {
       wx.navigateTo({
         url: '/page/mine/my_integral/my_integral',
       })
     }
+  },
+  JumpGroupon() { //跳转到我的兑换券
+    wx.navigateTo({
+      url: '/page/mine/mine_groupon/mine_groupon',
+    })
   },
   /**
    * 生命周期函数--监听页面隐藏

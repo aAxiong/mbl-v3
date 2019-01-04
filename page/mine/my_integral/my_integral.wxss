@@ -180,3 +180,21 @@ page {
 .shopCity .li .btn.active {
   background: #ccc;
 }
+
+.none-coupon {
+  padding: 120rpx 0;
+  text-align: center;
+  background: #fff;
+}
+
+.none-coupon .none-coupon {
+  width: 180rpx;
+  height: 168rpx;
+}
+
+.none-coupon .text {
+  margin-top: 18rpx;
+  line-height: 48rpx;
+  font-size: 36rpx;
+  color: #666;
+}

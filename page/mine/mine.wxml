@@ -50,7 +50,7 @@
       </view>
       <image src='/images/icon/s_arrow.png'></image>
     </view>
-    <view class='mine-item' bindtap='jumpAllOrder'>
+    <view class='mine-item' bindtap='JumpGroupon'>
       <view class="list-box">
         <view class='text'>
           我的兑换券

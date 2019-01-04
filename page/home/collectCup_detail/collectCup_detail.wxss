@@ -1,0 +1,123 @@
+@font-face {
+  font-family: 'siyuan';
+  src: url('//at.alicdn.com/t/webfont_3n0yfyct9rj.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/webfont_3n0yfyct9rj.eot?#iefix') format('embedded-opentype'),
+         /* IE6-IE8 */ url('//at.alicdn.com/t/webfont_3n0yfyct9rj.woff') format('woff'),
+         /* chrome、firefox */ url('//at.alicdn.com/t/webfont_3n0yfyct9rj.ttf') format('truetype'),
+         /* chrome、firefox、opera、Safari,
+         Android,
+         iOS 4.2+*/ url('//at.alicdn.com/t/webfont_3n0yfyct9rj.svg#NotoSansHans-DemiLight') format('svg'); /* iOS 4.1- */
+}
+
+page {
+  background: #fff;
+}
+
+.activity-image {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.activity-image .bg {
+  width: 100%;
+  height: 538rpx;
+}
+
+.activity-image .textbox {
+  width: 378rpx;
+  position: absolute;
+  top: 125rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.activity-image .textbox .text {
+  font-family: 'siyuan';
+  font-size: 58rpx;
+  color: #fff;
+  width: 80rpx;
+  position: absolute;
+  top: -30rpx;
+  right: 60rpx;
+  z-index: 3;
+  text-align: center;
+}
+
+.activity-image .textbox image {
+  width: 378rpx;
+  height: 50rpx;
+  text-align: center;
+}
+
+.activity-image .jucie {
+  width: 376rpx;
+  height: 315rpx;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.activity-content {
+  padding: 40rpx;
+  background: #fff;
+}
+
+.activity-content .title {
+  font-size: 30rpx;
+  color: #000;
+  font-weight: 400;
+}
+
+.activity-content .content {
+  width: 500rpx;
+}
+
+.activity-content .rule .title {
+  font-weight: bold;
+}
+
+.activity-content .time .title {
+  font-size: 26rpx;
+  color: #000;
+  font-weight: 400;
+}
+
+.activity-content .rule, .activity-content .time {
+  margin-bottom: 20rpx;
+  color: #333;
+  font-size: 26rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.activity-content .rule {
+  font-weight: bold;
+  font-size: 30rpx;
+}
+
+.share {
+  text-align: center;
+}
+
+.share-btn {
+  display: inline-block;
+  width: 385rpx;
+  margin-top: 80rpx;
+  height: 85rpx;
+  line-height: 85rpx;
+  font-size: 38rpx;
+  color: #fff;
+  background: #cccc;
+  border-radius: 8rpx;
+}
+
+.share-btn.active {
+  background: #f66565;
+}
+
+.remark {
+  color: #999;
+  font-size: 26rpx;
+}

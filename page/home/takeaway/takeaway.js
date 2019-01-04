@@ -31,7 +31,7 @@ Page({
     status: 0,
     active: 0,
     constants: [], // 数据,
-    mpconstants: [],
+    // mpconstants: [],
     seaconstants: [], //搜索产品数组
     toView: null, // 左 => 右联动 右scroll-into-view 所需的id
     currentLeftSelect: null, // 当前左侧选择的
@@ -534,13 +534,7 @@ Page({
     let that = this;
     takeaway.getproductData(that.data.LonLat, (res) => {
       that.data.constants = res.CommodityList;
-      //停止刷新
-      setTimeout(() => {
-        wx.stopPullDownRefresh()
-        wx.hideLoading();
-      }, 500)
       if (res.CommodityList.length <= 0) {
-
         wx.showToast({
           title: '暂无商品',
           icon: 'none',
@@ -555,7 +549,7 @@ Page({
       } else {
         that.setData({
           constants: res.CommodityList,
-          mpconstants: res.CommodityList,
+          // mpconstants: res.CommodityList,
           currentLeftSelect: "i" + that.data.constants[0].CategoryID,
           eachRightItemToTop: that.getEachRightItemToTop(),
           productyArr: res,
@@ -573,7 +567,11 @@ Page({
       that.setData({
         payDesc: that.payDesc()
       });
-
+      //停止刷新
+      setTimeout(() => {
+        wx.stopPullDownRefresh()
+        wx.hideLoading();
+      }, 500)
     })
 
   },

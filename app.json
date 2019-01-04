@@ -51,7 +51,8 @@
     "page/mine/level_list/level_list",
     "page/mine/my_integral/my_integral",
     "page/mine/balance/balance",
-    "page/mine/my_integralInfo/my_integralInfo"
+    "page/mine/my_integralInfo/my_integralInfo",
+    "page/home/collectCup_detail/collectCup_detail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

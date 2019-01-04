@@ -1,9 +1,8 @@
-
-page{
+page {
   background: #f8f8f8;
 }
 
-.coupon-header{
+.coupon-header {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -13,7 +12,7 @@ page{
   background: #fff;
 }
 
-.coupon-header .head{
+.coupon-header .head {
   width: 50%;
   line-height: 60px;
   font-size: 18px;
@@ -21,14 +20,13 @@ page{
   color: #666;
 }
 
-.coupon-header .head .text{
+.coupon-header .head .text {
   display: inline-block;
   padding: 0 12rpx;
   line-height: 60px;
-  
 }
 
-.coupon-header .head .text.text-active::after{
+.coupon-header .head .text.text-active::after {
   display: block;
   position: relative;
   content: '';
@@ -37,16 +35,16 @@ page{
   border-bottom: 4rpx solid #fd2e2e;
 }
 
-.coupon-header .head .text.active{
+.coupon-header .head .text.active {
   color: #333;
   font-weight: bold;
 }
 
-.coupon-content{
+.coupon-content {
   background: #fff;
 }
 
-.coupon-content .coupon-item{
+.coupon-content .coupon-item {
   display: flex;
   flex-direction: row;
   margin: 0 50rpx;
@@ -55,7 +53,7 @@ page{
   border-bottom: 1px solid #ececec;
 }
 
-.coupon-content .coupon-item .coupon-name{
+.coupon-content .coupon-item .coupon-name {
   margin-bottom: 20rpx;
   line-height: 54rpx;
   font-size: 40rpx;
@@ -63,27 +61,27 @@ page{
   font-weight: 600;
 }
 
-.coupon-content .coupon-item .coupon-time{
+.coupon-content .coupon-item .coupon-time {
   margin-bottom: 5rpx;
   font-size: 24rpx;
   color: #333;
 }
 
-.coupon-content .coupon-item .date-time{
+.coupon-content .coupon-item .date-time {
   font-size: 24rpx;
   color: #333;
 }
 
-.coupon-content .coupon-item .coupon-left{
+.coupon-content .coupon-item .coupon-left {
   flex: 1;
 }
 
-.coupon-content .coupon-item .coupon-right{
+.coupon-content .coupon-item .coupon-right {
   flex: 0 0 200rpx;
   width: 200rpx;
 }
 
-.coupon-content .coupon-item .coupon-right .coupon-button{
+.coupon-content .coupon-item .coupon-right .coupon-button {
   background: #ff861a;
   padding: 12rpx 0;
   margin-top: 30rpx;
@@ -93,7 +91,7 @@ page{
   border-radius: 12rpx;
 }
 
-.coupon-content .coupon-item .coupon-right .coupon-btn-none{
+.coupon-content .coupon-item .coupon-right .coupon-btn-none {
   background: #d2d2d2;
   padding: 12rpx 0;
   margin-top: 30rpx;
@@ -103,11 +101,11 @@ page{
   border-radius: 12rpx;
 }
 
-.coupon-content .coupon-item .coupon-right .coupon-none{
+.coupon-content .coupon-item .coupon-right .coupon-none {
   position: relative;
 }
 
-.coupon-content .coupon-item .coupon-right .num-none{
+.coupon-content .coupon-item .coupon-right .num-none {
   position: absolute;
   top: -30rpx;
   left: 20rpx;
@@ -115,25 +113,25 @@ page{
   height: 136rpx;
 }
 
-.coupon-content .none-coupon{
+.coupon-content .none-coupon {
   padding-top: 120rpx;
   text-align: center;
-  background: #f8f8f8;
+  background: #fff;
 }
 
-.coupon-content .none-coupon .none-coupon{
+.coupon-content .none-coupon .none-coupon {
   width: 180rpx;
   height: 168rpx;
 }
 
-.coupon-content .none-coupon .text{
+.coupon-content .none-coupon .text {
   margin-top: 18rpx;
   line-height: 48rpx;
   font-size: 36rpx;
   color: #666;
 }
 
-.phone-wrapper{
+.phone-wrapper {
   position: fixed;
   top: 0;
   left: 0;

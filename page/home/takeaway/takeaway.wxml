@@ -61,7 +61,8 @@
         <view id="order{{parentIndex}}" class="title"></view>
         <view wx:for="{{item.ProductList}}" wx:key="{{index}}" class="food-item" wx:for-item="food" data-id="{{food.CommodityID}}" bindtap='foodDetailTap' data-idx='{{index}}' data-paidx='{{parentIndex}}'>
           <view class="icon">
-            <image src="{{imgUrl}}{{food.ImgPath}}" style="width: 205rpx;height: 150rpx" mode='aspectFill' lazy-load='true'></image>
+            <image src="{{imgUrl}}{{food.ImgPath}}" style="width: 205rpx;height: 150rpx" lazy-load='true'></image>
+            <!-- mode='aspectFill' -->
           </view>
           <view class="content">
             <view class="name">{{food.CommodityName}}</view>

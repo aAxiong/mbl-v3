@@ -36,7 +36,21 @@ class Myintegral extends Base {
     }
     this.request(params)
   }
-
+  optExchange(CommodityID, callback) { //兑换
+    let userId = wx.getStorageSync('userId')
+    let params = {
+      url: 'MyCenter.ashx',
+      data: {
+        Type: 11,
+        OpenUserID: userId,
+        CommodityID: CommodityID
+      },
+      sCallback: function(data) {
+        callback && callback(data)
+      }
+    }
+    this.request(params)
+  }
 }
 
 export {

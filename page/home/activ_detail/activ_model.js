@@ -1,19 +1,22 @@
+import {
+  Base
+} from '../../../utils/base.js'
 
-import {Base} from '../../../utils/base.js'
-
-class Activity extends Base{
-  constructor(){
+class Activity extends Base {
+  constructor() {
     super()
   }
 
-  getActivity(id,callback){
+  getActivity(id, callback) {
+    let userId = wx.getStorageSync('userId')
     let params = {
-      url:'HomePage.ashx',
-      data:{
-        Type:5,
-        ID:id
+      url: 'HomePage.ashx',
+      data: {
+        Type: 5,
+        ID: id,
+        OpenUserID: userId
       },
-      sCallback:function(data){
+      sCallback: function(data) {
         callback && callback(data)
       }
     }
@@ -21,4 +24,6 @@ class Activity extends Base{
   }
 }
 
-export {Activity}
+export {
+  Activity
+}

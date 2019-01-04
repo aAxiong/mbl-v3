@@ -25,6 +25,10 @@
         </view>
         <view class="int">-{{item.Integral}}</view>
       </view>
+      <view wx:if='{{DetailList.length<=0}}' class='none-coupon'>
+        <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+        <view class='text'>暂无数据</view>
+      </view>
     </view>
     <view class="shopCity" wx:if='{{activeNav==1}}'>
       <view class="li" wx:for='{{shopMallList}}'>
@@ -34,7 +38,12 @@
           <view class="int">{{item.IntegralNumber}}积分兑换</view>
           <view class="remark" wx:if='{{item.LimitedNumber>0}}'>(仅可兑换{{item.LimitedNumber}}次)</view>
         </view>
-        <view class="btn {{item.InventoryNumber<=0?'active':''}}" bindtap='showWindowSucc'>兑换</view>
+        <view class="btn" wx:if='{{item.InventoryNumber>0}}' data-id='{{item.CommodityID}}' bindtap='optExchange'>兑换</view>
+        <view class="btn active" wx:else>兑换</view>
+      </view>
+      <view wx:if='{{shopMallList.length<=0}}' class='none-coupon'>
+        <image class='none-coupon' src='/images/icon/none_coupon.png'></image>
+        <view class='text'>暂无数据</view>
       </view>
     </view>
   </view>

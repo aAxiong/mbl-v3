@@ -53,6 +53,11 @@ Page({
           shopMallList: res.Datas.CommodityList,
           MyIntegral: res.Datas.MyIntegral
         })
+      } else {
+        wx.showToast({
+          title: '加载失败',
+          mask: true
+        })
       }
       wx.stopPullDownRefresh()
     })
@@ -64,8 +69,22 @@ Page({
     myintegral.getIntDetails(this.page, (res) => {
       wx.hideLoading();
       if (res.Status == '0') {
-        this.setData({
-          DetailList: res.Datas.DetailList
+        if (res.Datas.DetailList.length > 0) {
+          this.page++
+        }
+        if (this.page == 1) {
+          this.setData({
+            DetailList: res.Datas.DetailList
+          })
+        } else {
+          this.setData({
+            DetailList: this.data.DetailList.concat(res.Datas.DetailList)
+          })
+        }
+      } else {
+        wx.showToast({
+          title: '加载失败',
+          mask: true
         })
       }
       wx.stopPullDownRefresh()
@@ -82,7 +101,31 @@ Page({
     this.setData({
       activeNav: index
     })
+  },
 
+  optExchange: function(e) { //兑换
+    let id = e.currentTarget.dataset.id;
+    let shopMallList = this.data.shopMallList;
+    wx.showLoading({
+      title: '加载中...',
+    })
+    myintegral.optExchange(id, (res) => {
+      wx.hideLoading();
+      if (res.Status == '0') {
+        this.showWindowSucc();
+        for (var i = 0, length = shopMallList.length; i < length; i++) {
+          if (shopMallList[i].CommodityID == id) {
+            shopMallList[i].InventoryNumber = shopMallList[i].InventoryNumber - 1;
+          }
+        }
+        this.setData({
+          shopMallList: shopMallList
+        })
+        console.log(this.data.shopMallList);
+      } else {
+        this.showWindowFail();
+      }
+    })
   },
   showWindowFail: function() { //兑换失败弹窗
     this.tips.showAlert();
@@ -113,7 +156,7 @@ Page({
    */
   onReachBottom: function() {
     if (this.data.activeNav == 0) {
-      this.page++;
+      // this.page++;
       this.getInfoData();
     }
   },

@@ -1,5 +1,6 @@
-
-import {Activity} from 'activ_model.js'
+import {
+  Activity
+} from 'activ_model.js'
 var activity = new Activity()
 
 Page({
@@ -8,29 +9,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activity:{},
-    mask:true
+    activity: {},
+    mask: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let id = options.id
-    wx.setNavigationBarTitle({
-      title: '活动详情',
-    })
+    // wx.setNavigationBarTitle({
+    //   title: '活动详情',
+    // })
     this.loadActivity(id)
   },
-  loadActivity(id){
+  loadActivity(id) {
     wx.showLoading({
       title: '加载中...',
     })
-    activity.getActivity(id,(res)=>{
-      if(res.Status == '0'){
+    activity.getActivity(id, (res) => {
+      if (res.Status == '0') {
         this.setData({
-          activity:res.Datas[0],
-          mask:false
+          activity: res.Datas[0],
+          mask: false
         })
         wx.hideLoading()
       }
@@ -40,42 +41,42 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
+  onShow: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-  
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  
+  onPullDownRefresh: function() {
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
+  onReachBottom: function() {
+
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function() {
+
   }
 })

@@ -51,6 +51,12 @@ Page({
       url: '/page/home/activ_detail/activ_detail?id=' + id,
     })
   },
+  jumpCup(e) {
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/page/home/collectCup_detail/collectCup_detail?id=' + id,
+    })
+  },
   /**
    * 页面上拉触底事件的处理函数
    */
