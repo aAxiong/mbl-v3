@@ -11,7 +11,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    alertShow: false,
+    alertShow: true,
     type: 0
   },
 
