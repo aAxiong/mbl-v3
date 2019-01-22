@@ -123,7 +123,7 @@
           <view class="price highlight">共计：￥{{totalPrice}}</view>
           <view class="desc">另需配送费{{productyArr.DeliveryFee}}元</view>
         </view>
-        <view class="serves">
+        <view class="serves" style="display:none">
           <button open-type="contact" />
         </view>
       </view>

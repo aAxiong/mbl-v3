@@ -4,14 +4,24 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    childTsData: {
+      type: Object,
+      observer(newData) {
+        console.log(newData);
+        if (this.properties.childTsData.length > 0) {
+          this.setData({
+            alertShow: true
+          })
+        }
+      }
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    alertShow: true,
+    alertShow: false,
     type: 0
   },
 

@@ -102,5 +102,5 @@
     <view class='text'>桌号已过期</view>
   </view> -->
 </view>
-<signIn_alert></signIn_alert>
+<signIn_alert childTsData='{{tsData}}'></signIn_alert>
 <!-- <canvas class='canvas' canvas-id='canvas'></canvas> -->

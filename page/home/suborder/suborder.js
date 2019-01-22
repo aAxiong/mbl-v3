@@ -23,7 +23,9 @@ Page({
     address: '宝运达物流中心z综合楼三 七楼迈宝乐实业有限公司',
     totalArr: [],
     Remark: "",
-    imgUrl: 'https://xcx.mblsoft.com'
+    imgUrl: 'https://xcx.mblsoft.com',
+    integral: [],
+    IntegralOffsetMoney: ''
   },
   jumpadd: function() {
     wx.navigateTo({
@@ -214,9 +216,21 @@ Page({
     })
   },
   getData: function() {
+    subBorder.getintegral((res) => {
+      if (res.Status === 0) {
+        this.setData({
+          integral: res.Datas
+        })
+      } else {
+        wx.showToast({
+          title: '积分获取失败',
+          mask: true,
+          icon: 'none'
+        })
+      }
+    })
     //ShoppingCartList
     subBorder.getOrderData((res) => {
-      wx.hideLoading()
       if (res.Status === 0) {
         this.setData({
           totalArr: res.Datas
@@ -231,6 +245,7 @@ Page({
           icon: 'none'
         })
       }
+      wx.hideLoading()
     })
 
   },
@@ -308,6 +323,12 @@ Page({
         })
       }
     })
+  },
+  getIntegral(e) {
+    this.setData({
+      IntegralOffsetMoney: e.detail.value
+    })
+
   },
   /**
    * 生命周期函数--监听页面加载

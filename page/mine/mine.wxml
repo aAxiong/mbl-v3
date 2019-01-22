@@ -3,8 +3,8 @@
     <view class='avatar-wrapper'>
       <image class='avatar' wx:if="{{userInfo}}" src='{{userInfo.avatarUrl}}'></image>
       <image class='avatar' wx:else src='/images/icon/avatar.png'></image>
-      <image class="erwei" src='/images/mine/erwei.png'></image>
-      <image class="vip" src='/images/mine/icon-vip@2x.png'></image>
+      <!-- <image class="erwei" src='/images/mine/erwei.png'></image> -->
+      <!-- <image class="vip" src='/images/mine/icon-vip@2x.png'></image> -->
     </view>
     <view class='mine-info'>
       <view wx:if="{{userInfo}}" class='nick-name'>{{userInfo.nickName}}</view>
@@ -27,7 +27,7 @@
           <image src='/images/mine/icon-yue@2x.png'></image>
           <text>余额</text>
         </view>
-        <view class="bottom">￥6549</view>
+        <view class="bottom">￥0</view>
       </view>
       <view class="li" bindtap='jumpVipPage'>
         <view class="top">
@@ -74,7 +74,7 @@
       </view>
       <image src='/images/icon/s_arrow.png'></image>
     </view>
-    <view class='mine-item' bindtap='jumpAllOrder'>
+    <view class='mine-item' bindtap='jumpAllOrder' style="display:none">
       <view class="list-box">
         <!-- <view class='item-icon'>
           <image src='{{item.icon}}'></image>

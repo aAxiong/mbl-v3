@@ -23,6 +23,23 @@ class SubBorder extends Base {
     }
     this.request(params)
   }
+  getintegral(callback) { //积分抵现
+    let userid = wx.getStorageSync('userId')
+    let params = {
+      url: 'HomePage.ashx',
+      data: {
+        Type: 19,
+        OpenUserID: userid,
+      },
+      sCallback: function(data) {
+        if (data.Status == '0') {
+          data = data
+          callback && callback(data)
+        }
+      }
+    }
+    this.request(params)
+  }
   orderPay(Code, ReceivingType, MealTime, AddressID, Remark, deliverFee, callback) {
     let userid = wx.getStorageSync('userId')
     let params = {

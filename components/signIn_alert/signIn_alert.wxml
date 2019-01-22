@@ -3,40 +3,28 @@
   <view class="windows {{alertShow==true?'visible':''}}">
     <view class="windows_boxs">
       <view class="Coupon">
-        <view class="li">
-          <view class="libox">
+        <view class="li" wx:for='{{childTsData}}' wx:if='{{index<=1}}'>
+          <view class="libox {{item.DisType==2?'pribox':''}}">
             <view class="topBox">
-              <view class="tit">赠</view>
-              <view class="content"> 充值有礼 满
-                <text>1000</text>送
-                <text>100</text>余额
+              <view class="tit">{{item.DisTitle}}</view>
+              <view class="content" wx:if='{{item.DisType==1}}'> {{item.DisContent1}} {{item.DisContent2}}
+              </view>
+              <view class="content" wx:if='{{item.DisType==2}}'> {{item.DisContent1}}
               </view>
             </view>
-            <!-- <view class="bottomBox">有效期：2018.12.03-2019.01.01</view> -->
-          </view>
-          <image src='/images/home/jx@2x.png'></image>
-        </view>
-        <view class="li">
-          <view class="libox pribox">
-            <view class="topBox">
-              <view class="tit">￥5</view>
-              <view class="content"> 首单立减
-                <text>5</text>元
-              </view>
-            </view>
-            <view class="bottomBox">有效期：2018.12.03-2019.01.01</view>
+            <view class="bottomBox" wx:if='{{item.DisType==2}}'>{{item.DisContent2}}</view>
           </view>
           <image src='/images/home/jx@2x.png'></image>
         </view>
       </view>
       <view class="signIn">
-        <view class="day_s">登录获得积分+10</view>
-        <view class="day">（您已连续签到1天）</view>
-        <view class="shuoming">在连续签到7天参加会员日赠送活动</view>
+        <view class="day_s">{{childTsData[2].DisContent1}}</view>
+        <!-- <view class="day">（您已连续签到1天）</view> -->
+        <view class="shuoming">{{childTsData[2].DisContent2}}</view>
       </view>
       <image src='/images/home/zhutu@2x.png' wx:if='{{type==0}}'></image>
       <image src='/images/home/wuhuodong@2x.png' wx:if='{{type==1}}'></image>
-      <image src='/images/home/wujifen@2x.png' wx:if='{{type==2}}'></image>
+      <image src='/images/home/wujifen@2x.png' wx:if='{{childTsData.length==2}}'></image>
     </view>
     <view class="go" bindtap='confirm'>
       <image src='/images/home/Go@2x.png'></image>

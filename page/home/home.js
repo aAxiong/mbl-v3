@@ -66,6 +66,7 @@ Page({
    */
   onLoad: function(options) {
     let deskNumber = options.query || '';
+    // this.loadTs();
     this.loadHomeData(deskNumber)
     this.videoContext = wx.createVideoContext('storeVideo')
     // qrcode = new QRCode('canvas', {
@@ -81,6 +82,13 @@ Page({
   },
   tapHandler: function(e) {
     qrcode.makeCode(e.target.dataset.code); //用元素对应的code更新二维码
+  },
+  loadTs() {
+    home.getTsData((res) => {
+      this.setData({
+        tsData: res.DisList
+      })
+    })
   },
   loadHomeData(deskNumber) {
     wx.showLoading({

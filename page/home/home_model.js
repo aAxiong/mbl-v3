@@ -28,6 +28,28 @@ class Home extends Base {
     }
     this.request(params)
   }
+  getTsData(callback) {
+    let userId = wx.getStorageSync('userId')
+    let params = {
+      url: 'HomePage.ashx',
+      data: {
+        Type: 18,
+        OpenUserID: userId
+      },
+      sCallback: function(data) {
+        if (data.Status == '0') {
+          data = data.Datas
+          callback && callback(data)
+        } else {
+          wx.showToast({
+            title: data.Msg,
+            icon: "none"
+          })
+        }
+      }
+    }
+    this.request(params)
+  }
 
   isSeatNumber(seatNumber, callback) {
     let params = {

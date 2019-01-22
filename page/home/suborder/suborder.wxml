@@ -24,7 +24,7 @@
           </view>
         </view>
         <view class="right">
-          <image src='/images/address/back.png'></image>
+          <image src='/images/mine/address/back.png'></image>
         </view>
       </view>
     </view>
@@ -40,7 +40,7 @@
     <view class="show-time">
       <image src='/images/suborder/time.png'></image>预计时间</view>
     <view class="selct-time">{{tocontent}}{{timeShow}}
-      <image src='/images/address/back.png'></image>
+      <image src='/images/mine/address/back.png'></image>
     </view>
   </view>
   <view class="shop-box">
@@ -90,14 +90,25 @@
         <text>￥0.00</text>
       </view>
     </view>
+    <view class="integralbox">
+      <view class="text">
+        <view class='{{integral.IsEnable==1?"active":""}}'>使用积分抵现</view>
+        <view class="span" wx:if='{{integral.IsEnable==1}}'>(可使用积分{{integral.MyIntegral}})</view>
+      </view>
+      <view class="intergrlshow" wx:if='{{integral.IsEnable==1}}'>积分抵现
+        <text>-￥30</text> </view>
+      <view class="intergrlinput" wx:if='{{integral.IsEnable==1}}'>
+        <input type='number' bindinput="getIntegral" placeholder=''></input>
+      </view>
+      <view class="intergrlinput" wx:else>无</view>
+    </view>
     <view class="totalPrice">
       <view class="text">已选择优惠价格最高活动</view>
-      <view class="price" w>共计:
+      <view class="price">共计:
         <text wx:if='{{active==1}}'>￥{{totalArr.SumCommodityPrice}}</text>
         <text wx:if='{{active==2}}'>￥{{totalArr.Money}}</text>
       </view>
     </view>
-
   </view>
   <view class="remarks">
     <view class="title">备注</view>
