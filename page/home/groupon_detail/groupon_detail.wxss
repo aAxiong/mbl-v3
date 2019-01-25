@@ -3,6 +3,22 @@ page {
   padding-bottom: 128rpx;
 }
 
+.slider {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 10rpx;
+}
+
+.slider .slider-content {
+  height: 650rpx;
+  text-align: center;
+}
+
+.slider .slider-img {
+  width: 100%;
+  height: 650rpx;
+}
+
 .detail-image {
   width: 100%;
 }

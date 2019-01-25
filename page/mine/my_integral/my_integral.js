@@ -56,7 +56,8 @@ Page({
       } else {
         wx.showToast({
           title: '加载失败',
-          mask: true
+          mask: true,
+          icon: 'none'
         })
       }
       wx.stopPullDownRefresh()
@@ -84,7 +85,8 @@ Page({
       } else {
         wx.showToast({
           title: '加载失败',
-          mask: true
+          mask: true,
+          icon: 'none'
         })
       }
       wx.stopPullDownRefresh()

@@ -24,7 +24,7 @@ class Pay extends Base {
     this.request(params)
   }
 
-  getPayParams(openUserId, money, count, couponId, code, commodityId, commodityName, categoryId, callback) {
+  getPayParams(openUserId, money, count, couponId, code, commodityId, commodityName, categoryId, IntegralOffsetMoney, integralInput, callback) {
     let params = {
       url: 'SpellGroup.ashx',
       data: {
@@ -36,7 +36,9 @@ class Pay extends Base {
         Code: code,
         CommodityID: commodityId,
         CommodityName: commodityName,
-        CategoryID: categoryId
+        CategoryID: categoryId,
+        IntegralOffsetMoney: IntegralOffsetMoney,
+        Integral: integralInput
       },
       sCallback: function(data) {
         callback && callback(data)
@@ -57,7 +59,23 @@ class Pay extends Base {
       }
     })
   }
-
+  getintegral(callback) { //积分抵现
+    let userid = wx.getStorageSync('userId')
+    let params = {
+      url: 'HomePage.ashx',
+      data: {
+        Type: 19,
+        OpenUserID: userid,
+      },
+      sCallback: function(data) {
+        if (data.Status == '0') {
+          data = data
+          callback && callback(data)
+        }
+      }
+    }
+    this.request(params)
+  }
 }
 
 export {

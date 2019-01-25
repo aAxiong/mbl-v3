@@ -448,7 +448,7 @@ page {
   width: 200rpx;
 }
 
-.integralbox .text.active {
+.integralbox .text .active {
   color: #333;
 }
 

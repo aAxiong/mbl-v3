@@ -60,7 +60,8 @@ Component({
       this.setData({
         sizeIndex: index,
         sizeId: sizeId,
-        shopData: this.properties.sizeTaste.SpecificationList[index]
+        shopData: this.properties.sizeTaste.SpecificationList[index],
+        money: this.properties.sizeTaste.SpecificationList[index].SpecificationPrice
       })
       this.triggerEvent('moneyTriggerTap', {
         'index': index

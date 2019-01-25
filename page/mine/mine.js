@@ -15,7 +15,8 @@ Page({
     phone: '',
     isOrdering: '',
     mask: true,
-    vipStatus: false
+    vipStatus: false,
+    integral: 0
   },
 
   /**
@@ -51,9 +52,21 @@ Page({
         this.setData({
           userInfo: res.userInfo
         })
-        mine.commitUserInfo(userId, res.userInfo, (data) => {
-          if (data.Status == 0) {
-
+        // mine.commitUserInfo(userId, res.userInfo, (data) => {
+        //   if (data.Status == 0) {
+        //   }
+        // })
+        mine.getintegral((res) => {
+          if (res.Status === 0) {
+            this.setData({
+              integral: res.Datas.MyIntegral
+            })
+          } else {
+            wx.showToast({
+              title: '积分获取失败',
+              mask: true,
+              icon: 'none'
+            })
           }
         })
       }
@@ -92,26 +105,26 @@ Page({
       url: '/page/mine/all_order/all_order',
     })
   },
-  jumpAddressList: function(e) {//跳转到地址列表
+  jumpAddressList: function(e) { //跳转到地址列表
     wx.navigateTo({
       url: '/page/mine/address_list/address_list?type=1',
     })
   },
-  jumpVipPage: function(e) {//跳转到vip页面
+  jumpVipPage: function(e) { //跳转到vip页面
     if (this.data.vipStatus == false) {
       wx.navigateTo({
         url: '/page/mine/vipInfo_no/vipInfo_no',
       })
     }
   },
-  jumpBalance: function(e) {//跳转到积分商城
+  jumpBalance: function(e) { //跳转到积分商城
     if (this.data.vipStatus == false) {
       wx.navigateTo({
         url: '/page/mine/balance/balance',
       })
     }
   },
-  jumpmy_integral: function(e) {//跳转到我的积分
+  jumpmy_integral: function(e) { //跳转到我的积分
     if (this.data.vipStatus == false) {
       wx.navigateTo({
         url: '/page/mine/my_integral/my_integral',

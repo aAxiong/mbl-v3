@@ -807,8 +807,9 @@ Page({
       for (var j = 0; j < cvalue[i].ProductList.length; j++) {
         if (cvalue[i].ProductList[j].CommodityID == id) {
           if (types == "add") {
+            let CommodityNum = cvalue[i].ProductList[j].CommodityNum || 0
             cvalue[i].ProductList[j].Inventory = cvalue[i].ProductList[j].Inventory - 1;
-            cvalue[i].ProductList[j].CommodityNum = cvalue[i].ProductList[j].CommodityNum + 1
+            cvalue[i].ProductList[j].CommodityNum = CommodityNum + 1
           } else {
             cvalue[i].ProductList[j].Inventory = cvalue[i].ProductList[j].Inventory + 1;
             cvalue[i].ProductList[j].CommodityNum = cvalue[i].ProductList[j].CommodityNum - 1
@@ -825,8 +826,9 @@ Page({
       for (var i = 0; i < sealue1.length; i++) {
         if (sealue1[i].CommodityID == id) {
           if (types == "add") {
+            let CommodityNum = sealue1[i].CommodityNum || 0
             sealue1[i].Inventory = sealue1[i].Inventory - 1;
-            sealue1[i].CommodityNum = sealue1[i].CommodityNum + 1;
+            sealue1[i].CommodityNum = CommodityNum + 1;
           } else {
             sealue1[i].Inventory = sealue1[i].Inventory + 1;
             sealue1[i].CommodityNum = sealue1[i].CommodityNum - 1;

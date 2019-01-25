@@ -77,7 +77,8 @@
               <view class="old" wx:if="{{food.Discount>0}}">
                 <image src='/images/takeaway/tehui.png'></image>{{food.Discount}}折</view>
               <view class="old" wx:if='{{food.Discount<=0&&food.Ishalfprice!=1}}'></view>
-              <view class="now">￥{{food.Money}}
+              <view class="now">
+                <text wx:if='{{food.Money1!=""&&food.Money1>0}}'>￥{{food.Money1}}</text>￥{{food.Money}}
                 <text wx:if='{{food.Inventory<=10&&food.Inventory>0}}'>剩余{{food.Inventory}}份</text>
               </view>
             </view>

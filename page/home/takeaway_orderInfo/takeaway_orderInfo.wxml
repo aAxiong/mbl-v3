@@ -1,6 +1,6 @@
 <view class="tabbox {{OrderDetailInfo.OrderStatus==3&&OrderDetailInfo.DeliveryType==2?'active':''}}">
   <view class="sendBox">
-    <view class="clc">
+    <view class="clc" wx:if='{{OrderDetailInfo.OrderStatus!=1}}'>
       <view class="text" wx:if='{{OrderDetailInfo.DeliveryType==1}}'>预计送达</view>
       <view class="text" wx:if='{{OrderDetailInfo.DeliveryType==2}}'>自取时间</view>
       <view class="time">{{OrderDetailInfo.DeliveryTime}}</view>

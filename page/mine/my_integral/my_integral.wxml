@@ -13,7 +13,7 @@
     <view class="li {{activeNav==1?'active':''}}" bindtap='changNav' data-index='1'>积分商城
       <view class="tiao"></view>
     </view>
-  </view>
+  </view> 
   <view class="inf_wrapper">
     <view class="consumption" wx:if='{{activeNav==0}}'>
       <view class="li" wx:for='{{DetailList}}'>

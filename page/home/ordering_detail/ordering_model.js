@@ -1,36 +1,38 @@
-import { Base } from '../../../utils/base.js'
+import {
+  Base
+} from '../../../utils/base.js'
 
 class Ordering extends Base {
   constructor() {
     super()
   }
 
-  getGoodsDetail(id,callback){
+  getGoodsDetail(id, callback) {
     let params = {
-      url:'QRCodeOrderDishes.ashx',
-      data:{
+      url: 'QRCodeOrderDishes.ashx',
+      data: {
         Type: 16,
-        CommodityID:id
+        CommodityID: id
       },
-      sCallback(data){
+      sCallback(data) {
         callback && callback(data)
       }
     }
     this.request(params)
   }
 
-  addCart(commodityId, size, taste,seatNumber,count,callback){
+  addCart(commodityId, size, taste, seatNumber, count, callback) {
     let params = {
-      url:'QRCodeOrderDishes.ashx',
-      data:{
-        Type:4,
+      url: 'QRCodeOrderDishes.ashx',
+      data: {
+        Type: 4,
         CommodityID: commodityId,
         SpecificationID: size,
         LabelName: taste,
         SeatNumber: seatNumber,
         BuyNum: count
       },
-      sCallback(data){
+      sCallback(data) {
         callback && callback(data)
       }
     }
@@ -39,4 +41,6 @@ class Ordering extends Base {
 
 }
 
-export {Ordering}
+export {
+  Ordering
+}

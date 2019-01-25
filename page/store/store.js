@@ -17,7 +17,8 @@ Page({
     prevImgsList: [],
     mask: true,
     imgUrl: app.globalData.imgUrl,
-    activeList: [] //门店动态列表
+    activeList: [], //门店动态列表
+    drap: false, //控制下拉
   },
 
   /**
@@ -145,6 +146,17 @@ Page({
         // wx.hideLoading()
       }
     })
+  },
+  downdrap: function(e) { //下拉
+    if (this.data.drap == false) {
+      this.setData({
+        drap: true
+      })
+    } else {
+      this.setData({
+        drap: false
+      })
+    }
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

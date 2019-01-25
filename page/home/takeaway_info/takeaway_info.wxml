@@ -2,7 +2,15 @@
 <view class="takeawayInfo_page total_page">
   <scroll-view scroll-y class="info_box">
     <view class="imagebox">
-      <image src='{{imgUrl}}{{productList.ImgPath}}' mode='aspectFit'></image>
+      <!-- 轮播图 -->
+      <view class='slider'>
+        <swiper class='slider-content' circular='true' indicator-dots="true" autoplay="true" circular="true" indicator-active-color="#fd2e2e">
+          <swiper-item class="slider-item" wx:for="{{productList.CommodityImgList}}" wx:key="{{index}}">
+            <image class='slider-img' mode="aspectFill" src='{{imgUrl}}{{item.ImgPath}}'></image>
+          </swiper-item>
+        </swiper>
+      </view>
+      <!-- <image src='{{imgUrl}}{{productList.ImgPath}}' mode='aspectFit'></image> -->
     </view>
     <view class="product_info">
       <view class="info">
@@ -13,7 +21,8 @@
         <view class="sell"> 月销量:{{productList.Sales}}份</view>
       </view>
       <view class="opt">
-        <view class="price"> ￥{{price}}</view>
+        <view class="price">
+          <text wx:if='{{productList.Money1!=""&&productList.Money1>0}}'>￥{{productList.Money1}}</text> ￥{{price}}</view>
         <view class="add" bindtap='addProduct' wx:if="{{productList.Inventory>0}}">
           <image src='/images/takeaway/redadd@2x.png'></image>
         </view>

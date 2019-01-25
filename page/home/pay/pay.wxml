@@ -34,6 +34,18 @@
       <image src='/images/icon/coupon-use.png'></image>
     </view>
   </view>
+  <view class="integralbox">
+    <view class="text">
+      <view class='{{integral.IsEnable==1?"active":""}}'>使用积分抵现</view>
+      <view class="span" wx:if='{{integral.IsEnable==1}}'>(可使用积分{{integral.MyIntegral}})</view>
+    </view>
+    <view class="intergrlshow" wx:if='{{integral.IsEnable==1}}'>积分抵现
+      <text>-￥{{IntegralOffsetMoney}}</text> </view>
+    <view class="intergrlinput" wx:if='{{integral.IsEnable==1}}'>
+      <input type='number' bindinput="getIntegral" placeholder='' value='{{integralInput}}'></input>
+    </view>
+    <view class="intergrlinput" wx:else>无</view>
+  </view>
   <!-- <view class="coupon" bindtap='useCouponTap'>
     <text class="coupon-text">我的优惠券</text>
   </view> -->

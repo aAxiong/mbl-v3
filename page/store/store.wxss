@@ -2,7 +2,7 @@
 
 .headers {
   position: relative;
-  height: 315rpx;
+  height: 362rpx;
 }
 
 .header {
@@ -33,6 +33,7 @@
   width: 640rpx;
   margin: 0 auto;
   margin-top: 70rpx;
+  padding-bottom: 30rpx;
 }
 
 .header .content-wrapper .logo {
@@ -69,6 +70,10 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.header .content-wrapper .textbox .procuct.active {
+  -webkit-line-clamp: 20;
 }
 
 .navbar {
@@ -200,4 +205,18 @@
   height: 400rpx;
   border-radius: 16rpx;
   margin-bottom: 20rpx;
+}
+
+.header .downdrap {
+  text-align: center;
+  margin-top: 10rpx;
+}
+
+.header .downdrap image {
+  width: 36rpx;
+  height: 24rpx;
+}
+
+.header .hiddenbox.active .downdrap {
+  animation: mymove 3s;
 }

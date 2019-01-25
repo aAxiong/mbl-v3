@@ -25,7 +25,10 @@ Page({
     Remark: "",
     imgUrl: 'https://xcx.mblsoft.com',
     integral: [],
-    IntegralOffsetMoney: ''
+    IntegralOffsetMoney: 0,
+    integralInput: '',
+    SumCommodityPrice: 0,
+    Money: 0
   },
   jumpadd: function() {
     wx.navigateTo({
@@ -149,7 +152,13 @@ Page({
     var Ehour = parseInt(Etimebox.split(':')[0]);
     var Emin = parseInt(Etimebox.split(':')[1]);
     if (index == 0) {
-      let date = new Date();
+      let ProductionTime = parseFloat(this.data.totalArr.ProductionTime)
+      let hours3 = 60 * 60 * ProductionTime * 1000
+      var timestamp = Date.parse(new Date()) + hours3; //获取当前时间
+      timestamp = timestamp / 1000;
+      var n = timestamp * 1000;
+      var date = new Date(n);
+      // let date = new Date();
       var hour = parseInt(date.getHours());
       var min = date.getMinutes();
       var timebox = hour + ":" + min;
@@ -157,7 +166,6 @@ Page({
       var timebox = this.data.totalArr.StoreList[0].StoreStartTime
       var hour = parseInt(timebox.split(':')[0]);
       var min = parseInt(timebox.split(':')[1]);
-
     }
 
     if (min >= 0 & min < 30) {
@@ -229,11 +237,14 @@ Page({
         })
       }
     })
+
     //ShoppingCartList
     subBorder.getOrderData((res) => {
       if (res.Status === 0) {
         this.setData({
-          totalArr: res.Datas
+          totalArr: res.Datas,
+          SumCommodityPrice: res.Datas.SumCommodityPrice,
+          Money: res.Datas.Money
         })
         let local = JSON.stringify(res.Datas.StoreList[0]);
         this.getDay();
@@ -256,6 +267,17 @@ Page({
     let Remark = this.data.Remark;
     let DeliverFee = this.data.totalArr.DeliverFee
     let self = this
+    let MinUseRestrictions = this.data.integral.MinUseRestrictions
+    let integralInput = this.data.integralInput == "" ? 0 : this.data.integralInput;
+    let IntegralOffsetMoney = this.data.IntegralOffsetMoney;
+    if (integralInput > 0 && integralInput < MinUseRestrictions) {
+      wx.showToast({
+        title: '至少使用' + MinUseRestrictions + "积分",
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    }
     wx.showLoading({
       title: '加载中',
       mask: true
@@ -264,17 +286,15 @@ Page({
       success(res) {
         if (res.code) {
           let code = res.code;
-          subBorder.orderPay(code, ReceivingType, MealTime, AddressID, Remark, DeliverFee, (res) => {
+          // let m = self.data.active == 1 ? self.data.SumCommodityPrice : self.data.Money; //判断是自取还是商品配送
+          subBorder.orderPay(code, ReceivingType, MealTime, AddressID, Remark, DeliverFee, IntegralOffsetMoney, integralInput, (res) => {
             wx.hideLoading()
-            console.log("成功")
-            console.log("a" + res);
-            console.log(res);
             if (res.Status == '0') {
               let data = res.Datas
               self.userPayment(data)
             } else {
               wx.showToast({
-                title: '取消支付',
+                title: res.Msg,
                 icon: 'none',
                 mask: true
               })
@@ -324,11 +344,71 @@ Page({
       }
     })
   },
-  getIntegral(e) {
+  getIntegral(e) { //积分判断
+    let integral = this.data.integral
+    let MaxUseRestrictions = this.data.integral.MaxUseRestrictions
+    let MyIntegral = this.data.integral.MyIntegral
+    let length = (e.detail.value + "").length;
+    let IntegralOffsetMoney = (e.detail.value * integral.Deductible_Amount) / integral.Deductible_Integral
+    let money = this.data.Money; //商品配送金额
+    let SumCommodityPrice = this.data.SumCommodityPrice
+    let maxDixian = this.data.totalArr.Money * integral.Deductible_Integral
+    let maxDixian1 = this.data.totalArr.SumCommodityPrice * integral.Deductible_Integral
+    if (e.detail.value > this.data.integral.MaxUseRestrictions) {
+      this.setData({
+        integralInput: e.detail.value.slice(0, length - 1),
+      })
+      wx.showToast({
+        title: '最多能使用' + MaxUseRestrictions + "积分",
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    } else if (e.detail.value > MyIntegral) {
+      this.setData({
+        integralInput: e.detail.value.slice(0, length - 1),
+      })
+      wx.showToast({
+        title: '你只有' + MyIntegral + "积分",
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    }
+    if (parseFloat(this.data.totalArr.Money) - IntegralOffsetMoney < 0 && this.data.active == 2) { //自取价格比较
+      this.setData({
+        integralInput: e.detail.value.slice(0, length - 1),
+      })
+      wx.showToast({
+        title: '此金额最大抵现为' + maxDixian + "积分",
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    } else if (parseFloat(this.data.totalArr.SumCommodityPrice) - IntegralOffsetMoney < 0 && this.data.active == 1) { //商品配送价格比较
+      this.setData({
+        integralInput: e.detail.value.slice(0, length - 1),
+      })
+      wx.showToast({
+        title: '此金额最大抵现为' + maxDixian1 + "积分",
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    }
     this.setData({
-      IntegralOffsetMoney: e.detail.value
+      integralInput: e.detail.value,
+      IntegralOffsetMoney: parseFloat(IntegralOffsetMoney).toFixed(2),
     })
-
+    if (this.data.active == 1) {
+      this.setData({
+        SumCommodityPrice: parseFloat(this.data.totalArr.SumCommodityPrice - IntegralOffsetMoney).toFixed(2)
+      })
+    } else {
+      this.setData({
+        Money: parseFloat(this.data.totalArr.Money - IntegralOffsetMoney).toFixed(2)
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载

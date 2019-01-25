@@ -20,7 +20,7 @@
           <image src='/images/mine/icon-integral@2x.png'></image>
           <text>积分</text>
         </view>
-        <view class="bottom">6549</view>
+        <view class="bottom">{{integral}}</view>
       </view>
       <view class="li middle">
         <view class="top">
@@ -38,9 +38,9 @@
       </view>
     </view>
   </view>
-  <view class="receiveVip">
+  <!-- <view class="receiveVip">
     点我领取会员
-  </view>
+  </view> -->
   <view class='mine-list'>
     <view class='mine-item' bindtap='jumpAllOrder'>
       <view class="list-box">

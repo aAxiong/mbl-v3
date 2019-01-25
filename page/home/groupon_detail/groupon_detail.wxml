@@ -1,8 +1,15 @@
 <view class="shop-detail-wrapper" hidden='{{isLoad}}'>
   <view class='detail-wrapper'>
     <view class='header'>
-      <view class='detail-image'>
+      <!-- <view class='detail-image'>
         <image mode='aspectFill' src='{{imgUrl}}{{goodsInfo.CommodityList.ImgPath}}'></image>
+      </view> -->
+      <view class='slider'>
+        <swiper class='slider-content' circular='true' indicator-dots="true" autoplay="true" circular="true" indicator-active-color="#fd2e2e">
+          <swiper-item class="slider-item" wx:for="{{goodsInfo.CommodityList.CommodityImgList}}" wx:key="{{index}}">
+            <image class='slider-img' mode="aspectFill" src='{{imgUrl}}{{item.ImgPath}}'></image>
+          </swiper-item>
+        </swiper>
       </view>
       <view class='detail-intro'>
         <view class='left'>

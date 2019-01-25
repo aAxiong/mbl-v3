@@ -18,7 +18,11 @@ Page({
     numberVal: 2,
     isUsedCoupon: 0,
     isShowDisCoupon: '',
-    isShow: true
+    isShow: true,
+    integral: [],
+    IntegralOffsetMoney: 0,
+    integralInput: '',
+    SumCommodityPrice: 0,
   },
 
   /**
@@ -26,6 +30,22 @@ Page({
    */
   onLoad: function(options) {
     this.loadGoodsData()
+    this.getinter();
+  },
+  getinter() { //获取积分
+    ordering.getintegral((res) => {
+      if (res.Status === 0) {
+        this.setData({
+          integral: res.Datas
+        })
+      } else {
+        wx.showToast({
+          title: '积分获取失败',
+          mask: true,
+          icon: 'none'
+        })
+      }
+    })
   },
   //商品列表
   loadGoodsData() {
@@ -33,7 +53,7 @@ Page({
       title: '加载中...'
     })
     let userId = wx.getStorageSync('userId')
-    let deskNumber = wx.getStorageSync('deskNumber')
+    let deskNumber = 'f1'; //wx.getStorageSync('deskNumber')
     ordering.getGoodsData(deskNumber, userId, (res) => {
       wx.hideLoading()
       if (res.Status === 0) {
@@ -87,6 +107,18 @@ Page({
   },
   //获取支付参数
   getUserPayParams(uNumber) {
+    let SumCommodityPrice = this.data.priceIsCoupon;
+    let MinUseRestrictions = this.data.integral.MinUseRestrictions
+    let integralInput = this.data.integralInput == "" ? 0 : this.data.integralInput;
+    let IntegralOffsetMoney = this.data.IntegralOffsetMoney;
+    if (integralInput > 0 && integralInput < MinUseRestrictions) {
+      wx.showToast({
+        title: '至少使用' + MinUseRestrictions + "积分",
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    }
     let self = this
     wx.login({
       success: function(res) {
@@ -102,7 +134,7 @@ Page({
             mask: true
           })
 
-          ordering.getPayParams(userId, code, seatNumber, couponId, userNumber, (res) => {
+          ordering.getPayParams(userId, code, seatNumber, couponId, userNumber, IntegralOffsetMoney, integralInput, (res) => {
             wx.hideLoading()
             if (res.Status == '0') {
               let data = res.Datas
@@ -153,7 +185,55 @@ Page({
       }
     })
   },
-
+  getIntegral(e) { //积分判断
+    let integral = this.data.integral
+    let MaxUseRestrictions = this.data.integral.MaxUseRestrictions
+    let MyIntegral = this.data.integral.MyIntegral
+    let length = (e.detail.value + "").length;
+    let IntegralOffsetMoney = (e.detail.value * integral.Deductible_Amount) / integral.Deductible_Integral
+    let money = this.data.priceIsCoupon; //商品配送金额
+    let maxDixian = money * integral.Deductible_Integral
+    let payMoney = this.data.payMoney
+    if (e.detail.value > this.data.integral.MaxUseRestrictions) {
+      this.setData({
+        integralInput: e.detail.value.slice(0, length - 1),
+      })
+      wx.showToast({
+        title: '最多能使用' + MaxUseRestrictions + "积分",
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    } else if (e.detail.value > MyIntegral) {
+      this.setData({
+        integralInput: e.detail.value.slice(0, length - 1),
+      })
+      wx.showToast({
+        title: '你只有' + MyIntegral + "积分",
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    }
+    if (parseFloat(this.data.totalPrice) - IntegralOffsetMoney < 0) { //价格比较
+      this.setData({
+        integralInput: e.detail.value.slice(0, length - 1),
+      })
+      wx.showToast({
+        title: '此金额最大抵现为' + maxDixian + "积分",
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    }
+    this.setData({
+      integralInput: e.detail.value,
+      IntegralOffsetMoney: parseFloat(IntegralOffsetMoney).toFixed(2),
+    })
+    this.setData({
+      priceIsCoupon: parseFloat(this.data.totalPrice - IntegralOffsetMoney).toFixed(2)
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -168,7 +248,7 @@ Page({
     //使用优惠券获取实际支付金额
     if (app.globalData.useCouponInfo) {
       this.getOfferData(app.globalData.useCouponInfo.id, this.data.totalPrice)
-      
+
       this.setData({
         couponInfo: app.globalData.useCouponInfo
       })

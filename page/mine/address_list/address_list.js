@@ -131,6 +131,9 @@ Page({
                 title: '删除成功',
                 mask: true
               })
+              setTimeout(() => {
+                that.loadData();
+              }, 1000)
             } else {
               wx.showToast({
                 title: '删除失败',

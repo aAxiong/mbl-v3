@@ -251,10 +251,16 @@
   margin-top: 10rpx;
 }
 
-.goods .foods-wrapper .food-list .food-item .content .price .now text {
+/* .goods .foods-wrapper .food-list .food-item .content .price .now text {
   float: right;
   font-size: 22rpx;
   color: #666;
+} */
+
+.goods .foods-wrapper .food-list .food-item .content .price .now text {
+  font-size: 24rpx;
+  color: #666;
+  text-decoration: line-through;
 }
 
 .goods .foods-wrapper .food-list .food-item .content .price .old {

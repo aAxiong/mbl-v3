@@ -6,10 +6,14 @@
       </view>
       <view class="textbox">
         <view class="titile">{{storeInfo.StoreName}}</view>
-        <view class="procuct">
+        <view class="procuct {{drap==true?'active':''}}">
           <text>简介：</text>{{storeInfo.IntroductionContent}}
         </view>
       </view>
+    </view>
+    <view class="downdrap" bindtap='downdrap' wx:if='{{storeInfo.IntroductionContent.length>80}}'>
+      <!-- wx:if='{{activityArr.length>0}}' -->
+      <image src='{{drap==false?"/images/takeaway/drop-down@2x.png":"/images/takeaway/drop-up@2x.png"}}'></image>
     </view>
     <view class="background">
       <image src="http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg" style="width:100%;height:100%;"></image>

@@ -40,7 +40,7 @@ class SubBorder extends Base {
     }
     this.request(params)
   }
-  orderPay(Code, ReceivingType, MealTime, AddressID, Remark, deliverFee, callback) {
+  orderPay(Code, ReceivingType, MealTime, AddressID, Remark, deliverFee, IntegralOffsetMoney, integralInput, callback) {
     let userid = wx.getStorageSync('userId')
     let params = {
       url: 'Waimai.ashx',
@@ -52,7 +52,9 @@ class SubBorder extends Base {
         MealTime: MealTime,
         AddressID: AddressID,
         Remark: Remark,
-        DeliverFee: deliverFee
+        DeliverFee: deliverFee,
+        IntegralOffsetMoney: IntegralOffsetMoney,
+        Integral: integralInput
       },
       sCallback: function(data) {
         console.log(data);
