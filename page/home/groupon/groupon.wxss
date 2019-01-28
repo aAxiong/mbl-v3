@@ -1,30 +1,29 @@
-
-page{
+page {
   background: #f8f8f8;
 }
 
-.groupon-hader{
+.groupon-hader {
   background: #fff;
   margin-top: 20rpx;
   border-bottom: 1rpx solid #e8e8e8;
 }
 
-.menu{
+.menu {
   display: flex;
   white-space: nowrap;
 }
 
-.menu .menu-item{
+.menu .menu-item {
   display: inline-block;
-  padding: 30rpx  40rpx;
+  padding: 30rpx 40rpx;
 }
 
-.menu .menu-item.active{
+.menu .menu-item.active {
   color: #fd2e2e;
   border-bottom: 2rpx solid #fd2e2e;
 }
 
- /* .menu .menu-item.active::after{
+/* .menu .menu-item.active::after{
   content: '';
   display: block;
   position: relative;
@@ -34,33 +33,33 @@ page{
   background: #fd2e2e;
 }  */
 
-.groupon-content{
+.groupon-content {
   background: #fff;
 }
 
-.goods-item{
+.goods-item {
   display: flex;
   flex-direction: row;
   padding: 30rpx;
   border-bottom: 1rpx solid #e8e8e8;
 }
 
-.goods-item .goods-pic{
+.goods-item .goods-pic {
   flex: 0 0 280rpx;
 }
 
-.goods-item .goods-pic .goods{
+.goods-item .goods-pic .goods {
   width: 280rpx;
   height: 180rpx;
   border-radius: 8rpx;
 }
 
-.goods-item .goods-info{
+.goods-item .goods-info {
   flex: 1;
   margin-left: 30rpx;
 }
 
-.goods-item .goods-info .name{
+.goods-item .goods-info .name {
   max-height: 84rpx;
   height: 84rpx;
   margin-bottom: 15rpx;
@@ -69,19 +68,32 @@ page{
   overflow: hidden;
 }
 
-.goods-item .goods-info .price-old{
+.goods-item .goods-info .price-old {
   font-size: 28rpx;
   color: #999;
   text-decoration: line-through;
 }
 
-.goods-item .goods-info .bottom{
+.goods-item .goods-info .top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.goods-item .goods-info .bottom .price{
+.goods-item .goods-info .top .Inventory {
+  display: inline-block;
+  line-height: 44rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.goods-item .goods-info .bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.goods-item .goods-info .bottom .price {
   display: inline-block;
   line-height: 44rpx;
   font-size: 32rpx;
@@ -89,28 +101,28 @@ page{
   font-weight: bold;
 }
 
-.goods-item .goods-info .bottom .price .sign{
+.goods-item .goods-info .bottom .price .sign {
   font-size: 24rpx;
 }
 
-.goods-item .goods-info .bottom .count{
+.goods-item .goods-info .bottom .count {
   display: inline-block;
   line-height: 44rpx;
   font-size: 24rpx;
   color: #999;
 }
 
-.none{
+.none {
   text-align: center;
   margin-top: 280rpx;
 }
 
-.none .none-pic{
+.none .none-pic {
   width: 226rpx;
   height: 236rpx;
 }
 
-.none .text{
+.none .text {
   font-size: 32rpx;
   color: #999;
 }

@@ -1,4 +1,3 @@
-
 <view class="payment-wrapper" hidden='{{isShow}}'>
   <view class='header'>
     <image class='pay-bg' src='/images/icon/o_payment.png'></image>
@@ -7,7 +6,8 @@
   <view class='content'>
     <view class='title'>商品详情</view>
     <view class='goods-item' wx:for="{{orderInfo.OrderDetailList}}" wx:key="{{index}}">
-      <view class='text name'>{{item.CommodityName}}</view>
+      <view class='text name'>{{item.CommodityName}} {{item.Unit}}
+        <text wx:if='{{item.Unit!=""&&item.LableName!=""}}'>|</text> {{item.LableName}}</view>
       <view class='text'>x{{item.CommodityNum}}</view>
       <view class='text'>￥{{item.CommodityPrice}}</view>
     </view>

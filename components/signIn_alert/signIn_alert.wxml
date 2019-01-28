@@ -3,7 +3,7 @@
   <view class="windows {{alertShow==true?'visible':''}}">
     <view class="windows_boxs">
       <view class="Coupon">
-        <view class="li" wx:for='{{childTsData}}' wx:if='{{index<=1}}'>
+        <view class="li" wx:for='{{childTsData}}' wx:if='{{item.DisType==1||item.DisType==2}}'>
           <view class="libox {{item.DisType==2?'pribox':''}}">
             <view class="topBox">
               <view class="tit">{{item.DisTitle}}</view>
@@ -18,13 +18,14 @@
         </view>
       </view>
       <view class="signIn">
-        <view class="day_s">{{childTsData[2].DisContent1}}</view>
+        <view class="day_s">{{typeArray[0].DisContent1}}</view>
         <!-- <view class="day">（您已连续签到1天）</view> -->
-        <view class="shuoming">{{childTsData[2].DisContent2}}</view>
+        <view class="shuoming">{{typeArray[0].DisContent2}}</view>
       </view>
-      <image src='/images/home/zhutu@2x.png' wx:if='{{type==0}}'></image>
-      <image src='/images/home/wuhuodong@2x.png' wx:if='{{type==1}}'></image>
-      <image src='/images/home/wujifen@2x.png' wx:if='{{childTsData.length==2}}'></image>
+      {{childTsData.length}} {{typeArray.length}}
+      <image src='/images/home/zhutu@2x.png' wx:if='{{childTsData.length>=1&&typeArray.length>0}}'></image>
+      <image src='/images/home/wujifen@2x.png' wx:elif='{{childTsData.length>=1&&typeArray.length<=0}}'></image>
+      <image src='/images/home/wuhuodong@2x.png' wx:elif='{{typeArray.length>=1}}'></image>
     </view>
     <view class="go" bindtap='confirm'>
       <image src='/images/home/Go@2x.png'></image>

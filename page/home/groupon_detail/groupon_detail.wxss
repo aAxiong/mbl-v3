@@ -31,6 +31,7 @@ page {
   padding-top: 20rpx;
   padding-bottom: 10rpx;
   background: #fff;
+  align-items: center;
 }
 
 .detail-wrapper {
@@ -42,12 +43,19 @@ page {
 }
 
 .detail-intro .left {
-  flex: 1;
 }
 
 .detail-intro .left .name {
   margin-right: 20rpx;
-  line-height: 24px;
+  font-size: 16px;
+}
+
+.detail-intro .middle {
+  font-size: 16px;
+  color: #999;
+}
+
+.detail-intro .middle .Inventory {
   font-size: 16px;
 }
 
@@ -79,7 +87,6 @@ page {
 }
 
 .detail-intro .right {
-  flex: 0 0 150rpx;
   position: relative;
 }
 

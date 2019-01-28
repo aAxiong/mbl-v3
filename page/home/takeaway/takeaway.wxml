@@ -27,6 +27,7 @@
                 <image src='/images/takeaway/discount@2x.png' wx:elif="{{item.DisType==2}}"></image>
                 <image src='/images/takeaway/exclusive@2x.png' wx:elif="{{item.DisType==4}}"></image>
                 <image src='/images/takeaway/half@2x.png' wx:elif="{{item.DisType==5}}"></image>
+                <image src='/images/takeaway/vip.png' wx:elif="{{item.DisType=='vip'}}"></image>
                 <image src='/images/takeaway/fulla@2x.png' wx:else></image>
                 <text>{{item.DisCouponName}}</text>
               </view>

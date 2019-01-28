@@ -89,7 +89,7 @@
 
 .windows .Coupon {
   margin: 0 auto;
-  width: 370rpx;
+  width: 389rpx;
   position: relative;
   top: 230rpx;
 }
@@ -102,7 +102,7 @@
 }
 
 .windows .Coupon .li image {
-  width: 370rpx;
+  width: 389rpx;
   height: 148rpx;
   position: absolute;
   top: 0;
@@ -123,7 +123,7 @@
 }
 
 .windows .Coupon .li .libox .topBox .tit {
-  font-size: 55rpx;
+  font-size: 48rpx;
   color: #fc4c4c;
   font-family: 'xiaowei';
   margin-right: 10rpx;
@@ -132,13 +132,14 @@
 }
 
 .windows .Coupon .li .libox .topBox .content {
+  display: flex;
+  align-items: center;
   font-size: 36rpx;
   color: #333;
   width: 230rpx;
   height: 100rpx;
   border-left: 4rpx solid #333;
   font-family: 'siyuan';
-  line-height: 36rpx;
   padding-left: 10rpx;
 }
 
@@ -148,7 +149,8 @@
 
 .windows .Coupon .li .libox.pribox .topBox .content {
   height: 75rpx;
-  line-height: 75rpx;
+  display: flex;
+  align-items: center;
 }
 
 .windows .Coupon .li .libox.pribox .bottomBox {
@@ -160,8 +162,11 @@
 }
 
 .signIn {
-  position: relative;
-  top: 270rpx;
+  width: 90%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 250rpx;
   z-index: 3;
   text-align: center;
 }

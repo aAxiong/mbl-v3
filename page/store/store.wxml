@@ -56,7 +56,10 @@
         </view>
       </view>
     </view>
-
+    <view class='none' wx:if="{{activeList.length === 0}}">
+      <image class='none-pic' src='/images/icon/none_coupon.png'></image>
+      <view class='text'>暂无动态</view>
+    </view>
   </view>
   <view class="storePhoto" wx:if='{{navbarActive==1}}'>
     <image mode='aspectFill' src='{{imgUrl}}{{item.Path}}' wx:for="{{storeImgs}}" wx:key="index" data-url="{{item.Path}}" bindtap='prevImgsTap'></image>

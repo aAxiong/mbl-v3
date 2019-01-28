@@ -7,10 +7,10 @@ Page({
   data: {
     VersionList: [],
     iconList: [{
-      icon: '/images/icon/m_groupon.png',
-      id: '4',
-      hander: 'mineGroupon',
-      name: '团购订单'
+      icon: '/images/icon/m_ordering.png',
+      id: '5',
+      hander: 'mineOrdering',
+      name: '点餐订单'
     }, {
       icon: '/images/icon/m_order.png',
       id: '3',
@@ -21,11 +21,6 @@ Page({
       id: '6',
       hander: 'mineTakeaway',
       name: '外卖订单'
-    }, {
-      icon: '/images/icon/m_ordering.png',
-      id: '5',
-      hander: 'mineOrdering',
-      name: '点餐订单'
     }],
   },
 

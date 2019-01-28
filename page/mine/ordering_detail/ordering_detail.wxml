@@ -1,10 +1,10 @@
-
 <view class="ordering-wrapper">
   <view class='goods-detail'>
     <view class='title'>商品详情</view>
     <view class='goods-list'>
       <view class='item' wx:for="{{orderInfo.OrderDetailList}}" wx:key="{{index}}">
-        <view class='name'>{{item.CommodityName}}</view>
+        <view class='name'>{{item.CommodityName}} {{item.Unit}}
+          <text wx:if='{{item.Unit!=""&&item.LableName!=""}}'>|</text> {{item.LableName}}</view>
         <view class='count'>x{{item.CommodityNum}}</view>
         <view class='price'>￥{{item.CommodityPrice}}</view>
       </view>

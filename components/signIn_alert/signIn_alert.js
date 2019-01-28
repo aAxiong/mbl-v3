@@ -7,12 +7,23 @@ Component({
     childTsData: {
       type: Object,
       observer(newData) {
-        console.log(newData);
         if (this.properties.childTsData.length > 0) {
           this.setData({
             alertShow: true
           })
+          for (var i = 0; i < this.properties.childTsData.length; i++) {
+            if (this.properties.childTsData[i].DisType === 3) {
+              let arr = [];
+
+              arr.push(this.properties.childTsData[i])
+              this.setData({
+                typeArray: arr
+              })
+              console.log(this.data.typeArray);
+            }
+          }
         }
+
       }
     }
   },
@@ -22,7 +33,8 @@ Component({
    */
   data: {
     alertShow: false,
-    type: 0
+    type: 0,
+    typeArray: []
   },
 
   /**

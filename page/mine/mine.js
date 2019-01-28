@@ -16,7 +16,10 @@ Page({
     isOrdering: '',
     mask: true,
     vipStatus: false,
-    integral: 0
+    infoLIst: 0,
+    MyVip: '',
+    MyTopUpAmount: 0,
+    MyIntegral: 0
   },
 
   /**
@@ -56,14 +59,16 @@ Page({
         //   if (data.Status == 0) {
         //   }
         // })
-        mine.getintegral((res) => {
+        mine.getintegralInfo((res) => {
           if (res.Status === 0) {
             this.setData({
-              integral: res.Datas.MyIntegral
+              MyVip: res.Datas.MyVip || '无',
+              MyTopUpAmount: res.Datas.MyTopUpAmount || 0,
+              MyIntegral: res.Datas.MyIntegral || 0
             })
           } else {
             wx.showToast({
-              title: '积分获取失败',
+              title: '等级信息相关获取失败',
               mask: true,
               icon: 'none'
             })

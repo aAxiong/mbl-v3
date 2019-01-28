@@ -294,7 +294,7 @@ Page({
               self.userPayment(data)
             } else {
               wx.showToast({
-                title: res.Msg,
+                title: '支付失败',
                 icon: 'none',
                 mask: true
               })

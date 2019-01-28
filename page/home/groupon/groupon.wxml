@@ -10,8 +10,12 @@
         <image class='goods' mode='aspectFill' src='{{imgUrl}}{{item.ImgPath}}'></image>
       </view>
       <view class='goods-info'>
-        <view class='name'>{{item.CommodityName}}</view>
-        <text class='price-old' wx:if="{{item.Money1}}">￥{{item.Money1}}</text>
+        <view class="top">
+          <view class='name'>{{item.CommodityName}}</view>
+          <view class="Inventory">剩余：{{item.Inventory}}</view>
+        </view>
+
+        <!-- <text class='price-old' wx:if="{{item.Money1}}">￥{{item.Money1}}</text> -->
         <view class='bottom'>
           <text class='price'><text class='sign'>￥</text>{{item.Money}}</text>
           <text class='count' wx:if="{{item.IsShowSales == '1'}}">月销量：{{item.Sales}}</text>

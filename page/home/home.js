@@ -66,22 +66,12 @@ Page({
    */
   onLoad: function(options) {
     let deskNumber = options.query || '';
-    // this.loadTs();
+    this.loadTs();
     this.loadHomeData(deskNumber)
     this.videoContext = wx.createVideoContext('storeVideo')
-    // qrcode = new QRCode('canvas', {
-    //   text: "code=0000000000000",
-    //   width: 150,
     if (this.data.totalPrice < this.data.minPrice) {
       return;
-    } //   height: 150,
-    //   colorDark: "#000000",
-    //   colorLight: "#ffffff",
-    //   correctLevel: QRCode.CorrectLevel.H,
-    // });
-  },
-  tapHandler: function(e) {
-    qrcode.makeCode(e.target.dataset.code); //用元素对应的code更新二维码
+    }
   },
   loadTs() {
     home.getTsData((res) => {

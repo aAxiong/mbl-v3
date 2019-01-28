@@ -38,12 +38,12 @@ class Mine extends Base {
     }
     this.request(params)
   }
-  getintegral(callback) { //积分抵现
+  getintegralInfo(callback) { //积分抵现
     let userid = wx.getStorageSync('userId')
     let params = {
-      url: 'HomePage.ashx',
+      url: 'MyCenter.ashx',
       data: {
-        Type: 19,
+        Type: 1,
         OpenUserID: userid,
       },
       sCallback: function(data) {

@@ -20,21 +20,21 @@
           <image src='/images/mine/icon-integral@2x.png'></image>
           <text>积分</text>
         </view>
-        <view class="bottom">{{integral}}</view>
+        <view class="bottom">{{MyIntegral}}</view>
       </view>
       <view class="li middle">
         <view class="top">
           <image src='/images/mine/icon-yue@2x.png'></image>
           <text>余额</text>
         </view>
-        <view class="bottom">￥0</view>
+        <view class="bottom">￥{{MyTopUpAmount}}</view>
       </view>
       <view class="li" bindtap='jumpVipPage'>
         <view class="top">
           <image src='/images/mine/icon-level@2x.png'></image>
           <text>等级</text>
         </view>
-        <view class="bottom">青铜</view>
+        <view class="bottom">{{MyVip}}</view>
       </view>
     </view>
   </view>
@@ -66,7 +66,7 @@
       </view>
       <image src='/images/icon/s_arrow.png'></image>
     </view>
-    <view class='mine-item' bindtap='jumpBalance'>
+    <view class='mine-item' bindtap='jumpBalance' style="display:none;">
       <view class="list-box">
         <view class='text'>
           在线充值

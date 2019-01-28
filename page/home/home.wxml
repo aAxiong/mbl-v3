@@ -17,7 +17,7 @@
       <view class='icon'>
         <image src='{{imgUrl}}{{item.icon}}'></image>
       </view>
-      <text class='text'>{{item.name}}</text>
+      <view class='text'>{{item.name}}</view>
     </view>
   </view>
   <!-- 门店信息 -->
@@ -71,7 +71,9 @@
             <view class='name'>{{item.ProductName}}</view>
           </view>
           <view class='price'>
-            <text class='sign'>￥</text>{{item.Money}}</view>
+            <text class='sign'>￥</text>{{item.Money}}
+            <text class="money1" wx:if='{{item.Money1!=""}}'>￥{{item.Money1}}</text>
+          </view>
           <view class='shop-share'>
             <!-- <view class='share-wrapper'>
               <image class='share-icon' src='/images/icon/share.png'></image>

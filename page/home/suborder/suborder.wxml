@@ -63,7 +63,7 @@
             <view> x{{item.CommodityNum}}</view>
           </view>
           <view class="much">
-            ￥{{item.CommodityPrice}}
+            ￥{{item.UnitPrice}}
           </view>
         </view>
       </view>
@@ -76,10 +76,11 @@
       <text>优惠信息</text>
       <view>
         <image src='/images/takeaway/fulla@2x.png' wx:if="{{totalArr.DiscouponList[0].DisType==1}}"></image>
-        <image src='/images/takeaway/discount@2x.png' wx:elif="{{totalArr.DiscouponList[0].DisType==2}}"></image>
-        <image src='/images/takeaway/discount@2x.png' wx:elif="{{totalArr.DiscouponList[0].DisType==6}}"></image>
+        <image src='/images/takeaway/exclusive@2x.png' wx:elif="{{totalArr.DiscouponList[0].DisType==2}}"></image>
+        <image src='/images/takeaway/tehui@2x.png' wx:elif="{{totalArr.DiscouponList[0].DisType==6}}"></image>
         <image src='/images/takeaway/exclusive@2x.png' wx:elif="{{totalArr.DiscouponList[0].DisType==4}}"></image>
         <image src='/images/takeaway/half@2x.png' wx:elif="{{totalArr.DiscouponList[0].DisType==5}}"></image>
+        <image src='/images/takeaway/vip.png' wx:elif="{{totalArr.DiscouponList[0].DisType=='vip'}}"></image>
         <image src='/images/takeaway/fulla@2x.png' wx:else></image>
         {{totalArr.DiscouponList[0].DisCouponName}}</view>
       <text>￥{{totalArr.DiscouponList[0].DisMoney}}</text>

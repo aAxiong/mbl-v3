@@ -200,6 +200,11 @@ page {
   line-height: 26px;
   font-size: 14px;
   color: #333;
+  width: 160rpx;
+  overflow: hidden;
+  height: 50rpx;
+  margin: 0 auto;
+  margin-top: 10rpx;
 }
 
 .shop-content {
@@ -295,6 +300,12 @@ page {
   color: #fd2e2e;
   font-weight: bold;
   padding-bottom: 10rpx;
+}
+
+.shop-content .shop .price .money1 {
+  font-size: 24rpx;
+  color: #666;
+  text-decoration: line-through;
 }
 
 .shop-content .shop .price .sign {

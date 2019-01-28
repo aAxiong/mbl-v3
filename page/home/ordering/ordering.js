@@ -102,6 +102,7 @@ Page({
   menuTap(e) {
     let index = e.currentTarget.dataset.idx
     let menuId = e.currentTarget.dataset.id
+    this.menuId = e.currentTarget.dataset.id
     this.loadOrderingGoods(menuId, 1) //切换商品列表
     this.setData({
       menuIndex: index,
@@ -283,7 +284,16 @@ Page({
     this.loadCartData()
   },
   onPullDownRefresh() {
-    this.onLoad()
+    let menuIndex = this.data.menuIndex == 0 ? -1 : this.menuId;
+    this.loadOrderingMenu()
+    this.loadOrderingGoods(menuIndex, 1)
+
+    let deskNumber = wx.getStorageSync('deskNumber')
+    if (deskNumber) {
+      this.setData({
+        deskNumber: deskNumber
+      })
+    }
     this.onShow()
   },
   /**
