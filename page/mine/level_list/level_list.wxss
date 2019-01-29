@@ -226,3 +226,18 @@ page {
 .vip_level .box .li.active .tiao {
   display: block;
 }
+
+.none {
+  text-align: center;
+  margin-top: 280rpx;
+}
+
+.none .none-pic {
+  width: 226rpx;
+  height: 236rpx;
+}
+
+.none .text {
+  font-size: 32rpx;
+  color: #999;
+}

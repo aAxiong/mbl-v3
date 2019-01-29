@@ -70,9 +70,9 @@ Page({
     myintegral.getIntDetails(this.page, (res) => {
       wx.hideLoading();
       if (res.Status == '0') {
-        if (res.Datas.DetailList.length > 0) {
-          this.page++
-        }
+        // if (res.Datas.DetailList.length > 0) {
+        //   this.page++
+        // }
         if (this.page == 1) {
           this.setData({
             DetailList: res.Datas.DetailList
@@ -82,6 +82,7 @@ Page({
             DetailList: this.data.DetailList.concat(res.Datas.DetailList)
           })
         }
+        this.page++
       } else {
         wx.showToast({
           title: '加载失败',
@@ -123,6 +124,7 @@ Page({
         this.setData({
           shopMallList: shopMallList
         })
+
         console.log(this.data.shopMallList);
       } else {
         this.showWindowFail();

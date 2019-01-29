@@ -50,17 +50,20 @@ page {
   font-size: 16px;
 }
 
-.detail-intro .middle {
-  font-size: 16px;
+.detail-price .middle {
+  font-size: 28rpx;
   color: #999;
 }
 
-.detail-intro .middle .Inventory {
-  font-size: 16px;
+.detail-price .middle .Inventory {
+  font-size: 28rpx;
 }
 
 .detail-price {
   padding: 0 24rpx 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .detail-price .price {

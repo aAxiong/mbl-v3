@@ -15,9 +15,6 @@
         <view class='left'>
           <text class='name'>{{goodsInfo.CommodityList.CommodityName}}</text>
         </view>
-        <view class="middle">
-          <text class='Inventory'>剩余{{goodsInfo.CommodityList.Inventory}}</text>
-        </view>
 
         <view class='right'>
           <image src='/images/icon/share.png'></image>
@@ -28,6 +25,9 @@
       <view class='detail-price'>
         <text class='price'>￥{{goodsInfo.CommodityList.Money}}</text>
         <text class='price-old' wx:if="{{goodsInfo.CommodityList.Money1}}">￥{{goodsInfo.CommodityList.Money1}}</text>
+        <view class="middle">
+          <text class='Inventory'>剩余{{goodsInfo.CommodityList.Inventory}}</text>
+        </view>
         <text class='count' wx:if="{{goodsInfo.IsShowSales == '1'}}">月销量:{{goodsInfo.CommodityList.Sales}}份</text>
       </view>
     </view>

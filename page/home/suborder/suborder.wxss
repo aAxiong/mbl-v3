@@ -267,6 +267,8 @@ page {
 .shop-box .disconut view {
   color: #999;
   font-size: 28rpx;
+  display: flex;
+  align-items: center;
 }
 
 .shop-box .disconut image {

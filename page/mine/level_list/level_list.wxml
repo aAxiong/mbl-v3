@@ -1,54 +1,60 @@
-<view class="info">
-  <view class="wrapper">
-    <view class='avatar-wrapper'>
-      <image class='avatar' wx:if="{{userInfo}}" src='{{userInfo.avatarUrl}}'></image>
-      <image class='avatar' wx:else src='/images/icon/avatar.png'></image>
-    </view>
-    <view wx:if="{{userInfo}}" class='nick-name'>{{userInfo.nickName}}</view>
-    <view wx:else class='nick-name'>{{snapName}}</view>
-    <view class="integralBox">
-      <view class="integral">当前积分：{{MyIntegral}}</view>
-      <view class="tiao">|</view>
-      <view class="level_integral">升到下一级还需{{StillNeed}}积分</view>
-    </view>
-    <view class="progressBar">
-      <view class="start">{{star}}</view>
-      <view class="progressBox">
-        <view class="progress" style="width:{{(star/end)*100}}%;"></view>
+<view class="vipBox" wx:if="{{levelTop.length > 0}}">
+  <view class="info">
+    <view class="wrapper">
+      <view class='avatar-wrapper'>
+        <image class='avatar' wx:if="{{userInfo}}" src='{{userInfo.avatarUrl}}'></image>
+        <image class='avatar' wx:else src='/images/icon/avatar.png'></image>
       </view>
-      <view class="end">{{end}}</view>
-    </view>
-  </view>
-  <image src='/images/mine/bg.png' class="bg"></image>
-</view>
-<view class="vip_discount vip_colum">
-  <view class="tit">会员折扣
-    <image src='/images/mine/icon-level@2x.png'></image>
-  </view>
-  <view class="box">
-    <view class="li {{levelnow==index?'active':''}}" wx:for='{{levelTop}}'>
-      <view class="level">{{item.Name}}</view>
-      <view class="discount">{{item.Discount}}</view>
-      <view class="tiao"></view>
-    </view>
-  </view>
-</view>
-
-<view class="vip_level vip_colum">
-  <view class="tit">等级成长
-    <image src='/images/mine/icon-level-up@2x.png'></image>
-  </view>
-  <view class="box">
-    <scroll-view scroll-x="true" scroll-with-animation='true' scroll-into-view="{{toView}}" class="box_scroll">
-      <view class="li {{level_tiao==index?'active':''}}" wx:for='{{levelTop}}' bindtap='changeLevel' data-index='{{index}}' id='toView{{index}}'>
-        <view class="wrapper {{level_k==index?'active':''}}">
-          <view class="level">{{item.Name}}</view>
-          <view class="int">{{item.Integral}}</view>
+      <view wx:if="{{userInfo}}" class='nick-name'>{{userInfo.nickName}}</view>
+      <view wx:else class='nick-name'>{{snapName}}</view>
+      <view class="integralBox">
+        <view class="integral">当前积分：{{MyIntegral}}</view>
+        <view class="tiao">|</view>
+        <view class="level_integral">升到下一级还需{{StillNeed}}积分</view>
+      </view>
+      <view class="progressBar">
+        <view class="start">{{star}}</view>
+        <view class="progressBox">
+          <view class="progress" style="width:{{(star/end)*100}}%;"></view>
         </view>
-        <view class="tiao"></view>
-        <image src='/images/mine/backg-xz@2x.png' wx:if='{{level_k==index}}'></image>
-        <image src='/images/mine/backg-wxz@2x.png' wx:else></image>
+        <view class="end">{{end}}</view>
       </view>
-    </scroll-view>
+    </view>
+    <image src='/images/mine/bg.png' class="bg"></image>
   </view>
+  <view class="vip_discount vip_colum">
+    <view class="tit">会员折扣
+      <image src='/images/mine/icon-level@2x.png'></image>
+    </view>
+    <view class="box">
+      <view class="li {{levelnow==index?'active':''}}" wx:for='{{levelTop}}'>
+        <view class="level">{{item.Name}}</view>
+        <view class="discount">{{item.Discount}}</view>
+        <view class="tiao"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="vip_level vip_colum">
+    <view class="tit">等级成长
+      <image src='/images/mine/icon-level-up@2x.png'></image>
+    </view>
+    <view class="box">
+      <scroll-view scroll-x="true" scroll-with-animation='true' scroll-into-view="{{toView}}" class="box_scroll">
+        <view class="li {{level_tiao==index?'active':''}}" wx:for='{{levelTop}}' bindtap='changeLevel' data-index='{{index}}' id='toView{{index}}'>
+          <view class="wrapper {{level_k==index?'active':''}}">
+            <view class="level">{{item.Name}}</view>
+            <view class="int">{{item.Integral}}</view>
+          </view>
+          <view class="tiao"></view>
+          <image src='/images/mine/backg-xz@2x.png' wx:if='{{level_k==index}}'></image>
+          <image src='/images/mine/backg-wxz@2x.png' wx:else></image>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+<view class='none' wx:if="{{levelTop.length === 0}}">
+  <image class='none-pic' src='/images/icon/none_coupon.png'></image>
+  <view class='text'>暂无数据</view>
 </view>

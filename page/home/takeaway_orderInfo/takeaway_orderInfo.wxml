@@ -106,7 +106,7 @@
           </view>
           <view class="num">x{{item.CommodityNum}}</view>
           <view class="price">
-            ￥{{item.CommodityPrice}}
+            ￥{{item.CommodityPrice*item.CommodityNum}}
           </view>
         </view>
       </view>

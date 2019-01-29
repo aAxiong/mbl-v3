@@ -1,11 +1,11 @@
-<view class="ordering-wrapper" hidden='{{isShow}}'>
+<view class="ordering-wrapper">
   <view class='ordering-header'>
     <scroll-view class='menu' scroll-x="true">
       <view bindtap='menuTap' wx:for="{{menuList}}" data-idx="{{index}}" data-id="{{item.ID}}" class="menu-item {{menuIndex === index ? 'active':''}}" wx:key="{{index}}">{{item.CategoryName}}</view>
     </scroll-view>
   </view>
   <!-- 菜品 -->
-  <view class='ordering-content'>
+  <view class='ordering-content' hidden='{{isShow}}'>
     <view class='goods-wrapper'>
       <view class='item' wx:for="{{goodsList}}" wx:key="{{index}}" data-id="{{item.CommodityID}}" data-inv="{{item.IsInventory}}" bindtap='goodsDetailTap'>
         <view class='pic'>

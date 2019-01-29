@@ -55,10 +55,6 @@ Page({
         this.setData({
           userInfo: res.userInfo
         })
-        // mine.commitUserInfo(userId, res.userInfo, (data) => {
-        //   if (data.Status == 0) {
-        //   }
-        // })
         mine.getintegralInfo((res) => {
           if (res.Status === 0) {
             this.setData({
@@ -74,6 +70,8 @@ Page({
             })
           }
         })
+        //停止刷新
+        wx.stopPullDownRefresh()
       }
     })
   },
@@ -118,7 +116,7 @@ Page({
   jumpVipPage: function(e) { //跳转到vip页面
     if (this.data.vipStatus == false) {
       wx.navigateTo({
-        url: '/page/mine/vipInfo_no/vipInfo_no',
+        url: '/page/mine/level_list/level_list',
       })
     }
   },
@@ -159,7 +157,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.getUserInfoAuth()
+    this.loadPhone()
   },
 
   /**

@@ -260,6 +260,9 @@
 .goods .foods-wrapper .food-list .food-item .content .price .now text {
   font-size: 24rpx;
   color: #666;
+}
+
+.goods .foods-wrapper .food-list .food-item .content .price .now text.text {
   text-decoration: line-through;
 }
 

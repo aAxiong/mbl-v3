@@ -22,8 +22,8 @@
     <view class='coupon-status'>
       <text wx:if="{{couponInfo && couponInfo.couponType == 2}}" class='use-coupon'>{{couponInfo.discount}}折</text>
       <text wx:elif="{{couponInfo}}" class='use-coupon'>-{{couponInfo.discount}}元</text>
-      <text wx:elif="{{isUsedCoupon >= 1 && !couponInfo}}" class='use-coupon h'>有可用优惠券</text>
-      <text wx:else class='coupon-none'>无可用优惠券</text>
+      <text wx:elif="{{isUsedCoupon >= 1 && !couponInfo}}" class='use-coupon h'>有可参与活动</text>
+      <text wx:else class='coupon-none'>无可参与活动</text>
       <image class='coupon-icon' src='/images/icon/coupon-use.png'></image>
     </view>
   </view>

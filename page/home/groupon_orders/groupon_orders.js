@@ -22,6 +22,7 @@ Page({
     IntegralOffsetMoney: 0,
     integralInput: '',
     SumCommodityPrice: 0,
+    DisMoney: 0
   },
 
   /**
@@ -65,7 +66,10 @@ Page({
         this.setData({
           isUsedCoupon: res.Datas.AvailableCouponsNum,
           payMoney: res.Datas.PayMoney,
-          isLoad: false
+          isLoad: false,
+          DisMoney: parseFloat(res.Datas.DisMoney).toFixed(2),
+          IntegralOffsetMoney: 0,
+          integralInput: ''
         })
       } else {
 
@@ -170,7 +174,8 @@ Page({
     let MyIntegral = this.data.integral.MyIntegral
     let length = (e.detail.value + "").length;
     let IntegralOffsetMoney = (e.detail.value * integral.Deductible_Amount) / integral.Deductible_Integral
-    let money = this.data.inputValue; //商品配送金额
+    //let money = this.data.inputValue; //商品配送金额
+    let money = parseFloat(this.data.goodsInfo.Money - this.data.DisMoney)
     let maxDixian = money * integral.Deductible_Integral
     let payMoney = this.data.payMoney
     // let invalue = this.data.inputValue;
@@ -195,7 +200,7 @@ Page({
       })
       return
     }
-    if (parseFloat(this.data.goodsInfo.Money) - IntegralOffsetMoney < 0) { //价格比较
+    if (parseFloat(this.data.goodsInfo.Money - this.data.DisMoney) - IntegralOffsetMoney < 0) { //价格比较
       this.setData({
         integralInput: e.detail.value.slice(0, length - 1),
       })
@@ -211,7 +216,7 @@ Page({
       IntegralOffsetMoney: parseFloat(IntegralOffsetMoney).toFixed(2),
     })
     this.setData({
-      payMoney: parseFloat(this.data.goodsInfo.Money - IntegralOffsetMoney).toFixed(2)
+      payMoney: parseFloat(this.data.goodsInfo.Money - this.data.DisMoney - IntegralOffsetMoney).toFixed(2)
     })
   },
   /**

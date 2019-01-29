@@ -1,5 +1,6 @@
-
-import { Base } from '../../../utils/base.js'
+import {
+  Base
+} from '../../../utils/base.js'
 
 class UseCoupon extends Base {
   constructor() {
@@ -12,8 +13,10 @@ class UseCoupon extends Base {
       url: 'HomePage.ashx',
       data: {
         Type: 15,
+        userId,
+        OpenUserID: userId
       },
-      sCallback: function (data) {
+      sCallback: function(data) {
         callback && callback(data)
       }
     }
@@ -22,4 +25,6 @@ class UseCoupon extends Base {
 
 }
 
-export { UseCoupon }
+export {
+  UseCoupon
+}
