@@ -114,6 +114,9 @@ Page({
     })
     myintegral.optExchange(id, (res) => {
       wx.hideLoading();
+      this.setData({
+        tipsText: res.Msg
+      })
       if (res.Status == '0') {
         this.showWindowSucc();
         for (var i = 0, length = shopMallList.length; i < length; i++) {
@@ -133,15 +136,16 @@ Page({
   },
   showWindowFail: function() { //兑换失败弹窗
     this.tips.showAlert();
-    this.setData({
-      tipsText: '兑换失败，风里雨里，攒够积分等你~'
-    })
+    // this.setData({
+    //   tipsText: '兑换失败，风里雨里，攒够积分等你~'
+    // })
   },
   showWindowSucc: function() { //兑换成功弹窗
-    this.tips.showAlert();
     this.setData({
       tipsText: '兑换成功，请到团购订单列表查看兑换券'
     })
+    this.tips.showAlert();
+
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

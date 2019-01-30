@@ -15,7 +15,7 @@
       </view> -->
     </view>
     <view class="mine-vipinfo">
-      <view class="li">
+      <view class="li" bindtap='jumpmy_integral'>
         <view class="top">
           <image src='/images/mine/icon-integral@2x.png'></image>
           <text>积分</text>

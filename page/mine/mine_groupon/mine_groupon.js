@@ -33,9 +33,6 @@ Page({
       title: '加载中...',
       mask: true
     })
-    console.log(status);
-    console.log(pageIndex);
-    console.log(type1);
     groupon.getOrdersData(status, pageIndex, (res) => {
       if (res.Status === 0) {
         if (res.Datas.OrderList.length === 0) {
